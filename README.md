@@ -1,7 +1,54 @@
+# Installing the app:
+
+    From within the root directory after cloning,
+    
+    (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ pwd
+    /Users/stevepodell/WebstormProjects/WeVoteCordova
+    (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ 
+    
+     cordova create WeVoteCordova org.wevote.cordova WeVoteCordova 
+      554  cd WeVoteCordova/
+      556  cordova platform add ios
+      557  cordova platform add android
+      558  cordova platform ls
+      560  node -v
+      561  npm install gradle
+      562  cordova requirements
+  
+  https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#requirements-and-support
+    
+    Open Xcode and use the “Welcome to Xcode” dialog to open the equivalent on your Mac to /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcworkspace
+    As with WeVoteReactNative, don’t use the open project history, always navigate to and open the WeVoteCordova.xcworkspace file.
+    
+    
+    http://harrymoreno.com/2015/07/14/Deploying-a-React-App-to-Cordova.html
+    
+      625  ln -s ../StevesForkOfWebApp/www
+    
+      644  cd /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www
+      645  ln -s ../../WeVoteCordova/platforms/ios/platform_www/cordova.js cordova.js
+      651  ls -la
+    
+    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ pwd
+    /Users/stevepodell/WebstormProjects/WeVoteCordova/www
+    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ls -la
+    total 8
+    drwxr-xr-x   4 stevepodell  staff   128 Jan 12 13:33 .
+    drwxr-xr-x  15 stevepodell  staff   480 Jan 12 13:27 ..
+    lrwxr-xr-x   1 stevepodell  staff    43 Jan 12 13:33 bundle.js -> ../../StevesForkOfWebApp/build/js/bundle.js
+    -rw-r--r--   1 stevepodell  staff  2571 Jan 12 13:23 index.html
+    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ 
+
+# Debugging Cordova Apps
+
+http://geeklearning.io/apache-cordova-and-remote-debugging-on-ios/
+
+
+
+
+# ------ Old stuff follows
+
 # Running the app:
-
-From within the root directory after cloning,
-
 
 Run:
 
