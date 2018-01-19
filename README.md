@@ -76,6 +76,9 @@ Jan 17, 2018 (This worked for loading the CSS files in Cordova, and javascript/g
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript javascript
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ 
 
+#Opening the project in Xcode
+
+<img src="https://github.com/wevote/WeVoteReactCordova/blob/develop/docs/images/WeVoteCordova.xcworkspace.png" alt="alt text" width="600" >
 
 
 # Debugging Cordova Apps
