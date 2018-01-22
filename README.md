@@ -54,6 +54,7 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript javascript
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/img img
     ln -s ../../WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js cordova_plugins.js
+    ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/fonts fonts
     ```
     
 1. After making all those links, the two www directories should look like this... first Cordova
@@ -85,16 +86,17 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ cd /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ls -la
     total 16
-    drwxr-xr-x   9 stevepodell  staff   288 Jan 18 20:20 .
-    drwxr-xr-x  30 stevepodell  staff   960 Jan 18 17:08 ..
+    drwxr-xr-x  10 stevepodell  staff   320 Jan 19 17:05 .
+    drwxr-xr-x  30 stevepodell  staff   960 Jan 19 09:02 ..
     lrwxr-xr-x   1 stevepodell  staff    73 Jan 16 17:02 bundle.js -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js
     lrwxr-xr-x   1 stevepodell  staff    57 Jan 12 14:57 cordova.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova.js
     lrwxr-xr-x   1 stevepodell  staff    65 Jan 18 20:20 cordova_plugins.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js
     lrwxr-xr-x   1 stevepodell  staff    64 Jan 17 13:50 css -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/css
+    lrwxr-xr-x   1 stevepodell  staff    66 Jan 19 17:05 fonts -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/fonts
     lrwxr-xr-x   1 stevepodell  staff    64 Jan 18 16:57 img -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/img
-    -rw-r--r--   1 stevepodell  staff  6301 Jan 18 19:54 index.html
+    -rw-r--r--   1 stevepodell  staff  6301 Jan 19 08:41 index.html
     lrwxr-xr-x   1 stevepodell  staff    71 Jan 17 14:04 javascript -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript
-    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$
+    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ 
     ```
 
 
