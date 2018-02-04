@@ -1,7 +1,7 @@
 # The WeVoteCordova app for iOS and Android
 
-We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  Two builds are planned, one each for
-iOS and Android.
+We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  Two builds are planned this Cordova 
+app project, one each for iOS and Android.
 
 # Installing the app:
 
@@ -14,7 +14,7 @@ Download the WeVoteCordova app into a directory that parallels the We Vote WeApp
 you can put them where you like.
 
 Install Apple XCode from the MacOS App Store, you will need a Mac for the iOS part of this project, and a Mac will also be
-fine for Android.  Follow the instructions from WeVoteReactNative for XCode install.
+fine for Android development.  Follow the instructions from WeVoteReactNative for XCode install.
 
 You may need to install Gradle, a Java build tool for the Android side.  `npm install gradle`
 
@@ -22,13 +22,13 @@ There is a separate build procedure for WeVoteCordova and the We Vote WebApp, bu
 to be successful with the WeVoteCordova build since WeVoteCordova relies on the `bundle.js` that is the 'compiled' result
 of the React WebApp.
 
-Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory, that on Steve's Mac is at `/Users/stevepodell/WebstormProjects/WeVoteCordova/www`
+Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory, that ()on Steve's Mac) is at `/Users/stevepodell/WebstormProjects/WeVoteCordova/www`
 and in order to make the setup easy to understand, there is now a www directory in the WebApp at `/Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www`
 These two www directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
 
 #Creating all the Symlinks
 
-These instructions are based on the two home project directories...  
+These instructions are based on the following two home project directories...  
 
 ```
     /Users/stevepodell/WebstormProjects/WeVoteCordova
@@ -57,7 +57,7 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/fonts fonts
     ```
     
-1. After making all those links, the two www directories should look like this... first Cordova
+1. After creating all those links, the two www directories should look like this... first Cordova
 
     ```
     (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios
@@ -99,6 +99,9 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ 
     ```
 
+Once you have setup the symlinks, you can compile all the React in your WebApp setup as before, which creates a `bundle.js` 
+file.  Then in the cordova project, you might not need to do anything.  Using the Xcode compiler will start up your Cordova 
+project which contains the `bundle.js` and run it in a simulator, or on a phone attached with a USB cable.
 
 # Opening the project in Xcode
 
@@ -120,7 +123,7 @@ Then open the `WeVoteCordova.xcworkspace` file.
 Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangulare green play button,
 and the app starts in the simulator.
 
-![ScreenShot](docs/images/SafariSimulatorRunning.png | width=600)
+![ScreenShot](docs/images/SafariSimulatorRunning.png)
 
 # Debugging Cordova Apps with the Safari debugger
 
