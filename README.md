@@ -171,7 +171,7 @@ in chrome to `chrome://inspect` you will see the following screen, with the proc
 list below:
 
 ![ScreenShot](docs/images/ChromeInspect.png | width=600)
-
+  
 Press 'inspect' to open the debugger, which should look like the following:
 
 ![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png | width=600)
