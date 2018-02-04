@@ -182,4 +182,4 @@ of the app, and also the files where you want to put the breakpoints have to be 
 
 # Code differences
 
-[Cordova JavaScript Differences](docs/Cordova JavaScript Differences.md).
+[Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
