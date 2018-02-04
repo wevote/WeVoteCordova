@@ -106,7 +106,7 @@ This is very similar to the way we do it with the WeVoteReactNative iOS developm
   
 Download Xcode from the MacOS App Store, and launch it:
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/Welcome to Xcode.png" alt="alt text" width="600" >
+<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/Welcome%20to%20Xcode.png" alt="alt text" width="600" >
 
 Don't use the last opened list, instead click on "Open another project..." (We use an Apple specific packager
 called CocoaPods, which forces us to ignore that handy last opened menu.)
