@@ -109,27 +109,31 @@ This is very similar to the way we do it with the WeVoteReactNative iOS developm
   
 Download Xcode from the MacOS App Store, and launch it:
 
-![ScreenShot](docs/images/WelcomeToXcode.png)
-
 Don't use the last opened list, instead click on "Open another project..." (We use an Apple specific packager
 called CocoaPods, which forces us to ignore that handy last opened menu.)
 
-![ScreenShot](docs/images/WeVoteCordova.xcworkspace.png)
+![ScreenShot](docs/images/WelcomeToXcode.png)
 
 After clicking the "Open another project..." button, select the `WeVoteCordova.xcworkspace` file and press Open.
 
-![ScreenShot](docs/images/SafariDevelopMenu.png) 
+![ScreenShot](docs/images/WeVoteCordova.xcworkspace.png)
+
 
 Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangular green play button,
 and the app starts in the simulator.
 
-
 # Debugging Cordova Apps with the Safari debugger
+
+![ScreenShot](docs/images/SafariDevelopMenu.png) 
+
+You don't have to actually use Safari for Mac for anything, but launching its remote debugger.  You can see it opened on its
+smallest default page in the picture above, it just has to be running so you can get to that "Develop" menu.  Once you
+open the "We Vote Cordova" page that is currently being displayed, in the piture it is the "Welcome to We Vote" page. 
 
 ![ScreenShot](docs/images/SafariSimulatorRunning.png)
 
 It is easy to get the Safari debugger working, but it is missing lots of features that we are used to from the
-Chrome Debugger.
+Chrome Devtools Debugger.
 
 
 1. Enable debugging in Safari, [see this article](http://geeklearning.io/apache-cordova-and-remote-debugging-on-ios/)
@@ -142,9 +146,10 @@ bundle.js in 20 seconds (Two seconds to gather all the js scripts together, and 
 
 # Debugging Cordova Apps with the Chrome dev tools
 
-Chrome devtools is lightyears better than the Safari debugger, but is a bit challenging to get working. 
+Chrome devtools is lightyears better than the Safari debugger, but is a bit challenging to get working. See ...
 
 [medium.com article about the remotedebug-ios-webkit-adapter for debugging WebViews](https://medium.com/@auchenberg/hello-remotedebug-ios-webkit-adapter-debug-safari-and-ios-webviews-from-anywhere-2a8553df7465)
+
 [github.com readme about remotedebug-ios-webkit-adapter#getting-started](https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started)
 
 Install the remotedebug_ios_webkit_adapter (from a terminal window):
@@ -170,8 +175,8 @@ Run the remotedebug_ios_webkit_adapter:
 You may have to restart the remotedebug_ios_webkit_adapter from time to time, to get the
 `chrome://inspect/#devices` to see the simulator processes.
 
-After starting the remotedebug_ios_webkit_adapter (hopefully on the first attempt) when you navigate
-in chrome to `chrome://inspect` you will see the following screen, with the process to debug on the
+After starting the remotedebug_ios_webkit_adapter (hopefully on the first attempt) when you navigate in the Google Chrome
+browser to `chrome://inspect` you will see the following screen, with the process to debug on the
 list below:
 
 ![ScreenShot](docs/images/ChromeInspect.png)
@@ -179,6 +184,9 @@ list below:
 Press that little blue 'inspect' to open the debugger, which should look like the following:
 
 ![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png)
+
+If `chrome://inspect` doesn't see your target, then try restarting remotedebug_ios_webkit_adapter and maybe restarting
+your Cordova app via Xcode.  This is imperfect, but not too bad once you get the hang of it.
 
 Unfortunately in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
 of the app, and also the files where you want to put the breakpoints have to be reopened each time.  (This deficiency
