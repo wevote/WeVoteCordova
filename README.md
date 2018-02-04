@@ -115,7 +115,7 @@ called CocoaPods, which forces us to ignore that handy last opened menu.)
 
 Then open the `WeVoteCordova.xcworkspace` file.
 
-![ScreenShot](docs/images/SafariDevelopMenu.png | width=600)
+![ScreenShot](docs/images/SafariDevelopMenu.png){:width="600px"}
 
 Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangulare green play button,
 and the app starts in the simulator.
