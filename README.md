@@ -179,6 +179,6 @@ Unfortunately in both the Apple and Chrome debuggers, breakpoints are not mainta
 of the app, and also the files where you want to put the breakpoints have to be reopened each time.
 
 
-# Code differences
+# Code changes needed to support Cordova and the base WebApp with one codebase
 
 [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
