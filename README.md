@@ -185,7 +185,8 @@ Press that little blue 'inspect' to open the debugger, which should look like th
 
 ![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png)
 
-If `chrome://inspect` doesn't see your target, then try restarting remotedebug_ios_webkit_adapter and maybe restarting
+
+If `chrome://inspect` doesn't list your target, then try restarting remotedebug_ios_webkit_adapter and maybe restarting
 your Cordova app via Xcode.  This is imperfect, but not too bad once you get the hang of it.
 
 Unfortunately in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
