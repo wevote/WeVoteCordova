@@ -117,7 +117,7 @@ Then open the `WeVoteCordova.xcworkspace` file.
 
 ![ScreenShot](docs/images/SafariDevelopMenu.png) 
 
-![ScreenShot](docs/images/SafariDevelopMenu.png){:width="600px"} 
+![ScreenShot](docs/images/SafariDevelopMenu.png){:height="36px" width="36px"} 
 
 Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangulare green play button,
 and the app starts in the simulator.
