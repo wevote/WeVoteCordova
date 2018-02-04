@@ -1,6 +1,6 @@
 # The WeVoteCordova app for iOS and Android
 
-We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  Two builds are planned this Cordova 
+We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  Two target builds are planned for this Cordova 
 app project, one each for iOS and Android.
 
 # Installing the app:
