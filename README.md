@@ -117,7 +117,7 @@ Then open the `WeVoteCordova.xcworkspace` file.
 
 ![ScreenShot](docs/images/SafariDevelopMenu.png) 
 
-![ScreenShot](docs/images/SafariDevelopMenu.png){:height="36px" width="36px"} 
+![ScreenShot](docs/images/SafariDevelopMenu.png) 
 
 Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangulare green play button,
 and the app starts in the simulator.
@@ -172,11 +172,11 @@ After starting the remotedebug_ios_webkit_adapter (hopefully on the first attemp
 in chrome to `chrome://inspect` you will see the following screen, with the process to debug on the
 list below:
 
-![ScreenShot](docs/images/ChromeInspect.png | width=600)
+![ScreenShot](docs/images/ChromeInspect.png)
   
 Press 'inspect' to open the debugger, which should look like the following:
 
-![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png | width=600)
+![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png)
 
 Unfortunate in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
 of the app, and also the files where you want to put the breakpoints have to be reopened each time.
