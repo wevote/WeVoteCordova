@@ -41,6 +41,6 @@ The following differences have been found:
 
 1. Our Router implementation in the WebApp uses browserHistory.push() to route
 
-Cordova needs to use `hashHistory.push()` instead of `browserHistory.push()`, both come from the `'react-router'` package.  (I don't 
-remember why the needs are different.)  So every place where there was a `browserHistory.push()`, there is now a `historyPush()` call which is just
-a wrapper that uses the appropriate kind of "history" for standalone WebApp vs WebApp within Cordova. 
+    Cordova needs to use `hashHistory.push()` instead of `browserHistory.push()`, both come from the `'react-router'` package.  (I don't 
+    remember why the needs are different.)  So every place where there was a `browserHistory.push()`, there is now a `historyPush()` call which is just
+    a wrapper that uses the appropriate kind of "history" for standalone WebApp vs WebApp within Cordova. 
