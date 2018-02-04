@@ -106,23 +106,21 @@ This is very similar to the way we do it with the WeVoteReactNative iOS developm
   
 Download Xcode from the MacOS App Store, and launch it:
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/WelcomeToXcode.png" alt="alt text" width="600" >
-
 ![ScreenShot](docs/images/WelcomeToXcode.png)
 
 Don't use the last opened list, instead click on "Open another project..." (We use an Apple specific packager
 called CocoaPods, which forces us to ignore that handy last opened menu.)
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/WeVoteCordova.xcworkspace.png" alt="alt text" width="600" >
+![ScreenShot](docs/images/WeVoteCordova.xcworkspace.png)
 
 Then open the `WeVoteCordova.xcworkspace` file.
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/SafariDevelopMenu.png" alt="alt text" width="600" >
+![ScreenShot](docs/images/SafariDevelopMenu.png | width=600)
 
 Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangulare green play button,
 and the app starts in the simulator.
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/SafariSimulatorRunning.png" alt="alt text" width="600" >
+![ScreenShot](docs/images/SafariSimulatorRunning.png | width=600)
 
 # Debugging Cordova Apps with the Safari debugger
 
@@ -172,11 +170,11 @@ After starting the remotedebug_ios_webkit_adapter (hopefully on the first attemp
 in chrome to `chrome://inspect` you will see the following screen, with the process to debug on the
 list below:
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/ChromeInspect.png" alt="alt text" width="600" >
+![ScreenShot](docs/images/ChromeInspect.png | width=600)
 
 Press 'inspect' to open the debugger, which should look like the following:
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/ChromeInspectWDebuggerShowing.png" alt="alt text" width="600" >
+![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png | width=600)
 
 Unfortunate in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
 of the app, and also the files where you want to put the breakpoints have to be reopened each time.
