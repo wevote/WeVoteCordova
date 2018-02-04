@@ -178,3 +178,4 @@ www/bundle.js
 staticfiles
 
 yarn.lock
+!/platforms/
