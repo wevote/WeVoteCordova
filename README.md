@@ -116,26 +116,28 @@ called CocoaPods, which forces us to ignore that handy last opened menu.)
 
 ![ScreenShot](docs/images/WeVoteCordova.xcworkspace.png)
 
-Then open the `WeVoteCordova.xcworkspace` file.
+After clicking the "Open another project..." button, select the `WeVoteCordova.xcworkspace` file and press Open.
 
 ![ScreenShot](docs/images/SafariDevelopMenu.png) 
 
-Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangulare green play button,
+Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangular green play button,
 and the app starts in the simulator.
 
-![ScreenShot](docs/images/SafariSimulatorRunning.png)
 
 # Debugging Cordova Apps with the Safari debugger
 
+![ScreenShot](docs/images/SafariSimulatorRunning.png)
+
 It is easy to get the Safari debugger working, but it is missing lots of features that we are used to from the
-Chrom De
+Chrome Debugger.
+
 
 1. Enable debugging in Safari, [see this article](http://geeklearning.io/apache-cordova-and-remote-debugging-on-ios/)
 1. Build your 'compiled' javascript app file `bundle.js`, on my Mac it is at `build/js/bundle.js`.  This file needs to be symlinked
 into your www directory (see the section on symlinks above).
     1. On my Mac in WebStorm, I have a Gulp task that has a target "build", when I press the play button for that task, it builds the
 bundle.js in 20 seconds (Two seconds to gather all the js scripts together, and 18 seconds to recompile sass).
-1. Press the play button in code, which should start the Simulator and load and start the WeVote WebApp.
+1. Press the play button in Xcode, which should start the Simulator, load, and then start the WeVote WebApp.
 1. In Safari open Develop/Simulator/WeVoteCordova/WeVote and the Safari Web Inspector appears.
 
 # Debugging Cordova Apps with the Chrome dev tools
@@ -179,9 +181,13 @@ Press that little blue 'inspect' to open the debugger, which should look like th
 ![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png)
 
 Unfortunately in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
-of the app, and also the files where you want to put the breakpoints have to be reopened each time.
+of the app, and also the files where you want to put the breakpoints have to be reopened each time.  (This deficiency
+is not the case in React-Native, so hopefully a fix will arrive some day.)
 
 
-# Code changes needed to support Cordova and the base WebApp with one codebase
+# WebApp code changes needed to support Cordova
+
+In Apache Cordova, all the real app code is in that `bundle.js` we make in the WebApp setup, but there are some code
+changes in the WebApp that are necessary to support cordova.
 
 [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
