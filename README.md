@@ -1,7 +1,7 @@
 # The WeVoteCordova app for iOS and Android
 
-We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  Two builds are planned, one each for
-iOS and Android.
+We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  Two target builds are planned for this Cordova 
+app project, one each for iOS and Android.
 
 # Installing the app:
 
@@ -10,25 +10,25 @@ https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#require
 http://harrymoreno.com/2015/07/14/Deploying-a-React-App-to-Cordova.html
 
 Download the WeVoteCordova app into a directory that parallels the We Vote WeApp directory on your computer.  Steve put his in
-/Users/stevepodell/WebstormProjects/WeVoteCordova with his WebApp in /Users/stevepodell/WebstormProjects/StevesForkOfWebApp, but 
+`/Users/stevepodell/WebstormProjects/WeVoteCordova` with his WebApp in `/Users/stevepodell/WebstormProjects/StevesForkOfWebApp`, but 
 you can put them where you like.
 
 Install Apple XCode from the MacOS App Store, you will need a Mac for the iOS part of this project, and a Mac will also be
-fine for Android.  Follow the instructions from WeVoteReactNative for XCode install.
+fine for Android development.  Follow the instructions from WeVoteReactNative for XCode install.
 
 You may need to install Gradle, a Java build tool for the Android side.  `npm install gradle`
 
-There is a seperate build proceedure for WeVoteCordova and the We Vote Webapp, but you need to have the WebApp built first
+There is a separate build procedure for WeVoteCordova and the We Vote WebApp, but you need to have the WebApp built first
 to be successful with the WeVoteCordova build since WeVoteCordova relies on the `bundle.js` that is the 'compiled' result
 of the React WebApp.
 
-Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory, that on Steve's Mac is at /Users/stevepodell/WebstormProjects/WeVoteCordova/www
-and in order to make the setup easy to understand, there is now a www directory in the WebApp at /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www
-These two www directories are joined together with [symlinks i.e. Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
+Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory, that ()on Steve's Mac) is at `/Users/stevepodell/WebstormProjects/WeVoteCordova/www`
+and in order to make the setup easy to understand, there is now a www directory in the WebApp at `/Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www`
+These two www directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
 
 #Creating all the Symlinks
 
-These instructions are based on the two home project directories...  
+These instructions are based on the following two home project directories...  
 
 ```
     /Users/stevepodell/WebstormProjects/WeVoteCordova
@@ -57,7 +57,7 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/fonts fonts
     ```
     
-1. After making all those links, the two www directories should look like this... first Cordova
+1. After creating all those links, the two www directories should look like this... first Cordova
 
     ```
     (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios
@@ -99,6 +99,9 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ 
     ```
 
+Once you have setup the symlinks, you can compile all the React in your WebApp setup as before, which creates a `bundle.js` 
+file.  Then in the cordova project, you might not need to do anything.  Using the Xcode compiler will start up your Cordova 
+project which contains the `bundle.js` and run it in a simulator, or on a phone attached with a USB cable.
 
 # Opening the project in Xcode
 
@@ -106,40 +109,47 @@ This is very similar to the way we do it with the WeVoteReactNative iOS developm
   
 Download Xcode from the MacOS App Store, and launch it:
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/Welcome%20to%20Xcode.png" alt="alt text" width="600" >
-
 Don't use the last opened list, instead click on "Open another project..." (We use an Apple specific packager
 called CocoaPods, which forces us to ignore that handy last opened menu.)
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/WeVoteCordova.xcworkspace.png" alt="alt text" width="600" >
+![ScreenShot](docs/images/WelcomeToXcode.png)
 
-Then open the `WeVoteCordova.xcworkspace` file.
+After clicking the "Open another project..." button, select the `WeVoteCordova.xcworkspace` file and press Open.
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/SafariDevelopMenu.png" alt="alt text" width="600" >
+![ScreenShot](docs/images/WeVoteCordova.xcworkspace.png)
 
-Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangulare green play button,
+
+Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangular green play button,
 and the app starts in the simulator.
-
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/SafariSimulatorRunning.png" alt="alt text" width="600" >
 
 # Debugging Cordova Apps with the Safari debugger
 
+![ScreenShot](docs/images/SafariDevelopMenu.png) 
+
+You don't have to actually use Safari for Mac for anything, but launching its remote debugger.  You can see it opened on its
+smallest default page in the picture above, it just has to be running so you can get to that "Develop" menu.  Once you
+open the "We Vote Cordova" page that is currently being displayed, in the piture it is the "Welcome to We Vote" page. 
+
+![ScreenShot](docs/images/SafariSimulatorRunning.png)
+
 It is easy to get the Safari debugger working, but it is missing lots of features that we are used to from the
-Chrom De
+Chrome Devtools Debugger.
+
 
 1. Enable debugging in Safari, [see this article](http://geeklearning.io/apache-cordova-and-remote-debugging-on-ios/)
 1. Build your 'compiled' javascript app file `bundle.js`, on my Mac it is at `build/js/bundle.js`.  This file needs to be symlinked
 into your www directory (see the section on symlinks above).
     1. On my Mac in WebStorm, I have a Gulp task that has a target "build", when I press the play button for that task, it builds the
 bundle.js in 20 seconds (Two seconds to gather all the js scripts together, and 18 seconds to recompile sass).
-1. Press the play button in code, which should start the Simulator and load and start the WeVote WebApp.
+1. Press the play button in Xcode, which should start the Simulator, load, and then start the WeVote WebApp.
 1. In Safari open Develop/Simulator/WeVoteCordova/WeVote and the Safari Web Inspector appears.
 
 # Debugging Cordova Apps with the Chrome dev tools
 
-Chrome devtools is lightyears better than the Safari debugger, but is a bit challenging to get working. 
+Chrome devtools is lightyears better than the Safari debugger, but is a bit challenging to get working. See ...
 
 [medium.com article about the remotedebug-ios-webkit-adapter for debugging WebViews](https://medium.com/@auchenberg/hello-remotedebug-ios-webkit-adapter-debug-safari-and-ios-webviews-from-anywhere-2a8553df7465)
+
 [github.com readme about remotedebug-ios-webkit-adapter#getting-started](https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started)
 
 Install the remotedebug_ios_webkit_adapter (from a terminal window):
@@ -162,24 +172,31 @@ Run the remotedebug_ios_webkit_adapter:
     ...
 ```
 
-
 You may have to restart the remotedebug_ios_webkit_adapter from time to time, to get the
 `chrome://inspect/#devices` to see the simulator processes.
 
-After starting the remotedebug_ios_webkit_adapter (hopefully on the first attempt) when you navigate
-in chrome to `chrome://inspect` you will see the following screen, with the process to debug on the
+After starting the remotedebug_ios_webkit_adapter (hopefully on the first attempt) when you navigate in the Google Chrome
+browser to `chrome://inspect` you will see the following screen, with the process to debug on the
 list below:
 
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/ChromeInspect.png" alt="alt text" width="600" >
+![ScreenShot](docs/images/ChromeInspect.png)
+  
+Press that little blue 'inspect' to open the debugger, which should look like the following:
 
-Press 'inspect' to open the debugger, which should look like the following:
-
-<img src="https://raw.githubusercontent.com/wevote/WeVoteCordova/master/docs/images/ChromeInspectWDebuggerShowing.png" alt="alt text" width="600" >
-
-Unfortunate in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
-of the app, and also the files where you want to put the breakpoints have to be reopened each time.
+![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png)
 
 
-# Code differences
+If `chrome://inspect` doesn't list your target, then try restarting remotedebug_ios_webkit_adapter and maybe restarting
+your Cordova app via Xcode.  This is imperfect, but not too bad once you get the hang of it.
+
+Unfortunately in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
+of the app, and also the files where you want to put the breakpoints have to be reopened each time.  (This deficiency
+is not the case in React-Native, so hopefully a fix will arrive some day.)
+
+
+# WebApp code changes needed to support Cordova
+
+In Apache Cordova, all the real app code is in that `bundle.js` we make in the WebApp setup, but there are some code
+changes in the WebApp that are necessary to support cordova.
 
 [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
