@@ -1,7 +1,17 @@
 # The WeVoteCordova app for iOS and Android
 
-We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  Two target builds are planned for this Cordova 
-app project, one each for iOS and Android.
+Apache Cordova allows one to take their pre-existing JavaScript WebApp, bundle it with some additional Cordova JavaScript
+and native code, and build an app for iOS or Android that can be released as an app in the App Store or Play Store.  Cordova
+works perfectly well with React apps.
+
+For a very simple app, you literally just drop it into Cordova and go, for more complex apps (like ours) there are some
+changes to be made.  See [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
+
+We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  The WeVoteCordova side is so thin, that
+all it contains is Apache Cordova, some Documentation, and the iOS and Android config (and possibly a small amount of 
+native code).  All of the JavaScript and React code, and the libraries that they rely on, remains in the WeVote WebApp.
+
+Two target builds are planned for this Cordova app project, one each for iOS and Android.
 
 ## Installing the app:
 
