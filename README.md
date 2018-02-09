@@ -194,9 +194,17 @@ of the app, and also the files where you want to put the breakpoints have to be 
 is not the case in React-Native, so hopefully a fix will arrive some day.)
 
 
-# WebApp code changes needed to support Cordova
+## WebApp code changes needed to support Cordova
 
 In Apache Cordova, all the real app code is in that `bundle.js` we make in the WebApp setup, but there are some code
 changes in the WebApp that are necessary to support cordova.
 
 [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
+
+## Testing from a physical phone with the API server running on your Mac
+
+If you are developing a Cordova specific feature, that requires access to the API server
+running on your Mac, while not using the simulator, some extra setup is required to allow
+access to your Mac's localhost.
+
+[Testing with a Physical Phone and a localhost WeVote API Server](docs/TestingWithLocalHostFromPhone.md)
