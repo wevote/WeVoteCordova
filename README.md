@@ -3,7 +3,7 @@
 We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  Two target builds are planned for this Cordova 
 app project, one each for iOS and Android.
 
-# Installing the app:
+## Installing the app:
 
 https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#requirements-and-support
 
@@ -26,7 +26,7 @@ Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory
 and in order to make the setup easy to understand, there is now a www directory in the WebApp at `/Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www`
 These two www directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
 
-#Creating all the Symlinks
+## Creating all the Symlinks
 
 These instructions are based on the following two home project directories...  
 
@@ -103,7 +103,7 @@ Once you have setup the symlinks, you can compile all the React in your WebApp s
 file.  Then in the cordova project, you might not need to do anything.  Using the Xcode compiler will start up your Cordova 
 project which contains the `bundle.js` and run it in a simulator, or on a phone attached with a USB cable.
 
-# Opening the project in Xcode
+## Opening the project in Xcode
 
 This is very similar to the way we do it with the WeVoteReactNative iOS development.  
   
@@ -122,7 +122,7 @@ After clicking the "Open another project..." button, select the `WeVoteCordova.x
 Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangular green play button,
 and the app starts in the simulator.
 
-# Debugging Cordova Apps with the Safari debugger
+## Debugging Cordova Apps with the Safari debugger
 
 ![ScreenShot](docs/images/SafariDevelopMenu.png) 
 
@@ -144,7 +144,7 @@ bundle.js in 20 seconds (Two seconds to gather all the js scripts together, and 
 1. Press the play button in Xcode, which should start the Simulator, load, and then start the WeVote WebApp.
 1. In Safari open Develop/Simulator/WeVoteCordova/WeVote and the Safari Web Inspector appears.
 
-# Debugging Cordova Apps with the Chrome dev tools
+## Debugging Cordova Apps with the Chrome dev tools
 
 Chrome devtools is lightyears better than the Safari debugger, but is a bit challenging to get working. See ...
 
