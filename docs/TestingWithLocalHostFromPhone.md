@@ -16,6 +16,6 @@ Then configure your api server to respond at the url provided by ngrok
 
 Then your phone should be able to communicate with your API server.
 
-*****
+_____
 
 [Return to the WeVoteCordova home documentation page ](/README.md)
