@@ -21,7 +21,8 @@ Steves-MacBook-Pro-2017:~ stevepodell$ /Users/stevepodell/PythonProjects/ngrok/n
 
 ![ScreenShot](images/NgrokConfgJs.png)
 
-4.  Recompile your `bundle.js` to include the config changes, at this point thew Cordova app on 
+
+4.  Recompile your `bundle.js` in order to include the new config changes.   At this point the Cordova app on 
 your phone should be communicating with your local API server.
 
 _____
