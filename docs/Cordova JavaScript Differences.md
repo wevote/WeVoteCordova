@@ -46,5 +46,6 @@ The following differences have been found:
     a wrapper that uses the appropriate kind of "history" for standalone WebApp vs WebApp within Cordova. 
     
     
+_______  
     
 [Return to the WeVoteCordova home documentation page ](/README.md)

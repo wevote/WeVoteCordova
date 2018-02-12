@@ -1,9 +1,19 @@
 # The WeVoteCordova app for iOS and Android
 
-We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  Two target builds are planned for this Cordova 
-app project, one each for iOS and Android.
+Apache Cordova allows one to take their pre-existing JavaScript WebApp, bundle it with some additional Cordova JavaScript
+and native code, and build an app for iOS or Android that can be released as an app in the App Store or Play Store.  Cordova
+works perfectly well with React apps.
 
-# Installing the app:
+For a very simple app, you literally just drop it into Cordova and go, for more complex apps (like ours) there are some
+changes to be made.  See [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
+
+We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  The WeVoteCordova side is so thin, that
+all it contains is Apache Cordova, some Documentation, and the iOS and Android config (and possibly a small amount of 
+native code).  All of the JavaScript and React code, and the libraries that they rely on, remains in the WeVote WebApp.
+
+Two target builds are planned for this Cordova app project, one each for iOS and Android.
+
+## Installing the app:
 
 https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#requirements-and-support
 
@@ -26,7 +36,7 @@ Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory
 and in order to make the setup easy to understand, there is now a www directory in the WebApp at `/Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www`
 These two www directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
 
-#Creating all the Symlinks
+## Creating all the Symlinks
 
 These instructions are based on the following two home project directories...  
 
@@ -103,7 +113,7 @@ Once you have setup the symlinks, you can compile all the React in your WebApp s
 file.  Then in the cordova project, you might not need to do anything.  Using the Xcode compiler will start up your Cordova 
 project which contains the `bundle.js` and run it in a simulator, or on a phone attached with a USB cable.
 
-# Opening the project in Xcode
+## Opening the project in Xcode
 
 This is very similar to the way we do it with the WeVoteReactNative iOS development.  
   
@@ -122,7 +132,7 @@ After clicking the "Open another project..." button, select the `WeVoteCordova.x
 Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangular green play button,
 and the app starts in the simulator.
 
-# Debugging Cordova Apps with the Safari debugger
+## Debugging Cordova Apps with the Safari debugger
 
 ![ScreenShot](docs/images/SafariDevelopMenu.png) 
 
@@ -144,7 +154,7 @@ bundle.js in 20 seconds (Two seconds to gather all the js scripts together, and 
 1. Press the play button in Xcode, which should start the Simulator, load, and then start the WeVote WebApp.
 1. In Safari open Develop/Simulator/WeVoteCordova/WeVote and the Safari Web Inspector appears.
 
-# Debugging Cordova Apps with the Chrome dev tools
+## Debugging Cordova Apps with the Chrome dev tools
 
 Chrome devtools is lightyears better than the Safari debugger, but is a bit challenging to get working. See ...
 
@@ -194,9 +204,17 @@ of the app, and also the files where you want to put the breakpoints have to be 
 is not the case in React-Native, so hopefully a fix will arrive some day.)
 
 
-# WebApp code changes needed to support Cordova
+## WebApp code changes needed to support Cordova
 
 In Apache Cordova, all the real app code is in that `bundle.js` we make in the WebApp setup, but there are some code
 changes in the WebApp that are necessary to support cordova.
 
 [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
+
+## Testing from a physical phone with the API server running on your Mac
+
+If you are developing a Cordova specific feature, that requires access to the API server
+running on your Mac, while not using the simulator, some extra setup is required to allow
+access to your Mac's localhost.
+
+[Testing with a Physical Phone and a localhost WeVote API Server](docs/TestingWithLocalHostFromPhone.md)
