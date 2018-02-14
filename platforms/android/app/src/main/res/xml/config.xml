@@ -28,4 +28,8 @@
         <param name="android-package" value="com.customtabplugin.ChromeCustomTabPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
 </widget>

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		02B6FD1ABFD448F490E77CCC /* SafariViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C40C3188F147D289DA2EF8 /* SafariViewController.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -14,10 +13,11 @@
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		318B357FA27149C6A25E8BCA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C359E502E9B4934BE0FB694 /* libz.tbd */; };
-		666CAEE7202FAC0D0033361E /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 666AC67D202FA3FC00B12100 /* images.xcassets */; };
+		663D142220335B22004BD20E /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 666AC67D202FA3FC00B12100 /* images.xcassets */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		C5FEDD97E334492DB893934C /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E44775E82C46FF9455117F /* SafariServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FD0D2B2E3ECA48D1AC6E19E4 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = AE70F430634541DCB75F2874 /* CDVDevice.m */; };
+		4932E89E88B84018909C5D60 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD86883C9A47DDBDE1E91E /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +73,8 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = WeVoteCordova/config.xml; sourceTree = "<group>"; };
+		88BD86883C9A47DDBDE1E91E /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		3198650753A34962AEDE9CF2 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,8 @@
 				CE6D5374449C41FA9ACFEE76 /* CDVDevice.h */,
 				94C40C3188F147D289DA2EF8 /* SafariViewController.m */,
 				E57395A4385A41CF8CEC599F /* SafariViewController.h */,
+				88BD86883C9A47DDBDE1E91E /* CDVStatusBar.m */,
+				3198650753A34962AEDE9CF2 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = WeVoteCordova/Plugins;
@@ -281,7 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				666CAEE7202FAC0D0033361E /* images.xcassets in Resources */,
+				663D142220335B22004BD20E /* images.xcassets in Resources */,
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
 			);
@@ -317,6 +321,7 @@
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				FD0D2B2E3ECA48D1AC6E19E4 /* CDVDevice.m in Sources */,
 				02B6FD1ABFD448F490E77CCC /* SafariViewController.m in Sources */,
+				4932E89E88B84018909C5D60 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

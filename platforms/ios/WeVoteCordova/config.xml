@@ -49,6 +49,7 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
