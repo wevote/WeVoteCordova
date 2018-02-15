@@ -299,7 +299,7 @@ an account on itunesconnect
       * Automatically manage signing
       * Upload
 
-* After upload, it could take a half hour for the build to appear on itunes connect, and then
+   * After upload, it could take a half hour for the build to appear on itunes connect, and then
 the build could be "Processing" for another half hour.  (Due to an ancient tech WebObjects
 page, refreshing the page could make the "processing" build disappear, but it
 is still processing, and will reappear when done.  And sadly, the WebObjects page does not update itself when
@@ -309,7 +309,7 @@ as its status.)
 ![ScreenShot](docs/images/iTunesConnectProcessing.png)
 iTunes Connect Processing
 
-Wait for the build to appear
+1.  Wait for the build to appear
 
 When processing is done, the build will be in the "Missing Compliance" state, clikc on the build number link, 
 to "Provide Export Compliance Information"  Click on the "Provide Export Compliance Information" button
@@ -325,7 +325,10 @@ to be available on the "iOS Builds" list in TestFlight.  Then a minute to an hou
 on your iPhone via the TestFlight app.
 
 
-![ScreenShot](docs/images/iTunesConnectProcessing.png)
+![ScreenShot](docs/images/TestFlightApp.jpeg)
+
+1. Finally submit for review in iTunesConnect
+
 
 
 
