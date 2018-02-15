@@ -321,7 +321,7 @@ to "Provide Export Compliance Information"  Click on the "Provide Export Complia
     to be available on the "iOS Builds" list in TestFlight.  Then a minute to an hour for the app to be available to test
     on your iPhone via the TestFlight app.
 
-![ScreenShot](docs/images/TestFlightAppBordered.jpg)
+    ![ScreenShot](docs/images/TestFlightAppBordered.jpg)
 
 7. Finally submit for review in iTunesConnect
     Submit it for TestFlight
