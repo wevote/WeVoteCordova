@@ -265,22 +265,22 @@ up-to-date WebApp develop.
     };
     ```
 
-That `IS_CORDOVA` value has been abandoned, and does not need to be changed.
-
-Be sure to double check that you are using these production config values, it
-would be difficult (but possible) to detect a misconfiguration while testing.
+    That `IS_CORDOVA` value has been abandoned, and does not need to be changed.
+    
+    Be sure to double check that you are using these production config values, it
+    would be difficult (but possible) to detect a misconfiguration while testing.
 
 1. Run a gulp task, or otherwise build the WebApp `bundle.js`
 
 2. On WeVoteCordova side,on the Target General Properties tab, increment the 
 build number by one.  For example build 3, becomes Build 3.
 
-![ScreenShot](docs/images/Xcode General Properties.png)
-
-This may be the only change that gets made in the WeVoteCordova repository,
-but it is important to check it in so that we have a record of how each build was
-made.  When you do check it it, please include a reference to the WebApp
-Git commit that resulted in the `bundle.js`
+    ![ScreenShot](docs/images/Xcode General Properties.png)
+    
+    This may be the only change that gets made in the WeVoteCordova repository,
+    but it is important to check it in so that we have a record of how each build was
+    made.  When you do check it it, please include a reference to the WebApp
+    Git commit that resulted in the `bundle.js`
 
 3. Before checking in WeVoteCordova, test on a simulator for both an iPhone and iPad.
 
@@ -306,23 +306,27 @@ is still processing, and will reappear when done.  And sadly, the WebObjects pag
 done, so you will have to refresh to confirm that it is done processing, and probably shows "Missing Compliance"
 as its status.)
 
-![ScreenShot](docs/images/iTunesConnectProcessing.png)
-iTunes Connect Processing
+    ![ScreenShot](docs/images/iTunesConnectProcessing.png)
+    iTunes Connect Processing
+
 5.  Wait for the build to appear
 When processing is done, the build will be in the "Missing Compliance" state, clikc on the build number link, 
 to "Provide Export Compliance Information"  Click on the "Provide Export Compliance Information" button
 
    * Have you added or made changes to encryption features since your last submission of this app? **NO**
    * Proceed to "Start Internal Testing"
+
 6. Test in TestFlight
-After compliance is done, and you have proceeded to internal testing, it take can a minute to an hour for the app build
-to be available on the "iOS Builds" list in TestFlight.  Then a minute to an hour for the app to be available to test
-on your iPhone via the TestFlight app.
+    After compliance is done, and you have proceeded to internal testing, it take can a minute to an hour for the app build
+    to be available on the "iOS Builds" list in TestFlight.  Then a minute to an hour for the app to be available to test
+    on your iPhone via the TestFlight app.
 
 ![ScreenShot](docs/images/TestFlightAppBordered.jpg)
-7. Finally submit for review in iTunesConnect
-Submit it for TestFlight
 
-Test it on TestFlight (the app might rejected if Apple does not see any
-evidence of testing, ideally by multiple users).
+7. Finally submit for review in iTunesConnect
+    Submit it for TestFlight
+    
+    Test it on TestFlight (the app might rejected if Apple does not see any
+    evidence of testing, ideally by multiple users).
+
 8.  Once testing is complete, submit it for "Review"
