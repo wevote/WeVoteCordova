@@ -286,18 +286,18 @@ Git commit that resulted in the `bundle.js`
 
 1. Build a release candidate in Xcode 
 
-* You will need a physical iPhone plugged into your computer via a USB cable (It is possible that an iPad or iPod touch would work for this purpsoe.)
+   * You will need a physical iPhone plugged into your computer via a USB cable (It is possible that an iPad or iPod touch would work for this purpsoe.)
 
-* The phone will have to be registered with Apple inorder for Xcode to sign the app.
+   * The phone will have to be registered with Apple inorder for Xcode to sign the app.
 
-* Then build the release candidate in Xcode via Product/Archive
+   * Then build the release candidate in Xcode via Product/Archive
 
-* Then follow the options to upload the candidate to "the App Store" via (https://itunesconnect.apple.com/)[https://itunesconnect.apple.com/]  Drew can make you
+   * Then follow the options to upload the candidate to "the App Store" via [https://itunesconnect.apple.com/](https://itunesconnect.apple.com/)  Drew can make you
 an account on itunesconnect
 
-** Allow "Upload your app's symbols...
-** Automatically manage signing
-** Upload
+      * Allow "Upload your app's symbols...
+      * Automatically manage signing
+      * Upload
 
 * After upload, it could take a half hour for the build to appear on itunes connect, and then
 the build could be "Processing" for another half hour.  (Due to an ancient tech WebObjects
@@ -314,9 +314,9 @@ Wait for the build to appear
 When processing is done, the build will be in the "Missing Compliance" state, clikc on the build number link, 
 to "Provide Export Compliance Information"  Click on the "Provide Export Compliance Information" button
 
-** Have you added or made changes to encryption features since your last submission of this app? **NO**
+   * Have you added or made changes to encryption features since your last submission of this app? **NO**
 
-** Proceed to "Start Internal Testing"
+   * Proceed to "Start Internal Testing"
 
 1. Test in TestFlight
 
