@@ -325,7 +325,7 @@ to be available on the "iOS Builds" list in TestFlight.  Then a minute to an hou
 on your iPhone via the TestFlight app.
 
 
-![ScreenShot](docs/images/TestFlightApp.jpeg)  
+![ScreenShot](docs/images/TestFlightApp.jpg)  
 
 1. Finally submit for review in iTunesConnect
 
