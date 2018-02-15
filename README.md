@@ -237,33 +237,33 @@ otherwise all else in our github workflow is the same.
 up-to-date WebApp develop.
 
 1. Your WebApp config.js, should look like this:
-```
-module.exports = {
-  WE_VOTE_URL_PROTOCOL: "https://",  // "http://" for local dev or "https://" for live server
-  WE_VOTE_HOSTNAME: ""WeVote.US",  // This should be without "http...". This is "WeVote.US" on live server.
-
-  WE_VOTE_SERVER_ROOT_URL: "https://api.wevoteusa.org/",
-  WE_VOTE_SERVER_ADMIN_ROOT_URL: "https://api.wevoteusa.org/admin/",
-  WE_VOTE_SERVER_API_ROOT_URL: "https://api.wevoteusa.org/apis/v1/",
-
-  DEBUG_MODE: false,
-
-  // Use 1 or 0 as opposed to true or false
-  test: {
-    use_test_election: 0,
-  },
-
-  location: {
-    text_for_map_search: "",
-  },
-
-  FACEBOOK_APP_ID: "<the actual number that you got from drew>",
-
-  STRIPE_API_KEY: "<the production 'pk_live_...' api key from Drew.  NOT the test 'pk_test_...'>",
-
-  IS_CORDOVA: false,
-};
-```
+    ```
+    module.exports = {
+      WE_VOTE_URL_PROTOCOL: "https://",  // "http://" for local dev or "https://" for live server
+      WE_VOTE_HOSTNAME: ""WeVote.US",  // This should be without "http...". This is "WeVote.US" on live server.
+    
+      WE_VOTE_SERVER_ROOT_URL: "https://api.wevoteusa.org/",
+      WE_VOTE_SERVER_ADMIN_ROOT_URL: "https://api.wevoteusa.org/admin/",
+      WE_VOTE_SERVER_API_ROOT_URL: "https://api.wevoteusa.org/apis/v1/",
+    
+      DEBUG_MODE: false,
+    
+      // Use 1 or 0 as opposed to true or false
+      test: {
+        use_test_election: 0,
+      },
+    
+      location: {
+        text_for_map_search: "",
+      },
+    
+      FACEBOOK_APP_ID: "<the actual number that you got from drew>",
+    
+      STRIPE_API_KEY: "<the production 'pk_live_...' api key from Drew.  NOT the test 'pk_test_...'>",
+    
+      IS_CORDOVA: false,
+    };
+    ```
 
 That `IS_CORDOVA` value has been abandoned, and does not need to be changed.
 
