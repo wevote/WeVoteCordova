@@ -272,7 +272,7 @@ would be difficult (but possible) to detect a misconfiguration while testing.
 
 1. Run a gulp task, or otherwise build the WebApp `bundle.js`
 
-1. On WeVoteCordova side,on the Target General Properties tab, increment the 
+2. On WeVoteCordova side,on the Target General Properties tab, increment the 
 build number by one.  For example build 3, becomes Build 3.
 
 ![ScreenShot](docs/images/Xcode General Properties.png)
@@ -282,9 +282,9 @@ but it is important to check it in so that we have a record of how each build wa
 made.  When you do check it it, please include a reference to the WebApp
 Git commit that resulted in the `bundle.js`
 
-1. Before checking in WeVoteCordova, test on a simulator for both an iPhone and iPad.
+3. Before checking in WeVoteCordova, test on a simulator for both an iPhone and iPad.
 
-1. Build a release candidate in Xcode 
+4. Build a release candidate in Xcode 
 
    * You will need a physical iPhone plugged into your computer via a USB cable (It is possible that an iPad or iPod touch would work for this purpsoe.)
 
@@ -308,32 +308,21 @@ as its status.)
 
 ![ScreenShot](docs/images/iTunesConnectProcessing.png)
 iTunes Connect Processing
-
-1.  Wait for the build to appear
-
+5.  Wait for the build to appear
 When processing is done, the build will be in the "Missing Compliance" state, clikc on the build number link, 
 to "Provide Export Compliance Information"  Click on the "Provide Export Compliance Information" button
 
    * Have you added or made changes to encryption features since your last submission of this app? **NO**
-
    * Proceed to "Start Internal Testing"
-
-1. Test in TestFlight
-
+6. Test in TestFlight
 After compliance is done, and you have proceeded to internal testing, it take can a minute to an hour for the app build
 to be available on the "iOS Builds" list in TestFlight.  Then a minute to an hour for the app to be available to test
 on your iPhone via the TestFlight app.
 
-
 ![ScreenShot](docs/images/TestFlightAppBordered.jpg)
-
-1. Finally submit for review in iTunesConnect
-
-
-
+7. Finally submit for review in iTunesConnect
 Submit it for TestFlight
 
 Test it on TestFlight (the app might rejected if Apple does not see any
 evidence of testing, ideally by multiple users).
-
-1.  Once testing is complete, submit it for "Review"
+8.  Once testing is complete, submit it for "Review"
