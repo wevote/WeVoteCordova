@@ -200,8 +200,15 @@ If `chrome://inspect` doesn't list your target, then try restarting remotedebug_
 your Cordova app via Xcode.  This is imperfect, but not too bad once you get the hang of it.
 
 Unfortunately in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
-of the app, and also the files where you want to put the breakpoints have to be reopened each time.  (This deficiency
+of the app via Xcode, and also the files where you want to put the breakpoints have to be reopened each time.  (This deficiency
 is not the case in React-Native, so hopefully a fix will arrive some day.)
+
+In spite of the previous problem, it is possible to debug a startup behaviour, one that would fly past before you could set the first 
+breakpoint -- on the upper left  corner of the chrome debugger, there is a "circular arrow, 
+reload button" (see the following image) that will allow you to restart the app within the Chrome Inspector while maintaining
+the current breakpoints.
+
+![ScreenShot](docs/images/ChromeCircularReloadButton.png)
 
 
 ## WebApp code changes needed to support Cordova
@@ -257,9 +264,9 @@ up-to-date WebApp develop.
         text_for_map_search: "",
       },
     
-      FACEBOOK_APP_ID: "<the actual number that you got from drew>",
+      FACEBOOK_APP_ID: "<the actual number that you got from Dale>",
     
-      STRIPE_API_KEY: "<the production 'pk_live_...' api key from Drew.  NOT the test 'pk_test_...'>",
+      STRIPE_API_KEY: "<the production 'pk_live_...' api key from Dale.  NOT the test 'pk_test_...'>",
     
       IS_CORDOVA: false,
     };
@@ -273,7 +280,7 @@ up-to-date WebApp develop.
 1. Run a gulp task, or otherwise build the WebApp `bundle.js`
 
 2. On WeVoteCordova side,on the Target General Properties tab, increment the 
-build number by one.  For example build 3, becomes Build 3.
+build number by one.  For example build 3, becomes Build 4.
 
     ![ScreenShot](docs/images/Xcode General Properties.png)
     
@@ -286,13 +293,10 @@ build number by one.  For example build 3, becomes Build 3.
 
 4. Build a release candidate in Xcode 
 
-   * You will need a physical iPhone plugged into your computer via a USB cable (It is possible that an iPad or iPod touch would work for this purpsoe.)
-
+   * You will need a physical iPhone plugged into your computer via a USB cable (It is possible that an iPad or iPod touch would work for this purpose.)
    * The phone will have to be registered with Apple inorder for Xcode to sign the app.
-
    * Then build the release candidate in Xcode via Product/Archive
-
-   * Then follow the options to upload the candidate to "the App Store" via [https://itunesconnect.apple.com/](https://itunesconnect.apple.com/)  Drew can make you
+   * Then follow the options to upload the candidate to "the App Store" via [https://itunesconnect.apple.com/](https://itunesconnect.apple.com/)  Dale can make you
 an account on itunesconnect
 
       * Allow "Upload your app's symbols...

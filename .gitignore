@@ -178,8 +178,12 @@ www/bundle.js
 staticfiles
 
 yarn.lock
-/platforms/ios/CordovaLib/
-/platforms/ios/cordova/
-/platforms/android/cordova/
 /platforms/android/CordovaLib/
-!/platforms/
+/platforms/android/cordova/
+/platforms/android/platform_www/
+/platforms/android/app/
+
+/platforms/ios/CordovaLib/
+/platforms/ios/platform_www/plugins/
+/platforms/ios/platform_www/cordova-js-src/
+/platforms/ios/WeVoteCordova/Plugins/
