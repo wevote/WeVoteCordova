@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		02B6FD1ABFD448F490E77CCC /* SafariViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C40C3188F147D289DA2EF8 /* SafariViewController.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -18,6 +17,7 @@
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		C5FEDD97E334492DB893934C /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E44775E82C46FF9455117F /* SafariServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FD0D2B2E3ECA48D1AC6E19E4 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = AE70F430634541DCB75F2874 /* CDVDevice.m */; };
+		72964C3E1D224A69A0A79A18 /* CDVKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC7961BE03A4711B0D9B735 /* CDVKeyboard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,6 @@
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* WeVoteCordova-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeVoteCordova-Prefix.pch"; sourceTree = "<group>"; };
 		44E44775E82C46FF9455117F /* SafariServices.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
-		66121EE3202FAB780023581A /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = image.xcassets; sourceTree = "<group>"; };
 		666AC67D202FA3FC00B12100 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = WeVoteCordova/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* WeVoteCordova-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "WeVoteCordova-Info.plist"; path = "WeVoteCordova/WeVoteCordova-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
@@ -73,6 +72,8 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = WeVoteCordova/config.xml; sourceTree = "<group>"; };
+		CBC7961BE03A4711B0D9B735 /* CDVKeyboard.m */ = {isa = PBXFileReference; name = "CDVKeyboard.m"; path = "cordova-plugin-keyboard/CDVKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		B8AE84B4C3794222BFEEB708 /* CDVKeyboard.h */ = {isa = PBXFileReference; name = "CDVKeyboard.h"; path = "cordova-plugin-keyboard/CDVKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +114,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				66121EE3202FAB780023581A /* image.xcassets */,
 				666AC67D202FA3FC00B12100 /* images.xcassets */,
 				EB87FDF41871DAF40020F90C /* config.xml */,
 				EB87FDF31871DA8E0020F90C /* www */,
@@ -187,6 +187,8 @@
 				CE6D5374449C41FA9ACFEE76 /* CDVDevice.h */,
 				94C40C3188F147D289DA2EF8 /* SafariViewController.m */,
 				E57395A4385A41CF8CEC599F /* SafariViewController.h */,
+				CBC7961BE03A4711B0D9B735 /* CDVKeyboard.m */,
+				B8AE84B4C3794222BFEEB708 /* CDVKeyboard.h */,
 			);
 			name = Plugins;
 			path = WeVoteCordova/Plugins;
@@ -317,6 +319,7 @@
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				FD0D2B2E3ECA48D1AC6E19E4 /* CDVDevice.m in Sources */,
 				02B6FD1ABFD448F490E77CCC /* SafariViewController.m in Sources */,
+				72964C3E1D224A69A0A79A18 /* CDVKeyboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
