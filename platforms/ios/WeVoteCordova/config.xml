@@ -52,7 +52,6 @@
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="UIWebViewBounce " value="false" />
-
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
