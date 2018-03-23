@@ -11,29 +11,26 @@ We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebAp
 all it contains is Apache Cordova, some Documentation, and the iOS and Android config (and possibly a small amount of 
 native code).  All of the JavaScript and React code, and the libraries that they rely on, remains in the WeVote WebApp.
 
-Two target builds are planned for this Cordova app project, one each for iOS and Android.
+Two target builds are planned for this Cordova app project: one for iOS and one for Android.
+
 
 ## Installing the app:
 
-https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#requirements-and-support
-
-http://harrymoreno.com/2015/07/14/Deploying-a-React-App-to-Cordova.html
-
-Download the WeVoteCordova app into a directory that parallels the We Vote WeApp directory on your computer.  Steve put his in
-`/Users/stevepodell/WebstormProjects/WeVoteCordova` with his WebApp in `/Users/stevepodell/WebstormProjects/StevesForkOfWebApp`, but 
+Clone or download the WeVoteCordova app into a directory that parallels the We Vote WeApp directory on your computer.  Steve put his in
+`/Users/stevepodell/WebstormProjects/WeVoteCordova` with his WebApp in `/Users/stevepodell/WebstormProjects/WebApp`, but 
 you can put them where you like.
 
-Install Apple XCode from the MacOS App Store, you will need a Mac for the iOS part of this project, and a Mac will also be
-fine for Android development.  Follow the instructions from WeVoteReactNative for XCode install.
+Install Apple Xcode from the MacOS App Store, you will need a Mac for the iOS part of this project, and a Mac will also be
+fine for Android development.  Follow the instructions from our WeVoteReactNative project for the Xcode install.
 
 You may need to install Gradle, a Java build tool for the Android side.  `npm install gradle`
 
 There is a separate build procedure for WeVoteCordova and the We Vote WebApp, but you need to have the WebApp built first
 to be successful with the WeVoteCordova build since WeVoteCordova relies on the `bundle.js` that is the 'compiled' result
-of the React WebApp.
+of the React WebApp build.
 
-Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory, that ()on Steve's Mac) is at `/Users/stevepodell/WebstormProjects/WeVoteCordova/www`
-and in order to make the setup easy to understand, there is now a www directory in the WebApp at `/Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www`
+Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory, that (on Steve's Mac) is at `/Users/stevepodell/WebstormProjects/WeVoteCordova/www`
+and in order to make the setup easy to understand, there is now a www directory in the WebApp at `/Users/stevepodell/WebstormProjects/WebApp/www`
 These two www directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
 
 ## Creating all the Symlinks
@@ -42,7 +39,7 @@ These instructions are based on the following two home project directories...
 
 ```
     /Users/stevepodell/WebstormProjects/WeVoteCordova
-    /Users/stevepodell/WebstormProjects/StevesForkOfWebApp
+    /Users/stevepodell/WebstormProjects/WebApp
 ```
 
 Your directories will have different names, so you will have to adapt your symlink commands to your structure
@@ -51,61 +48,65 @@ Your directories will have different names, so you will have to adapt your symli
 
     ```
     cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios
-    ln -s ../StevesForkOfWebApp/www
-    ```
-
-1. Create a group of symlinks so that the WebApp project's www directory sees various subdirectories in the pre-existing WebApp project's directory 
-structure, and certain subdirectories in WeVoteCordova as if they were in the WebApp project's www directory.
-   ```
-    cd /Users/stevepodell/WebstormProjects/WeVoteCordova/www
-    ln -s ../../WeVoteCordova/platforms/ios/platform_www/cordova.js cordova.js
-    ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www/bundle.js bundle.js
-    ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/css css
-    ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript javascript
-    ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/img img
-    ln -s ../../WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js cordova_plugins.js
-    ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/fonts fonts
+    ln -s ../../../WebApp/www
     ```
     
-1. After creating all those links, the two www directories should look like this... first Cordova
+1. After creating this link, the `WeVoteCordova/platforms/ios` directory should look like this... 
 
     ```
     (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios
     (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ ls -la
-    total 48
-    drwxr-xr-x  15 stevepodell  staff   480 Jan 12 15:46 .
-    drwxr-xr-x   4 stevepodell  staff   128 Jan 12 12:55 ..
-    -rw-r--r--@  1 stevepodell  staff  6148 Jan 18 19:12 .DS_Store
-    -rw-r--r--   1 stevepodell  staff    53 Jan 12 12:54 .gitignore
-    drwxr-xr-x   7 stevepodell  staff   224 Jan 12 12:54 CordovaLib
-    drwxr-xr-x  14 stevepodell  staff   448 Jan 12 12:54 WeVoteCordova
-    drwxr-xr-x@  3 stevepodell  staff    96 Jan 12 12:54 WeVoteCordova.xcodeproj
-    drwxr-xr-x@  5 stevepodell  staff   160 Jan 12 13:03 WeVoteCordova.xcworkspace
-    drwxr-xr-x  26 stevepodell  staff   832 Jan 12 12:54 cordova
-    -rw-r--r--   1 stevepodell  staff   337 Jan 12 12:54 ios.json
-    drwxr-xr-x   5 stevepodell  staff   160 Jan 12 12:54 platform_www
-    -rw-r--r--   1 stevepodell  staff   860 Jan 12 12:54 pods-debug.xcconfig
-    -rw-r--r--   1 stevepodell  staff   859 Jan 12 12:54 pods-release.xcconfig
-    lrwxr-xr-x   1 stevepodell  staff    31 Jan 12 15:46 www -> ../../../StevesForkOfWebApp/www
-    (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$
+    total 40
+    drwxr-xr-x  15 stevepodell  staff   480 Mar 19 09:16 .
+    drwxr-xr-x   5 stevepodell  staff   160 Mar 18 16:55 ..
+    -rw-r--r--   1 stevepodell  staff    53 Mar 18 16:36 .gitignore
+    drwxr-xr-x   7 stevepodell  staff   224 Mar 18 16:36 CordovaLib
+    drwxr-xr-x  15 stevepodell  staff   480 Mar 22 08:49 WeVoteCordova
+    drwxr-xr-x@  4 stevepodell  staff   128 Mar 22 08:33 WeVoteCordova.xcodeproj
+    drwxr-xr-x@  5 stevepodell  staff   160 Mar 18 16:36 WeVoteCordova.xcworkspace
+    drwxr-xr-x  26 stevepodell  staff   832 Mar 18 16:36 cordova
+    -rw-r--r--   1 stevepodell  staff    56 Mar 20 15:16 frameworks.json
+    -rw-r--r--   1 stevepodell  staff  3528 Mar 20 15:21 ios.json
+    drwxr-xr-x   6 stevepodell  staff   192 Mar 19 09:16 platform_www
+    -rw-r--r--   1 stevepodell  staff   860 Mar 18 16:36 pods-debug.xcconfig
+    -rw-r--r--   1 stevepodell  staff   859 Mar 18 16:36 pods-release.xcconfig
+    lrwxr-xr-x   1 stevepodell  staff    32 Mar 19 09:06 www -> ../../../StevesForkOfWebApp/www/
+    (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ 
     ```
 
-1. and for the WebApp...
+1. Then create a group of symlinks so that the WebApp project's www directory sees various subdirectories in the pre-existing WebApp project's directory 
+structure, and certain subdirectories in WeVoteCordova as if they were in the WebApp project's www directory.
+   ```
+    cd /Users/stevepodell/WebstormProjects/WebApp/www
+    ln -s ../build/js/bundle.js bundle.js 
+    ln -s ../../WeVoteCordova/platforms/ios/platform_www/cordova.js cordova.js
+    ln -s ../../WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js cordova_plugins.js
+    ln -s ../build/css css
+    ln -s ../build/fonts fonts
+    ln -s ../build/img img
+    ln -s ../build/javascript javascript
+    ```
+    
+1. After creating all those links, the `WebApp/www` directory should look like this... 
 
     ```
-    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ cd /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www
+    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ pwd
+    /Users/stevepodell/WebstormProjects/WebApp/www
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ls -la
-    total 16
-    drwxr-xr-x  10 stevepodell  staff   320 Jan 19 17:05 .
-    drwxr-xr-x  30 stevepodell  staff   960 Jan 19 09:02 ..
-    lrwxr-xr-x   1 stevepodell  staff    73 Jan 16 17:02 bundle.js -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js
-    lrwxr-xr-x   1 stevepodell  staff    57 Jan 12 14:57 cordova.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova.js
-    lrwxr-xr-x   1 stevepodell  staff    65 Jan 18 20:20 cordova_plugins.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js
-    lrwxr-xr-x   1 stevepodell  staff    64 Jan 17 13:50 css -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/css
-    lrwxr-xr-x   1 stevepodell  staff    66 Jan 19 17:05 fonts -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/fonts
-    lrwxr-xr-x   1 stevepodell  staff    64 Jan 18 16:57 img -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/img
-    -rw-r--r--   1 stevepodell  staff  6301 Jan 19 08:41 index.html
-    lrwxr-xr-x   1 stevepodell  staff    71 Jan 17 14:04 javascript -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript
+    total 48
+    drwxr-xr-x  14 stevepodell  staff   448 Mar 22 14:59 .
+    drwxr-xr-x  30 stevepodell  staff   960 Mar 22 13:58 ..
+    -rw-r--r--   1 stevepodell  staff  6148 Mar 20 15:17 .DS_Store
+    lrwxr-xr-x   1 stevepodell  staff    21 Mar 18 11:58 bundle.js -> ../build/js/bundle.js
+    drwxr-xr-x   5 stevepodell  staff   160 Mar 20 15:17 cordova-js-src
+    lrwxr-xr-x   1 stevepodell  staff    57 Mar 18 12:32 cordova.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova.js
+    lrwxr-xr-x   1 stevepodell  staff    65 Mar 18 12:28 cordova_plugins.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js
+    lrwxr-xr-x   1 stevepodell  staff    12 Mar 18 12:08 css -> ../build/css
+    lrwxr-xr-x   1 stevepodell  staff    14 Mar 18 12:37 fonts -> ../build/fonts
+    lrwxr-xr-x   1 stevepodell  staff    12 Mar 21 13:54 img -> ../build/img
+    -rw-r--r--   1 stevepodell  staff  5377 Mar 22 14:59 index.html
+    lrwxr-xr-x   1 stevepodell  staff    19 Mar 18 12:40 javascript -> ../build/javascript
+    drwxr-xr-x   7 stevepodell  staff   224 Mar 19 09:22 plugins
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ 
     ```
 
@@ -203,6 +204,8 @@ Unfortunately in both the Apple and Chrome debuggers, breakpoints are not mainta
 of the app via Xcode, and also the files where you want to put the breakpoints have to be reopened each time.  (This deficiency
 is not the case in React-Native, so hopefully a fix will arrive some day.)
 
+Press ⌘+P to bring up the list of recently opened files -- this can save you a bunch of clicks.
+
 In spite of the previous problem, it is possible to debug a startup behaviour, one that would fly past before you could set the first 
 breakpoint -- on the upper left  corner of the chrome debugger, there is a "circular arrow, 
 reload button" (see the following image) that will allow you to restart the app within the Chrome Inspector while maintaining
@@ -217,6 +220,25 @@ In Apache Cordova, all the real app code is in that `bundle.js` we make in the W
 changes in the WebApp that are necessary to support cordova.
 
 [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
+
+### Strange rules for the www directory
+
+If you follow the logic of the www directory, the Cordova app "thinks the directory is at `WeVoteCordova/platforms/ios//www`,
+but symlinks put it in `/WebApp/www`, then symlinks on the WebApp www directory reference back to some
+directories in WeVoteCordova.
+
+Installation of Cordova plugins (packages of javascript and objective c that provide a feature to 
+Cordova apps), put some files in www.  Without creating new symlinks for every instance of this, and 
+every future instance, it seems simpler for all concerned to leave those files in the WebApp and to source
+control them in the WebApp.  Some of these files are source from other packages, and will be overwritten
+when the Cordova side is upgraded.  This seems strange, but should cause the least confusion for people working
+on the WeVoteCordova project.
+
+The index.html for WeVoteCordova, has been source controlled at `/WebApp/www/index.html`.  Due to symlinks it
+will also appear to be in WeVoteCordova, but it is in `.gitignore` for WeVoteCordova so please do not attempt
+to add it to git in WeVoteCordova, or there will be two competing versions of this file that would
+overwrite each other.
+
 
 ## Testing from a physical phone with the API server running on your Mac
 
@@ -334,3 +356,36 @@ to "Provide Export Compliance Information"  Click on the "Provide Export Complia
     evidence of testing, ideally by multiple users).
 
 8.  Once testing is complete, submit it for "Review"
+
+## If the cordova plugins are not installed
+
+These should be installed by Git, but if not you might see error "-1100" lines in the log.
+
+In WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js
+
+```
+    module.exports.metadata = 
+    // TOP OF METADATA
+    {
+      "cordova-plugin-device": "2.0.1",
+      "cordova-plugin-statusbar": "2.4.1",
+      "cordova-plugin-keyboard": "1.2.0",
+      "cordova-plugin-splashscreen": "5.0.2",
+      "cordova-plugin-safariviewcontroller": "1.5.2"
+    };
+```
+
+If they are not present, the commands to install them (from the WeVoteCordova dir) are:
+
+```
+  576  cordova plugin add cordova-plugin-device
+  578  cordova plugin add cordova-plugin-statusbar
+  579  cordova plugin add cordova-plugin-keyboard
+  580  cordova plugin add cordova-plugin-splashscreen
+  583  cordova plugin add cordova-plugin-safariviewcontroller
+```
+
+
+
+
+
