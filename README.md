@@ -593,33 +593,3 @@ Wipeout the android directory, and recreate it (with freshly installed plugins a
  redo the www and platforms_www symlinks
 
 
-
-
-
-## NOTES NOTES NOTES 2/29/18
-
-/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
-needs for now
-ln /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
-ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www/index.html index.html
-ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/img img
-
-
-(WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ cordova plugin add cordova-plugin-customurlscheme --variable URL_SCHEME=wevotescheme
-Installing "cordova-plugin-customurlscheme" for android
-Android Studio project detected
-Installing "cordova-plugin-customurlscheme" for ios
-Adding cordova-plugin-customurlscheme to package.json
-Saved plugin info for "cordova-plugin-customurlscheme" to config.xml
-(WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ date
-Fri Mar 30 09:41:51 PDT 2018
-(WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ 
-
-April 2  NEEDED THIS, but figure out the minimum needed:
-Steves-MacBook-Pro-2017:android stevepodell$ cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets
-Steves-MacBook-Pro-2017:assets stevepodell$ ls
-www
-Steves-MacBook-Pro-2017:assets stevepodell$ mv www SAVEOFF
-Steves-MacBook-Pro-2017:assets stevepodell$ mv SAVEOFF SAVEOFF_www
-Steves-MacBook-Pro-2017:assets stevepodell$ ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/www www
-Steves-MacBook-Pro-2017:assets stevepodell$
