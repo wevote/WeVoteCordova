@@ -70,7 +70,7 @@ Your directories will have different names, so you will have to adapt your symli
     drwxr-xr-x   6 stevepodell  staff   192 Mar 19 09:16 platform_www
     -rw-r--r--   1 stevepodell  staff   860 Mar 18 16:36 pods-debug.xcconfig
     -rw-r--r--   1 stevepodell  staff   859 Mar 18 16:36 pods-release.xcconfig
-    lrwxr-xr-x   1 stevepodell  staff    32 Mar 19 09:06 www -> ../../../StevesForkOfWebApp/www/
+    lrwxr-xr-x   1 stevepodell  staff    32 Mar 19 09:06 www -> ../../../WebApp/www/
     (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ 
     ```
 
@@ -425,7 +425,7 @@ If they are not present, the commands to install them (from the WeVoteCordova di
   cordova plugin add cordova-plugin-keyboard
   cordova plugin add cordova-plugin-splashscreen
   cordova plugin add cordova-plugin-safariviewcontroller
-  cordova plugin add https://github.com/SailingSteve/cordova-plugin-inappbrowser
+  cordova plugin add https://github.com/apache/cordova-plugin-inappbrowser/pull/263
 
 ```
 
@@ -476,9 +476,10 @@ this file is not source controlled by We Vote. See "Migrate from Jack" at https:
     }
     ```
 
-2. Modify InAppBrowser.java to allow custom schemes
+2. The We Vote project has made a pull request against the cordova core plugin cordova-plugin-inappbrowser, which we need
+to allow our oAuth flow for Twitter and Facebook to work.
 
-See [https://github.com/apache/cordova-plugin-inappbrowser/pull/261](https://github.com/apache/cordova-plugin-inappbrowser/pull/261)
+See [https://github.com/SailingSteve/cordova-plugin-inappbrowser](https://github.com/SailingSteve/cordova-plugin-inappbrowser)
 
 
 ### Modify platform_www Directory
@@ -494,7 +495,7 @@ See [https://github.com/apache/cordova-plugin-inappbrowser/pull/261](https://git
 1. Rename the platform_www to SAVEOFF_platform_www
 
 ```
-    Steves-MacBook-Pro-2017:android stevepodell$ ls platform_wwwplat
+    Steves-MacBook-Pro-2017:android stevepodell$ ls platform_www
     cordova-js-src          cordova.js              cordova_plugins.js      plugins
     Steves-MacBook-Pro-2017:android stevepodell$ mv platform_www/ SAVEOFF_platform_www
     Steves-MacBook-Pro-2017:android stevepodell$ 
@@ -507,22 +508,22 @@ of the platform_www directory
     Steves-MacBook-Pro-2017:android stevepodell$ ln -s ../../www/ platform_www
     Steves-MacBook-Pro-2017:android stevepodell$ ls -la ./platform_www/
     total 16
-    drwxr-xr-x  11 stevepodell  staff   352 Mar 29 19:36 .
-    drwxr-xr-x  20 stevepodell  staff   640 Apr  2 13:30 ..
-    -rw-r--r--@  1 stevepodell  staff  6148 Mar 18 16:49 .DS_Store
-    lrwxr-xr-x   1 stevepodell  staff    43 Mar 18 11:30 bundle.js -> ../../StevesForkOfWebApp/build/js/bundle.js
+    drwxr-xr-x  11 stevepodell  staff   352 Apr  2 20:56 .
+    drwxr-xr-x  20 stevepodell  staff   640 Apr  5 11:08 ..
+    -rw-r--r--@  1 stevepodell  staff  6148 Apr  5 09:49 .DS_Store
+    lrwxr-xr-x   1 stevepodell  staff    73 Apr  2 20:56 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/js/bundle.js
     lrwxr-xr-x   1 stevepodell  staff    40 Mar 18 11:17 cordova.js -> ../platforms/ios/platform_www/cordova.js
     lrwxr-xr-x   1 stevepodell  staff    48 Mar 18 11:38 cordova_plugins.js -> ../platforms/ios/platform_www/cordova_plugins.js
-    lrwxr-xr-x   1 stevepodell  staff    34 Mar 18 11:33 css -> ../../StevesForkOfWebApp/build/css
-    lrwxr-xr-x   1 stevepodell  staff    36 Mar 18 11:44 fonts -> ../../StevesForkOfWebApp/build/fonts
-    lrwxr-xr-x   1 stevepodell  staff    39 Mar 29 13:16 index.html -> ../../StevesForkOfWebApp/www/index.html
-    lrwxr-xr-x   1 stevepodell  staff    41 Mar 18 11:35 javascript -> ../../StevesForkOfWebApp/build/javascript
-    drwxr-xr-x   3 stevepodell  staff    96 Apr  2 12:10 plugins
+    lrwxr-xr-x   1 stevepodell  staff    34 Mar 18 11:33 css -> ../../WebApp/build/css
+    lrwxr-xr-x   1 stevepodell  staff    36 Mar 18 11:44 fonts -> ../../WebApp/build/fonts
+    lrwxr-xr-x   1 stevepodell  staff    39 Mar 29 13:16 index.html -> ../../WebApp/www/index.html
+    lrwxr-xr-x   1 stevepodell  staff    41 Mar 18 11:35 javascript -> ../../WebApp/build/javascript
+    drwxr-xr-x   4 stevepodell  staff   128 Apr  5 09:42 plugins
     Steves-MacBook-Pro-2017:android stevepodell$
 ```
 
 1. Create another symlink to the www directory from the assets www directory (an attempt to run or
-build might be required to create this directory)
+build (within Android Studio) might be required to create this directory)
 
 ```
     Steves-MacBook-Pro-2017:android stevepodell$ cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets
@@ -533,11 +534,10 @@ build might be required to create this directory)
 ```
 
 
-1. Is this needed (3/28/18)?: Create a symlink for index.html
+1. Check for a symlink for index.html
 
 ```
-    Steves-MacBook-Pro-2017:www stevepodell$ pwd
-    /Users/stevepodell/WebstormProjects/WeVoteCordova/www
+    Steves-MacBook-Pro-2017:www stevepodell$ cd /Users/stevepodell/WebstormProjects/WeVoteCordova/www
     Steves-MacBook-Pro-2017:www stevepodell$ ln -s ../../WebApp/www/index.html index.html
     Steves-MacBook-Pro-2017:www stevepodell$ ls -la
     total 16
@@ -551,8 +551,11 @@ build might be required to create this directory)
     lrwxr-xr-x   1 stevepodell  staff    36 Mar 18 11:44 fonts -> ../../WebApp/build/fonts
     lrwxr-xr-x   1 stevepodell  staff    39 Mar 29 13:16 index.html -> ../../WebApp/www/index.html
     lrwxr-xr-x   1 stevepodell  staff    41 Mar 18 11:35 javascript -> ../../WebApp/build/javascript
-    Steves-MacBook-Pro-2017:www stevepodell$ 
-    
+    Steves-MacBook-Pro-2017:www stevepodell$
+```
+    if there is no symlink for index.html, do the following...
+
+```
     Steves-MacBook-Pro-2017:www stevepodell$ ls /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
     bundle.js               cordova-js-src          cordova.js              cordova_plugins.js      css                     fonts                   javascript              plugins
     Steves-MacBook-Pro-2017:www stevepodell$ cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
