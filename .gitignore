@@ -207,3 +207,4 @@ yarn.lock
 /www/javascript/
 /www/cordova.js
 /www/cordova_plugins.js
+!/platforms/android/app/src/main/AndroidManifest.xml
