@@ -9,11 +9,12 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-statusbar.statusbar",
-    "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-    "pluginId": "cordova-plugin-statusbar",
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
     "clobbers": [
-      "window.StatusBar"
+      "cordova.InAppBrowser.open",
+      "window.open"
     ]
   },
   {
@@ -25,6 +26,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-safariviewcontroller.SafariViewController",
+    "file": "plugins/cordova-plugin-safariviewcontroller/www/SafariViewController.js",
+    "pluginId": "cordova-plugin-safariviewcontroller",
+    "clobbers": [
+      "SafariViewController"
+    ]
+  },
+  {
     "id": "cordova-plugin-splashscreen.SplashScreen",
     "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
     "pluginId": "cordova-plugin-splashscreen",
@@ -33,11 +42,11 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-safariviewcontroller.SafariViewController",
-    "file": "plugins/cordova-plugin-safariviewcontroller/www/SafariViewController.js",
-    "pluginId": "cordova-plugin-safariviewcontroller",
+    "id": "cordova-plugin-statusbar.statusbar",
+    "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+    "pluginId": "cordova-plugin-statusbar",
     "clobbers": [
-      "SafariViewController"
+      "window.StatusBar"
     ]
   }
 ];
@@ -45,10 +54,11 @@ module.exports.metadata =
 // TOP OF METADATA
 {
   "cordova-plugin-device": "2.0.1",
-  "cordova-plugin-statusbar": "2.4.1",
+  "cordova-plugin-inappbrowser": "2.0.3-dev",
   "cordova-plugin-keyboard": "1.2.0",
-  "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-safariviewcontroller": "1.5.2",
+  "cordova-plugin-splashscreen": "5.0.2",
+  "cordova-plugin-statusbar": "2.4.1",
   "cordova-plugin-whitelist": "1.3.3"
 };
 // BOTTOM OF METADATA
