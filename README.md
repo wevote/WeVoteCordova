@@ -48,6 +48,7 @@ Your directories will have different names, so you will have to adapt your symli
 
     ```
     cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios
+    mv www SAVEOFF_www
     ln -s ../../../WebApp/www
     ```
     
@@ -56,22 +57,23 @@ Your directories will have different names, so you will have to adapt your symli
     ```
     (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios
     (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ ls -la
-    total 40
-    drwxr-xr-x  15 stevepodell  staff   480 Mar 19 09:16 .
-    drwxr-xr-x   5 stevepodell  staff   160 Mar 18 16:55 ..
-    -rw-r--r--   1 stevepodell  staff    53 Mar 18 16:36 .gitignore
-    drwxr-xr-x   7 stevepodell  staff   224 Mar 18 16:36 CordovaLib
-    drwxr-xr-x  15 stevepodell  staff   480 Mar 22 08:49 WeVoteCordova
-    drwxr-xr-x@  4 stevepodell  staff   128 Mar 22 08:33 WeVoteCordova.xcodeproj
-    drwxr-xr-x@  5 stevepodell  staff   160 Mar 18 16:36 WeVoteCordova.xcworkspace
-    drwxr-xr-x  26 stevepodell  staff   832 Mar 18 16:36 cordova
-    -rw-r--r--   1 stevepodell  staff    56 Mar 20 15:16 frameworks.json
-    -rw-r--r--   1 stevepodell  staff  3528 Mar 20 15:21 ios.json
-    drwxr-xr-x   6 stevepodell  staff   192 Mar 19 09:16 platform_www
-    -rw-r--r--   1 stevepodell  staff   860 Mar 18 16:36 pods-debug.xcconfig
-    -rw-r--r--   1 stevepodell  staff   859 Mar 18 16:36 pods-release.xcconfig
-    lrwxr-xr-x   1 stevepodell  staff    32 Mar 19 09:06 www -> ../../../WebApp/www/
-    (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ 
+    total 48
+    drwxr-xr-x  15 stevepodell  staff   480 Apr  6 12:46 .
+    drwxr-xr-x   5 stevepodell  staff   160 Apr  6 12:38 ..
+    -rw-r--r--   1 stevepodell  staff    53 Apr  6 12:38 .gitignore
+    drwxr-xr-x   7 stevepodell  staff   224 Apr  6 12:38 CordovaLib
+    drwxr-xr-x  12 stevepodell  staff   384 Apr  6 12:38 SAVEOFF_www
+    drwxr-xr-x  14 stevepodell  staff   448 Apr  6 12:38 WeVoteCordova
+    drwxr-xr-x   4 stevepodell  staff   128 Apr  6 12:38 WeVoteCordova.xcodeproj
+    drwxr-xr-x   5 stevepodell  staff   160 Apr  6 12:39 WeVoteCordova.xcworkspace
+    drwxr-xr-x  26 stevepodell  staff   832 Apr  6 12:38 cordova
+    -rw-r--r--   1 stevepodell  staff    56 Apr  6 12:38 frameworks.json
+    -rw-r--r--   1 stevepodell  staff  4117 Apr  6 12:38 ios.json
+    drwxr-xr-x   6 stevepodell  staff   192 Apr  6 12:38 platform_www
+    -rw-r--r--   1 stevepodell  staff   860 Apr  6 12:38 pods-debug.xcconfig
+    -rw-r--r--   1 stevepodell  staff   859 Apr  6 12:38 pods-release.xcconfig
+    lrwxr-xr-x   1 stevepodell  staff    19 Apr  6 12:46 www -> ../../../WebApp/www
+    (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$
     ```
 
 1. Then create a group of symlinks so that the WebApp project's www directory sees various subdirectories in the pre-existing WebApp project's directory 
@@ -80,7 +82,6 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
     cd /Users/stevepodell/WebstormProjects/WebApp/www
     ln -s ../build/js/bundle.js bundle.js 
     ln -s ../../WeVoteCordova/platforms/ios/platform_www/cordova.js cordova.js
-    ln -s ../../WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js cordova_plugins.js
     ln -s ../build/css css
     ln -s ../build/fonts fonts
     ln -s ../build/img img
@@ -90,24 +91,23 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
 1. After creating all those links, the `WebApp/www` directory should look like this... 
 
     ```
-    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ pwd
-    /Users/stevepodell/WebstormProjects/WebApp/www
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ls -la
-    total 48
-    drwxr-xr-x  14 stevepodell  staff   448 Mar 22 14:59 .
-    drwxr-xr-x  30 stevepodell  staff   960 Mar 22 13:58 ..
+    total 56
+    drwxr-xr-x  14 stevepodell  staff   448 Apr  6 12:36 .
+    drwxr-xr-x  32 stevepodell  staff  1024 Apr  6 11:08 ..
     -rw-r--r--   1 stevepodell  staff  6148 Mar 20 15:17 .DS_Store
-    lrwxr-xr-x   1 stevepodell  staff    21 Mar 18 11:58 bundle.js -> ../build/js/bundle.js
-    drwxr-xr-x   5 stevepodell  staff   160 Mar 20 15:17 cordova-js-src
+    lrwxr-xr-x   1 stevepodell  staff    73 Apr  2 20:55 bundle.js -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js
+    drwxr-xr-x   5 stevepodell  staff   160 Mar 23 10:14 cordova-js-src
     lrwxr-xr-x   1 stevepodell  staff    57 Mar 18 12:32 cordova.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova.js
-    lrwxr-xr-x   1 stevepodell  staff    65 Mar 18 12:28 cordova_plugins.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js
+    -rw-r--r--   1 stevepodell  staff  1845 Apr  6 12:36 cordova_plugins.js
     lrwxr-xr-x   1 stevepodell  staff    12 Mar 18 12:08 css -> ../build/css
     lrwxr-xr-x   1 stevepodell  staff    14 Mar 18 12:37 fonts -> ../build/fonts
     lrwxr-xr-x   1 stevepodell  staff    12 Mar 21 13:54 img -> ../build/img
-    -rw-r--r--   1 stevepodell  staff  5377 Mar 22 14:59 index.html
+    -rw-r--r--   1 stevepodell  staff  5754 Apr  6 12:07 index.html
     lrwxr-xr-x   1 stevepodell  staff    19 Mar 18 12:40 javascript -> ../build/javascript
-    drwxr-xr-x   7 stevepodell  staff   224 Mar 19 09:22 plugins
-    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ 
+    drwxr-xr-x   8 stevepodell  staff   256 Apr  6 12:04 plugins
+    -rw-r--r--   1 stevepodell  staff  5046 Mar 21 14:06 saveOffMarch21-206pm-index.html
+    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$
     ```
 
 Once you have setup the symlinks, you can compile all the React in your WebApp setup as before, which creates a `bundle.js` 
@@ -593,3 +593,21 @@ Wipeout the android directory, and recreate it (with freshly installed plugins a
  redo the www and platforms_www symlinks
 
 
+### If the Twitter Redirect stops working in iOS
+
+Make sure the custom scheme URL Type is still setup in Xcode
+
+![ScreenShot](docs/images/SettingUpTheIosCustomScheme.png)
+
+### iOS has two config.xml -- make sure you change both
+
+I think that when you (DON'T DO THIS)
+```
+    cordova platform remove ios
+    cordova platform add ios
+```
+you regenerate the iOS specific `config.xml` (platforms/ios/WeVoteCordova/config.xml), that does not have config that is
+in android specific blocks in the "root" config.xml.  At run time the only config.xml that matters for iOS is `platforms/ios/WeVoteCordova/config.xml`, so
+be sure to manually make the changes in both places (yuck).  If you make the mistake of removing platform for iOS, you will lose
+the entire directory for iOS including any configuration you made in XCode -- it might take you a lot of time to recover from
+this.
