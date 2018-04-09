@@ -196,15 +196,11 @@ yarn.lock
 /platforms/android/app/src/main/java/com/customtabplugin/CustomTabServiceHelper.java
 /platforms/android/app/src/main/java/org/
 
+
 /platforms/ios/CordovaLib/
 /platforms/ios/platform_www/plugins/
 /platforms/ios/platform_www/cordova-js-src/
 /platforms/ios/WeVoteCordova/Plugins/
 !/platforms/ios/www/index.html
-/www/bundle.js
-/www/css/
-/www/fonts/
-/www/javascript/
-/www/cordova.js
-/www/cordova_plugins.js
+/www/
 !/platforms/android/app/src/main/AndroidManifest.xml
