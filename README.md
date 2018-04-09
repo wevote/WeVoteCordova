@@ -41,12 +41,12 @@ We recommend installing node and watchman via Homebrew.
 
 
 Be sure to open **`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcworkspace`** each time, if
-you forget the compile will fail, since you won't have referenced the cocopods (a dependency manger, that pulls in some iOS
+you forget portions of the app will not be in your build, since you won't have referenced the cocopods (a dependency manger, that pulls in some iOS
 specific libraries.)
 
 Be sure to NOT open ~~`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcodeproj`~~ with Xcode,
-and don't pick a choice from the history pane in the Welcome to Xcode dialog.  The history unfortunately only contains contains
-references to .xcodeproj files.  (When that Welcome dialog is displayed, it is possible to open the xcworkspace from the File/"Open Recent" menu,
+and don't pick a choice from the history pane ("Don't click these!") in the Welcome to Xcode dialog.  The history unfortunately only contains contains
+references to .xcodeproj files.  (Hint:  When that Welcome dialog is displayed, **it is** possible to open the xcworkspace from the File/"Open Recent" menu,
 just be sure to open the xcworkspace.)
 
 <img src="https://github.com/wevote/WeVoteReactNative/blob/develop/docs/images/Welcome%20To%20Xcode.png" alt="alt text" width="600" >
@@ -58,7 +58,7 @@ click "Open another project..." and navigate to the 'WeVoteReactNative.xcworkspa
 **Clean Build:**
 
 You probably will run into the need to "Clean Build Folder".  To do this in XCode, go to the Product menu, hold down the Option button
-(on your Mac) and select "Clean Build Folder", after it completes (about 10 seconds), press the triangular
+(on your Mac keyboard) and select "Clean Build Folder", after it completes (about 10 seconds), press the triangular
 Run (Play) button do to a full rebuild
 
 ## Initial install of our code from github
@@ -69,14 +69,15 @@ Before you can run WeVoteCordova, you will need to have the We Vote WebApp built
 to have been successfully run since WeVoteCordova relies on the `bundle.js` that is the 'compiled' resultof the React WebApp build.
 
 Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory, that (on Steve's Mac) is at `/Users/stevepodell/WebstormProjects/WeVoteCordova/www`
-and in order to make the setup easy to understand, there is now a www directory in the WebApp at `/Users/stevepodell/WebstormProjects/WebApp/www`
+and there is now a www directory in the WebApp at `/Users/stevepodell/WebstormProjects/WebApp/www` which actually contains some of the WeVoteCordova code and its index.html
+
 These two www directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
 
 ## Install Steps for iOS
 
 1. Change to the root for all of your projects
 If you followed the We Vote WebApp instructions your root might be `/Users/<YOUR NAME HERE>/MyProjects/`, but for
-now we are going to reference the Steve's setup
+now we are going to reference Steve's setup
 
     ```cd /Users/stevepodell/WebstormProjects```
 
@@ -121,7 +122,7 @@ now we are going to reference the Steve's setup
     total 0
     drwxr-xr-x   3 stevepodell  staff   96 Apr  8 11:18 .
     drwxr-xr-x  16 stevepodell  staff  512 Apr  8 14:56 ..
-    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
+    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/WebApp/build/js/bundle.js bundle.js
     ```
 1. Create a scaffolding setup for iOS and Android (that will be partially replaced a few steps further down in this proceedure).
     ```
@@ -241,7 +242,7 @@ now we are going to reference the Steve's setup
     ```
 1. Create a symlink for the www directory
     ```
-    Steves-MacBook-Pro-2017:ios stevepodell$ ln -s ../../../StevesForkOfWebApp/www www
+    Steves-MacBook-Pro-2017:ios stevepodell$ ln -s ../../../WebApp/www www
     Steves-MacBook-Pro-2017:ios stevepodell$ ls -la
     total 64
     drwxr-xr-x  16 stevepodell  staff   512 Apr  9 11:27 .
@@ -259,7 +260,7 @@ now we are going to reference the Steve's setup
     drwxr-xr-x   6 stevepodell  staff   192 Apr  9 10:34 platform_www
     -rw-r--r--   1 stevepodell  staff   860 Apr  8 15:00 pods-debug.xcconfig
     -rw-r--r--   1 stevepodell  staff   859 Apr  8 15:00 pods-release.xcconfig
-    lrwxr-xr-x   1 stevepodell  staff    31 Apr  9 11:27 www -> ../../../StevesForkOfWebApp/www
+    lrwxr-xr-x   1 stevepodell  staff    31 Apr  9 11:27 www -> ../../../WebApp/www
     Steves-MacBook-Pro-2017:ios stevepodell$
     ```
 
@@ -399,7 +400,7 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
     drwxr-xr-x  14 stevepodell  staff   448 Apr  6 12:36 .
     drwxr-xr-x  32 stevepodell  staff  1024 Apr  6 11:08 ..
     -rw-r--r--   1 stevepodell  staff  6148 Mar 20 15:17 .DS_Store
-    lrwxr-xr-x   1 stevepodell  staff    73 Apr  2 20:55 bundle.js -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js
+    lrwxr-xr-x   1 stevepodell  staff    73 Apr  2 20:55 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/js/bundle.js
     drwxr-xr-x   5 stevepodell  staff   160 Mar 23 10:14 cordova-js-src
     lrwxr-xr-x   1 stevepodell  staff    57 Mar 18 12:32 cordova.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova.js
     -rw-r--r--   1 stevepodell  staff  1845 Apr  6 12:36 cordova_plugins.js
@@ -593,10 +594,11 @@ access to your Mac's localhost.
 
 ## Git
 
-Unfortunately (2/15/18) the github repository we work against is not 'develop', so the pull request to
-update your local 'develop' is different.
+The Git branching scheme for WeVoteCordova is the same as for the We Vote WebApp
+
 ```
-    git pull wevote-master master
+    git checkout develop
+    git pull upstream develop
     git push origin develop
 ```
 
@@ -646,7 +648,7 @@ up-to-date WebApp develop.
 2. On WeVoteCordova side,on the Target General Properties tab, increment the 
 build number by one.  For example build 3, becomes Build 4.
 
-    ![ScreenShot](docs/images/Xcode General Properties.png)
+    ![ScreenShot](docs/images/XcodeGeneralProperties.png)
     
     This may be the only change that gets made in the WeVoteCordova repository,
     but it is important to check it in so that we have a record of how each build was
@@ -666,6 +668,7 @@ an account on itunesconnect
       * Allow "Upload your app's symbols...
       * Automatically manage signing
       * Upload
+      ![ScreenShot](docs/images/UploadToAppStore.png)
 
    * After upload, it could take a half hour for the build to appear on itunes connect, and then
 the build could be "Processing" for another half hour.  (Due to an ancient tech WebObjects
