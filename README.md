@@ -7,7 +7,7 @@ works perfectly well with React apps.
 For a very simple app, you literally just drop it into Cordova and go, for more complex apps (like ours) there are some
 changes to be made.  See [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
 
-We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  The WeVoteCordova side is so thin, that
+We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  The WeVoteCordova side is so thin, is that
 all it contains is Apache Cordova, some Documentation, and the iOS and Android config (and possibly a small amount of 
 native code).  All of the JavaScript and React code, and the libraries that they rely on, remains in the WeVote WebApp.
 
@@ -22,27 +22,22 @@ you can put them where you like, but you will have to adapt the paths in these i
 
 Install Apple Xcode from the MacOS App Store, you will need a Mac for the iOS part of this project, and a Mac will also be
 fine for Android development.  For Android, install the [Android Studio](https://developer.android.com/studio/index.html)
-(a free JetBrains based IDE, from the makers of PyCharm, WebStorm, etc.)
+(a free  IDE, from JetBrains, the makers of PyCharm, WebStorm, IntelliJ, etc.)
 
+## iOS specific IDE and Environment setup
 ### Install Xcode
 
 The easiest way to install Xcode is via the
 <a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Mac App Store.</a>  The Xcode.app download is 10gb in size.
 
-### Node, Watchman, React Native command line interface
+### Install Node and Watchman
 
 We recommend installing node and watchman via Homebrew.
 
     brew install node
     brew install watchman
 
-Node comes with npm, which lets you install the React Native command line interface.
-
-    npm install -g react-native-cli
-
-If you get a permission error, try with sudo: `sudo npm install -g react-native-cli`.
-
-### iOS specific IDE and Environment setup
+### Opening the project with Xcode
 
 
 Be sure to open **`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcworkspace`** each time, if
@@ -50,8 +45,9 @@ you forget the compile will fail, since you won't have referenced the cocopods (
 specific libraries.)
 
 Be sure to NOT open ~~`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcodeproj`~~ with Xcode,
-and don't pick one out of the history in the Welcome to Xcode dialog.  The history unfortunately only contains contains
-references to .xcodeproj files.
+and don't pick a choice from the history pane in the Welcome to Xcode dialog.  The history unfortunately only contains contains
+references to .xcodeproj files.  (When that Welcome dialog is displayed, it is possible to open the xcworkspace from the File/"Open Recent" menu,
+just be sure to open the xcworkspace.)
 
 <img src="https://github.com/wevote/WeVoteReactNative/blob/develop/docs/images/Welcome%20To%20Xcode.png" alt="alt text" width="600" >
 
@@ -65,7 +61,7 @@ You probably will run into the need to "Clean Build Folder".  To do this in XCod
 (on your Mac) and select "Clean Build Folder", after it completes (about 10 seconds), press the triangular
 Run (Play) button do to a full rebuild
 
-## Initial install of tour code from github
+## Initial install of our code from github
 
 You may need to install Gradle, a Java build tool for the Android side.  `npm install gradle`
 
@@ -76,7 +72,7 @@ Cordova and our WeVoteCordova wants to load the `bundle.js` from a www directory
 and in order to make the setup easy to understand, there is now a www directory in the WebApp at `/Users/stevepodell/WebstormProjects/WebApp/www`
 These two www directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
 
-## Install steps iOS
+## Install Steps for iOS
 
 1. cd /Users/stevepodell/WebstormProjects
 1. git clone https://github.com/wevote/WeVoteCordova.git, then cd to WeVoteCordova
@@ -226,30 +222,72 @@ These two www directories are joined together with [symlinks/Symbolic links](htt
       588  curl 'https://github.com/wevote/WeVoteCordova/blob/f3d1d4601f0bc3519e6d331a838ebcddbac151e6/platforms/ios/WeVoteCordova/WeVoteCordova-Info.plist' > WeVoteCordova-Info.plist
     ```
 
-## April 8, 2018 From Scratch continued for Android
+## Common WebApp side Symlink setup for both iOS and Android
+1. It is essential that you have already installed the We Vote WebApp code, and compiled it and run it at least once,
+so that a `bundle.js` file exists at `/Users/stevepodell/WebstormProjects/WebApp/build/js/bundle.js`
+1. Go to your webapp root directory `/Users/stevepodell/WebstormProjects/WebApp`
+if a `www` directory does not exist, make one by typing `mkdir www`
+
+1. Then create a group of symlinks so that the WebApp project's www directory sees various subdirectories in the pre-existing WebApp project's directory
+structure, and certain subdirectories in WeVoteCordova as if they were in the WebApp project's www directory.
+   ```
+    cd /Users/stevepodell/WebstormProjects/WebApp/www
+    ln -s ../build/js/bundle.js bundle.js
+    ln -s ../../WeVoteCordova/platforms/ios/platform_www/cordova.js cordova.js
+    ln -s ../build/css css
+    ln -s ../build/fonts fonts
+    ln -s ../build/img img
+    ln -s ../build/javascript javascript
+    ```
+
+1. After creating all those links, the `WebApp/www` directory should look like this...
+
+    ```
+    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ls -la
+    total 56
+    drwxr-xr-x  14 stevepodell  staff   448 Apr  6 12:36 .
+    drwxr-xr-x  32 stevepodell  staff  1024 Apr  6 11:08 ..
+    -rw-r--r--   1 stevepodell  staff  6148 Mar 20 15:17 .DS_Store
+    lrwxr-xr-x   1 stevepodell  staff    73 Apr  2 20:55 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/js/bundle.js
+    drwxr-xr-x   5 stevepodell  staff   160 Mar 23 10:14 cordova-js-src
+    lrwxr-xr-x   1 stevepodell  staff    57 Mar 18 12:32 cordova.js -> ../../WeVoteCordova/platforms/ios/platform_www/cordova.js
+    -rw-r--r--   1 stevepodell  staff  1845 Apr  6 12:36 cordova_plugins.js
+    lrwxr-xr-x   1 stevepodell  staff    12 Mar 18 12:08 css -> ../build/css
+    lrwxr-xr-x   1 stevepodell  staff    14 Mar 18 12:37 fonts -> ../build/fonts
+    lrwxr-xr-x   1 stevepodell  staff    12 Mar 21 13:54 img -> ../build/img
+    -rw-r--r--   1 stevepodell  staff  5754 Apr  6 12:07 index.html
+    lrwxr-xr-x   1 stevepodell  staff    19 Mar 18 12:40 javascript -> ../build/javascript
+    drwxr-xr-x   8 stevepodell  staff   256 Apr  6 12:04 plugins
+    -rw-r--r--   1 stevepodell  staff  5046 Mar 21 14:06 saveOffMarch21-206pm-index.html
+    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$
+    ```
+
+
+## Install Steps for Android
 1. Install Android Studio
 1. Open the Android platform code at ~ WebstormProjects/WeVoteCordova/platforms/android
 1. Add in the "Phonegap/Cordova Plugin" see the [Medium Article](https://medium.com/@gotoark/how-to-run-cordova-projects-in-android-studio-8f41bdf52be3)
 1. In Android Studio, Sync the Gradle build system via File/"Sync Project With Gradle Files"
-1. Note the failure with the error "Could not find method jackOptions() for arguments [cordova_SafariViewController_j_7x7dqth91wctoep6z6y94lpt9$_run_closure1$_closure2$_closure3$_closure5@22df17fe] on DefaultConfig_Decorated{name=main, dimension=null, ... mWearAppUnbundled=null} of type com.android.build.gradle.internal.dsl.DefaultConfig."
-Open the file `WeVoteCordova/platforms/android/cordova-plugin-safariviewcontroller/cordova-SafariViewController-java18.gradle` and comment out the jackOptions section of the file (jackOptions are obsolete).
-```
-    ext.postBuildExtras = {
-        android {
-            defaultConfig {
-    //            jackOptions {
-    //                enabled true
-    //                additionalParameters('jack.incremental': 'true')
-    //            }
-            }
-            compileOptions {
-                sourceCompatibility JavaVersion.VERSION_1_8
-                targetCompatibility JavaVersion.VERSION_1_8
+1. Note the failure with the error `Could not find method jackOptions() for arguments [cordova_SafariViewController_j_7x7dqth91wctoep6z6y94lpt9$_run_closure1$_closure2$_closure3$_closure5@22df17fe] on DefaultConfig_Decorated{name=main, dimension=null, ... mWearAppUnbundled=null} of type com.android.build.gradle.internal.dsl.DefaultConfig.`Resolve this failure by opening the file `WeVoteCordova/platforms/android/cordova-plugin-safariviewcontroller/cordova-SafariViewController-java18.gradle` and commenting out the
+jackOptions section of the file (jackOptions are obsolete).
+    ```
+        ext.postBuildExtras = {
+            android {
+                defaultConfig {
+        //            jackOptions {
+        //                enabled true
+        //                additionalParameters('jack.incremental': 'true')
+        //            }
+                }
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                    targetCompatibility JavaVersion.VERSION_1_8
+                }
             }
         }
-    }
-```
-1. Note that andorid synced successfuly with one warning that 'compile is obsolete' -- no worries about the warning.
+    ```
+1. Note that android synced successfully with a single warning that 'compile is obsolete' -- Don't worry about that warning.
+
 ## Creating all the Symlinks
 
 These instructions are based on the following two home project directories...  
