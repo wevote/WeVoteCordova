@@ -74,8 +74,16 @@ These two www directories are joined together with [symlinks/Symbolic links](htt
 
 ## Install Steps for iOS
 
-1. cd /Users/stevepodell/WebstormProjects
-1. git clone https://github.com/wevote/WeVoteCordova.git, then cd to WeVoteCordova
+1. Change to the root for all of your projects
+If you followed the We Vote WebApp instructions your root might be `/Users/<YOUR NAME HERE>/MyProjects/`, but for
+now we are going to reference the Steve's setup
+
+    ```cd /Users/stevepodell/WebstormProjects```
+
+1. git clone the repository, then cd to WeVoteCordova
+
+    ```git clone https://github.com/wevote/WeVoteCordova.git```
+
     ```
     (WebAppEnv)Steves-MacBook-Pro-2017:WebstormProjects stevepodell$ git clone https://github.com/wevote/WeVoteCordova.git
     Cloning into 'WeVoteCordova'...
@@ -105,7 +113,7 @@ These two www directories are joined together with [symlinks/Symbolic links](htt
     drwxr-xr-x   3 stevepodell  staff     96 Apr  8 11:12 src
     (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$
     ```
-1. make the www dir, and symlink bundle.js
+1. make the www dir, and symlink the bundle.js file
     ```
     (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ mkdir www
     (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ cd www
@@ -115,7 +123,7 @@ These two www directories are joined together with [symlinks/Symbolic links](htt
     drwxr-xr-x  16 stevepodell  staff  512 Apr  8 14:56 ..
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
     ```
-1. Create a scaffolding setup for iOS and Android (that will be partially replaced a few steps down this proceedure).
+1. Create a scaffolding setup for iOS and Android (that will be partially replaced a few steps further down in this proceedure).
     ```
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ cd ..
     (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ cordova platform rm ios android
@@ -187,8 +195,8 @@ These two www directories are joined together with [symlinks/Symbolic links](htt
     Saving android@~7.0.0 into config.xml file ...
     (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$
     ```
-1. Note that the `cordova platform add`, added seven plugins for Android and seven plugins for iOS.
-1. Now overwrite any scaffolding files that overwrote version controlled files
+1. Note that the `cordova platform add` CLI command, added seven plugins for Android and seven plugins for iOS.
+1. Now overwrite any scaffolding files that may have overwritten version controlled WeVoteCordova files
     ```
     (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ git fetch --all
     Fetching origin
@@ -208,18 +216,58 @@ These two www directories are joined together with [symlinks/Symbolic links](htt
     D	platforms/ios/www/index.html
     (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$
     ```
-1. Save off the ios www directory and symlink www to `WeVoteCordova/www`
+1. Save off the ios www directory
     ```
-      550  cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios
-      551  ls -la
-      552  mv www SAVEOFF_www
-      554  ln -s ../../../StevesForkOfWebApp/www www
+    Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios
+    Steves-MacBook-Pro-2017:ios stevepodell$ mv www SAVEOFF_www
+    Steves-MacBook-Pro-2017:ios stevepodell$ ls -la
+    total 64
+    drwxr-xr-x  16 stevepodell  staff   512 Apr  9 10:34 .
+    drwxr-xr-x   5 stevepodell  staff   160 Apr  8 15:09 ..
+    -rw-r--r--@  1 stevepodell  staff  6148 Apr  8 15:17 .DS_Store
+    -rw-r--r--   1 stevepodell  staff    53 Apr  8 15:00 .gitignore
+    drwxr-xr-x   7 stevepodell  staff   224 Apr  8 15:00 CordovaLib
+    drwxr-xr-x   7 stevepodell  staff   224 Apr  8 15:00 SAVEOFF_www
+    drwxr-xr-x  14 stevepodell  staff   448 Apr  9 10:34 WeVoteCordova
+    drwxr-xr-x@  5 stevepodell  staff   160 Apr  9 10:34 WeVoteCordova.xcodeproj
+    drwxr-xr-x@  5 stevepodell  staff   160 Apr  9 10:55 WeVoteCordova.xcworkspace
+    drwxr-xr-x  26 stevepodell  staff   832 Apr  8 15:00 cordova
+    -rw-r--r--   1 stevepodell  staff    56 Apr  8 15:01 frameworks.json
+    -rw-r--r--   1 stevepodell  staff  4117 Apr  9 10:34 ios.json
+    drwxr-xr-x   6 stevepodell  staff   192 Apr  9 10:34 platform_www
+    -rw-r--r--   1 stevepodell  staff   860 Apr  8 15:00 pods-debug.xcconfig
+    -rw-r--r--   1 stevepodell  staff   859 Apr  8 15:00 pods-release.xcconfig
+    Steves-MacBook-Pro-2017:ios stevepodell$
     ```
-1. Overwrite the `WeVoteCordova-Info.plist` (most of the Xcode project configuration menu data)
+1. Create a symlink for the www directory
     ```
-      580  cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova
-      586  rm WeVoteCordova-Info.plist
-      588  curl 'https://github.com/wevote/WeVoteCordova/blob/f3d1d4601f0bc3519e6d331a838ebcddbac151e6/platforms/ios/WeVoteCordova/WeVoteCordova-Info.plist' > WeVoteCordova-Info.plist
+    Steves-MacBook-Pro-2017:ios stevepodell$ ln -s ../../../StevesForkOfWebApp/www www
+    Steves-MacBook-Pro-2017:ios stevepodell$ ls -la
+    total 64
+    drwxr-xr-x  16 stevepodell  staff   512 Apr  9 11:27 .
+    drwxr-xr-x   5 stevepodell  staff   160 Apr  8 15:09 ..
+    -rw-r--r--@  1 stevepodell  staff  6148 Apr  8 15:17 .DS_Store
+    -rw-r--r--   1 stevepodell  staff    53 Apr  8 15:00 .gitignore
+    drwxr-xr-x   7 stevepodell  staff   224 Apr  8 15:00 CordovaLib
+    drwxr-xr-x   7 stevepodell  staff   224 Apr  8 15:00 SAVEOFF_www
+    drwxr-xr-x  14 stevepodell  staff   448 Apr  9 10:34 WeVoteCordova
+    drwxr-xr-x@  5 stevepodell  staff   160 Apr  9 10:34 WeVoteCordova.xcodeproj
+    drwxr-xr-x@  5 stevepodell  staff   160 Apr  9 10:55 WeVoteCordova.xcworkspace
+    drwxr-xr-x  26 stevepodell  staff   832 Apr  8 15:00 cordova
+    -rw-r--r--   1 stevepodell  staff    56 Apr  8 15:01 frameworks.json
+    -rw-r--r--   1 stevepodell  staff  4117 Apr  9 10:34 ios.json
+    drwxr-xr-x   6 stevepodell  staff   192 Apr  9 10:34 platform_www
+    -rw-r--r--   1 stevepodell  staff   860 Apr  8 15:00 pods-debug.xcconfig
+    -rw-r--r--   1 stevepodell  staff   859 Apr  8 15:00 pods-release.xcconfig
+    lrwxr-xr-x   1 stevepodell  staff    31 Apr  9 11:27 www -> ../../../StevesForkOfWebApp/www
+    Steves-MacBook-Pro-2017:ios stevepodell$
+    ```
+
+1. Overwrite the `WeVoteCordova-Info.plist` (which contains most of the Xcode project configuration menu data)
+    ```
+      cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova
+      rm WeVoteCordova-Info.plist
+      curl 'https://github.com/wevote/WeVoteCordova/blob/f3d1d4601f0bc3519e6d331a838ebcddbac151e6/platforms/ios/WeVoteCordova/WeVoteCordova-Info.plist' > WeVoteCordova-Info.plist
     ```
 
 ## Common WebApp side Symlink setup for both iOS and Android
@@ -263,8 +311,8 @@ structure, and certain subdirectories in WeVoteCordova as if they were in the We
     ```
 
 
-## Install Steps for Android
-1. Install Android Studio
+## Additional Install Steps for Android
+1. Install the [Android Studio](https://developer.android.com/studio/index.html)
 1. Open the Android platform code at ~ WebstormProjects/WeVoteCordova/platforms/android
 1. Add in the "Phonegap/Cordova Plugin" see the [Medium Article](https://medium.com/@gotoark/how-to-run-cordova-projects-in-android-studio-8f41bdf52be3)
 1. In Android Studio, Sync the Gradle build system via File/"Sync Project With Gradle Files"
