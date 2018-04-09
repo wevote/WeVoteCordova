@@ -201,10 +201,5 @@ yarn.lock
 /platforms/ios/platform_www/cordova-js-src/
 /platforms/ios/WeVoteCordova/Plugins/
 !/platforms/ios/www/index.html
-/www/bundle.js
-/www/css/
-/www/fonts/
-/www/javascript/
-/www/cordova.js
-/www/cordova_plugins.js
+/www/
 !/platforms/android/app/src/main/AndroidManifest.xml
