@@ -16,10 +16,10 @@ wrap an identical `bundle.js` that is compiled by the We Vote WebApp project.
 
 ## You need a Mac to develop for iOS
 
-That's Apple's decision, not ours.  So these instructions assume you have a Mac, and if you have Linux or Windows, you will
-only be able to develop for Andorid -- there are not currently any install instructions for Linux or Window.
+That's Apple's decision, not ours.  So these instructions assume you have a Mac, so if you use Linux or Windows, you will
+only be able to develop for Android -- we don't have any install instructions for Linux or Window.
 
-## You need to have the code for the WeVote WebApp setup on your machine
+## You need to have the code for the We Vote WebApp setup on your machine
 
 If you haven't done this yet, don't waste your time, go setup the WebApp with current code,
 get it to start up at least once, and then return here when you are done.
@@ -30,25 +30,22 @@ until you can find it.
 ## Directories
 
 If you followed the instructions for installing the WebApp you put your code at
-`/Users/<YOUR NAME HERE>/MyProjects/WebApp`
+   `/Users/<YOUR NAME HERE>/MyProjects/WebApp`
 
 Steve put his webapp at
 
-    `/Users/stevepodell/WebstormProjects/StevesForkOfWebApp`
+    /Users/stevepodell/WebstormProjects/StevesForkOfWebApp
 
 And put his Cordova code at
 
-    `/Users/stevepodell/WebstormProjects/WeVoteCordova`
+    /Users/stevepodell/WebstormProjects/WeVoteCordova
 
-The rest of these instructions assume these paths, you will have to adapt
+The rest of these instructions assume these specific paths, you will have to adapt
 the paths to fit your install setup.
 
 ## Symlinks
 
-Plan on cloning the WeVoteCordova app into a directory that parallels the We Vote WeApp directory on your computer.  Steve put his in
-`/Users/stevepodell/WebstormProjects/WeVoteCordova` with his WebApp in `/Users/stevepodell/WebstormProjects/StevesForkOfWebApp`, but
-you can put them where you like, but you will have to adapt the paths in these instructions for your setup.  Someday we should build a
-script that builds all the link on demand, or even better, a pre-compile hook that handles it all on the fly.
+Plan on cloning the WeVoteCordova app into a directory that parallels the We Vote WeApp directory on your computer.
 
 These two www directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
 
@@ -61,90 +58,92 @@ like "windowphone" is messy and will probably take some experimentation.  Lots o
  ```
 but those are not symlink friendly, and will probably require something like a fresh install.
 
+Someday we should build a script that builds all the links on demand, or even better, a pre-compile hook that handles it all on the fly.
 
 ## Install our Code and the Cordova Libraries
 
-### Change to your base "MyProjects" equivalent directory"
+1. Change to your base "MyProjects" equivalent directory
 ```
     cd /Users/stevepodell/WebstormProjects
 ```
 
-### If you are re-installing, remove prior installs
-```
+1. If you are re-installing, remove prior installs
+    ```
     rm -fr WeVoteCordovaPopulated
     rm -fr WeVoteCordova
- ```
+    ```
 
-### Clone the WeVoteCordova code
-```
+1. Clone the WeVoteCordova code
+    ```
     git clone https://github.com/wevote/WeVoteCordova.git
-```
+    ```
 
-### Make a www directory and the first symbolic link `for bundle.js`
-```
+1. Make a www directory and the first symbolic link `for bundle.js`
+    ```
     cd WeVoteCordova
     mkdir www
     cd www
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
     cd ../..
-```
+    ```
 
-### Copy this code directory to a tempoary name `WeVoteCordovaPopulated`
-```
+1. Copy this code directory to a tempoary name `WeVoteCordovaPopulated`
+    ```
    mv WeVoteCordova WeVoteCordovaPopulated
-```
+    ```
 
-### Then clone another copy of the code
-```
+1. Then clone another copy of the code
+    ```
     git clone https://github.com/wevote/WeVoteCordova.git
-```
+    ```
 
-### Run a (destructive) Cordova CLI commands on the `WeVoteCordovaPopulated` directory
-```
+1. Run a (destructive) Cordova CLI commands on the `WeVoteCordovaPopulated` directory
+    ```
     cd /Users/stevepodell/WebstormProjects/WeVoteCordovaPopulated/
     cordova platform rm ios android
     cordova platform add ios android
     cd ..
-```
+    ```
 This step adds all the Cordova libraries, and sets up directories for iOS and Android.
 
-### Copy, recursively with no overwrites,all the Cordova files onto the directory with the code we want to keep from Git
-```
+1. Copy, recursively with no overwrites,all the Cordova files onto the directory with the code we want to keep from Git
+    ```
     cp -Rvn WeVoteCordovaPopulated/ WeVoteCordova/
-```
+    ```
 At this point you can delete the WeVoteCordovaPopulated directory, it has served its purpose.
 All the code for iOS and Android has been installed on your Mac, now we will do the platform specific setup, then
 setup the IDEs.
 
 ## Platform specific iOS setup
 
-### cd to the iOS specific code area, and the www directory in that area
+1. cd to the iOS specific code area, and the www directory in that area
 iOS serves the bundle.js, the index.html, and other files from `WeVoteCordova/platforms/ios/www`
-```
+    ```
   cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www
-```
+    ```
 
-### bundle.js
+1. bundle.js
 There will be a `bundle.js` file in that www directory, but it would instantly get outdated as you
 update the WebApp in the course of developing the Cordova app, so delete it, and make a symbolic link to where the
 WebApp compile process leaves the new `bundle.js`
 
-```
-  rm bundle.js
-  ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
-```
+    ```
+    rm bundle.js
+    ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
+    ```
 
-### Make the other symlinks that the iOS cordova app will need while running
-```
+1. Make the other symlinks that the iOS cordova app will need while running
+    ```
     ln -s /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html index.html
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/css css
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/fonts fonts
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/img img
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript javascript
-```
+    ```
 
-When you are done the ios www directory should look like this
-```
+    When you are done the ios www directory should look like this
+
+    ```
     Steves-MacBook-Pro-2017:www stevepodell$ pwd
     /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www
     Steves-MacBook-Pro-2017:www stevepodell$ ls -la
@@ -162,26 +161,26 @@ When you are done the ios www directory should look like this
     lrwxr-xr-x   1 stevepodell  staff     71 Apr 12 17:23 javascript -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript
     drwxr-xr-x   8 stevepodell  staff    256 Apr 12 16:34 plugins
     Steves-MacBook-Pro-2017:www stevepodell$
-```
+    ```
 
 
 ## Install Steps for Android
 
-### cd to the Android specific code area, and the platform_www directory in that area
+1. cd to the Android specific code area, and the platform_www directory in that area
 Android serves the bundle.js in some situations from `WeVoteCordova/platforms/android/platform_www`
-```
-    /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/platform_www
-```
+    ```
+    cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/platform_www
+    ```
 
-### bundle.js
-```
+1. bundle.js
+  ```
   rm bundle.js
   ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
-```
+  ```
 
-### Make the other symlinks that the Andriod Cordova app will need while running (including another bundle.js)
-```
-    /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
+1.  Make the other symlinks that the Andriod Cordova app will need while running (including another bundle.js)
+    ```
+    cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
     ln -s /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html index.html
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/css css
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/fonts fonts
@@ -190,9 +189,9 @@ Android serves the bundle.js in some situations from `WeVoteCordova/platforms/an
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript javascript
     rm bundle.js
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
-```
-When you are done, the Andorid www directory should look like this
-```
+    ```
+    When you are done, the Android www directory should look like this
+    ```
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ pwd
     /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ls -la
@@ -210,9 +209,9 @@ When you are done, the Andorid www directory should look like this
     lrwxr-xr-x   1 stevepodell  staff     71 Apr 12 16:52 javascript -> /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript
     drwxr-xr-x   8 stevepodell  staff    256 Apr 12 16:34 plugins
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$
-```
+    ```
 
-The code install for both platforms is now done.
+    **The code install for both platforms is now done.**
 
 ## Installing the IDEs:
 
