@@ -180,26 +180,11 @@ yarn.lock
 /platforms/android/CordovaLib/
 /platforms/android/cordova/
 /platforms/android/platform_www/
-/platforms/android/app/
-/platforms/android/app/src/main/assets/www/cordova-js-src/android/nativeapiprovider.js
-/platforms/android/app/src/main/assets/www/cordova-js-src/android/promptbasednativeapi.js
-/platforms/android/app/src/main/assets/www/cordova-js-src/plugin/android/app.js
-/platforms/android/app/src/main/assets/www/cordova-js-src/platform.js
-/platforms/android/app/src/main/assets/www/cordova-js-src/exec.js
-/platforms/android/app/src/main/assets/www/css/index.css
-/platforms/android/app/src/main/assets/www/im0-pn g/logo.png
-/platforms/android/app/src/main/assets/www/js/index.js
-/platforms/android/app/src/main/assets/www/plugins/cordova-plugin-safariviewcontroller/www/SafariViewController.js
-/platforms/android/app/src/main/assets/www/cordova.js
-/platforms/android/app/src/main/assets/www/index.html
-/platforms/android/app/src/main/java/com/customtabplugin/ChromeCustomTabPlugin.java
-/platforms/android/app/src/main/java/com/customtabplugin/CustomTabServiceHelper.java
-/platforms/android/app/src/main/java/org/
 
 /platforms/ios/CordovaLib/
 /platforms/ios/platform_www/plugins/
 /platforms/ios/platform_www/cordova-js-src/
 /platforms/ios/WeVoteCordova/Plugins/
-!/platforms/ios/www/index.html
-/www/
-!/platforms/android/app/src/main/AndroidManifest.xml
+/platforms/android/app/src/main/java/
+/platforms/android/app/src/main/assets/
+/platforms/android/app/src/main/libs/
