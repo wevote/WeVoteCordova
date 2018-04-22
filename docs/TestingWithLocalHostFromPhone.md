@@ -1,5 +1,12 @@
 # Debugging from your phone to the Python WeVoteServer running on your Mac
 
+## Android Setup
+
+For Android, the app will see localhost at http://10.0.2.2:8000/   so just configure
+the api server URLs with this address, and http requests in the simulator will go to localhost.
+
+## iOS Setup
+
 Since your phone, even if attached by a USB cord, will be your WiFi network, it will not be able to
 directly reach localhost on your Mac.  If you are configured to fetch API requests from
 the live server, you should be ready to go.  If you have changes on your local Python API server

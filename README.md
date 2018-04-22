@@ -324,6 +324,8 @@ replace it with same sized art, and if you wanted to be safe I would use the Xco
 over the existing files, if you were feeling adventurous you could go directly to the files, and take the new image and 
 use it to replace the original and the 12 numbered copies of the old image.
 
+See [Device Metrics](https://material.io/devices/) for the sizes of popular devices, Android and iOS.
+
 By the way Xcode stores way too much configuration info in a binary file, and messing with them can take days to fix, going directly to the filesystem to make changes is risky.
 
 
