@@ -106,11 +106,8 @@ Someday we should build a script that builds all the links on demand, or even be
     cd /Users/stevepodell/WebstormProjects
     mv WeVoteCordova WeVoteCordovaPopulated
     ```
-
-1.  Then clone another copy of the code
-    ```
-    git clone https://github.com/wevote/WeVoteCordova.git
-    ```
+    This step has added all the Cordova libraries, installed up-to-date versions of the Cordova plugins, and set up directories for iOS and Android,
+    but it destroyed some of the source controlled configuration files by overwriting them with default scaffolding files.
 
 1.  Copy, recursively with no overwrites, all of the "Populated" Cordova files onto the target WeVoteCordova directory.
     This new directory contains all the source controlled files from git,
@@ -119,7 +116,7 @@ Someday we should build a script that builds all the links on demand, or even be
     cp -Rvn WeVoteCordovaPopulated/ WeVoteCordova/
     ```
     At this point you can delete the WeVoteCordovaPopulated directory, it has served its purpose.
-    All the code for iOS and Android has been installed on your Mac, now we will do the platform specific setup, then
+    All the code for iOS and Android has been installed on your Mac, and we will now do the platform specific setup, then
     setup the IDEs.
 
 1. You may need to setup your Github upstream remote
