@@ -118,9 +118,20 @@ Someday we should build a script that builds all the links on demand, or even be
     ```
     cp -Rvn WeVoteCordovaPopulated/ WeVoteCordova/
     ```
-At this point you can delete the WeVoteCordovaPopulated directory, it has served its purpose.
-All the code for iOS and Android has been installed on your Mac, now we will do the platform specific setup, then
-setup the IDEs.
+    At this point you can delete the WeVoteCordovaPopulated directory, it has served its purpose.
+    All the code for iOS and Android has been installed on your Mac, now we will do the platform specific setup, then
+    setup the IDEs.
+
+1. You may need to setup your Github upstream remote
+
+    https://github.com/wevote/WeVoteCordova.git
+
+1. You may need to npm install
+    ```
+    npm install
+    ```
+
+
 
 ## Platform specific iOS setup
 
