@@ -82,20 +82,29 @@ Someday we should build a script that builds all the links on demand, or even be
     git clone https://github.com/wevote/WeVoteCordova.git
     ```
 
-1.  Make a www directory and the first symbolic link `for bundle.js`
+1.  Make a www directory and the first symbolic link for `bundle.js`
 
     ```
     cd WeVoteCordova
     mkdir www
     cd www
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
-    cd ../..
     ```
 
-1.  Copy this code directory to a tempoary name `WeVoteCordovaPopulated`
+1.  Run (destructive) Cordova CLI commands on the `WeVoteCordova` directory
+    ```
+    cd /Users/stevepodell/WebstormProjects/WeVoteCordova
+    cordova platform rm ios android
+    cordova platform add ios android
+    ```
+    This step adds all the Cordova libraries, installs up-to-date versions of the Cordova plugins, and sets up directories for iOS and Android,
+    but it destroys some of the source controlled configuration files by overwriting them with default scaffolding files.
+
+1.  Rename this code directory to a temporary name: `WeVoteCordovaPopulated`
 
     ```
-   mv WeVoteCordova WeVoteCordovaPopulated
+    cd /Users/stevepodell/WebstormProjects
+    mv WeVoteCordova WeVoteCordovaPopulated
     ```
 
 1.  Then clone another copy of the code
@@ -103,16 +112,9 @@ Someday we should build a script that builds all the links on demand, or even be
     git clone https://github.com/wevote/WeVoteCordova.git
     ```
 
-1.  Run a (destructive) Cordova CLI commands on the `WeVoteCordovaPopulated` directory
-    ```
-    cd /Users/stevepodell/WebstormProjects/WeVoteCordovaPopulated/
-    cordova platform rm ios android
-    cordova platform add ios android
-    cd ..
-    ```
-This step adds all the Cordova libraries, and sets up directories for iOS and Android.
-
-1.  Copy, recursively with no overwrites, all the "Populated" Cordova files onto the directory with the code we want to keep from Git
+1.  Copy, recursively with no overwrites, all of the "Populated" Cordova files onto the target WeVoteCordova directory.
+    This new directory contains all the source controlled files from git,
+    and this step adds all the generated -- non-source controlled files.
     ```
     cp -Rvn WeVoteCordovaPopulated/ WeVoteCordova/
     ```
@@ -131,9 +133,9 @@ setup the IDEs.
 
 1.  bundle.js
 
-There will be a `bundle.js` file in that www directory, but it would instantly get outdated as you
-update the WebApp in the course of developing the Cordova app, so delete it, and make a symbolic link to where the
-WebApp compile process leaves the new `bundle.js`
+    There will be a `bundle.js` file in that www directory, but it would instantly get outdated as you
+    update the WebApp in the course of developing the Cordova app, so delete it, and make a symbolic link to where the
+    WebApp compile process leaves the new `bundle.js`
 
     ```
 
@@ -182,7 +184,7 @@ Android serves the bundle.js in some situations from `WeVoteCordova/platforms/an
     cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/platform_www
     ```
 
-1. bundle.js
+1. bundle.js (This file probably will not yet exist in this location)
   ```
   rm bundle.js
   ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/js/bundle.js bundle.js
@@ -194,7 +196,6 @@ Android serves the bundle.js in some situations from `WeVoteCordova/platforms/an
     ln -s /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html index.html
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/css css
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/fonts fonts
-    ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/img img
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/img img
     ln -s /Users/stevepodell/WebstormProjects/StevesForkOfWebApp/build/javascript javascript
     rm bundle.js
