@@ -670,9 +670,9 @@ be sure to manually make the changes in both places (yuck).  If you make the mis
 the entire directory for iOS including any configuration you made in XCode -- it might take you a lot of time to recover from
 this.
 
-### Moving the spinner upwards on the iOS Splash screen and changing it from grey to white
+### Moving the spinner upwards on the iOS Splash screen and changing it from grey to white:  Manual step required
 
-In `/Users/stevepodell/MyProjects/WeVoteCordova/platforms/ios/WeVoteCordova/Plugins/cordova-plugin-splashscreen/CDVSplashScreen.m` 
+In the non-source controlled file `/Users/stevepodell/MyProjects/WeVoteCordova/platforms/ios/WeVoteCordova/Plugins/cordova-plugin-splashscreen/CDVSplashScreen.m` 
 change two lines.  The first at about line 84:
 
     UIActivityIndicatorViewStyle topActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
