@@ -610,6 +610,103 @@ TODO: On a clean machine, capture all the steps it takes to get Android Studio
 going, and the Java environment setup.  The Android and [Cordova](https://cordova.apache.org/docs/en/latest/) documentation are a good
 start.
 
+### Running Android Cordova for the first time
+
+1.  Download and install Android Studio
+
+    Click "ok" to downloading and installing any jars or packages that the installer recommends.
+
+1.  On the welcome screen, select "open an existing project"
+
+    The existing project is the WeVoteCordova project that you have already pulled down from git.  Our Android project is 
+    contained within the WeVoteCordova project. In the open (file selection) dialog, navigate to your WeVoteCordova working 
+    directory, then to platforms, then to android and press Open.  `/Users/stevepodell/MyProjects/WeVoteCordova/platforms/android`
+
+1.  At that point there will be a series of updates and "syncing" options, where you should follow all the default choices.
+
+1.  You will probably be prompted to upgrade Gradle, Genymotion, Cordova plugins, etc.
+
+    Update them all before continuing.  Restart as recommended.
+
+    Don't worry about setting a version control root or remote, all changes that you want to get into 
+    git are in the WeVoteCordova enclosing project -- That is where you should do your pull requests,
+    not within Android Studio.
+    
+    ![ScreenShot](docs/images/SucessInstallAndroidStudio.png)
+
+1. Setup the symlinks: start by changing to the android www dir at `android/app/src/main/assets/www`
+
+    ```
+    Steves-iMac:android stevepodell$ cd /Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
+    Steves-iMac:www stevepodell$ ls -la
+    total 33624
+    drwxr-xr-x  8 stevepodell  staff       256 Apr 29 13:45 .
+    drwxr-xr-x  3 stevepodell  staff        96 Apr 29 13:45 ..
+    -rw-r--r--  1 stevepodell  staff  17126402 Apr 29 13:45 bundle.js
+    drwxr-xr-x  6 stevepodell  staff       192 Apr 29 13:45 cordova-js-src
+    -rw-r--r--  1 stevepodell  staff     73155 Apr 29 13:45 cordova.js
+    -rw-r--r--  1 stevepodell  staff      1845 Apr 29 13:45 cordova_plugins.js
+    -rw-r--r--  1 stevepodell  staff      5965 Apr 29 13:45 index.html
+    drwxr-xr-x  8 stevepodell  staff       256 Apr 29 13:45 plugins
+    Steves-iMac:www stevepodell$ 
+    ```
+    
+1. Add the rest of the symlinks.  This step removes the bundle.js and index.html that was copied here when you 
+ran "cordova platform add android"
+
+    ```
+    Steves-iMac:www stevepodell$ rm bundle.js
+    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
+    Steves-iMac:www stevepodell$ rm index.html
+    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WeVoteCordova/www/index.html index.html
+    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/css css
+    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/fonts fonts
+    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/img img
+    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/javascript javascript
+    Steves-iMac:www stevepodell$ 
+    Steves-iMac:www stevepodell$ ls -la
+    total 152
+    drwxr-xr-x  12 stevepodell  staff    384 May  9 20:43 .
+    drwxr-xr-x   3 stevepodell  staff     96 Apr 29 13:45 ..
+    lrwxr-xr-x   1 stevepodell  staff     55 May  9 13:28 bundle.js -> /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js
+    drwxr-xr-x   6 stevepodell  staff    192 Apr 29 13:45 cordova-js-src
+    -rw-r--r--   1 stevepodell  staff  73155 Apr 29 13:45 cordova.js
+    -rw-r--r--   1 stevepodell  staff   1845 Apr 29 13:45 cordova_plugins.js
+    lrwxr-xr-x   1 stevepodell  staff     46 May  9 20:43 css -> /Users/stevepodell/MyProjects/WebApp/build/css
+    lrwxr-xr-x   1 stevepodell  staff     48 May  9 20:43 fonts -> /Users/stevepodell/MyProjects/WebApp/build/fonts
+    lrwxr-xr-x   1 stevepodell  staff     46 May  9 20:43 img -> /Users/stevepodell/MyProjects/WebApp/build/img
+    lrwxr-xr-x   1 stevepodell  staff     58 May  9 20:42 index.html -> /Users/stevepodell/MyProjects/WeVoteCordova/www/index.html
+    lrwxr-xr-x   1 stevepodell  staff     53 May  9 20:43 javascript -> /Users/stevepodell/MyProjects/WebApp/build/javascript
+    drwxr-xr-x   8 stevepodell  staff    256 Apr 29 13:45 plugins
+    Steves-iMac:www stevepodell$ 
+    ```
+    
+1.  Android (Java) projects need a Run configuration to start
+
+    ![ScreenShot](docs/images/AndroidStudioAcceptDefaultSettings.png)
+
+    Accept the default settings and press "OK"
+    
+    You might see a warning: "**WARNING:** Configuration 'compile' is obsolete and has been replaced with 'implementation' 
+    and 'api'.", but it is safe to ignore
+
+
+1. Press the green "play" button to attempt to start running
+
+    ![ScreenShot](docs/images/AndroidStudioNoDeploymentTarget.png)
+    
+    If you have an Android phone or tablet, you can plug it in via USB.  Make sure debugging via tethering is 
+    enabled (google this. it varies between phone manufacturers).  If it is enabled you will see the name of the 
+    connected device (Motorola Moto G, in this example) in the dialog.  Press "OK", and the CordovaApp should start right up on 
+    the phone.
+    
+    ![ScreenShot](AndroidDeviceConnected.png)
+
+
+     ![ScreenShot](docs/images/AndroidStudioEditRunConfigurations.png)
+     ![ScreenShot](docs/images/AndoridEditConfigNoAndroidSDK.png)
+     ![ScreenShot](docs/images/AndroidSDKSetup.png)
+
 
 ### Modify Build Configuration
 
@@ -656,7 +753,7 @@ remotedebug_ios_webkit_adapter server, something in Android or Android Studio ha
 Make sure the custom scheme URL Type is still setup in Xcode
 
 ![ScreenShot](docs/images/SettingUpTheIosCustomScheme.png)
-
+__
 ### iOS has two config.xml files -- make sure you change both
 
 I think that when you (DON'T DO THIS)
