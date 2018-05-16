@@ -18,7 +18,7 @@ wrap an identical `bundle.js` that is compiled by the We Vote WebApp project.
 
 **[On to the Making an Android Release](docs/MakingAnAndroidRelease.md)**
 
-**[On to the Cordova JavaScript Differences](docs/Cordova JavaScript Differences.md)**
+**[On to the Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md)**
 
 **[On to the Cordova JavaScript Differences page](docs/TestingWithLocalHostFromPhone.md)**
 
@@ -701,6 +701,6 @@ to
 
 **[On to the Making an Android Release](docs/MakingAnAndroidRelease.md)**
 
-**[On to the Cordova JavaScript Differences ](docs/Cordova JavaScript Differences.md)**
+**[On to the Cordova JavaScript Differences ](docs/CordovaJavaScriptDifferences.md)**
 
 **[On to the Cordova JavaScript Differences pAGE](docs/TestingWithLocalHostFromPhone.md)**
