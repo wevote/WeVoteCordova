@@ -42,7 +42,7 @@ up-to-date WebApp develop.
 2. On WeVoteCordova side,on the Target General Properties tab, increment the 
 build number by one.  For example build 3, becomes Build 4.
 
-    ![ScreenShot](docs/images/XcodeGeneralProperties.png)
+    ![ScreenShot](images/XcodeGeneralProperties.png)
     
     This may be the only change that gets made in the WeVoteCordova repository,
     but it is important to check it in so that we have a record of how each build was
@@ -62,7 +62,7 @@ an account on itunesconnect
       * Allow "Upload your app's symbols...
       * Automatically manage signing
       * Upload
-      ![ScreenShot](docs/images/UploadToAppStore.png)
+      ![ScreenShot](images/UploadToAppStore.png)
 
    * After upload, it could take a half hour for the build to appear on itunes connect, and then
 the build could be "Processing" for another half hour.  (Due to an ancient Apple WebObjects
@@ -71,7 +71,7 @@ is still processing, and will reappear when done.  And sadly, the WebObjects pag
 done, so you will have to refresh to confirm that it is done processing, and probably shows "Missing Compliance"
 as its status.)
 
-    ![ScreenShot](docs/images/iTunesConnectProcessing.png)
+    ![ScreenShot](images/iTunesConnectProcessing.png)
     iTunes Connect Processing
 
 5.  Wait for the build to appear
@@ -86,7 +86,7 @@ to "Provide Export Compliance Information"  Click on the "Provide Export Complia
     to be available on the "iOS Builds" list in TestFlight.  Then a minute to an hour for the app to be available to test
     on your iPhone via the TestFlight app.
 
-    ![ScreenShot](docs/images/TestFlightAppBordered.jpg)  
+    ![ScreenShot](images/TestFlightAppBordered.jpg)  
 
 7. Finally submit for review in iTunesConnect
     Submit it for TestFlight
