@@ -40,4 +40,4 @@ in the English section of the "What's new in this release?" pane.
 
 **[Return to the WeVoteCordova home documentation page ](/README.md)**
 
-**[On to the Making and iOS Release page](docs/MakingAniOSrelease.md)**
+**[On to the Making and iOS Release page](MakingAniOSrelease.md)**

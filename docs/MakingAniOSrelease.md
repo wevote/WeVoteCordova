@@ -99,4 +99,4 @@ to "Provide Export Compliance Information"  Click on the "Provide Export Complia
 
 **[Return to the WeVoteCordova home documentation page ](/README.md)**
 
-**[On to the Making an Android Release page](docs/MakingAnAndroidRelease.md)**
+**[On to the Making an Android Release page](MakingAnAndroidRelease.md)**
