@@ -87,11 +87,10 @@ Someday we should build a script that builds all the links on demand, or even be
     npm install -g cordova
     ```
 
-1.  Make a www directory and the first symbolic link for `bundle.js`
+1.  CD to the www directory and make the first symbolic link for `bundle.js`
 
     ```
     cd WeVoteCordova
-    mkdir www
     cd www
     ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
     ```
@@ -141,7 +140,6 @@ Someday we should build a script that builds all the links on demand, or even be
     ```
     npm install
     ```
-
 
 
 ## Platform specific iOS setup
@@ -199,6 +197,26 @@ Someday we should build a script that builds all the links on demand, or even be
 
 
 ## Install Steps for Android
+
+
+1. Add a couple of lines to a resource file, that should have been updated by the install of the facebook plugin.
+
+    Until https://github.com/jeduan/cordova-plugin-facebook4/issues/599 is resolved...
+    
+    Edit `/Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/app/src/main/res/values/strings.xml`
+    
+    ```
+    <?xml version='1.0' encoding='utf-8'?>
+    <resources>
+        <string name="app_name">We Vote</string>
+        <string name="launcher_name">@string/app_name</string>
+        <string name="activity_name">@string/launcher_name</string>
+        <string name="fb_app_id">1097389196952441</string>
+        <string name="fb_app_name">WeVoteWebApp</string>
+    </resources>
+    ```
+        
+    Add those last two lines "fb_app_id" and "fb_app_name".
 
 
 1. cd to the Android specific code area, and the platform_www directory in that area
@@ -351,6 +369,11 @@ use it to replace the original and the 12 numbered copies of the old image.
 By the way Xcode stores way too much configuration info in a binary file, and messing with them can take days to fix, going directly to the filesystem to make changes is risky.
 
 
+## Debugging Cordova Differences
+Browsers are single threaded, JavaScript on browsers is also single threaded, but JavaScript running in Cordova is 
+multi-threaded.  "JavaScript in the WebView does not run on the UI thread, it also has other threads to execute the 
+html component and carry out CSS transitions."  This can cause some confusion when debugging Cordova for the first time.
+
 ## Debugging Cordova Apps with the Safari debugger
 
 
@@ -359,6 +382,8 @@ By the way Xcode stores way too much configuration info in a binary file, and me
 You don't have to actually use Safari for Mac for anything, but launching its remote debugger.  You can see it opened on its
 smallest default page in the picture above, it just has to be running so you can get to that "Develop" menu.  Once you
 open the "We Vote Cordova" page that is currently being displayed, in the piture it is the "Welcome to We Vote" page. 
+One of the symptoms, of this otherwise good thing (multiple-threads) is tha console.log lines in the resolution of promises
+often don't make it to the log.
 
 ![ScreenShot](docs/images/SafariSimulatorRunning.png)
 
