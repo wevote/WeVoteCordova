@@ -48,7 +48,6 @@
         <preference name="StatusBarStyle" value="lightcontent" />
         <preference name="SplashScreen" value="screen" />
         <preference name="SplashScreenDelay" value="6000" />
-
     </platform>
     <plugin name="cordova-plugin-device" spec="^2.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~2.4.1" />
@@ -59,4 +58,9 @@
     <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser/pull/263" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <engine name="ios" spec="~4.5.4" />
+    <plugin name="cordova-plugin-facebook4" spec="^2.1.0">
+        <variable name="APP_ID" value="1097389196952441" />
+        <variable name="APP_NAME" value="WeVoteWebApp" />
+        <variable name="ANDROID_SDK_VERSION" value="4.+" />
+    </plugin>
 </widget>
