@@ -48,6 +48,14 @@ module.exports = [
     "clobbers": [
       "window.StatusBar"
     ]
+  },
+  {
+    "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+    "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+    "pluginId": "cordova-plugin-facebook4",
+    "clobbers": [
+      "facebookConnectPlugin"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -59,7 +67,8 @@ module.exports.metadata =
   "cordova-plugin-safariviewcontroller": "1.5.2",
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-statusbar": "2.4.1",
-  "cordova-plugin-whitelist": "1.3.3"
+  "cordova-plugin-whitelist": "1.3.3",
+  "cordova-plugin-facebook4": "2.1.0"
 };
 // BOTTOM OF METADATA
 });
