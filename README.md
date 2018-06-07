@@ -14,13 +14,13 @@ native code).  All of the JavaScript and React code, and the libraries that they
 This Cordova App has two build targets, iOS and Android, and they each
 wrap an identical `bundle.js` that is compiled by the We Vote WebApp project.
 
-**[On to the Making an iOS Release page](docs/MakingAniOSrelease.md)**
+**[Making an iOS Release](docs/MakingAniOSrelease.md)**
 
-**[On to the Making an Android Release](docs/MakingAnAndroidRelease.md)**
+**[Making an Android Release](docs/MakingAnAndroidRelease.md)**
 
-**[On to the Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md)**
+**[Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md)**
 
-**[On to the Cordova JavaScript Differences page](docs/TestingWithLocalHostFromPhone.md)**
+**[Testing with localhost from an actual phone](docs/TestingWithLocalHostFromPhone.md)**
 
 ## You need a Mac to develop for iOS
 
@@ -93,6 +93,11 @@ Someday we should build a script that builds all the links on demand, or even be
     cd WeVoteCordova
     cd www
     ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
+    ```
+
+1.  Manually remove a Cordova plugin, for which we have source controlled a modified "Objective-C" file
+    cd /Users/stevepodell/MyProjects/WeVoteCordova
+    rm -fr plugins
     ```
 
 1.  Run (destructive) Cordova CLI commands on the `WeVoteCordova` directory
@@ -194,7 +199,13 @@ Someday we should build a script that builds all the links on demand, or even be
     drwxr-xr-x   8 stevepodell  staff    256 Apr 29 13:45 plugins
     Steves-iMac:www stevepodell$ 
     ```
-
+    
+If you want to test one of those links to see if it really points to where it needs to, stat can confirm it for you 
+    ```
+    Steves-iMac:www stevepodell$ stat -L bundle.js
+    16777221 4560157 -rw-r--r-- 1 stevepodell staff 0 17368113 "May 27 14:48:20 2018" "May 27 14:48:11 2018" "May 27 14:48:11 2018" "May 27 14:24:41 2018" 4194304 33928 0 bundle.js
+    Steves-iMac:www stevepodell$ 
+    ```
 
 ## Install Steps for Android
 
@@ -234,6 +245,9 @@ Android serves the bundle.js in some situations from `WeVoteCordova/platforms/an
 1.  Make the other symlinks that the Andriod Cordova app will need while running (including another bundle.js)
     ```
     cd /Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
+    rm index.html
+    rm bundle.js
+    ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
     ln -s /Users/stevepodell/MyProjects/WeVoteCordova/www/index.html index.html
     ln -s /Users/stevepodell/MyProjects/WebApp/build/css css
     ln -s /Users/stevepodell/MyProjects/WebApp/build/fonts fonts
@@ -287,6 +301,15 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     ```
     brew install node
     brew install watchman
+    ```
+    
+    On a machine where node may alread have been installed, we want to have version 10 or heigher:
+    ```
+    Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ node -v
+    v6.12.3
+    Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ brew upgrade node
+    Updating Homebrew...
+    ...
     ```
 
 1.  Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
@@ -721,11 +744,13 @@ to
     _activityView.center = CGPointMake(parentView.bounds.size.width / 2, parentView.bounds.size.height * 1 / 5 );
 
 
+----------
+## Other documentation pages:
 
-**[On to the Making an iOS Release page](docs/MakingAniOSrelease.md)**
+**[Making an iOS Release](docs/MakingAniOSrelease.md)**
 
-**[On to the Making an Android Release](docs/MakingAnAndroidRelease.md)**
+**[Making an Android Release](docs/MakingAnAndroidRelease.md)**
 
-**[On to the Cordova JavaScript Differences ](docs/CordovaJavaScriptDifferences.md)**
+**[Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md)**
 
-**[On to the Cordova JavaScript Differences pAGE](docs/TestingWithLocalHostFromPhone.md)**
+**[Testing with localhost from an actual phone](docs/TestingWithLocalHostFromPhone.md)**
