@@ -12,7 +12,7 @@ all it contains is Apache Cordova, some Documentation, and the iOS and Android c
 native code).  All of the JavaScript and React code, and the libraries that they rely on, remains in the WeVote WebApp.
 
 This Cordova App has two build targets, iOS and Android, and they each
-wrap an identical `bundle.js` that is compiled by the We Vote WebApp project..
+wrap an identical `bundle.js` that is compiled by the We Vote WebApp project.
 
 **[Making an iOS Release](docs/MakingAniOSrelease.md)**
 
@@ -151,10 +151,10 @@ Someday we should build a script that builds all the links on demand, or even be
 
 1.  cd to the iOS specific code area, and the www directory in that area
 
-  iOS serves the bundle.js, the index.html, and other files from `WeVoteCordova/platforms/ios/www`
-  ```
-  cd /Users/stevepodell/MyProjects/WeVoteCordova/platforms/ios/www
-  ```
+    iOS serves the bundle.js, the index.html, and other files from `WeVoteCordova/platforms/ios/www`
+    ```
+    cd /Users/stevepodell/MyProjects/WeVoteCordova/platforms/ios/www
+    ```
 
 1.  bundle.js
 
@@ -200,7 +200,8 @@ Someday we should build a script that builds all the links on demand, or even be
     Steves-iMac:www stevepodell$ 
     ```
     
-If you want to test one of those links to see if it really points to where it needs to, stat can confirm it for you 
+1.  If you want to test one of those links to see if it really points to where it needs to, stat can confirm it for you
+
     ```
     Steves-iMac:www stevepodell$ stat -L bundle.js
     16777221 4560157 -rw-r--r-- 1 stevepodell staff 0 17368113 "May 27 14:48:20 2018" "May 27 14:48:11 2018" "May 27 14:48:11 2018" "May 27 14:24:41 2018" 4194304 33928 0 bundle.js
@@ -230,17 +231,17 @@ If you want to test one of those links to see if it really points to where it ne
     Add those last two lines "fb_app_id" and "fb_app_name".
 
 
-1. cd to the Android specific code area, and the platform_www directory in that area
-Android serves the bundle.js in some situations from `WeVoteCordova/platforms/android/platform_www`
+1. cd to the Android specific code area, and the platform_www directory.
+    This is the area Android serves the bundle.js in some situations from `WeVoteCordova/platforms/android/platform_www`
     ```
     cd /Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/platform_www
     ```
 
 1. bundle.js (This file probably will not yet exist in this location)
-  ```
-  rm bundle.js
-  ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
-  ```
+    ```
+    rm bundle.js
+    ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
+    ```
 
 1.  Make the other symlinks that the Andriod Cordova app will need while running (including another bundle.js)
     ```
@@ -311,14 +312,14 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
 
 1.  Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
 
-Be sure to open **`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcworkspace`** each time, if
-you forget to do this portions of the app will not be in your build, since you won't have referenced the cocopods (a dependency manger,
-that pulls in some iOS specific libraries.)
+    Be sure to open **`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcworkspace`** each time, if
+    you forget to do this portions of the app will not be in your build, since you won't have referenced the cocopods (a dependency manger,
+    that pulls in some iOS specific libraries.)
 
-Be sure to NOT open ~~`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcodeproj`~~ with Xcode,
-and don't pick a choice from the history pane ("Don't click these!") in the Welcome to Xcode dialog.  The history unfortunately only contains contains
-references to .xcodeproj files.  (Hint:  When that Welcome dialog is displayed, **it is** possible to open the xcworkspace from the File/"Open Recent" menu,
-just be sure to open the xcworkspace.)
+    Be sure to NOT open ~~`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcodeproj`~~ with Xcode,
+    and don't pick a choice from the history pane ("Don't click these!") in the Welcome to Xcode dialog.  The history unfortunately only contains contains
+    references to .xcodeproj files.  (Hint:  When that Welcome dialog is displayed, **it is** possible to open the xcworkspace from the File/"Open Recent" menu,
+    just be sure to open the xcworkspace.)
 
 ![ScreenShot](docs/images/WelcomeToXcode.png)
 
@@ -515,7 +516,7 @@ These should be installed by Git, but if not you might see error "-1100" lines i
 
 In WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js
 
-    ```
+
     module.exports.metadata =
     // TOP OF METADATA
     {
@@ -527,31 +528,28 @@ In WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js
       "cordova-plugin-inappbrowser": "2.0.2",
       "cordova-plugin-splashscreen": "5.0.2"
     };
-    ```
 
 If they are not present, the commands to install them (from the WeVoteCordova dir) are:
 
-    ```
-  cordova plugin add cordova-plugin-whitelist
-  cordova plugin add cordova-plugin-device
-  cordova plugin add cordova-plugin-statusbar
-  cordova plugin add cordova-plugin-keyboard
-  cordova plugin add cordova-plugin-splashscreen
-  cordova plugin add cordova-plugin-safariviewcontroller
-  cordova plugin add https://github.com/apache/cordova-plugin-inappbrowser/pull/263
+    cordova plugin add cordova-plugin-whitelist
+    cordova plugin add cordova-plugin-device
+    cordova plugin add cordova-plugin-statusbar
+    cordova plugin add cordova-plugin-keyboard
+    cordova plugin add cordova-plugin-splashscreen
+    cordova plugin add cordova-plugin-safariviewcontroller
+    cordova plugin add https://github.com/apache/cordova-plugin-inappbrowser/pull/263
 
-    ```
 
 Note:  Sometimes the setup needs to be re-run
-    ```
+
     cordova platform remove android
     cordova platform add android
-    ```
 
 If you do this, your changes to ```WeVoteCordova/platforms/android/cordova-plugin-safariviewcontroller/cordova-SafariViewController-java18.gradle```
 and to ```WeVoteCordova/platforms/android/app/src/main/java/org/apache/cordova/inappbrowser/InAppBrowser.java``` will have to be redone.
 
 For getting the "Run" configuration to work again, you may have select on the file menu "Sync Project With Gradle Files"
+
 
 ## Android Setup
 
@@ -645,7 +643,6 @@ ran "cordova platform add android"
     You might see a warning: "**WARNING:** Configuration 'compile' is obsolete and has been replaced with 'implementation' 
     and 'api'.", but it is safe to ignore
 
-
 1. Press the green "play" button to attempt to start running
 
     ![ScreenShot](docs/images/AndroidStudioNoDeploymentTarget.png)
@@ -712,12 +709,14 @@ __
 ### iOS has two config.xml files -- make sure you change both
 
 I think that when you (DON'T DO THIS)
-    ```
+
     cordova platform remove ios
     cordova platform add ios
-    ```
-you regenerate the iOS specific `config.xml` (platforms/ios/WeVoteCordova/config.xml), that does not have config that is
-in android specific blocks in the "root" config.xml.  At run time the only config.xml that matters for iOS is `platforms/ios/WeVoteCordova/config.xml`, so
+
+or you will regenerate the iOS specific `config.xml` (platforms/ios/WeVoteCordova/config.xml), and this file will not have config that is
+in android specific blocks in the "root" config.xml.  
+
+At run time the only config.xml that matters for iOS is `platforms/ios/WeVoteCordova/config.xml`, so
 be sure to manually make the changes in both places (yuck).  If you make the mistake of removing platform for iOS, you will lose
 the entire directory for iOS including any configuration you made in XCode -- it might take you a lot of time to recover from
 this.
