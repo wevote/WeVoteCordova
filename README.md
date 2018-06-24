@@ -12,7 +12,7 @@ all it contains is Apache Cordova, some Documentation, and the iOS and Android c
 native code).  All of the JavaScript and React code, and the libraries that they rely on, remains in the WeVote WebApp.
 
 This Cordova App has two build targets, iOS and Android, and they each
-wrap an identical `bundle.js` that is compiled by the We Vote WebApp project.
+wrap an identical `bundle.js` that is compiled by the We Vote WebApp project..
 
 **[Making an iOS Release](docs/MakingAniOSrelease.md)**
 
