@@ -31,7 +31,10 @@
     </description>
     <content src="index.html" />
     <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />
+    <access origin="about:*" />
+    <allow-navigation href="about:" />
     <allow-navigation href="data:*" />
+    <allow-navigation href="*://*.facebook.com/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />

@@ -246,15 +246,12 @@ Android serves the bundle.js in some situations from `WeVoteCordova/platforms/an
     ```
     cd /Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
     rm index.html
-    rm bundle.js
-    ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
     ln -s /Users/stevepodell/MyProjects/WeVoteCordova/www/index.html index.html
     ln -s /Users/stevepodell/MyProjects/WebApp/build/css css
     ln -s /Users/stevepodell/MyProjects/WebApp/build/fonts fonts
     ln -s /Users/stevepodell/MyProjects/WebApp/build/img img
     ln -s /Users/stevepodell/MyProjects/WebApp/build/javascript javascript
-    rm bundle.js
-    ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
+
     ```
     When you are done, the Android www directory should look like this
     ```
