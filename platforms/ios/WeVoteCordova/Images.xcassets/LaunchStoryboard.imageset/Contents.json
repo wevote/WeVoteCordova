@@ -2,72 +2,72 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final.png",
+      "filename" : "LoadingScreen_desktop.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-1.png",
+      "filename" : "LoadingScreen_desktop-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-2.png",
+      "filename" : "LoadingScreen_desktop-2.png",
       "scale" : "3x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-3.png",
+      "filename" : "LoadingScreen_desktop-3.png",
       "height-class" : "compact",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-4.png",
+      "filename" : "LoadingScreen_desktop-4.png",
       "height-class" : "compact",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-5.png",
+      "filename" : "LoadingScreen_desktop-5.png",
       "height-class" : "compact",
       "scale" : "3x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-6.png",
+      "filename" : "LoadingScreen_desktop-6.png",
       "width-class" : "compact",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-7.png",
+      "filename" : "LoadingScreen_desktop-7.png",
       "width-class" : "compact",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-8.png",
+      "filename" : "LoadingScreen_desktop-8.png",
       "width-class" : "compact",
       "scale" : "3x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-9.png",
+      "filename" : "LoadingScreen_desktop-9.png",
       "width-class" : "compact",
       "height-class" : "compact",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-10.png",
+      "filename" : "LoadingScreen_desktop-10.png",
       "width-class" : "compact",
       "height-class" : "compact",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LoadingScreen-Desktop-final-11.png",
+      "filename" : "LoadingScreen_desktop-11.png",
       "width-class" : "compact",
       "height-class" : "compact",
       "scale" : "3x"
