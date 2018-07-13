@@ -49,6 +49,7 @@
     <allow-navigation href="about:" />
     <allow-navigation href="data:*" />
     <allow-navigation href="*://*.facebook.com/*" />
+    <allow-navigation href="*://*.vimeo.com/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
@@ -79,6 +80,7 @@
         <param name="onload" value="true" />
     </feature>
     <plugin name="FacebookConnectPlugin" value="FacebookConnectPlugin" />
+    <access origin="*://*.facebook.com/*" />
     <access origin="https://m.facebook.com" />
     <access origin="https://graph.facebook.com" />
     <access origin="https://api.facebook.com" />
