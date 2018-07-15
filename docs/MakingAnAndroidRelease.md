@@ -4,9 +4,18 @@
     1. Test on the "AVD" Simulators
         1. On a common phone like Google's Nexus 5, or one of the lastest Samsung phones
         1. Test on an Android tablet, like Google's Nexus 9
-    1. Get access to a current Android device and test on it.  You can just plug it in withUnlike Apple, the Android manufacturers have little incentive to
-    keep their old phones, current with the latest OS.  So phones probably become out of date for andorid testing in a year or so.  I hear
-    that Google's nexus phones are upgradeable, and might be available used.
+    1. Get access to a current Android device and test on it.  You can just plug it in with a USB cable.  Unlike Apple, the Android 
+    manufacturers have little incentive to keep their old phones, current with the latest OS.  So phones probably become out of date 
+    for andorid testing in a year or so.  I hear that Google's nexus phones are upgradeable, and one might be available used.
+
+1. Bump the android release version number in ```platforms/android/app/src/main/AndroidManifest.xml```
+
+   On the line that says something like...
+   
+   ```<manifest android:hardwareAccelerated="true" android:versionCode="100001" android:versionName="1.0.3" package="org.wevote.cordova" xmlns:android="http://schemas.android.com/apk/res/android">```
+   
+   Increment the `android:versionCode` by one, and update the `android:versionName` as desired (this usually should be the same
+    as the new iOS release name that we are releasing at the same time).
 
 1. Make sure your changes are in a pull request against the WeVoteCordova project, and ideally merged!
 
@@ -21,9 +30,12 @@
 
 1. After the signing and building 
 ![ScreenShot](images/AndroidReleaseLocation.png)
-![ScreenShot](images/AndroidReleaseReveal.png)
 
 1. Press the locate button in the Event Log, which reveals the app in finder
+![ScreenShot](images/AndroidReleaseReveal.png)
+
+1. Navigate to the [Google Play Console](https://play.google.com/apps/publish/?account=5667543967745776856#AppDashboardPlace:p=tmp.03738701602523678985.1497808111173&appid=4973045580094913462), 
+and login
 ![ScreenShot](images/AndroidReleasePlayGoogleCom.png)
     
     Drag the APK file to the browser "BROWSE FILES" pane on the https://play.google.com/apps/publish/  "Google Play", "App Releases" tab, which uploads the file to Google.
