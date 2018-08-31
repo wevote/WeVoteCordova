@@ -46,6 +46,7 @@
     <content src="index.html" />
     <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />
     <access origin="about:*"  />
+    <access origin="*://*.facebook.com/*" />
     <access origin="*://*.google.com/*" />
     <allow-navigation href="about:" />
     <allow-navigation href="data:*" />
