@@ -9,11 +9,14 @@
     <access origin="about:*"  />
     <access origin="*://*.facebook.com/*" />
     <access origin="*://*.google.com/*" />
+    <access origin="*://*.youtube.com/*" />
     <allow-navigation href="about:" />
     <allow-navigation href="data:*" />
     <allow-navigation href="*://*.facebook.com/*" />
     <allow-navigation href="*://*.vimeo.com/*" />
     <allow-navigation href="*://*.google.com/*" />
+    <allow-navigation href="*://*.googlevideo.com/*" />
+    <allow-navigation href="https://www.youtube.com/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
