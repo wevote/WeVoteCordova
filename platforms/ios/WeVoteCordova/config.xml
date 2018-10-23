@@ -19,9 +19,6 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="Device">
-        <param name="ios-package" value="CDVDevice" />
-    </feature>
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
@@ -45,7 +42,7 @@
     </description>
     <content src="index.html" />
     <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />
-    <access origin="about:*"  />
+    <access origin="about:*" />
     <access origin="*://*.facebook.com/*" />
     <access origin="*://*.google.com/*" />
     <allow-navigation href="about:" />
@@ -78,15 +75,18 @@
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
     <preference name="FadeSplashScreenDuration" value="0" />
+    <access origin="*://*.facebook.com/*" />
     <feature name="FacebookConnectPlugin">
         <param name="ios-package" value="FacebookConnectPlugin" />
         <param name="onload" value="true" />
     </feature>
     <plugin name="FacebookConnectPlugin" value="FacebookConnectPlugin" />
-    <access origin="*://*.facebook.com/*" />
     <access origin="https://m.facebook.com" />
     <access origin="https://graph.facebook.com" />
     <access origin="https://api.facebook.com" />
     <access origin="https://*.fbcdn.net" />
     <access origin="https://*.akamaihd.net" />
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
 </widget>
