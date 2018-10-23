@@ -6,17 +6,17 @@
     </description>
     <content src="index.html" />
     <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />
-    <access origin="about:*"  />
+    <access origin="about:*" />
     <access origin="*://*.facebook.com/*" />
     <access origin="*://*.google.com/*" />
     <access origin="*://*.youtube.com/*" />
     <allow-navigation href="about:" />
     <allow-navigation href="data:*" />
+    <allow-navigation href="*://*.youtube.com/*" />
     <allow-navigation href="*://*.facebook.com/*" />
     <allow-navigation href="*://*.vimeo.com/*" />
     <allow-navigation href="*://*.google.com/*" />
     <allow-navigation href="*://*.googlevideo.com/*" />
-    <allow-navigation href="https://www.youtube.com/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
@@ -43,7 +43,7 @@
         <preference name="FadeSplashScreenDuration" value="0" />
         <preference name="AllowInlineMediaPlayback" value="false" />
         <preference name="BackupWebStorage" value="cloud" />
-        <preference name="DisallowOverscroll" value="true" />  <!-- stop rubber banding bottom menu -->
+        <preference name="DisallowOverscroll" value="true" />
         <preference name="EnableViewportScale" value="false" />
         <preference name="KeyboardDisplayRequiresUserAction" value="true" />
         <preference name="MediaPlaybackRequiresUserAction" value="false" />
@@ -59,18 +59,18 @@
         <preference name="SplashScreen" value="screen" />
         <preference name="SplashScreenDelay" value="6000" />
     </platform>
-    <plugin name="cordova-plugin-device" spec="^2.0.1" />
-    <plugin name="cordova-plugin-statusbar" spec="~2.4.1" />
-    <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
-    <plugin name="cordova-plugin-safariviewcontroller" spec="^1.5.2" />
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <engine name="android" spec="~7.0.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser/pull/263" />
-    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <engine name="ios" spec="~4.5.4" />
-    <plugin name="cordova-plugin-facebook4" spec="^2.1.0">
+    <plugin name="cordova-plugin-facebook4" spec="^3.1.0">
         <variable name="APP_ID" value="1097389196952441" />
         <variable name="APP_NAME" value="WeVoteWebApp" />
-        <variable name="ANDROID_SDK_VERSION" value="4.+" />
+        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.37.0" />
     </plugin>
+    <plugin name="cordova-plugin-device" spec="^2.0.2" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
+    <plugin name="cordova-plugin-safariviewcontroller" spec="^1.5.4" />
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
 </widget>
