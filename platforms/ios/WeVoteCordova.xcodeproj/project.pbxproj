@@ -279,6 +279,11 @@
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = WE977U8FAA;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
