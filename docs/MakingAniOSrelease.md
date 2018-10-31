@@ -1,4 +1,4 @@
-## Making an iOS release
+# Making an iOS release
 
 1. After testing,and making your React changes in the WebApp, check in those changes and prepare (ideally) to build from a fully 
 up-to-date WebApp develop.

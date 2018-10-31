@@ -1,5 +1,4 @@
-
-## Platform specific iOS setup
+# Platform specific iOS setup
 
 1.  cd to the iOS specific code area, and the www directory in that area
 
