@@ -45,6 +45,24 @@ in the English section of the "What's new in this release?" pane.
 
 1. Review then publish
 
-**[Return to the WeVoteCordova home documentation page ](/README.md)**
 
-**[On to the Making and iOS Release page](MakingAniOSrelease.md)**
+
+----------
+## Next Step:
+
+**[Return to the WeVote Cordova home documentation page ](/README.md)**
+
+----------
+## Other documentation pages:
+
+
+**[Setting up your Computer for Android Development](AndroidSetup.md)**
+
+**[Making an iOS Release](MakingAniOSrelease.md)**
+
+**[Making an Android Release](MakingAnAndroidRelease.md)**
+
+**[Cordova JavaScript Differences](CordovaJavaScriptDifferences.md)**
+
+**[Testing with localhost from an actual phone](TestingWithLocalHostFromPhone.md)**
+
