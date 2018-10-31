@@ -13,5 +13,5 @@
         <meta-data android:name="com.facebook.sdk.ApplicationName" android:value="@string/fb_app_name" />
         <activity android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:label="@string/fb_app_name" android:name="com.facebook.FacebookActivity" />
     </application>
-    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="26" />
+    <uses-sdk android:targetSdkVersion="26" />
 </manifest>
