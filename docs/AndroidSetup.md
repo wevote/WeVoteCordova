@@ -1,5 +1,4 @@
-
-## Install Steps for Android
+# Install Steps for Android
 
 
 1. Add a couple of lines to a resource file, that should have been updated by the install of the facebook plugin.
@@ -66,24 +65,25 @@
     (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$
     ```
 
-    **If you started with iOS, then proceeded to Andoroid, the code install for both platforms is now done.**
+    **If you started with iOS, then proceeded to Android, the code install for both platforms is now done.**
 
 
 ----------
 ## Next Step:
 
-**[Setting up your Mac for iOS Development](docs/iOsSetup.md)**
+**[Setting up your Mac for iOS Development](iOsSetup.md)**
+
 
 ----------
 ## Other documentation pages:
 
-**[Setting up your Computer for Android Development](docs/AndroidSetup.md)**
+**[Return to the WeVote Cordova home documentation page ](/README.md)**
 
-**[Making an iOS Release](docs/MakingAniOSrelease.md)**
+**[Making an iOS Release](MakingAniOSrelease.md)**
 
-**[Making an Android Release](docs/MakingAnAndroidRelease.md)**
+**[Making an Android Release](MakingAnAndroidRelease.md)**
 
-**[Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md)**
+**[Cordova JavaScript Differences](CordovaJavaScriptDifferences.md)**
 
-**[Testing with localhost from an actual phone](docs/TestingWithLocalHostFromPhone.md)**
+**[Testing with localhost from an actual phone](TestingWithLocalHostFromPhone.md)**
 

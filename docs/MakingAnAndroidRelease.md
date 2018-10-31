@@ -1,4 +1,4 @@
-## Making an Android release
+# Making an Android release
 
 1. Test and complete your new version
     1. Test on the "AVD" Simulators
@@ -56,11 +56,9 @@ in the English section of the "What's new in this release?" pane.
 ## Other documentation pages:
 
 
-**[Setting up your Computer for Android Development](AndroidSetup.md)**
-
 **[Making an iOS Release](MakingAniOSrelease.md)**
 
-**[Making an Android Release](MakingAnAndroidRelease.md)**
+**[Setting up your Computer for Android Development](AndroidSetup.md)**
 
 **[Cordova JavaScript Differences](CordovaJavaScriptDifferences.md)**
 

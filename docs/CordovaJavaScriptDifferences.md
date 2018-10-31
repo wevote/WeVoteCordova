@@ -48,4 +48,4 @@ The following differences have been found:
     
 _______  
     
-[Return to the WeVoteCordova home documentation page ](/README.md)
+[Return to the WeVote Cordova home documentation page ](/README.md)
