@@ -60,11 +60,6 @@
         <preference name="SplashScreenDelay" value="6000" />
     </platform>
     <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser/pull/263" />
-    <plugin name="cordova-plugin-facebook4" spec="^3.1.0">
-        <variable name="APP_ID" value="1097389196952441" />
-        <variable name="APP_NAME" value="WeVoteWebApp" />
-        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.37.0" />
-    </plugin>
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-safariviewcontroller" spec="^1.5.4" />
@@ -73,4 +68,9 @@
     <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
     <engine name="android" spec="^7.1.1" />
     <engine name="ios" spec="^4.5.5" />
+    <plugin name="cordova-plugin-facebook4" spec="^3.1.0">
+        <variable name="APP_ID" value="1104012436290117" />
+        <variable name="APP_NAME" value="WeVoteWebApp" />
+        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.37.0" />
+    </plugin>
 </widget>

@@ -56,6 +56,9 @@
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
     <access origin="*://*.facebook.com/*" />
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
     <feature name="FacebookConnectPlugin">
         <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
         <param name="onload" value="true" />
@@ -66,7 +69,4 @@
     <access origin="https://*.fbcdn.net" />
     <access origin="https://*.akamaihd.net" />
     <preference name="android-minSdkVersion" value="15" />
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
 </widget>
