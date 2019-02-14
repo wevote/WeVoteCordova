@@ -33,15 +33,26 @@ If you followed the instructions for installing the WebApp you put your code at
 
     /Users/<YOUR NAME HERE>/MyProjects/WebApp
 
-The rest of these instructions assume this specific path.
+The rest of these instructions assume this specific path.  In the sample instruction substitue your actual user name for 
+"your-username".
 
 ## Symlinks
 
+This section is a discussion about Symlinks, the detailed install instructions follow in the next
+section.
+
 Plan on cloning the WeVoteCordova app into a directory that parallels the We Vote WeApp directory on your computer.
+These might be
 
-These two www directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)
+    /Users/your-username/MyProjects/WeVoteCordova
+    /Users/your-username/MyProjects/WebApp
 
+These two directories are joined together with [symlinks/Symbolic links](https://en.wikipedia.org/wiki/Symbolic_link), 
+this allows the WebApp setup to "compile" a bundle.js file, and the Cordova setup to access that file (and others) to
+have a directory structure setup for running mobile apps with their platform specific IDEs (Xcode for Apple, and Android 
+Studio for Android).
 
+<!--
 Cordova has a cool command line interface "cordova add" etc.  Adding new plugins should be captured by our Git source control setup, adding platforms
 like "windowphone" is messy and will probably take some experimentation.  Lots of Stack Overflow solutions suggest doing something like ...
 
@@ -53,12 +64,13 @@ like "windowphone" is messy and will probably take some experimentation.  Lots o
 but those are not symlink friendly, and will probably require something like a fresh install.
 
 Someday we should build a script that builds all the links on demand, or even better, a pre-compile hook that handles it all on the fly.
+-->
 
 ## Install our Code and the Cordova Libraries
 
 1. Change to your base "MyProjects" equivalent directory
     ```
-    cd /Users/stevepodell/MyProjects
+    cd /Users/your-username/MyProjects
     ```
 
 1.  If you are re-installing, remove prior installs
@@ -84,17 +96,17 @@ Someday we should build a script that builds all the links on demand, or even be
     ```
     cd WeVoteCordova
     cd www
-    ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
+    ln -s /Users/your-username/MyProjects/WebApp/build/js/bundle.js bundle.js
     ```
 
 1.  Manually remove a Cordova plugin, for which we have source controlled a modified "Objective-C" file
-    cd /Users/stevepodell/MyProjects/WeVoteCordova
+    cd /Users/your-username/MyProjects/WeVoteCordova
     rm -fr plugins
     ```
 
 1.  Run (destructive) Cordova CLI commands on the `WeVoteCordova` directory
     ```
-    cd /Users/stevepodell/MyProjects/WeVoteCordova
+    cd /Users/your-username/MyProjects/WeVoteCordova
     cordova platform rm ios android
     cordova platform add ios android
     ```
@@ -104,7 +116,7 @@ Someday we should build a script that builds all the links on demand, or even be
 1.  Rename this code directory to a temporary name: `WeVoteCordovaPopulated`
 
     ```
-    cd /Users/stevepodell/MyProjects
+    cd /Users/your-username/MyProjects
     mv WeVoteCordova WeVoteCordovaPopulated
     ```
     This step has added all the Cordova libraries, installed up-to-date versions of the Cordova plugins, and set up directories for iOS and Android,
@@ -125,32 +137,114 @@ Someday we should build a script that builds all the links on demand, or even be
     At this point you can delete the WeVoteCordovaPopulated directory, it has served its purpose.
     All the code for iOS and Android has been installed on your Mac, and we will now do the platform specific setup, then
     setup the IDEs.
+    
+    ```
+    rm -rm WeVoteCordovaPopulated
 
+    ```
+    
 1. You may need to setup your Github remotes
 
-   | Repository | URL                                                                               |
-   |------------|-----------------------------------------------------------------------------------|     
-   | upstream   | https://github.com/wevote/WeVoteCordova.git                                       |
-   | origin     | https://github.com/SailingSteve/WeVoteCordova.git   (use your own origin here!)   | 
+    ```
+    Steves-iMac: WeVoteCordova your-username$ git remote -v
+    origin  https://github.com/SailingSteve/WeVoteCordova.git (fetch)
+    origin  https://github.com/SailingSteve/WeVoteCordova.git (push)
+    upstream        https://github.com/wevote/WeVoteCordova.git (fetch)
+    upstream        https://github.com/wevote/WeVoteCordova.git (push)
+    Steves-iMac: WeVoteCordova your-username$ 
+    ```
+    If you don't have remotes defined... (remember to substitute your github user name for "SailingSteve")
+    
+    ```
+    git remote add upstream https://github.com/wevote/WeVoteCordova.git
+    git remote add origin https://github.com/SailingSteve/WeVoteCordova.git
+    ```
 
-1. You may need to npm install
+1. You may need to npm install (it doesn't hurt to do this multiple times!)
     ```
     npm install
     ```
 
-**[Setting up your Mac for iOS Development](docs/iOsSetup.md)**
+# Platform specific iOS setup
 
-**[Setting up your Computer for Android Development](docs/AndroidSetup.md)**
+Throughout these instructions, remember to substitute your actual user name for "your-username"!
 
-**[Making an iOS Release](docs/MakingAniOSrelease.md)**
+1.  cd to the iOS specific code area, and the www directory in that area
 
-**[Making an Android Release](docs/MakingAnAndroidRelease.md)**
+    iOS serves the bundle.js, the index.html, and other files from `WeVoteCordova/platforms/ios/www`
+    ```
+    cd /Users/your-username/MyProjects/WeVoteCordova/platforms/ios/www
+    ```
 
-**[Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md)**
+1.  bundle.js
 
-**[Testing with localhost from an actual phone](docs/TestingWithLocalHostFromPhone.md)**
+    There will be a `bundle.js` file in that www directory, but it would instantly get outdated as you
+    update the WebApp in the course of developing the Cordova app, so delete it, and make a symbolic link to where the
+    WebApp compile process leaves the new `bundle.js`
 
+    ```
+    rm bundle.js
+    ln -s /Users/your-username/MyProjects/WebApp/build/js/bundle.js bundle.js
+    ```
 
+1.  Make the other symlinks that the iOS cordova app will need while running.  (Remember to substitute your actual user name
+ in place of 'your-username'!)
+
+    ```
+    rm index.html
+    ln -s /Users/your-username/MyProjects/WeVoteCordova/www/index.html index.html
+    ln -s /Users/your-username/MyProjects/WebApp/build/css css
+    ln -s /Users/your-username/MyProjects/WebApp/build/fonts fonts
+    ln -s /Users/your-username/MyProjects/WebApp/build/img img
+    ln -s /Users/your-username/MyProjects/WebApp/build/javascript javascript
+    ```
+
+    When you are done the ios www directory should look like this
+
+    ```
+    Steves-iMac:www your-username$ pwd
+    /Users/your-username/WebstormProjects/WeVoteCordova/platforms/ios/www
+    Steves-iMac:www your-username$ ls -la
+    total 168
+    drwxr-xr-x  12 your-username  staff    384 Oct 14 00:11 .
+    drwxr-xr-x  14 your-username  staff    448 Nov  8 12:15 ..
+    lrwxr-xr-x   1 your-username  staff     61 Jun  5  2018 bundle.js -> /Users/your-username/MyProjects/WebApp/build/js/bundle.js
+    drwxr-xr-x   5 your-username  staff    160 Oct 14 00:11 cordova-js-src
+    -rw-r--r--   1 your-username  staff  78044 Jun  5  2018 cordova.js
+    -rw-r--r--   1 your-username  staff   2122 Nov  5 12:55 cordova_plugins.js
+    lrwxr-xr-x   1 your-username  staff     52 Jun  5  2018 css -> /Users/your-username/MyProjects/WebApp/build/css
+    lrwxr-xr-x   1 your-username  staff     54 Jun  5  2018 fonts -> /Users/your-username/MyProjects/WebApp/build/fonts
+    lrwxr-xr-x   1 your-username  staff     52 Jun  5  2018 img -> /Users/your-username/MyProjects/WebApp/build/img
+    lrwxr-xr-x   1 your-username  staff     64 Jun  5  2018 index.html -> /Users/your-username/MyProjects/WeVoteCordova/www/index.html
+    lrwxr-xr-x   1 your-username  staff     59 Jun  5  2018 javascript -> /Users/your-username/MyProjects/WebApp/build/javascript
+    drwxr-xr-x   9 your-username  staff    288 Nov  5 12:55 plugins
+    Steves-iMac:www your-username$
+    ```
+    
+1.  You should test each one of those links, to make sure that they really point to where it needs to. It is much easier 
+to test first, rather than making a setup mistake and having to diagnose the problem later on.  Use `stat -L` to confirm 
+that the link points to a sizeable file (17856048 bytes in the case of bundle.js), if stat reports a file size of less than 
+100 bytes, then the link is probably incorrect.  Use `ls` to make sure that the links for directories, contain a few files.
+
+    ```
+    Steves-iMac:www your-username$ pwd
+    /Users/your-username/MyProjects/WeVoteCordova/platforms/ios/www
+    Steves-iMac:www your-username$ stat -L bundle.js
+    16777220 57914434 -rw-r--r-- 1 your-username staff 0 17856048 "Feb 13 13:53:16 2019" "Feb 13 13:53:16 2019" "Feb 13 13:53:16 2019" "Feb 13 13:52:45 2019" 4096 34880 0 bundle.js
+    Steves-iMac:www your-username$ ls css
+    bootstrap.css           bootstrap.css.map       loading-screen.css      loading-screen.css.map  main.css                main.css.map
+    Steves-iMac:www your-username$ls fonts
+    FontAwesome.otf                         app-fonts.ttf                           fontawesome-webfont.svg                 fontawesome-webfont.woff2               glyphicons-halflings-regular.ttf
+    app-fonts.eot                           app-fonts.woff                          fontawesome-webfont.ttf                 glyphicons-halflings-regular.eot        glyphicons-halflings-regular.woff
+    app-fonts.svg                           fontawesome-webfont.eot                 fontawesome-webfont.woff                glyphicons-halflings-regular.svg        glyphicons-halflings-regular.woff2
+    Steves-iMac:www your-username$ ls img
+    global  tools   welcome
+    Steves-iMac:www your-username$ stat -L index.html
+    16777220 39211364 -rw-r--r-- 1 your-username staff 0 6393 "Feb 13 12:46:51 2019" "Nov 26 14:08:33 2018" "Nov 26 14:08:33 2018" "Nov 26 14:08:33 2018" 4096 16 0 index.html
+    Steves-iMac:www your-username$ ls javascript
+    google-analytics-template.js    google-tag-manager-template.js
+    Steves-iMac:www your-username$ 
+    ```
 
 ## Installing the IDEs:
 
@@ -178,20 +272,20 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     
     On a machine where node may alread have been installed, we want to have version 10 or heigher:
     ```
-    Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ node -v
+    Steves-iMac:WeVoteCordova your-username$ node -v
     v6.12.3
-    Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ brew upgrade node
+    Steves-iMac:WeVoteCordova your-username$ brew upgrade node
     Updating Homebrew...
     ...
     ```
 
 1.  Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
 
-    Be sure to open **`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcworkspace`** each time, if
+    Be sure to open **`/Users/your-username/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcworkspace`** each time, if
     you forget to do this portions of the app will not be in your build, since you won't have referenced the cocopods (a dependency manger,
     that pulls in some iOS specific libraries.)
 
-    Be sure to NOT open ~~`/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcodeproj`~~ with Xcode,
+    Be sure to NOT open ~~`/Users/your-username/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcodeproj`~~ with Xcode,
     and don't pick a choice from the history pane ("Don't click these!") in the Welcome to Xcode dialog.  The history unfortunately only contains contains
     references to .xcodeproj files.  (Hint:  When that Welcome dialog is displayed, **it is** possible to open the xcworkspace from the File/"Open Recent" menu,
     just be sure to open the xcworkspace.)
@@ -240,21 +334,21 @@ location in the universal section.
 This resulted in these files being created:
 
     ```
-    (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$ ls -la ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/*
-    -rw-r--r--  1 stevepodell  staff    3765 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Contents.json
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-1.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-10.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-11.png
-    -rw-r--r--@ 1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-2.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-3.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-4.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-5.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-6.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-7.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-8.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-9.png
-    -rw-r--r--  1 stevepodell  staff  134330 Mar 22 08:26 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany.png
-    (WebAppEnv)Steves-MacBook-Pro-2017:ios stevepodell$
+    (WebAppEnv)Steves-iMac:ios your-username$ ls -la ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/*
+    -rw-r--r--  1 your-username  staff    3765 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Contents.json
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-1.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-10.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-11.png
+    -rw-r--r--@ 1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-2.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-3.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-4.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-5.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-6.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-7.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-8.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-9.png
+    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:26 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany.png
+    (WebAppEnv)Steves-iMac:ios your-username$
     ```
 
 So to replace the splash screen, I would take `./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany.png` and 
@@ -315,7 +409,7 @@ Install the remotedebug_ios_webkit_adapter (from a terminal window):
 Run the remotedebug_ios_webkit_adapter:
 
 
-    (WebAppEnv)Steves-MacBook-Pro-2017:WeVoteCordova stevepodell$ remotedebug_ios_webkit_adapter --port=9000
+    (WebAppEnv)Steves-iMac:WeVoteCordova your-username$ remotedebug_ios_webkit_adapter --port=9000
     remotedebug-ios-webkit-adapter is listening on port 9000
     iosAdapter.getTargets
     iosAdapter.getTargets
@@ -448,7 +542,7 @@ start.
 
     The existing project is the WeVoteCordova project that you have already pulled down from git.  Our Android project is 
     contained within the WeVoteCordova project. In the open (file selection) dialog, navigate to your WeVoteCordova working 
-    directory, then to platforms, then to android and press Open.  `/Users/stevepodell/MyProjects/WeVoteCordova/platforms/android`
+    directory, then to platforms, then to android and press Open.  `/Users/your-username/MyProjects/WeVoteCordova/platforms/android`
 
 1.  At that point there will be a series of updates and "syncing" options, where you should follow all the default choices.
 
@@ -465,48 +559,47 @@ start.
 1. Setup the symlinks: start by changing to the android www dir at `android/app/src/main/assets/www`
 
     ```
-    Steves-iMac:android stevepodell$ cd /Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
-    Steves-iMac:www stevepodell$ ls -la
+    Steves-iMac:android your-username$ cd /Users/your-username/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
+    Steves-iMac:www your-username$ ls -la
     total 33624
-    drwxr-xr-x  8 stevepodell  staff       256 Apr 29 13:45 .
-    drwxr-xr-x  3 stevepodell  staff        96 Apr 29 13:45 ..
-    -rw-r--r--  1 stevepodell  staff  17126402 Apr 29 13:45 bundle.js
-    drwxr-xr-x  6 stevepodell  staff       192 Apr 29 13:45 cordova-js-src
-    -rw-r--r--  1 stevepodell  staff     73155 Apr 29 13:45 cordova.js
-    -rw-r--r--  1 stevepodell  staff      1845 Apr 29 13:45 cordova_plugins.js
-    -rw-r--r--  1 stevepodell  staff      5965 Apr 29 13:45 index.html
-    drwxr-xr-x  8 stevepodell  staff       256 Apr 29 13:45 plugins
-    Steves-iMac:www stevepodell$ 
+    drwxr-xr-x  8 your-username  staff       256 Apr 29 13:45 .
+    drwxr-xr-x  3 your-username  staff        96 Apr 29 13:45 ..
+    -rw-r--r--  1 your-username  staff  17126402 Apr 29 13:45 bundle.js
+    drwxr-xr-x  6 your-username  staff       192 Apr 29 13:45 cordova-js-src
+    -rw-r--r--  1 your-username  staff     73155 Apr 29 13:45 cordova.js
+    -rw-r--r--  1 your-username  staff      1845 Apr 29 13:45 cordova_plugins.js
+    -rw-r--r--  1 your-username  staff      5965 Apr 29 13:45 index.html
+    drwxr-xr-x  8 your-username  staff       256 Apr 29 13:45 plugins
+    Steves-iMac:www your-username$ 
     ```
     
 1. Add the rest of the symlinks.  This step removes the bundle.js and index.html that was copied here when you 
 ran "cordova platform add android"
 
     ```
-    Steves-iMac:www stevepodell$ rm bundle.js
-    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
-    Steves-iMac:www stevepodell$ rm index.html
-    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WeVoteCordova/www/index.html index.html
-    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/css css
-    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/fonts fonts
-    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/img img
-    Steves-iMac:www stevepodell$ ln -s /Users/stevepodell/MyProjects/WebApp/build/javascript javascript
-    Steves-iMac:www stevepodell$ 
-    Steves-iMac:www stevepodell$ ls -la
+    Steves-iMac:www your-username$ rm bundle.js
+    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/js/bundle.js bundle.js
+    Steves-iMac:www your-username$ rm index.html
+    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WeVoteCordova/www/index.html index.html
+    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/css css
+    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/fonts fonts
+    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/img img
+    Steves-iMac:www your-username$
+    Steves-iMac:www your-username$ ls -la
     total 152
-    drwxr-xr-x  12 stevepodell  staff    384 May  9 20:43 .
-    drwxr-xr-x   3 stevepodell  staff     96 Apr 29 13:45 ..
-    lrwxr-xr-x   1 stevepodell  staff     55 May  9 13:28 bundle.js -> /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js
-    drwxr-xr-x   6 stevepodell  staff    192 Apr 29 13:45 cordova-js-src
-    -rw-r--r--   1 stevepodell  staff  73155 Apr 29 13:45 cordova.js
-    -rw-r--r--   1 stevepodell  staff   1845 Apr 29 13:45 cordova_plugins.js
-    lrwxr-xr-x   1 stevepodell  staff     46 May  9 20:43 css -> /Users/stevepodell/MyProjects/WebApp/build/css
-    lrwxr-xr-x   1 stevepodell  staff     48 May  9 20:43 fonts -> /Users/stevepodell/MyProjects/WebApp/build/fonts
-    lrwxr-xr-x   1 stevepodell  staff     46 May  9 20:43 img -> /Users/stevepodell/MyProjects/WebApp/build/img
-    lrwxr-xr-x   1 stevepodell  staff     58 May  9 20:42 index.html -> /Users/stevepodell/MyProjects/WeVoteCordova/www/index.html
-    lrwxr-xr-x   1 stevepodell  staff     53 May  9 20:43 javascript -> /Users/stevepodell/MyProjects/WebApp/build/javascript
-    drwxr-xr-x   8 stevepodell  staff    256 Apr 29 13:45 plugins
-    Steves-iMac:www stevepodell$ 
+    drwxr-xr-x  12 your-username  staff    384 May  9 20:43 .
+    drwxr-xr-x   3 your-username  staff     96 Apr 29 13:45 ..
+    lrwxr-xr-x   1 your-username  staff     55 May  9 13:28 bundle.js -> /Users/your-username/MyProjects/WebApp/build/js/bundle.js
+    drwxr-xr-x   6 your-username  staff    192 Apr 29 13:45 cordova-js-src
+    -rw-r--r--   1 your-username  staff  73155 Apr 29 13:45 cordova.js
+    -rw-r--r--   1 your-username  staff   1845 Apr 29 13:45 cordova_plugins.js
+    lrwxr-xr-x   1 your-username  staff     46 May  9 20:43 css -> /Users/your-username/MyProjects/WebApp/build/css
+    lrwxr-xr-x   1 your-username  staff     48 May  9 20:43 fonts -> /Users/your-username/MyProjects/WebApp/build/fonts
+    lrwxr-xr-x   1 your-username  staff     46 May  9 20:43 img -> /Users/your-username/MyProjects/WebApp/build/img
+    lrwxr-xr-x   1 your-username  staff     58 May  9 20:42 index.html -> /Users/your-username/MyProjects/WeVoteCordova/www/index.html
+    lrwxr-xr-x   1 your-username  staff     53 May  9 20:43 javascript -> /Users/your-username/MyProjects/WebApp/build/javascript
+    drwxr-xr-x   8 your-username  staff    256 Apr 29 13:45 plugins
+    Steves-iMac:www your-username$ 
     ```
     
 1.  Android (Java) projects need a Run configuration to start
@@ -598,7 +691,7 @@ this.
 
 ### Moving the spinner upwards on the iOS Splash screen and changing it from grey to white:  Manual step required
 
-In the non-source controlled file `/Users/stevepodell/MyProjects/WeVoteCordova/platforms/ios/WeVoteCordova/Plugins/cordova-plugin-splashscreen/CDVSplashScreen.m` 
+In the non-source controlled file `/Users/your-username/MyProjects/WeVoteCordova/platforms/ios/WeVoteCordova/Plugins/cordova-plugin-splashscreen/CDVSplashScreen.m` 
 change two lines.  The first at about line 84:
 
     UIActivityIndicatorViewStyle topActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
@@ -617,9 +710,6 @@ to
 
 ----------
 ## Other documentation pages:
-
-
-**[Setting up your Mac for iOS Development](docs/iOsSetup.md)**
 
 **[Setting up your Computer for Android Development](docs/AndroidSetup.md)**
 

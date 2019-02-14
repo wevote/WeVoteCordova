@@ -6,7 +6,7 @@
         1. Test on an Android tablet, like Google's Nexus 10
     1. Get access to a current Android device and test on it.  You can just plug it in with a USB cable.  Unlike Apple, the Android 
     manufacturers have little incentive to keep their old phones, current with the latest OS.  So phones probably become out of date 
-    for andorid testing in a year or so.  I hear that Google's nexus phones are upgradeable, and one might be available used.
+    for android testing in a year or so.  I hear that Google's nexus phones are upgradeable, and one might be available used.
 
 1. Bump the android release version number in ```platforms/android/app/src/main/AndroidManifest.xml```
 

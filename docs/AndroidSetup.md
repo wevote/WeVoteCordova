@@ -5,7 +5,7 @@
 
     Until https://github.com/jeduan/cordova-plugin-facebook4/issues/599 is resolved...
     
-    Edit `/Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/app/src/main/res/values/strings.xml`
+    Edit `/Users/your-username/MyProjects/WeVoteCordova/platforms/android/app/src/main/res/values/strings.xml`
     
     ```
     <?xml version='1.0' encoding='utf-8'?>
@@ -24,55 +24,48 @@
 1. cd to the Android specific code area, and the platform_www directory.
     This is the area Android serves the bundle.js in some situations from `WeVoteCordova/platforms/android/platform_www`
     ```
-    cd /Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/platform_www
+    cd /Users/your-username/MyProjects/WeVoteCordova/platforms/android/platform_www
     ```
 
 1. bundle.js (This file probably will not yet exist in this location)
     ```
     rm bundle.js
-    ln -s /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js bundle.js
+    ln -s /Users/your-username/MyProjects/WebApp/build/js/bundle.js bundle.js
     ```
 
 1.  Make the other symlinks that the Andriod Cordova app will need while running (including another bundle.js)
     ```
-    cd /Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
+    cd /Users/your-username/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
     rm index.html
-    ln -s /Users/stevepodell/MyProjects/WeVoteCordova/www/index.html index.html
-    ln -s /Users/stevepodell/MyProjects/WebApp/build/css css
-    ln -s /Users/stevepodell/MyProjects/WebApp/build/fonts fonts
-    ln -s /Users/stevepodell/MyProjects/WebApp/build/img img
-    ln -s /Users/stevepodell/MyProjects/WebApp/build/javascript javascript
+    ln -s /Users/your-username/MyProjects/WeVoteCordova/www/index.html index.html
+    ln -s /Users/your-username/MyProjects/WebApp/build/css css
+    ln -s /Users/your-username/MyProjects/WebApp/build/fonts fonts
+    ln -s /Users/your-username/MyProjects/WebApp/build/img img
+    ln -s /Users/your-username/MyProjects/WebApp/build/javascript javascript
 
     ```
     When you are done, the Android www directory should look like this
     ```
-    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ pwd
-    /Users/stevepodell/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
-    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$ ls -la
+    (WebAppEnv)Steves-iMac:www your-username$ pwd
+    /Users/your-username/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
+    (WebAppEnv)Steves-iMac:www your-username$ ls -la
     total 152
-    drwxr-xr-x  12 stevepodell  staff    384 Apr 12 16:53 .
-    drwxr-xr-x   3 stevepodell  staff     96 Apr 12 16:34 ..
-    lrwxr-xr-x   1 stevepodell  staff     73 Apr 12 16:53 bundle.js -> /Users/stevepodell/MyProjects/WebApp/build/js/bundle.js
-    drwxr-xr-x   6 stevepodell  staff    192 Apr 12 16:34 cordova-js-src
-    -rw-r--r--   1 stevepodell  staff  73155 Apr 12 16:34 cordova.js
-    -rw-r--r--   1 stevepodell  staff   1845 Apr 12 16:34 cordova_plugins.js
-    lrwxr-xr-x   1 stevepodell  staff     64 Apr 12 16:52 css -> /Users/stevepodell/MyProjects/WebApp/build/css
-    lrwxr-xr-x   1 stevepodell  staff     66 Apr 12 16:52 fonts -> /Users/stevepodell/MyProjects/WebApp/build/fonts
-    lrwxr-xr-x   1 stevepodell  staff     64 Apr 12 16:52 img -> /Users/stevepodell/MyProjects/WebApp/build/img
-    lrwxr-xr-x   1 stevepodell  staff     64 Apr 12 16:52 index.html -> /Users/stevepodell/MyProjects/WeVoteCordova/www/index.html
-    lrwxr-xr-x   1 stevepodell  staff     71 Apr 12 16:52 javascript -> /Users/stevepodell/MyProjects/WebApp/build/javascript
-    drwxr-xr-x   8 stevepodell  staff    256 Apr 12 16:34 plugins
-    (WebAppEnv)Steves-MacBook-Pro-2017:www stevepodell$
+    drwxr-xr-x  12 your-username  staff    384 Apr 12 16:53 .
+    drwxr-xr-x   3 your-username  staff     96 Apr 12 16:34 ..
+    lrwxr-xr-x   1 your-username  staff     73 Apr 12 16:53 bundle.js -> /Users/your-username/MyProjects/WebApp/build/js/bundle.js
+    drwxr-xr-x   6 your-username  staff    192 Apr 12 16:34 cordova-js-src
+    -rw-r--r--   1 your-username  staff  73155 Apr 12 16:34 cordova.js
+    -rw-r--r--   1 your-username  staff   1845 Apr 12 16:34 cordova_plugins.js
+    lrwxr-xr-x   1 your-username  staff     64 Apr 12 16:52 css -> /Users/your-username/MyProjects/WebApp/build/css
+    lrwxr-xr-x   1 your-username  staff     66 Apr 12 16:52 fonts -> /Users/your-username/MyProjects/WebApp/build/fonts
+    lrwxr-xr-x   1 your-username  staff     64 Apr 12 16:52 img -> /Users/your-username/MyProjects/WebApp/build/img
+    lrwxr-xr-x   1 your-username  staff     64 Apr 12 16:52 index.html -> /Users/your-username/MyProjects/WeVoteCordova/www/index.html
+    lrwxr-xr-x   1 your-username  staff     71 Apr 12 16:52 javascript -> /Users/your-username/MyProjects/WebApp/build/javascript
+    drwxr-xr-x   8 your-username  staff    256 Apr 12 16:34 plugins
+    (WebAppEnv)Steves-iMac:www your-username$
     ```
 
     **If you started with iOS, then proceeded to Android, the code install for both platforms is now done.**
-
-
-----------
-## Next Step:
-
-**[Setting up your Mac for iOS Development](iOsSetup.md)**
-
 
 ----------
 ## Other documentation pages:
