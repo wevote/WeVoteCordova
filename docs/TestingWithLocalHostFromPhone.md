@@ -19,7 +19,7 @@ proxy:
 2.  Run ngrok so that it proxys to your localhost port 8000:
 
 ```
-Steves-MacBook-Pro-2017:~ stevepodell$ /Users/stevepodell/PythonProjects/ngrok/ngrok http 8000
+Steves-iMac:~ your-username$ /Users/your-username/PythonProjects/ngrok/ngrok http 8000
 ```
 
 ![ScreenShot](images/NgrokUIWin.png)
