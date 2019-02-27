@@ -1,8 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="org.wevote.cordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <feature name="InAppBrowser">
-        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
@@ -31,11 +40,14 @@
     <access origin="about:*" />
     <access origin="*://*.facebook.com/*" />
     <access origin="*://*.google.com/*" />
+    <access origin="*://*.youtube.com/*" />
     <allow-navigation href="about:" />
     <allow-navigation href="data:*" />
+    <allow-navigation href="*://*.youtube.com/*" />
     <allow-navigation href="*://*.facebook.com/*" />
     <allow-navigation href="*://*.vimeo.com/*" />
     <allow-navigation href="*://*.google.com/*" />
+    <allow-navigation href="*://*.googlevideo.com/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
@@ -52,21 +64,11 @@
     <splash density="port-xhdpi" src="res/screen/android/screen-xdpi-portrait.png" />
     <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="android-minSdkVersion" value="16" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
-    <access origin="*://*.facebook.com/*" />
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
-    <feature name="FacebookConnectPlugin">
-        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
-        <param name="onload" value="true" />
-    </feature>
-    <access origin="https://m.facebook.com" />
-    <access origin="https://graph.facebook.com" />
-    <access origin="https://api.facebook.com" />
-    <access origin="https://*.fbcdn.net" />
-    <access origin="https://*.akamaihd.net" />
-    <preference name="android-minSdkVersion" value="15" />
 </widget>

@@ -45,7 +45,16 @@ in the English section of the "What's new in this release?" pane.
 
 1. Review then publish
 
+## Making an APK for Saucelabs testing
 
+The build process in Android Studio, builds an APK for each release -- the one you upload to google to make a release,
+it is located at 
+
+    WeVoteCordova/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+
+or 
+
+    WeVoteCordova/platforms/android/app/build/outputs/apk/debug/app-debug.apk
 
 ----------
 ## Next Step:
