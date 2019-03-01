@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.wevote.cordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets"
-        xmlns:cdv="http://cordova.apache.org/ns/1.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/ns/widgets
-                http://cordova.apache.org/ns/1.0 ">
+<widget id="org.wevote.cordova" version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.w3.org/ns/widgets">
     <name>WeVoteCordova</name>
     <description>
         We Vote Cordova wrapper for the We Vote WebApp root
@@ -25,6 +25,7 @@
     <allow-intent href="sms:*"/>
     <allow-intent href="mailto:*"/>
     <allow-intent href="geo:*"/>
+    <allow-intent href="wevotetwitterscheme:"/>
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="6000"/>
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme"/>

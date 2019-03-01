@@ -69,6 +69,7 @@
     <allow-intent href="geo:*" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
+    <allow-intent href="wevotetwitterscheme:*" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
     <preference name="FadeSplashScreenDuration" value="0" />

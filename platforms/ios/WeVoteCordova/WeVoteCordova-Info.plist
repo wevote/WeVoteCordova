@@ -32,6 +32,16 @@
 				<string>fb1097389196952441</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>org.wevote.cordova</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wevotetwitterscheme</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0.20</string>
@@ -112,6 +122,8 @@
 				<true/>
 			</dict>
 		</dict>
+		<key>New item</key>
+		<string></string>
 	</dict>
 	<key>NSMainNibFile</key>
 	<string></string>
