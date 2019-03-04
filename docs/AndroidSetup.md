@@ -20,7 +20,6 @@
         
     Add those last two lines "fb_app_id" and "fb_app_name".
 
-
 1. cd to the Android specific code area, and the platform_www directory.
     This is the area Android serves the bundle.js in some situations from `WeVoteCordova/platforms/android/platform_www`
     ```

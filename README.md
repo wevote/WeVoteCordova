@@ -720,3 +720,5 @@ to
 **[Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md)**
 
 **[Testing with localhost from an actual phone](docs/TestingWithLocalHostFromPhone.md)**
+
+**[Update the icons and splashscreens with new artwork](res/screen/ios)**

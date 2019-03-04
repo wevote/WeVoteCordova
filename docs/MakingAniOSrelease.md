@@ -96,6 +96,12 @@ to "Provide Export Compliance Information"  Click on the "Provide Export Complia
 
 8.  Once testing is complete, submit it for "Review"
 
+## Making an IPA file for Saucelabs testing
+
+See the [SauceLabs instructions for creating an IPA file](https://wiki.saucelabs.com/display/DOCS/Creating+an+ipa+File)
+
+----
+Next Steps:
 
 **[Return to the WeVoteCordova home documentation page ](/README.md)**
 
