@@ -36,11 +36,13 @@
         <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png"/>
         <splash density="land-xhdpi" src="res/screen/android/screen-xdpi-landscape.png"/>
         <splash density="land-xxhdpi" src="res/screen/android/screen-xxhdpi-landscape.png"/>
+        <splash density="land-xxxhdpi" src="res/screen/android/screen-xxxhdpi-landscape.png" />
         <splash density="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png"/>
         <splash density="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png"/>
         <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png"/>
         <splash density="port-xhdpi" src="res/screen/android/screen-xdpi-portrait.png"/>
         <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png"/>
+        <splash density="port-xxxhdpi" src="res/screen/android/screen-xxxhdpi-portrait.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*"/>
