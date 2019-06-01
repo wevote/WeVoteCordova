@@ -5,7 +5,7 @@ and native code, and build an app for iOS or Android that can be released as an 
 works perfectly well with React apps.
 
 For a very simple app, you literally just drop it into Cordova and go, for more complex apps (like ours) there are some
-changes to be made.  See [Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
+changes to be made.  See [Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md).
 
 We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  The WeVoteCordova side is so thin, is that
 all it contains is Apache Cordova, some Documentation, and the iOS and Android config (and possibly a small amount of 
@@ -371,14 +371,14 @@ html component and carry out CSS transitions."  This can cause some confusion wh
 
 You don't have to actually use Safari for Mac for anything, but launching its remote debugger.  You can see it opened on its
 smallest default page in the picture above, it just has to be running so you can get to that "Develop" menu.  Once you
-open the "We Vote Cordova" page that is currently being displayed, in the piture it is the "Welcome to We Vote" page. 
+open the "We Vote Cordova" page that is currently being displayed, in the picture it is the "Welcome to We Vote" page. 
 One of the symptoms, of this otherwise good thing (multiple-threads) is tha console.log lines in the resolution of promises
 often don't make it to the log.
 
 ![ScreenShot](docs/images/SafariSimulatorRunning.png)
 
-It is easy to get the Safari debugger working, but it is missing lots of features that we are used to from the
-Chrome Devtools Debugger.
+It is easy to get the Safari debugger working, and overtime it is adding more of the features we are used to
+from Chrome Devtools Debugger.
 
 
 1. Enable debugging in Safari, [see this article](http://geeklearning.io/apache-cordova-and-remote-debugging-on-ios/)
@@ -454,7 +454,7 @@ the current breakpoints.
 In Apache Cordova, all the real app code is in that `bundle.js` we make in the WebApp setup, but there are some code
 changes in the WebApp that are necessary to support cordova.
 
-[Cordova JavaScript Differences](docs/Cordova%20JavaScript%20Differences.md).
+[Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md).
 
 
 ## Testing from a physical phone with the API server running on your Mac
@@ -620,7 +620,7 @@ ran "cordova platform add android"
     connected device (Motorola Moto G, in this example) in the dialog.  Press "OK", and the CordovaApp should start right up on 
     the phone.
     
-    ![ScreenShot](AndroidDeviceConnected.png)
+    ![ScreenShot](docs/images/AndroidDeviceConnected.png)
 
 
      ![ScreenShot](docs/images/AndroidStudioEditRunConfigurations.png)
