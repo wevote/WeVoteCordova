@@ -377,8 +377,8 @@ often don't make it to the log.
 
 ![ScreenShot](docs/images/SafariSimulatorRunning.png)
 
-It is easy to get the Safari debugger working, and overtime it is adding more of the features we are used to
-from Chrome Devtools Debugger.
+It is easy to get the Safari debugger working, and over time Apple is adding more of the features we are used to
+from the Chrome Devtools Debugger.
 
 
 1. Enable debugging in Safari, [see this article](http://geeklearning.io/apache-cordova-and-remote-debugging-on-ios/)

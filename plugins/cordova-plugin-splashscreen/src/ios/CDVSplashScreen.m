@@ -81,7 +81,7 @@
     [(CDVViewController *)self.viewController setEnabledAutorotation:autorotateValue];
 
     NSString* topActivityIndicator = [self.commandDelegate.settings objectForKey:[@"TopActivityIndicator" lowercaseString]];
-    UIActivityIndicatorViewStyle topActivityIndicatorStyle = UIActivityIndicatorViewStyleWhite;  // Steve
+    UIActivityIndicatorViewStyle topActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;  // Steve
 
     if ([topActivityIndicator isEqualToString:@"whiteLarge"])
     {
@@ -362,7 +362,7 @@
         CGSize viewportSize = [UIApplication sharedApplication].delegate.window.bounds.size;
         _imageView.frame = CGRectMake(0, 0, viewportSize.width, viewportSize.height);
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
-        return; 
+        return;
     }
 
     UIImage* img = _imageView.image;
