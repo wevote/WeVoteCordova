@@ -22,7 +22,7 @@
 		65A6A5DAE9014349AFC88C78 /* CDVKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6035DBDED15A4E99B38D6565 /* CDVKeyboard.m */; };
 		68068EEDA7C54AA0A1815815 /* SafariViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C1011C3C94E89B86B0931 /* SafariViewController.m */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
-		98D476701895490AA1652233 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A318253AC704F5AAF3BDFAE /* CDVStatusBar.m */; };
+		A46D20C0EC2646CF80304AC5 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B82068548EF466C87DC9E39 /* CDVStatusBar.m */; };
 		A8CD0F6E77764CCEB295BE5F /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D506D3F532374ADBA105779F /* SafariServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C19540729F0540BF88E69502 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F13C4EDD8864967AB66D0D0 /* FBSDKShareKit.framework */; };
 		C723DF2282E34C1CA39B509C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C770C6E5B77449C94C724CB /* FBSDKLoginKit.framework */; };
@@ -75,7 +75,6 @@
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* WeVoteCordova-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeVoteCordova-Prefix.pch"; sourceTree = "<group>"; };
 		37A52F2F559B4CF69176A3E7 /* CDVDevice.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; };
-		3A318253AC704F5AAF3BDFAE /* CDVStatusBar.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVStatusBar.m; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; };
 		4178133586E44A8C96F59E16 /* CDVSplashScreen.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVSplashScreen.m; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; };
 		559001D7ACB14EF98F887FDC /* CDVSplashScreen.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVSplashScreen.h; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; };
 		5C1C1011C3C94E89B86B0931 /* SafariViewController.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = SafariViewController.m; path = "cordova-plugin-safariviewcontroller/SafariViewController.m"; sourceTree = "<group>"; };
@@ -83,13 +82,14 @@
 		680CE9918A2D40149A4F8D20 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowser.h; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; };
 		6AD1C308F26A407F8A3530FC /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "WeVoteCordova/Plugins/cordova-plugin-facebook4/Bolts.framework"; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = WeVoteCordova/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		71467F992F994C5B99C4A910 /* CDVStatusBar.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVStatusBar.h; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WeVoteCordova-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "WeVoteCordova-Info.plist"; path = "WeVoteCordova/WeVoteCordova-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
+		9B82068548EF466C87DC9E39 /* CDVStatusBar.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVStatusBar.m; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; };
 		9C770C6E5B77449C94C724CB /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "WeVoteCordova/Plugins/cordova-plugin-facebook4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		9F13C4EDD8864967AB66D0D0 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "WeVoteCordova/Plugins/cordova-plugin-facebook4/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		B2BF46A67DCA4D86AB9C6A6E /* CDVInAppBrowser.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVInAppBrowser.m; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; };
 		D506D3F532374ADBA105779F /* SafariServices.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		D711BDA76D884FF9A29E93B1 /* CDVKeyboard.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVKeyboard.h; path = "cordova-plugin-keyboard/CDVKeyboard.h"; sourceTree = "<group>"; };
+		E79A09099F124BE8ACAA2904 /* CDVStatusBar.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVStatusBar.h; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -221,10 +221,10 @@
 				242DAFCA275B41458E464C85 /* CDVViewController+SplashScreen.m */,
 				559001D7ACB14EF98F887FDC /* CDVSplashScreen.h */,
 				1F64F0D3199A43BBAE78A06E /* CDVViewController+SplashScreen.h */,
-				3A318253AC704F5AAF3BDFAE /* CDVStatusBar.m */,
-				71467F992F994C5B99C4A910 /* CDVStatusBar.h */,
 				B2BF46A67DCA4D86AB9C6A6E /* CDVInAppBrowser.m */,
 				680CE9918A2D40149A4F8D20 /* CDVInAppBrowser.h */,
+				9B82068548EF466C87DC9E39 /* CDVStatusBar.m */,
+				E79A09099F124BE8ACAA2904 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = WeVoteCordova/Plugins;
@@ -360,8 +360,8 @@
 				68068EEDA7C54AA0A1815815 /* SafariViewController.m in Sources */,
 				5D939C6C04A94F7692DAA4E6 /* CDVSplashScreen.m in Sources */,
 				12CC87BE7055452FB7297B46 /* CDVViewController+SplashScreen.m in Sources */,
-				98D476701895490AA1652233 /* CDVStatusBar.m in Sources */,
 				21F9E094E57F47C8AC0B43B6 /* CDVInAppBrowser.m in Sources */,
+				A46D20C0EC2646CF80304AC5 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

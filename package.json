@@ -29,7 +29,6 @@
             "cordova-plugin-whitelist": {},
             "cordova-plugin-safariviewcontroller": {},
             "cordova-plugin-keyboard": {},
-            "cordova-plugin-statusbar": {},
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-device": {},
             "cordova-plugin-facebook4": {
@@ -37,7 +36,8 @@
                 "APP_NAME": "WeVoteWebApp",
                 "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0"
             },
-            "cordova-plugin-inappbrowser": {}
+            "cordova-plugin-inappbrowser": {},
+            "cordova-plugin-statusbar": {}
         },
         "platforms": [
             "android",
