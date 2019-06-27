@@ -102,7 +102,7 @@ Someday we should build a script that builds all the links on demand, or even be
 
 1.  Manually remove a Cordova plugin, for which we have source controlled a modified "Objective-C" file
     cd /Users/your-username/MyProjects/WeVoteCordova
-    ``
+    ```
     rm -fr plugins
     ```
 
@@ -195,7 +195,7 @@ Throughout these instructions, remember to substitute your actual user name for 
     ```
 
 1.  Make the other symlinks that the iOS cordova app will need while running.  (Remember to substitute your actual user name
- in place of 'your-username'!)
+    in place of 'your-username'!)
 
     ```
     rm index.html
