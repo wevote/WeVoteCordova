@@ -90,6 +90,7 @@ Someday we should build a script that builds all the links on demand, or even be
     ```
     npm install -g cordova
     ```
+    If you get access errors, repeat the command with sudo ... `sudo npm install -g cordova`
 
 1.  CD to the www directory and make the first symbolic link for `bundle.js`
 
@@ -101,6 +102,7 @@ Someday we should build a script that builds all the links on demand, or even be
 
 1.  Manually remove a Cordova plugin, for which we have source controlled a modified "Objective-C" file
     cd /Users/your-username/MyProjects/WeVoteCordova
+    ``
     rm -fr plugins
     ```
 
@@ -146,6 +148,7 @@ Someday we should build a script that builds all the links on demand, or even be
 1. You may need to setup your Github remotes
 
     ```
+    Steves-iMac: MyProjects your-username$ cd /Users/your-username/MyProjects/WeVoteCordova
     Steves-iMac: WeVoteCordova your-username$ git remote -v
     origin  https://github.com/SailingSteve/WeVoteCordova.git (fetch)
     origin  https://github.com/SailingSteve/WeVoteCordova.git (push)
@@ -154,10 +157,14 @@ Someday we should build a script that builds all the links on demand, or even be
     Steves-iMac: WeVoteCordova your-username$ 
     ```
     If you don't have remotes defined... (remember to substitute your github user name for "SailingSteve")
-    
+    (The default setup might have the git origin pointing to https://github.com/wevote/WeVoteCordova.git,
+    which you will have to remove, since at We Vote we have the origin/upstream reversed from most other 
+    projects on github.)
     ```
+    git remote rm origin
     git remote add upstream https://github.com/wevote/WeVoteCordova.git
     git remote add origin https://github.com/SailingSteve/WeVoteCordova.git
+    git remote -v
     ```
 
 1. You may need to npm install (it doesn't hurt to do this multiple times!)
