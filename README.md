@@ -91,6 +91,7 @@ Someday we should build a script that builds all the links on demand, or even be
     npm install -g cordova
     ```
     If you get access errors, repeat the command with sudo ... `sudo npm install -g cordova`
+    Please save the path/symlink where cordova is installed. (ex/ `/usr/local/Cellar/node/12.5.0/bin/cordova`)
 
 1.  CD to the www directory and make the first symbolic link for `bundle.js`
 
@@ -101,12 +102,17 @@ Someday we should build a script that builds all the links on demand, or even be
     ```
 
 1.  Manually remove a Cordova plugin, for which we have source controlled a modified "Objective-C" file
-    cd /Users/your-username/MyProjects/WeVoteCordova
+
     ```
+    cd /Users/your-username/MyProjects/WeVoteCordova
     rm -fr plugins
     ```
 
-1.  Run (destructive) Cordova CLI commands on the `WeVoteCordova` directory
+1.  Run (destructive) Cordova CLI commands on the `WeVoteCordova` directory. Please note:
+
+    a. `cordova` is not added automatically to your path. You might need to run from the symlink you saved above (ex/ `/usr/local/Cellar/node/12.5.0/bin/cordova`)
+     
+    b. You might be asked: `? May Cordova anonymously report usage statistics to improve the tool over time? (Y/n)`
     ```
     cd /Users/your-username/MyProjects/WeVoteCordova
     cordova platform rm ios android
@@ -141,10 +147,12 @@ Someday we should build a script that builds all the links on demand, or even be
     setup the IDEs.
     
     ```
-    rm -rm WeVoteCordovaPopulated
+    rm -rf WeVoteCordovaPopulated
 
     ```
     
+1. On github.com, fork WeVoteCordova to your account. Navigate to https://github.com/wevote/WeVoteCordova and then click the "Fork" button in the upper right corner.
+
 1. You may need to setup your Github remotes
 
     ```
