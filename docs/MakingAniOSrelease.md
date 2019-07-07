@@ -55,7 +55,9 @@ build number by one.  For example build 3, becomes Build 4.
 
    * You will need a physical iPhone plugged into your computer via a USB cable (It is possible that an iPad or iPod touch would work for this purpose.)
    * The phone will have to be registered with Apple inorder for Xcode to sign the app.
-   * Then build the release candidate in Xcode via Product/Archive
+   * Change "General" > "Identity" > "Display Name" to "We Vote" (instead of "WeVoteCordova")
+   * Make sure to point the build target to your iPhone as opposed to a simulated device (if you don't, the "Archive" option will be grayed out under the "Product" menu)
+   * Then build the release candidate in Xcode via Product > Archive
    * Then follow the options to upload the candidate to "the App Store" via [https://itunesconnect.apple.com/](https://itunesconnect.apple.com/)  Dale can make you
 an account on itunesconnect
 
