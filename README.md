@@ -300,9 +300,9 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     you forget to do this portions of the app will not be in your build, since you won't have referenced the cocopods (a dependency manger,
     that pulls in some iOS specific libraries.)
 
-    Be sure to NOT open ~~`/Users/your-username/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcodeproj`~~ with Xcode,
-    and don't pick a choice from the history pane ("Don't click these!") in the Welcome to Xcode dialog.  The history unfortunately only contains contains
-    references to .xcodeproj files.  (Hint:  When that Welcome dialog is displayed, **it is** possible to open the xcworkspace from the File/"Open Recent" menu,
+    Be sure **not to open** ~~`/Users/your-username/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcodeproj`~~ with Xcode,
+    and don't pick a choice from the history pane ("Don't click these!") in the Welcome to Xcode dialog.  The history unfortunately will contain
+    references to `.xcodeproj` **and** `.xcworkspace` files, but the descriptions are too short to tell the difference.  (Hint:  When that Welcome dialog is displayed, **it is** possible to open the xcworkspace from the File/"Open Recent" menu,
     just be sure to open the xcworkspace.)
 
 ![ScreenShot](docs/images/WelcomeToXcode.png)
@@ -691,7 +691,8 @@ Make sure the custom scheme URL Type is still setup in Xcode
 __
 ### iOS has two config.xml files -- make sure you change both
 
-I think that when you (DON'T DO THIS)
+**Don't do this!:** The following commands are needed to upgrade the ios platform
+portion of the Cordova install, but otherwised don't do this...
 
     cordova platform remove ios
     cordova platform add ios
@@ -707,7 +708,11 @@ this.
 ### Moving the spinner upwards on the iOS Splash screen and changing it from grey to white:  Manual step required
 
 In the non-source controlled file `/Users/your-username/MyProjects/WeVoteCordova/platforms/ios/WeVoteCordova/Plugins/cordova-plugin-splashscreen/CDVSplashScreen.m` 
-change two lines.  The first at about line 84:
+change the line at about line 102:
+
+<!-- 
+July 2019:  Don't do this for now, since we now have a white background to the splash screen (again).
+two lines.  The first at about line 84:
 
     UIActivityIndicatorViewStyle topActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
 to
@@ -715,13 +720,25 @@ to
     UIActivityIndicatorViewStyle topActivityIndicatorStyle = UIActivityIndicatorViewStyleWhite;
 
 The second at about line 102:
-
+-->
 
     _activityView.center = CGPointMake(parentView.bounds.size.width / 2, parentView.bounds.size.height / 1 );
 to
 
     _activityView.center = CGPointMake(parentView.bounds.size.width / 2, parentView.bounds.size.height * 1 / 5 );
 
+### Authentication to Facebook and Twitter in the Simulators
+
+**Android:** Works fine!
+
+**iOS with Facebook:** Facebook auth usually does not work -- depending on complicated circumstances.  It is possible
+to test Facebook auth with a local build -- you can use your USB tethered physical device to load your 
+latest bundle.js onto the phone, then unplug the phone, and run your test directly through the
+internet.
+
+**iOS with Twitter:** It is usable, but not very elegant.  There is a QuickTime movie in this repository that shows the 
+login steps (`docs/images/TwitterSignIn4.mov`) -- you can play it on your Mac.  Another note: if you click "Sign in with Twitter" 
+and get a blank redirect screen, close it and try again.  It seems to always work on the second try.
 
 ----------
 ## Other documentation pages:

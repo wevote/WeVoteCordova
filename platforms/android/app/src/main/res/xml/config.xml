@@ -1,17 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.wevote.cordova" version="1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/ns/widgets">
+<widget id="org.wevote.cordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/ns/widgets">
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
-    <feature name="FacebookConnectPlugin">
-        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
-        <param name="onload" value="true" />
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
-    <access origin="https://m.facebook.com" />
-    <access origin="https://graph.facebook.com" />
-    <access origin="https://api.facebook.com" />
-    <access origin="https://*.fbcdn.net" />
-    <access origin="https://*.akamaihd.net" />
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
@@ -41,7 +35,7 @@
     <access origin="*://*.facebook.com/*" />
     <access origin="*://*.google.com/*" />
     <access origin="*://*.youtube.com/*" />
-    <allow-navigation href="about:" />
+    <allow-navigation href="about:*" />
     <allow-navigation href="data:*" />
     <allow-navigation href="*://*.youtube.com/*" />
     <allow-navigation href="*://*.facebook.com/*" />
@@ -52,6 +46,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="wevotetwitterscheme:" />
     <allow-intent href="market:*" />
     <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
     <splash density="land-mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
@@ -66,15 +61,18 @@
     <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png" />
     <splash density="port-xxxhdpi" src="res/screen/android/screen-xxxhdpi-portrait.png" />
     <preference name="loglevel" value="DEBUG" />
-    <preference name="android-minSdkVersion" value="16" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
-    <feature name="InAppBrowser">
-        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
-    </feature>
-    <feature name="StatusBar">
-        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+    <preference name="SplashScreenSpinnerColor" value="blue" />
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
+    <preference name="android-minSdkVersion" value="28" />
 </widget>

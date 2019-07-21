@@ -8,31 +8,32 @@
   },
   "installed_plugins": {
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "org.wevote.cordova"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-facebook4": {
       "APP_ID": "1097389196952441",
       "APP_NAME": "WeVoteWebApp",
-      "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0",
-      "PACKAGE_NAME": "org.wevote.cordova"
-    },
-    "cordova-plugin-keyboard": {
-      "PACKAGE_NAME": "org.wevote.cordova"
-    },
-    "cordova-plugin-safariviewcontroller": {
-      "PACKAGE_NAME": "org.wevote.cordova"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "org.wevote.cordova"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "org.wevote.cordova"
+      "FACEBOOK_HYBRID_APP_EVENTS": "false",
+      "FACEBOOK_ANDROID_SDK_VERSION": "5.0.2",
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "org.wevote.cordova"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-safariviewcontroller": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "org.wevote.cordova"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
   "dependent_plugins": {}

@@ -3,25 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
+	<string>en_US</string>
 	<key>CFBundleDisplayName</key>
-	<string>WeVoteCordova</string>
+	<string>We Vote</string>
 	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIcons</key>
-	<dict/>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.wevote.cordova</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.1</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -32,27 +28,29 @@
 				<string>fb1097389196952441</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>org.wevote.cordova</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>wevotetwitterscheme</string>
-			</array>
-		</dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>org.wevote.cordova</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>wevotetwitterscheme</string>
+            </array>
+        </dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.2.1.1</string>
+	<string>1.2.3.2</string>
 	<key>FacebookAppID</key>
 	<string>1097389196952441</string>
 	<key>FacebookDisplayName</key>
-	<string>WeVoteWebApp</string>
+	<string>We Vote</string>
+	<key>FacebookHybridAppEvents</key>
+	<string>false</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
-		<string>fb-messenger-share-api</string>
+		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
@@ -122,8 +120,6 @@
 				<true/>
 			</dict>
 		</dict>
-		<key>New item</key>
-		<string></string>
 	</dict>
 	<key>NSMainNibFile</key>
 	<string></string>

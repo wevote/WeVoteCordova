@@ -13,6 +13,22 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"FacebookConnectPlugin\"><param name=\"android-package\" value=\"org.apache.cordova.facebook.ConnectPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             },
@@ -37,23 +53,7 @@
               "count": 1
             },
             {
-              "xml": "<preference name=\"android-minSdkVersion\" value=\"16\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "xml": "<preference name=\"android-minSdkVersion\" value=\"28\" />",
               "count": 1
             }
           ]
@@ -63,11 +63,15 @@
         "parents": {
           "/*": [
             {
-              "xml": "<string name=\"fb_app_id\">1104012436290117</string>",
+              "xml": "<string name=\"fb_app_id\">1097389196952441</string>",
               "count": 1
             },
             {
               "xml": "<string name=\"fb_app_name\">WeVoteWebApp</string>",
+              "count": 1
+            },
+            {
+              "xml": "<bool name=\"fb_hybrid_app_events\">false</bool>",
               "count": 1
             }
           ]
@@ -104,6 +108,24 @@
             }
           ]
         }
+      },
+      "app/src/main/res/values/facebookconnect.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<string name=\"fb_app_id\">1097389196952441</string>",
+              "count": 1
+            },
+            {
+              "xml": "<string name=\"fb_app_name\">WeVoteWebApp</string>",
+              "count": 1
+            },
+            {
+              "xml": "<bool name=\"fb_hybrid_app_events\">false</bool>",
+              "count": 1
+            }
+          ]
+        }
       }
     }
   },
@@ -111,10 +133,7 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "org.wevote.cordova"
     },
-    "cordova-plugin-facebook4": {
-      "APP_ID": "1104012436290117",
-      "APP_NAME": "WeVoteWebApp",
-      "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0",
+    "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-keyboard": {
@@ -126,13 +145,17 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "org.wevote.cordova"
     },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "org.wevote.cordova"
+    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "org.wevote.cordova"
     },
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "org.wevote.cordova"
-    },
-    "cordova-plugin-statusbar": {
+    "cordova-plugin-facebook4": {
+      "APP_ID": "1097389196952441",
+      "APP_NAME": "WeVoteWebApp",
+      "FACEBOOK_HYBRID_APP_EVENTS": "false",
+      "FACEBOOK_ANDROID_SDK_VERSION": "5.0.2",
       "PACKAGE_NAME": "org.wevote.cordova"
     }
   },
@@ -147,11 +170,12 @@
       ]
     },
     {
-      "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
-      "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
-      "pluginId": "cordova-plugin-facebook4",
+      "id": "cordova-plugin-inappbrowser.inappbrowser",
+      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+      "pluginId": "cordova-plugin-inappbrowser",
       "clobbers": [
-        "facebookConnectPlugin"
+        "cordova.InAppBrowser.open",
+        "window.open"
       ]
     },
     {
@@ -179,31 +203,30 @@
       ]
     },
     {
-      "id": "cordova-plugin-inappbrowser.inappbrowser",
-      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-      "pluginId": "cordova-plugin-inappbrowser",
-      "clobbers": [
-        "cordova.InAppBrowser.open",
-        "window.open"
-      ]
-    },
-    {
       "id": "cordova-plugin-statusbar.statusbar",
       "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
       "pluginId": "cordova-plugin-statusbar",
       "clobbers": [
         "window.StatusBar"
       ]
+    },
+    {
+      "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+      "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+      "pluginId": "cordova-plugin-facebook4",
+      "clobbers": [
+        "facebookConnectPlugin"
+      ]
     }
   ],
   "plugin_metadata": {
     "cordova-plugin-device": "2.0.2",
-    "cordova-plugin-facebook4": "3.1.0",
+    "cordova-plugin-inappbrowser": "3.0.0",
     "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-safariviewcontroller": "1.5.3",
     "cordova-plugin-splashscreen": "5.0.2",
+    "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.3",
-    "cordova-plugin-inappbrowser": "3.0.0",
-    "cordova-plugin-statusbar": "2.4.2"
+    "cordova-plugin-facebook4": "5.0.0"
   }
 }
