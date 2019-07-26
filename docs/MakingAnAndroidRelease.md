@@ -12,15 +12,16 @@
 
    On the line that says something like...
    
-   ```<manifest android:hardwareAccelerated="true" android:versionCode="100001" android:versionName="1.0.3" package="org.wevote.cordova" xmlns:android="http://schemas.android.com/apk/res/android">```
+   ```<manifest android:hardwareAccelerated="true" android:versionCode="100017" android:versionName="1.2.3" package="org.wevote.cordova" xmlns:android="http://schemas.android.com/apk/res/android">```
    
    Increment the `android:versionCode` by one, and update the `android:versionName` as desired (this usually should be the same
     as the new iOS release name that we are releasing at the same time).
 
 1. Make sure your changes are in a pull request against the WeVoteCordova project, and ideally merged!
 
-1. Generate an APK (a file that contains the entire app).  Our first APK was 6.6 MB is size.
-![ScreenShot](images/AndroidReleaseGenerateSignedAPK.png)
+1. Generate a signed "Android App Bundle" or AAB file (a file that contains the entire app, with duplicate code removed).  Bundles are about half the
+size of the prior packaging output file (the APK).
+![ScreenShot](images/AndroidReleaseGenerateSignedBundle.png)
 
 1. Get the signing certificate and access to the WeVote Android developer account from Dale McGrew
 
@@ -28,31 +29,24 @@
 1. Generate a Signed APK (Make sure both the V1 and the V2 Signature Versions are checked!)
 ![ScreenShot](images/AndroidReleaseGenerateAPKDialog.png)
 
-1. After the signing and building 
+1. After the signing and building, a pop-up will appear that allows you to locate the `app.aab` file (the bundle).
 ![ScreenShot](images/AndroidReleaseLocation.png)
-
-1. Press the locate button in the Event Log, which reveals the app in finder
-![ScreenShot](images/AndroidReleaseReveal.png)
 
 1. Navigate to the [Google Play Console](https://play.google.com/apps/publish/?account=5667543967745776856#AppListPlace), 
 and login
 ![ScreenShot](images/AndroidReleasePlayGoogleCom.png)
     
-    Drag the APK file to the browser "BROWSE FILES" pane on the https://play.google.com/apps/publish/  "Google Play", "App Releases" tab, which uploads the file to Google.
+    Drag the AAB file to the browser "BROWSE FILES" pane on the https://play.google.com/apps/publish/  "Google Play", "App Releases" tab, which uploads the file to Google.
 
 1. Finally update any marketing documentation on https://play.google.com/apps/publish/ and type in a brief release note
 in the English section of the "What's new in this release?" pane.
 
-1. Review then publish
+1. Review, then publish
 
 ## Making an APK for Saucelabs testing
 
-The build process in Android Studio, builds an APK for each release -- the one you upload to google to make a release,
+The build process in Android Studio, can also be used to build an APK file -- the one you upload to Saucelabs for testing,
 it is located at 
-
-    WeVoteCordova/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
-
-or 
 
     WeVoteCordova/platforms/android/app/build/outputs/apk/debug/app-debug.apk
 
