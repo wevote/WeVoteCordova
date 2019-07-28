@@ -74,5 +74,5 @@
     <access origin="https://api.facebook.com" />
     <access origin="https://*.fbcdn.net" />
     <access origin="https://*.akamaihd.net" />
-    <preference name="android-minSdkVersion" value="28" />
+    <preference name="android-minSdkVersion" value="15" />
 </widget>

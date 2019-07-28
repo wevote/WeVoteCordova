@@ -12,7 +12,7 @@
 
    On the line that says something like...
    
-   ```<manifest android:hardwareAccelerated="true" android:versionCode="100017" android:versionName="1.2.3" package="org.wevote.cordova" xmlns:android="http://schemas.android.com/apk/res/android">```
+   ```<manifest android:hardwareAccelerated="true" android:versionCode="100001" android:versionName="1.0.3" package="org.wevote.cordova" xmlns:android="http://schemas.android.com/apk/res/android">```
    
    Increment the `android:versionCode` by one, and update the `android:versionName` as desired (this usually should be the same
     as the new iOS release name that we are releasing at the same time).

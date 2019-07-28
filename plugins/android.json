@@ -10,9 +10,6 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "org.wevote.cordova"
     },
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "org.wevote.cordova"
-    },
     "cordova-plugin-keyboard": {
       "PACKAGE_NAME": "org.wevote.cordova"
     },
@@ -22,10 +19,13 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "org.wevote.cordova"
     },
-    "cordova-plugin-statusbar": {
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "org.wevote.cordova"
     },
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "org.wevote.cordova"
+    },
+    "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-facebook4": {
