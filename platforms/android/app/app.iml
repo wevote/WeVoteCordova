@@ -89,6 +89,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/apk_list" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/build-info" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/bundle_manifest" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check_manifest_result" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/compatible_screen_manifest" />
@@ -153,9 +154,6 @@
     <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable:27.0.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.android:facebook-marketing:4.37.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:common:1.0.3@jar" level="project" />
-    <orderEntry type="module" module-name="CordovaLib" />
-    <orderEntry type="module" module-name="CordovaLib" />
-    <orderEntry type="module" module-name="CordovaLib" />
     <orderEntry type="module" module-name="CordovaLib" />
   </component>
 </module>

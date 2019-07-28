@@ -32,7 +32,7 @@
     ln -s /Users/your-username/MyProjects/WebApp/build/js/bundle.js bundle.js
     ```
 
-1.  Make the other symlinks that the Andriod Cordova app will need while running (including another bundle.js)
+1.  Make the other symlinks that the Android Cordova app will need while running (including another bundle.js)
     ```
     cd /Users/your-username/MyProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
     rm index.html

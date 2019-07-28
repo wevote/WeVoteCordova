@@ -101,10 +101,10 @@ Someday we should build a script that builds all the links on demand, or even be
     ln -s /Users/your-username/MyProjects/WebApp/build/js/bundle.js bundle.js
     ```
 
-1.  Manually remove a Cordova plugin, for which we have source controlled a modified "Objective-C" file. Change directory
-    to `/Users/your-username/MyProjects/WeVoteCordova`
+1.  Manually remove a Cordova plugin, for which we have source controlled a modified "Objective-C" file
+
     ```
-    cd ..              
+    cd /Users/your-username/MyProjects/WeVoteCordova
     rm -fr plugins
     ```
 
@@ -121,10 +121,10 @@ Someday we should build a script that builds all the links on demand, or even be
     This step adds all the Cordova libraries, installs up-to-date versions of the Cordova plugins, and sets up directories for iOS and Android,
     but it destroys some of the source controlled configuration files by overwriting them with default scaffolding files.
 
-1.  Rename this code directory to a temporary name: `WeVoteCordovaPopulated`.  Change your current directory to `/Users/your-username/MyProjects`
+1.  Rename this code directory to a temporary name: `WeVoteCordovaPopulated`
 
     ```
-    cd ..
+    cd /Users/your-username/MyProjects
     mv WeVoteCordova WeVoteCordovaPopulated
     ```
     This step has added all the Cordova libraries, installed up-to-date versions of the Cordova plugins, and set up directories for iOS and Android,
@@ -152,7 +152,7 @@ Someday we should build a script that builds all the links on demand, or even be
     ```
     
 1. On github.com, fork WeVoteCordova to your account. Navigate to https://github.com/wevote/WeVoteCordova and then click the "Fork" button in the upper right corner.
-
+    
 1. You may need to setup your Github remotes
 
     ```
@@ -285,13 +285,21 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     brew install watchman
     ```
     
-    On a machine where node may alread have been installed, we want to have version 10 or heigher:
+    On a machine where node may already have been installed, we want to have version 10 or heigher:
     ```
     Steves-iMac:WeVoteCordova your-username$ node -v
     v6.12.3
     Steves-iMac:WeVoteCordova your-username$ brew upgrade node
     Updating Homebrew...
     ...
+    ```
+
+1.  Install CocoaPods (an MacOS dependency manager).
+
+    You won't need CocoaPods today, but it is worth installing in case you do need it someday.  (Gem is a package Ruby packaging 
+    tool, and comes pre-installed on Macs.)
+    ```
+    Steves-iMac:WeVoteCordova your-username$ sudo gem install cocoapods
     ```
 
 1.  Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
@@ -405,8 +413,64 @@ bundle.js in 20 seconds (Two seconds to gather all the js scripts together, and 
 1. In Safari open Develop/Simulator/WeVoteCordova/WeVote and the Safari Web Inspector appears.
 
 ## Debugging Cordova Apps with the Chrome dev tools
-Safari's built in debugger has mostly caught up with Chrome's, but you you really want to use Chrome to debug iOS apps, 
-[follow these instructions](docs/DebuggingIOsAppsWithChromeDevTools.md).
+
+Chrome devtools is lightyears better than the Safari debugger, but is a bit challenging to get working. See ...
+
+[medium.com article about the remotedebug-ios-webkit-adapter for debugging WebViews](https://medium.com/@auchenberg/hello-remotedebug-ios-webkit-adapter-debug-safari-and-ios-webviews-from-anywhere-2a8553df7465)
+
+[github.com readme about remotedebug-ios-webkit-adapter#getting-started](https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started)
+
+Install the remotedebug_ios_webkit_adapter (from a terminal window):
+
+
+    brew update
+    brew install --HEAD libimobiledevice
+    brew install --HEAD ios-webkit-debug-proxy
+    npm install remotedebug-ios-webkit-adapter -g
+
+
+Run the remotedebug_ios_webkit_adapter:
+
+
+    (WebAppEnv)Steves-iMac:WeVoteCordova your-username$ remotedebug_ios_webkit_adapter --port=9000
+    remotedebug-ios-webkit-adapter is listening on port 9000
+    iosAdapter.getTargets
+    iosAdapter.getTargets
+    iosAdapter.getTargets
+    ...
+
+
+You may have to restart the remotedebug_ios_webkit_adapter from time to time, to get the
+`chrome://inspect/#devices` to see the simulator processes.
+
+After starting the remotedebug_ios_webkit_adapter (hopefully on the first attempt) when you navigate in the Google Chrome
+browser to `chrome://inspect` you will see the following screen, with the process to debug on the
+list below:
+
+![ScreenShot](docs/images/ChromeInspect.png)
+  
+Press that little blue 'inspect' to open the debugger, which should look like the following:
+
+
+![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png)
+
+
+If `chrome://inspect` doesn't list your target, then try restarting remotedebug_ios_webkit_adapter and maybe restarting
+your Cordova app via Xcode.  This is imperfect, but not too bad once you get the hang of it.
+
+Unfortunately in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
+of the app via Xcode, and also the files where you want to put the breakpoints have to be reopened each time.  (This deficiency
+is not the case in React-Native, so hopefully a fix will arrive some day.)
+
+Press ⌘+P to bring up the list of recently opened files -- this can save you a bunch of clicks.
+
+In spite of the previous problem, it is possible to debug a startup behaviour, one that would fly past before you could set the first 
+breakpoint -- on the upper left  corner of the chrome debugger, there is a "circular arrow, 
+reload button" (see the following image) that will allow you to restart the app within the Chrome Inspector while maintaining
+the current breakpoints.
+
+![ScreenShot](docs/images/ChromeCircularReloadButton.png)
+
 
 ## WebApp code changes needed to support Cordova
 
@@ -487,6 +551,9 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
 
 [https://developer.android.com/studio/index.html](https://developer.android.com/studio/index.html)
     
+TODO: On a clean machine, capture all the steps it takes to get Android Studio
+going, and the Java environment setup.  The Android and [Cordova](https://cordova.apache.org/docs/en/latest/) documentation are a good
+start.
 
 ### Running Android Cordova for the first time
 
@@ -510,7 +577,7 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
     git are in the WeVoteCordova enclosing project -- That is where you should do your pull requests,
     not within Android Studio.
     
-    ![ScreenShot](docs/images/SucessInstallAndroidStudio2.png)
+    ![ScreenShot](docs/images/SucessInstallAndroidStudio.png)
 
 1. Setup the symlinks: start by changing to the android www dir at `android/app/src/main/assets/www`
 

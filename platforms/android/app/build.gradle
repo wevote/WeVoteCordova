@@ -30,8 +30,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
-        classpath 'com.android.tools.build:gradle:2.3.0se'
+        classpath 'com.android.tools.build:gradle:3.4.2'
     }
 }
 
@@ -144,18 +143,20 @@ cdvBuildRelease.dependsOn {
 }
 
 task cdvPrintProps {
-    println('cdvCompileSdkVersion=' + cdvCompileSdkVersion)
-    println('cdvBuildToolsVersion=' + cdvBuildToolsVersion)
-    println('cdvVersionCode=' + cdvVersionCode)
-    println('cdvVersionCodeForceAbiDigit=' + cdvVersionCodeForceAbiDigit)
-    println('cdvMinSdkVersion=' + cdvMinSdkVersion)
-    println('cdvBuildMultipleApks=' + cdvBuildMultipleApks)
-    println('cdvReleaseSigningPropertiesFile=' + cdvReleaseSigningPropertiesFile)
-    println('cdvDebugSigningPropertiesFile=' + cdvDebugSigningPropertiesFile)
-    println('cdvBuildArch=' + cdvBuildArch)
-    println('computedVersionCode=' + android.defaultConfig.versionCode)
-    android.productFlavors.each { flavor ->
-        println('computed' + flavor.name.capitalize() + 'VersionCode=' + flavor.versionCode)
+    doLast {
+        println('cdvCompileSdkVersion=' + cdvCompileSdkVersion)
+        println('cdvBuildToolsVersion=' + cdvBuildToolsVersion)
+        println('cdvVersionCode=' + cdvVersionCode)
+        println('cdvVersionCodeForceAbiDigit=' + cdvVersionCodeForceAbiDigit)
+        println('cdvMinSdkVersion=' + cdvMinSdkVersion)
+        println('cdvBuildMultipleApks=' + cdvBuildMultipleApks)
+        println('cdvReleaseSigningPropertiesFile=' + cdvReleaseSigningPropertiesFile)
+        println('cdvDebugSigningPropertiesFile=' + cdvDebugSigningPropertiesFile)
+        println('cdvBuildArch=' + cdvBuildArch)
+        println('computedVersionCode=' + android.defaultConfig.versionCode)
+        android.productFlavors.each { flavor ->
+            println('computed' + flavor.name.capitalize() + 'VersionCode=' + flavor.versionCode)
+        }
     }
 }
 
@@ -264,8 +265,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    implementation "com.facebook.android:facebook-android-sdk:4.37.0"
-    implementation "com.android.support:customtabs:23.2.0"
+    compile "com.android.support:customtabs:23.2.0"
+    compile "com.facebook.android:facebook-android-sdk:5.0.2"
     // SUB-PROJECT DEPENDENCIES END
 }
 
