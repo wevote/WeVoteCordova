@@ -11,8 +11,8 @@
     "license": "Apache-2.0",
     "dependencies": {
         "address": "^1.0.3",
-        "cordova-android": "^7.1.4",
-        "cordova-ios": "^4.5.5",
+        "cordova-android": "^8.0.0",
+        "cordova-ios": "^5.0.0",
         "cordova-plugin-device": "^2.0.2",
         "cordova-plugin-facebook4": "^5.0.0",
         "cordova-plugin-inappbrowser": "^3.0.0",
