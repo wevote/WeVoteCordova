@@ -24,7 +24,7 @@ only be able to develop for Android -- we don't have any install instructions fo
 If you haven't done this yet, don't waste your time, go setup the WebApp with current code,
 get it to start up at least once, and then return here when you are done.
 
-If you can't find a file called `WebApp/build/js/bundle.js` on your machine, don't proceed
+If you can't find a file called `WebApp/build/bundle.js` on your machine, don't proceed
 until you can find it.
 
 ## Directories
@@ -98,7 +98,7 @@ Someday we should build a script that builds all the links on demand, or even be
     ```
     cd WeVoteCordova
     cd www
-    ln -s /Users/your-username/MyProjects/WebApp/build/js/bundle.js bundle.js
+    ln -s /Users/your-username/MyProjects/WebApp/build/bundle.js bundle.js
     ```
 
 1.  Manually remove a Cordova plugin, for which we have source controlled a modified "Objective-C" file
@@ -199,7 +199,7 @@ Throughout these instructions, remember to substitute your actual user name for 
 
     ```
     rm bundle.js
-    ln -s /Users/your-username/MyProjects/WebApp/build/js/bundle.js bundle.js
+    ln -s /Users/your-username/MyProjects/WebApp/build/bundle.js bundle.js
     ```
 
 1.  Make the other symlinks that the iOS cordova app will need while running.  (Remember to substitute your actual user name
@@ -209,8 +209,7 @@ Throughout these instructions, remember to substitute your actual user name for 
     rm index.html
     ln -s /Users/your-username/MyProjects/WeVoteCordova/www/index.html index.html
     ln -s /Users/your-username/MyProjects/WebApp/build/css css
-    ln -s /Users/your-username/MyProjects/WebApp/build/fonts fonts
-    ln -s /Users/your-username/MyProjects/WebApp/build/img img
+    ln -s /Users/your-username/MyProjects/WebApp/src/img img
     ln -s /Users/your-username/MyProjects/WebApp/build/javascript javascript
     ```
 
@@ -223,13 +222,12 @@ Throughout these instructions, remember to substitute your actual user name for 
     total 168
     drwxr-xr-x  12 your-username  staff    384 Oct 14 00:11 .
     drwxr-xr-x  14 your-username  staff    448 Nov  8 12:15 ..
-    lrwxr-xr-x   1 your-username  staff     61 Jun  5  2018 bundle.js -> /Users/your-username/MyProjects/WebApp/build/js/bundle.js
+    lrwxr-xr-x   1 your-username  staff     61 Jun  5  2018 bundle.js -> /Users/your-username/MyProjects/WebApp/build/bundle.js
     drwxr-xr-x   5 your-username  staff    160 Oct 14 00:11 cordova-js-src
     -rw-r--r--   1 your-username  staff  78044 Jun  5  2018 cordova.js
     -rw-r--r--   1 your-username  staff   2122 Nov  5 12:55 cordova_plugins.js
     lrwxr-xr-x   1 your-username  staff     52 Jun  5  2018 css -> /Users/your-username/MyProjects/WebApp/build/css
-    lrwxr-xr-x   1 your-username  staff     54 Jun  5  2018 fonts -> /Users/your-username/MyProjects/WebApp/build/fonts
-    lrwxr-xr-x   1 your-username  staff     52 Jun  5  2018 img -> /Users/your-username/MyProjects/WebApp/build/img
+    lrwxr-xr-x   1 your-username  staff     52 Jun  5  2018 img -> /Users/your-username/MyProjects/WebApp/src/img
     lrwxr-xr-x   1 your-username  staff     64 Jun  5  2018 index.html -> /Users/your-username/MyProjects/WeVoteCordova/www/index.html
     lrwxr-xr-x   1 your-username  staff     59 Jun  5  2018 javascript -> /Users/your-username/MyProjects/WebApp/build/javascript
     drwxr-xr-x   9 your-username  staff    288 Nov  5 12:55 plugins
@@ -248,10 +246,6 @@ that the link points to a sizeable file (17856048 bytes in the case of bundle.js
     16777220 57914434 -rw-r--r-- 1 your-username staff 0 17856048 "Feb 13 13:53:16 2019" "Feb 13 13:53:16 2019" "Feb 13 13:53:16 2019" "Feb 13 13:52:45 2019" 4096 34880 0 bundle.js
     Steves-iMac:www your-username$ ls css
     bootstrap.css           bootstrap.css.map       loading-screen.css      loading-screen.css.map  main.css                main.css.map
-    Steves-iMac:www your-username$ls fonts
-    FontAwesome.otf                         app-fonts.ttf                           fontawesome-webfont.svg                 fontawesome-webfont.woff2               glyphicons-halflings-regular.ttf
-    app-fonts.eot                           app-fonts.woff                          fontawesome-webfont.ttf                 glyphicons-halflings-regular.eot        glyphicons-halflings-regular.woff
-    app-fonts.svg                           fontawesome-webfont.eot                 fontawesome-webfont.woff                glyphicons-halflings-regular.svg        glyphicons-halflings-regular.woff2
     Steves-iMac:www your-username$ ls img
     global  tools   welcome
     Steves-iMac:www your-username$ stat -L index.html
@@ -405,7 +399,7 @@ from the Chrome Devtools Debugger.
 
 
 1. Enable debugging in Safari, [see this article](http://geeklearning.io/apache-cordova-and-remote-debugging-on-ios/)
-1. Build your 'compiled' javascript app file `bundle.js`, on my Mac it is at `build/js/bundle.js`.  This file needs to be symlinked
+1. Build your 'compiled' javascript app file `bundle.js`, on my Mac it is at `build/bundle.js`.  This file needs to be symlinked
 into your www directory (see the section on symlinks above).
     1. On my Mac in WebStorm, I have a Gulp task that has a target "build", when I press the play button for that task, it builds the
 bundle.js in 20 seconds (Two seconds to gather all the js scripts together, and 18 seconds to recompile sass).
@@ -601,24 +595,22 @@ ran "cordova platform add android"
 
     ```
     Steves-iMac:www your-username$ rm bundle.js
-    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/js/bundle.js bundle.js
+    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/bundle.js bundle.js
     Steves-iMac:www your-username$ rm index.html
     Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WeVoteCordova/www/index.html index.html
     Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/css css
-    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/fonts fonts
-    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/img img
+    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/src/img img
     Steves-iMac:www your-username$
     Steves-iMac:www your-username$ ls -la
     total 152
     drwxr-xr-x  12 your-username  staff    384 May  9 20:43 .
     drwxr-xr-x   3 your-username  staff     96 Apr 29 13:45 ..
-    lrwxr-xr-x   1 your-username  staff     55 May  9 13:28 bundle.js -> /Users/your-username/MyProjects/WebApp/build/js/bundle.js
+    lrwxr-xr-x   1 your-username  staff     55 May  9 13:28 bundle.js -> /Users/your-username/MyProjects/WebApp/build/bundle.js
     drwxr-xr-x   6 your-username  staff    192 Apr 29 13:45 cordova-js-src
     -rw-r--r--   1 your-username  staff  73155 Apr 29 13:45 cordova.js
     -rw-r--r--   1 your-username  staff   1845 Apr 29 13:45 cordova_plugins.js
     lrwxr-xr-x   1 your-username  staff     46 May  9 20:43 css -> /Users/your-username/MyProjects/WebApp/build/css
-    lrwxr-xr-x   1 your-username  staff     48 May  9 20:43 fonts -> /Users/your-username/MyProjects/WebApp/build/fonts
-    lrwxr-xr-x   1 your-username  staff     46 May  9 20:43 img -> /Users/your-username/MyProjects/WebApp/build/img
+    lrwxr-xr-x   1 your-username  staff     46 May  9 20:43 img -> /Users/your-username/MyProjects/WebApp/src/img
     lrwxr-xr-x   1 your-username  staff     58 May  9 20:42 index.html -> /Users/your-username/MyProjects/WeVoteCordova/www/index.html
     lrwxr-xr-x   1 your-username  staff     53 May  9 20:43 javascript -> /Users/your-username/MyProjects/WebApp/build/javascript
     drwxr-xr-x   8 your-username  staff    256 Apr 29 13:45 plugins
