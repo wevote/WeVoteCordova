@@ -9,6 +9,15 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
+    "clobbers": [
+      "cordova.InAppBrowser.open",
+      "window.open"
+    ]
+  },
+  {
     "id": "cordova-plugin-keyboard.keyboard",
     "file": "plugins/cordova-plugin-keyboard/www/keyboard.js",
     "pluginId": "cordova-plugin-keyboard",
@@ -25,20 +34,19 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-screensize.screensize",
+    "file": "plugins/cordova-plugin-screensize/www/screensize.js",
+    "pluginId": "cordova-plugin-screensize",
+    "clobbers": [
+      "window.plugins.screensize"
+    ]
+  },
+  {
     "id": "cordova-plugin-splashscreen.SplashScreen",
     "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
     "pluginId": "cordova-plugin-splashscreen",
     "clobbers": [
       "navigator.splashscreen"
-    ]
-  },
-  {
-    "id": "cordova-plugin-inappbrowser.inappbrowser",
-    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-    "pluginId": "cordova-plugin-inappbrowser",
-    "clobbers": [
-      "cordova.InAppBrowser.open",
-      "window.open"
     ]
   },
   {
@@ -61,14 +69,15 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-  "cordova-plugin-device": "2.0.2",
+  "cordova-plugin-device": "2.0.3",
+  "cordova-plugin-inappbrowser": "3.1.0",
   "cordova-plugin-keyboard": "1.2.0",
-  "cordova-plugin-safariviewcontroller": "1.5.3",
-  "cordova-plugin-splashscreen": "5.0.2",
-  "cordova-plugin-whitelist": "1.3.3",
-  "cordova-plugin-inappbrowser": "3.0.0",
-  "cordova-plugin-statusbar": "2.4.2",
-  "cordova-plugin-facebook4": "5.0.0"
+  "cordova-plugin-safariviewcontroller": "1.6.0",
+  "cordova-plugin-screensize": "1.3.1",
+  "cordova-plugin-splashscreen": "5.0.3",
+  "cordova-plugin-statusbar": "2.4.3",
+  "cordova-plugin-whitelist": "1.3.4",
+  "cordova-plugin-facebook4": "6.2.0"
 };
 // BOTTOM OF METADATA
 });

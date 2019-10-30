@@ -266,7 +266,7 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
     compile "com.android.support:customtabs:23.2.0"
-    compile "com.facebook.android:facebook-android-sdk:5.0.2"
+    compile "com.facebook.android:facebook-android-sdk:5.5.2"
     // SUB-PROJECT DEPENDENCIES END
 }
 

@@ -1,4 +1,4 @@
-ext.postBuildExtras = {
+cdvPluginPostBuildExtras.add({
     android {
         defaultConfig {
             jackOptions {
@@ -11,4 +11,4 @@ ext.postBuildExtras = {
             targetCompatibility JavaVersion.VERSION_1_8
         }
     }
-}
+})
