@@ -10,9 +10,10 @@ https://stackoverflow.com/questions/17072396/cocoapods-errors-on-project-build
 ![ScreenShot](https://i.stack.imgur.com/bnGus.png)
 ![ScreenShot](images/NeedToUsePodsTargets.png)
 
-
 2) Sometimes you lose the Launch Images and AppIcon settings
 Open the Images.xcassets in Xcode, and
 drag the images from your IDE or Finder to the Xcode IDE.  Clicking on
 the missing icon/launch image shows which size is needed.
 ![ScreenShot](images/DragLaunchImages.png)
+
+3) /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova/Plugins/cordova-plugin-facebook4/FacebookConnectPlugin.h:13:9: **'FBSDKCoreKit/FBSDKCoreKit.h' file not found**

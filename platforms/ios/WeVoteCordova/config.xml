@@ -22,6 +22,16 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="ios-package" value="FacebookConnectPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <plugin name="FacebookConnectPlugin" value="FacebookConnectPlugin" />
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
         <param name="onload" value="true" />
@@ -98,14 +108,4 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="SplashScreenSpinnerColor" value="blue" />
-    <feature name="FacebookConnectPlugin">
-        <param name="ios-package" value="FacebookConnectPlugin" />
-        <param name="onload" value="true" />
-    </feature>
-    <plugin name="FacebookConnectPlugin" value="FacebookConnectPlugin" />
-    <access origin="https://m.facebook.com" />
-    <access origin="https://graph.facebook.com" />
-    <access origin="https://api.facebook.com" />
-    <access origin="https://*.fbcdn.net" />
-    <access origin="https://*.akamaihd.net" />
 </widget>
