@@ -3,8 +3,20 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="ScreenSize">
+        <param name="android-package" value="com.pbakondy.ScreenSize" />
     </feature>
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
@@ -61,18 +73,9 @@
     <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png" />
     <splash density="port-xxxhdpi" src="res/screen/android/screen-xxxhdpi-portrait.png" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="android-minSdkVersion" value="15" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
     <preference name="SplashScreenSpinnerColor" value="blue" />
-    <feature name="FacebookConnectPlugin">
-        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
-        <param name="onload" value="true" />
-    </feature>
-    <access origin="https://m.facebook.com" />
-    <access origin="https://graph.facebook.com" />
-    <access origin="https://api.facebook.com" />
-    <access origin="https://*.fbcdn.net" />
-    <access origin="https://*.akamaihd.net" />
-    <preference name="android-minSdkVersion" value="15" />
 </widget>

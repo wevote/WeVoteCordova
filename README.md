@@ -220,18 +220,20 @@ Throughout these instructions, remember to substitute your actual user name for 
     /Users/your-username/WebstormProjects/WeVoteCordova/platforms/ios/www
     Steves-iMac:www your-username$ ls -la
     total 168
-    drwxr-xr-x  12 your-username  staff    384 Oct 14 00:11 .
-    drwxr-xr-x  14 your-username  staff    448 Nov  8 12:15 ..
-    lrwxr-xr-x   1 your-username  staff     61 Jun  5  2018 bundle.js -> /Users/your-username/MyProjects/WebApp/build/bundle.js
-    drwxr-xr-x   5 your-username  staff    160 Oct 14 00:11 cordova-js-src
-    -rw-r--r--   1 your-username  staff  78044 Jun  5  2018 cordova.js
-    -rw-r--r--   1 your-username  staff   2122 Nov  5 12:55 cordova_plugins.js
-    lrwxr-xr-x   1 your-username  staff     52 Jun  5  2018 css -> /Users/your-username/MyProjects/WebApp/build/css
-    lrwxr-xr-x   1 your-username  staff     52 Jun  5  2018 img -> /Users/your-username/MyProjects/WebApp/src/img
-    lrwxr-xr-x   1 your-username  staff     64 Jun  5  2018 index.html -> /Users/your-username/MyProjects/WeVoteCordova/www/index.html
-    lrwxr-xr-x   1 your-username  staff     59 Jun  5  2018 javascript -> /Users/your-username/MyProjects/WebApp/build/javascript
-    drwxr-xr-x   9 your-username  staff    288 Nov  5 12:55 plugins
+    drwxr-xr-x  11 your-username  staff    352 Oct 29 19:38 .
+    drwxr-xr-x  18 your-username  staff    576 Oct 29 18:07 ..
+    lrwxr-xr-x   1 your-username  staff     58 Oct 29 19:37 bundle.js -> /Users/your-username/WebstormProjects/WebApp/build/bundle.js
+    drwxr-xr-x   5 your-username  staff    160 Oct 29 17:59 cordova-js-src
+    -rw-r--r--   1 your-username  staff  78123 Oct 29 17:59 cordova.js
+    -rw-r--r--   1 your-username  staff   2387 Oct 29 17:59 cordova_plugins.js
+    lrwxr-xr-x   1 your-username  staff     52 Oct 29 19:37 css -> /Users/your-username/WebstormProjects/WebApp/build/css
+    lrwxr-xr-x   1 your-username  staff     52 Oct 29 19:38 img -> /Users/your-username/WebstormProjects/WebApp/build/img
+    lrwxr-xr-x   1 your-username  staff     64 Oct 29 19:37 index.html -> /Users/your-username/WebstormProjects/WeVoteCordova/www/index.html
+    lrwxr-xr-x   1 your-username  staff     59 Oct 29 19:38 javascript -> /Users/your-username/WebstormProjects/WebApp/build/javascript
+    drwxr-xr-x  10 your-username  staff    320 Oct 29 17:59 plugins
     Steves-iMac:www your-username$
+
+    
     ```
     
 1.  You should test each one of those links, to make sure that they really point to where it needs to. It is much easier 
@@ -254,6 +256,27 @@ that the link points to a sizeable file (17856048 bytes in the case of bundle.js
     google-analytics-template.js    google-tag-manager-template.js
     Steves-iMac:www your-username$ 
     ```
+
+### Updating compiled c++ libraries like cordova-plugin-facebook4
+This is very ugly, and not necessarily a straight path to the end goal.  Make a full copy of your WeVoteCordova directory in finder before
+proceeding, so you can always do a binary exact fallback, and to compare as you make changes.
+* If you are the first one making the change, and you will be checking in your results, you will need to ...
+  * `cd WeVoteCordova/platforms`
+  * `cordova platform remove ios`
+  * `cordova platform add ios`
+  * Remove and re-add the plugin` cd WeVoteCordova/platforms/ios`
+    1) `cordova plugin remove cordova-plugin-facebook4`
+    1) `cordova plugin add cordova-plugin-facebook4 --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteWebApp"`
+       1) You many have to manually remove `platforms/android/app/src/main/res/values/facebookconnect.xml` to do the add.
+       1) Another reminder: **you need to open WeVoteCordova.xcworkspace** (not WeVoteCordova.xcodeproj) so both our Cordova app project and the Pods project will be loaded into Xcode.
+    1) `sudo gem install cocoapods`  (update to the latest version of the CocoaPod package manager)
+    1) `pod repo update`  (update the Cocoapod repository -- this can take 20 minutes to complete!)
+    1) `sudo gem install cocoapods-dependencies`
+    1) `pod dependencies` (To sconfirm that 'Bolts' and the 3 FB SDK libaries are dependencies)
+    1)  `pod update`
+    1)  cd to `WeVoteCordova/platforms/ios/www` and rebuild all your symlinks as described above 
+* Yuck: see [Facebook Requirements and Set-Up iOS](https://github.com/jeduan/cordova-plugin-facebook4/blob/master/docs/ios/README.md)
+
 
 ## Installing the IDEs:
 
@@ -289,9 +312,6 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     ```
 
 1.  Install CocoaPods (an MacOS dependency manager).
-
-    You won't need CocoaPods today, but it is worth installing in case you do need it someday.  (Gem is a package Ruby packaging 
-    tool, and comes pre-installed on Macs.)
     ```
     Steves-iMac:WeVoteCordova your-username$ sudo gem install cocoapods
     ```
@@ -307,7 +327,7 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     references to `.xcodeproj` **and** `.xcworkspace` files, but the descriptions are too short to tell the difference.  (Hint:  When that Welcome dialog is displayed, **it is** possible to open the xcworkspace from the File/"Open Recent" menu,
     just be sure to open the xcworkspace.)
 
-![ScreenShot](docs/images/WelcomeToXcode.png)
+![ScreenShot]![ScreenShot](docs/images/WelcomeToXcode.png)
 
 And in the "Welcome to Xcode" dialog, again, don't pick anything from the history list (those are all xcodeproj files), you have to
 click "Open another project..." and navigate to the 'WeVoteReactNative.xcworkspace' item (which is actually a directory).
@@ -502,28 +522,32 @@ These should be installed by Git, but if not you might see error "-1100" lines i
 
 In WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js
 
-
-    module.exports.metadata =
+    module.exports.metadata = 
     // TOP OF METADATA
     {
-      "cordova-plugin-device": "2.0.1",
-      "cordova-plugin-statusbar": "2.4.1",
+      "cordova-plugin-device": "2.0.3",
+      "cordova-plugin-facebook4": "6.2.0",
+      "cordova-plugin-inappbrowser": "3.1.0",
       "cordova-plugin-keyboard": "1.2.0",
-      "cordova-plugin-safariviewcontroller": "1.5.2",
-      "cordova-plugin-whitelist": "1.3.3",
-      "cordova-plugin-inappbrowser": "2.0.2",
-      "cordova-plugin-splashscreen": "5.0.2"
+      "cordova-plugin-safariviewcontroller": "1.6.0",
+      "cordova-plugin-screensize": "1.3.1",
+      "cordova-plugin-splashscreen": "5.0.3",
+      "cordova-plugin-statusbar": "2.4.3",
+      "cordova-plugin-whitelist": "1.3.4"
     };
+    // BOTTOM OF METADATA
 
 If they are not present, the commands to install them (from the WeVoteCordova dir) are:
 
-    cordova plugin add cordova-plugin-whitelist
     cordova plugin add cordova-plugin-device
-    cordova plugin add cordova-plugin-statusbar
+    cordova plugin add cordova-plugin-facebook4 --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteCordova"
+    cordova plugin add cordova-plugin-inappbrowser
     cordova plugin add cordova-plugin-keyboard
-    cordova plugin add cordova-plugin-splashscreen
     cordova plugin add cordova-plugin-safariviewcontroller
-    cordova plugin add https://github.com/apache/cordova-plugin-inappbrowser/pull/263
+    cordova plugin add cordova-plugin-screensize
+    cordova plugin add cordova-plugin-splashscreen
+    cordova plugin add cordova-plugin-statusbar
+    cordova plugin add cordova-plugin-whitelist
 
 
 Note:  Sometimes the setup needs to be re-run
@@ -692,7 +716,7 @@ __
 ### iOS has two config.xml files -- make sure you change both
 
 **Don't do this!:** The following commands are needed to upgrade the ios platform
-portion of the Cordova install, but otherwised don't do this...
+portion of the Cordova install, but otherwise don't do this...
 
     cordova platform remove ios
     cordova platform add ios
