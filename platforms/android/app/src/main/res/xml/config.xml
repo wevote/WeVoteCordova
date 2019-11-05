@@ -73,7 +73,7 @@
     <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png" />
     <splash density="port-xxxhdpi" src="res/screen/android/screen-xxxhdpi-portrait.png" />
     <preference name="loglevel" value="DEBUG" />
-    <preference name="android-minSdkVersion" value="15" />
+    <preference name="android-minSdkVersion" value="19" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />

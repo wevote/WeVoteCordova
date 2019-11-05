@@ -471,6 +471,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.2.4.3;
 				DEVELOPMENT_TEAM = WE977U8FAA;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -481,6 +482,7 @@
 				INFOPLIST_FILE = "WeVoteCordova/WeVoteCordova-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wevote.cordova;
 				PRODUCT_NAME = "We Vote";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -498,6 +500,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1.2.4.3;
 				DEVELOPMENT_TEAM = WE977U8FAA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeVoteCordova/WeVoteCordova-Prefix.pch";
@@ -506,6 +509,7 @@
 				INFOPLIST_FILE = "WeVoteCordova/WeVoteCordova-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wevote.cordova;
 				PRODUCT_NAME = "We Vote";
 				TARGETED_DEVICE_FAMILY = "1,2";
