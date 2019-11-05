@@ -1,6 +1,6 @@
 This is really just a list of strange things that happen at install
 or upgrade, and the fixes that allowed me to proceed -- Sometimes the
-same problem appears months later, mostly at upgrade time.
+same problem appears months later (as a result of a intentional Cordova plugin upgrade), mostly at upgrade time.
 
 1) In Xcode, 'sandbox is not in sync'
     diff: /../Podfile.lock: No such file or directory
@@ -34,3 +34,28 @@ https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#project
 This means that the twitter scheme is no longer registered in XCode.  Make sure the settings for 
 both Twitter and Facebook match what is in the following picture:
 ![ScreenShot](images/XcodeCustomSchemeSettings.png)
+
+
+
+### Updating compiled c++ libraries like cordova-plugin-facebook4
+**This may no longer be necessary with Cordova cli V9, but saving these notes just in case.**
+
+This is very ugly, and not necessarily a straight path to the end goal.  Make a full copy of your WeVoteCordova directory in finder before
+proceeding, so you can always do a binary exact fallback, and to compare as you make changes.
+* If you are the first one making the change, and you will be checking in your results, you will need to ...
+  * `cd WeVoteCordova/platforms`
+  * `cordova platform remove ios`
+  * `cordova platform add ios`
+  * Remove and re-add the plugin` cd WeVoteCordova/platforms/ios`
+    1) `cordova plugin remove cordova-plugin-facebook4`
+    1) `cordova plugin add cordova-plugin-facebook4 --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteWebApp"`
+       1) You many have to manually remove `platforms/android/app/src/main/res/values/facebookconnect.xml` to do the add.
+       1) Another reminder: **you need to open WeVoteCordova.xcworkspace** (not WeVoteCordova.xcodeproj) so both our Cordova app project and the Pods project will be loaded into Xcode.
+    1) `sudo gem install cocoapods`  (update to the latest version of the CocoaPod package manager)
+    1) `pod repo update`  (update the Cocoapod repository -- this can take 20 minutes to complete!)
+    1) `sudo gem install cocoapods-dependencies`
+    1) `pod dependencies` (To sconfirm that 'Bolts' and the 3 FB SDK libaries are dependencies)
+    1)  `pod update`
+    1)  cd to `WeVoteCordova/platforms/ios/www` and rebuild all your symlinks as described above 
+* Yuck: see [Facebook Requirements and Set-Up iOS](https://github.com/jeduan/cordova-plugin-facebook4/blob/master/docs/ios/README.md)
+
