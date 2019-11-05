@@ -63,6 +63,7 @@
         <preference name="SplashScreen" value="screen" />
         <preference name="SplashScreenDelay" value="6000" />
         <preference name="SplashScreenSpinnerColor" value="blue" />
+        <preference name="KeyboardDisplayRequiresUserAction" value="false" />
         <config-file parent="FacebookAutoLogAppEventsEnabled" target="*-Info.plist">
             <false />
         </config-file>

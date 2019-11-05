@@ -619,25 +619,25 @@ ran "cordova platform add android"
 
     ```
     Steves-iMac:www your-username$ rm bundle.js
-    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/bundle.js bundle.js
+    Steves-iMac:www your-username$ ln -s /Users/your-username/WebstormProjects/WebApp/build/bundle.js bundle.js
     Steves-iMac:www your-username$ rm index.html
     Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WeVoteCordova/www/index.html index.html
     Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/css css
     Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/src/img img
+    Steves-iMac:www your-username$ ln -s /Users/your-username/MyProjects/WebApp/build/javascript javascript
     Steves-iMac:www your-username$
     Steves-iMac:www your-username$ ls -la
-    total 152
-    drwxr-xr-x  12 your-username  staff    384 May  9 20:43 .
-    drwxr-xr-x   3 your-username  staff     96 Apr 29 13:45 ..
-    lrwxr-xr-x   1 your-username  staff     55 May  9 13:28 bundle.js -> /Users/your-username/MyProjects/WebApp/build/bundle.js
-    drwxr-xr-x   6 your-username  staff    192 Apr 29 13:45 cordova-js-src
-    -rw-r--r--   1 your-username  staff  73155 Apr 29 13:45 cordova.js
-    -rw-r--r--   1 your-username  staff   1845 Apr 29 13:45 cordova_plugins.js
-    lrwxr-xr-x   1 your-username  staff     46 May  9 20:43 css -> /Users/your-username/MyProjects/WebApp/build/css
-    lrwxr-xr-x   1 your-username  staff     46 May  9 20:43 img -> /Users/your-username/MyProjects/WebApp/src/img
-    lrwxr-xr-x   1 your-username  staff     58 May  9 20:42 index.html -> /Users/your-username/MyProjects/WeVoteCordova/www/index.html
-    lrwxr-xr-x   1 your-username  staff     53 May  9 20:43 javascript -> /Users/your-username/MyProjects/WebApp/build/javascript
-    drwxr-xr-x   8 your-username  staff    256 Apr 29 13:45 plugins
+    total 136
+    drwxr-xr-x  10 your-username  staff    320 Nov  4 08:11 .
+    drwxr-xr-x   3 your-username  staff     96 Nov  3 16:34 ..
+    lrwxr-xr-x   1 your-username  staff     61 Nov  4 08:11 bundle.js -> /Users/your-username/WebstormProjects/WebApp/build/bundle.js
+    drwxr-xr-x   6 your-username  staff    192 Nov  3 16:34 cordova-js-src
+    -rw-r--r--   1 your-username  staff  65029 Nov  3 16:34 cordova.js
+    -rw-r--r--   1 your-username  staff   2501 Nov  3 16:34 cordova_plugins.js
+    lrwxr-xr-x   1 your-username  staff     52 Nov  4 08:11 css -> /Users/your-username/WebstormProjects/WebApp/build/css
+    lrwxr-xr-x   1 your-username  staff     50 Nov  4 08:11 img -> /Users/your-username/WebstormProjects/WebApp/src/img
+    lrwxr-xr-x   1 your-username  staff     64 Nov  4 08:10 index.html -> /Users/your-username/WebstormProjects/WeVoteCordova/www/index.html
+    drwxr-xr-x  10 your-username  staff    320 Nov  3 16:34 plugins
     Steves-iMac:www your-username$ 
     ```
     

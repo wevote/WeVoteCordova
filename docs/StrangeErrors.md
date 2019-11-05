@@ -9,6 +9,14 @@ same problem appears months later, mostly at upgrade time.
 https://stackoverflow.com/questions/17072396/cocoapods-errors-on-project-build
 ![ScreenShot](https://i.stack.imgur.com/bnGus.png)
 ![ScreenShot](images/NeedToUsePodsTargets.png)
+On Nov 2, 2019 this was solved by making sure that the installed Cordova cli was at version 9, and all of the
+plugin versions (that seem to have default values in the cli), were updated to the current versions,
+especially "cordova-plugin-facebook4" for ios.
+```
+Steves-MacBook:WeVoteCordova stevepodell$ cordova -v
+9.0.0 (cordova-lib@9.0.1)
+Steves-MacBook:WeVoteCordova stevepodell$ 
+```
 
 2) Sometimes you lose the Launch Images and AppIcon settings
 Open the Images.xcassets in Xcode, and
@@ -17,3 +25,12 @@ the missing icon/launch image shows which size is needed.
 ![ScreenShot](images/DragLaunchImages.png)
 
 3) /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/WeVoteCordova/Plugins/cordova-plugin-facebook4/FacebookConnectPlugin.h:13:9: **'FBSDKCoreKit/FBSDKCoreKit.h' file not found**
+
+4) Starting with Xcode 8 you should use --codeSignIdentity="iPhone Developer" both for debug and release.
+https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#project-configuration
+
+5) Twitter sign on stops working with a "Safari cannot open page error" with the URL showing api.wevote.org
+![ScreenShot](images/SafariCannotOpenThePageTwitter.png)
+This means that the twitter scheme is no longer registered in XCode.  Make sure the settings for 
+both Twitter and Facebook match what is in the following picture:
+![ScreenShot](images/XcodeCustomSchemeSettings.png)
