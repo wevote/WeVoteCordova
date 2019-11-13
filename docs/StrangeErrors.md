@@ -59,3 +59,24 @@ proceeding, so you can always do a binary exact fallback, and to compare as you 
     1)  cd to `WeVoteCordova/platforms/ios/www` and rebuild all your symlinks as described above 
 * Yuck: see [Facebook Requirements and Set-Up iOS](https://github.com/jeduan/cordova-plugin-facebook4/blob/master/docs/ios/README.md)
 
+### Moving the spinner upwards on the iOS Splash screen and changing it from grey to white:  Manual step required
+
+In the non-source controlled file `/Users/your-username/MyProjects/WeVoteCordova/platforms/ios/WeVoteCordova/Plugins/cordova-plugin-splashscreen/CDVSplashScreen.m` 
+change the line at about line 102:
+
+<!-- 
+July 2019:  Don't do this for now, since we now have a white background to the splash screen (again).
+two lines.  The first at about line 84:
+
+    UIActivityIndicatorViewStyle topActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
+to
+
+    UIActivityIndicatorViewStyle topActivityIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+
+The second at about line 102:
+-->
+
+    _activityView.center = CGPointMake(parentView.bounds.size.width / 2, parentView.bounds.size.height / 1 );
+to
+
+    _activityView.center = CGPointMake(parentView.bounds.size.width / 2, parentView.bounds.size.height * 1 / 5 );
