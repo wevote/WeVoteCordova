@@ -66,12 +66,6 @@ Studio for Android).
    cd  /Users/stevepodell/WebstormProjects/WeVoteCordova
    ```
 
-1.  If you are re-installing, remove prior installs
-    ```
-    rm -fr WeVoteCordovaPopulated
-    rm -fr WeVoteCordova
-    ```
-
 1.  Clone the WeVoteCordova code
 
     ```
@@ -85,30 +79,29 @@ Studio for Android).
 
     ```
     sudo npm uninstall -g cordova
-    sudo npm install -g cordova@9.0.0
+    sudo npm install -g cordova
     ```
     Example: on the example machine that looks like...
     ```
-    Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ sudo npm uninstall -g cordova
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % sudo npm install -g cordova
     Password:
-    removed 455 packages in 2.224s
-    Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ sudo npm uninstall -g cordova
-    up to date in 0.027s
+    npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+    /usr/local/bin/cordova -> /usr/local/lib/node_modules/cordova/bin/cordova
+    + cordova@9.0.0
+    added 432 packages from 355 contributors in 14.165s
     
     
        ╭────────────────────────────────────────────────────────────────╮
        │                                                                │
-       │   New minor version of npm available! 6.5.0-next.0 → 6.13.0    │
-       │   Changelog: https://github.com/npm/cli/releases/tag/v6.13.0   │
+       │      New patch version of npm available! 6.14.4 → 6.14.5       │
+       │   Changelog: https://github.com/npm/cli/releases/tag/v6.14.5   │
        │               Run npm install -g npm to update!                │
        │                                                                │
        ╰────────────────────────────────────────────────────────────────╯
     
-    Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ sudo npm install -g cordova@9.0.0
-    /usr/local/Cellar/node/11.14.0_1/bin/cordova -> /usr/local/Cellar/node/11.14.0_1/lib/node_modules/cordova/bin/cordova
-    + cordova@9.0.0
-    added 455 packages from 361 contributors in 11.556s
-    Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ 
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova -v
+    9.0.0 (cordova-lib@9.0.1)
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
     ```    
 
     Please save in your notes, the path/symlink where cordova is installed. (ex/ `/usr/local/Cellar/node/12.5.0/bin/cordova`)
@@ -127,6 +120,66 @@ Studio for Android).
      
     b. You might be asked: `? May Cordova anonymously report usage statistics to improve the tool over time? (Y/n)` -- that is your choice, either choice is fine.
 
+    ```
+
+1.  Run the (destructive) Cordova CLI commands from within the `WeVoteCordova` directory. 
+    ```
+    cordova platform rm ios android
+    cordova platform add ios android
+    ```
+    Example:
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platform rm ios android
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platform add ios android
+    Using cordova-fetch for cordova-ios@^5.0.0
+    (node:43909) Warning: Accessing non-existent property 'ios' of module exports inside circular dependency
+    (Use `node --trace-warnings ...` to show where the warning was created)
+    (node:43909) Warning: Accessing non-existent property 'android' of module exports inside circular dependency
+    Adding ios project...
+    Creating Cordova project for the iOS platform:
+            Path: platforms/ios
+            Package: org.wevote.cordova
+            Name: WeVoteCordova
+    iOS project created with cordova-ios@5.1.1
+    Installing "cordova-plugin-customurlscheme" for ios
+    Installing "cordova-plugin-device" for ios
+    Installing "cordova-plugin-facebook4" for ios
+    Running command: pod install --verbose
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/cache.rb:114: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/request.rb:61: warning: The called method `slug' is defined here
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/cache.rb:100: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/request.rb:61: warning: The called method `slug' is defined here
+    /usr/local/lib/ruby/gems/2.7.0/gems/nanaimo-0.2.6/lib/nanaimo/writer/pbxproj.rb:13: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
+    /usr/local/lib/ruby/gems/2.7.0/gems/nanaimo-0.2.6/lib/nanaimo/writer.rb:35: warning: The called method `initialize' is defined here
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    [!] The `WeVoteCordova [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-WeVoteCordova/Pods-WeVoteCordova.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    [!] The `WeVoteCordova [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-WeVoteCordova/Pods-WeVoteCordova.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    Installing "cordova-plugin-inappbrowser" for ios
+    Installing "cordova-plugin-keyboard" for ios
+    Installing "cordova-plugin-safariviewcontroller" for ios
+    Installing "cordova-plugin-screensize" for ios
+    Installing "cordova-plugin-sign-in-with-apple" for ios
+    Installing "cordova-plugin-splashscreen" for ios
+    Installing "cordova-plugin-statusbar" for ios
+    Installing "cordova-plugin-taptic-engine" for ios
+    Installing "cordova-plugin-whitelist" for ios
+    Source and destination must not be the same.
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
     ```
 
 1.  CD to the www directory and make the first symbolic link for `bundle.js`  This is the `bundle.js` made by your
@@ -151,102 +204,6 @@ correct for your environment.
     Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ 
     ```
 
-1.  Manually remove all the Cordova plugins.  One of which we have source controlled a modified "Objective-C" file, and need
-to override the distribution.
-    
-    ```
-    cd /Users/your-username/MyProjects/WeVoteCordova
-    rm -fr plugins
-    ```
- 
-1.  Run the (destructive) Cordova CLI commands from within the `WeVoteCordova` directory. 
-    ```
-    cordova platform rm ios android
-    cordova platform add ios android
-    ```
-    Example:
-    ```
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ cordova platform rm ios android
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ cordova platform add ios android
-    Using cordova-fetch for cordova-ios@^5.0.0
-    Adding ios project...
-    Creating Cordova project for the iOS platform:
-            Path: ../../WebStormProjects/WeVoteCordova/platforms/ios
-            Package: org.wevote.cordova
-            Name: WeVoteCordova
-    iOS project created with cordova-ios@5.0.1
-    Discovered saved plugin "cordova-plugin-keyboard". Adding it to the project
-    Installing "cordova-plugin-keyboard" for ios
-    Adding cordova-plugin-keyboard to package.json
-    Discovered saved plugin "cordova-plugin-screensize". Adding it to the project
-    Installing "cordova-plugin-screensize" for ios
-    Adding cordova-plugin-screensize to package.json
-    Discovered saved plugin "cordova-plugin-device". Adding it to the project
-    Installing "cordova-plugin-device" for ios
-    Adding cordova-plugin-device to package.json
-    Discovered saved plugin "cordova-plugin-statusbar". Adding it to the project
-    Installing "cordova-plugin-statusbar" for ios
-    Adding cordova-plugin-statusbar to package.json
-    Discovered saved plugin "cordova-plugin-safariviewcontroller". Adding it to the project
-    Installing "cordova-plugin-safariviewcontroller" for ios
-    Adding cordova-plugin-safariviewcontroller to package.json
-    Discovered saved plugin "cordova-plugin-inappbrowser". Adding it to the project
-    Installing "cordova-plugin-inappbrowser" for ios
-    Adding cordova-plugin-inappbrowser to package.json
-    Discovered saved plugin "cordova-plugin-splashscreen". Adding it to the project
-    Installing "cordova-plugin-splashscreen" for ios
-    Adding cordova-plugin-splashscreen to package.json
-    Discovered saved plugin "cordova-plugin-whitelist". Adding it to the project
-    Installing "cordova-plugin-whitelist" for ios
-    Adding cordova-plugin-whitelist to package.json
-    Discovered saved plugin "cordova-plugin-facebook4". Adding it to the project
-    Installing "cordova-plugin-facebook4" for ios
-    Running command: pod install --verbose
-    
-    [!] The `WeVoteCordova [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-WeVoteCordova/Pods-WeVoteCordova.debug.xcconfig'. This can lead to problems with the CocoaPods installation
-    
-    [!] The `WeVoteCordova [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-WeVoteCordova/Pods-WeVoteCordova.release.xcconfig'. This can lead to problems with the CocoaPods installation
-    
-    Adding cordova-plugin-facebook4 to package.json
-    Source and destination must not be the same.
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ 
-    ```
-
-1.  Rename this code directory to a temporary name: `WeVoteCordovaPopulated`
-
-    ```
-    cd /Users/your-username/MyProjects
-    mv WeVoteCordova WeVoteCordovaPopulated
-    ```
-    Example:
-    ```
-    Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$ cd ..
-    Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ mv WeVoteCordova WeVoteCordovaPopulated
-    Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ 
-    ```
-    This step has added all the Cordova libraries, installed up-to-date versions of the Cordova plugins, and set up directories for iOS and Android,
-    but it destroyed some of the source controlled configuration files by overwriting them with default scaffolding files.
-
-1.  Clone another copy of the WeVoteCordova code
-
-    ```
-    git clone https://github.com/wevote/WeVoteCordova.git
-    ```
-
-1.  Copy, recursively with no overwrites, all of the "Populated" Cordova files onto the target WeVoteCordova directory.
-    This new directory contains all the source controlled files from git,
-    and this step adds all the generated -- non-source controlled files.
-    ```
-    cp -Rvn WeVoteCordovaPopulated/ WeVoteCordova/
-    ```
-    At this point you can delete the WeVoteCordovaPopulated directory, it has served its purpose.
-    All the code for iOS and Android has been installed on your Mac, and we will now do the platform specific setup, then
-    setup the IDEs.
-    
-    ```
-    rm -rf WeVoteCordovaPopulated
-    ```
-    
 1. On github.com, fork WeVoteCordova to your account. Navigate to https://github.com/wevote/WeVoteCordova and then click the "Fork" button in the upper right corner.
     
 1. You may need to setup your Github remotes
@@ -318,42 +275,30 @@ Throughout these instructions, remember to substitute your actual user name for 
     in place of 'your-username'!)
 
     ```
-    rm index.html
-    ln -s /Users/your-username/MyProjects/WeVoteCordova/www/index.html index.html
-    ln -s /Users/your-username/MyProjects/WebApp/build/css css
-    ln -s /Users/your-username/MyProjects/WebApp/src/img img
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % pwd
+    /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % rm index.html
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html index.html
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/build/css css
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/src/img img  
     ```
 
     When you are done the ios www directory will have changed as follows...
 
     ```
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ls -la
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ls -la        
     total 152
-    drwxr-xr-x   8 stevepodell  staff    256 Nov 11 14:37 .
-    drwxr-xr-x   3 stevepodell  staff     96 Nov 11 14:37 ..
-    lrwxr-xr-x   1 stevepodell  staff     58 Nov 11 14:37 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/bundle.js
-    drwxr-xr-x   6 stevepodell  staff    192 Nov 11 14:37 cordova-js-src
-    -rw-r--r--   1 stevepodell  staff  65029 Nov 11 14:37 cordova.js
-    -rw-r--r--   1 stevepodell  staff   2501 Nov 11 14:37 cordova_plugins.js
-    -rw-r--r--   1 stevepodell  staff   6595 Nov 11 14:11 index.html
-    drwxr-xr-x  10 stevepodell  staff    320 Nov 11 14:37 plugins
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ rm index.html
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebStormProjects/WeVoteCordova/www/index.html index.html
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/WebApp/build/css css
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/WebApp/src/img img
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ls -la
-    total 136
-    drwxr-xr-x  10 stevepodell  staff    320 Nov 11 17:29 .
-    drwxr-xr-x   3 stevepodell  staff     96 Nov 11 14:37 ..
-    lrwxr-xr-x   1 stevepodell  staff     58 Nov 11 14:37 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/bundle.js
-    drwxr-xr-x   6 stevepodell  staff    192 Nov 11 14:37 cordova-js-src
-    -rw-r--r--   1 stevepodell  staff  65029 Nov 11 14:37 cordova.js
-    -rw-r--r--   1 stevepodell  staff   2501 Nov 11 14:37 cordova_plugins.js
-    lrwxr-xr-x   1 stevepodell  staff     52 Nov 11 17:29 css -> /Users/stevepodell/WebstormProjects/WebApp/build/css
-    lrwxr-xr-x   1 stevepodell  staff     50 Nov 11 17:29 img -> /Users/stevepodell/WebstormProjects/WebApp/src/img
-    lrwxr-xr-x   1 stevepodell  staff     64 Nov 11 17:28 index.html -> /Users/stevepodell/WebStormProjects/WeVoteCordova/www/index.html
-    drwxr-xr-x  10 stevepodell  staff    320 Nov 11 14:37 plugins
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ 
+    drwxr-xr-x  10 stevepodell  staff    320 Jun 19 14:05 .
+    drwxr-xr-x  18 stevepodell  staff    576 Jun 19 13:37 ..
+    lrwxr-xr-x   1 stevepodell  staff     58 Jun 19 13:37 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/bundle.js
+    drwxr-xr-x   6 stevepodell  staff    192 Jun 19 13:37 cordova-js-src
+    -rw-r--r--   1 stevepodell  staff  69846 Jun 19 13:37 cordova.js
+    -rw-r--r--   1 stevepodell  staff   3424 Jun 19 13:37 cordova_plugins.js
+    lrwxr-xr-x   1 stevepodell  staff     52 Jun 19 14:04 css -> /Users/stevepodell/WebstormProjects/WebApp/build/css
+    lrwxr-xr-x   1 stevepodell  staff     50 Jun 19 14:05 img -> /Users/stevepodell/WebstormProjects/WebApp/src/img
+    lrwxr-xr-x   1 stevepodell  staff     64 Jun 19 14:04 index.html -> /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html
+    drwxr-xr-x  13 stevepodell  staff    416 Jun 19 13:37 plugins
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % 
     ```
         
 1.  You should test each one of those links, to make sure that they really point to where it needs to. It is much easier 
@@ -448,7 +393,7 @@ you will undo some of your previous setup work!)
     Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ rm index.html
     Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebStormProjects/WeVoteCordova/www/index.html index.html
     Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/WebApp/build/css css
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/WebApp/src/img img
+    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/WebApp/build/img img
     Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ls -la
     total 136
     drwxr-xr-x  10 stevepodell  staff    320 Nov 12 18:02 .
@@ -541,6 +486,21 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     ```
     Steves-iMac:WeVoteCordova your-username$ sudo gem install cocoapods
     ```
+    **May 2020:** The default gem for cocoapods failed with a fatal repository not found, or 
+    a “fatal: Unable to find remote helper for ‘https’” or a "fatal error: 'cstddef' file not found".  It was possible
+    to work around this problem by (loading a specific version)[https://github.com/CocoaPods/CocoaPods/issues/9270]...
+    ```
+    cd platforms/ios
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 ios % sudo gem install cocoapods -v1.8.4
+    ```
+
+1.   Update pod repository
+    The following command retrieves the latest pod version metadata from git
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 ios % pod repo update
+    ```
+
+    
 
 1.  Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
 
@@ -725,6 +685,19 @@ running on your Mac, while not using the simulator, some extra setup is required
 access to your Mac's localhost.
 
 [Testing with a Physical Phone and a localhost WeVote API Server](docs/TestingWithLocalHostFromPhone.md)
+
+
+## Making a movie recording of the simulator
+
+[See the article](https://sarunw.com/posts/take-screenshot-and-record-video-in-ios-simulator/)
+
+Start recording:
+
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % xcrun simctl io booted recordVideo myVideo.mov
+
+End the recording with Ctrl-c in the terminal window.  
+
+Just change myVideo.mov to a unique name of your choosing, and run the command to make a recording.
 
 
 ## Git

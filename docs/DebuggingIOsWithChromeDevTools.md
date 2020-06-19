@@ -1,6 +1,10 @@
 ## Debugging Cordova Apps with the Chrome dev tools
 
-Chrome devtools is lightyears better than the Safari debugger, but is a bit challenging to get working. See ...
+The Safari debugger has improved tremendously over the last two years, and is now comparable to the Chrome 
+dev tools. I don't think there's any reason anymore to go through all this set up to use the chrome tools, 
+but if you really want to use Chrome, these are the instructions.
+
+Chrome devtools is a bit challenging to get working. See ...
 
 [medium.com article about the remotedebug-ios-webkit-adapter for debugging WebViews](https://medium.com/@auchenberg/hello-remotedebug-ios-webkit-adapter-debug-safari-and-ios-webviews-from-anywhere-2a8553df7465)
 

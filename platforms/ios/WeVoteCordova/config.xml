@@ -33,14 +33,6 @@
     <access origin="https://*.fbcdn.net" />
     <access origin="https://*.akamaihd.net" />
     <feature name="InAppBrowser">
-        <param name="ios-package" value="CDVInAppBrowser" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="UIInAppBrowser">
-        <param name="ios-package" value="CDVUIInAppBrowser" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="WKInAppBrowser">
         <param name="ios-package" value="CDVWKInAppBrowser" />
         <param name="onload" value="true" />
     </feature>
@@ -53,6 +45,10 @@
     <feature name="ScreenSize">
         <param name="ios-package" value="ScreenSize" />
     </feature>
+    <feature name="SignInWithApple">
+        <param name="ios-package" value="SignInWithApple" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="SplashScreen">
         <param name="ios-package" value="CDVSplashScreen" />
         <param name="onload" value="true" />
@@ -60,6 +56,9 @@
     <feature name="StatusBar">
         <param name="ios-package" value="CDVStatusBar" />
         <param name="onload" value="true" />
+    </feature>
+    <feature name="TapticEngine">
+        <param name="ios-package" value="TapticEngine" />
     </feature>
     <name>WeVoteCordova</name>
     <description>
@@ -88,14 +87,17 @@
     <config-file parent="FacebookAutoLogAppEventsEnabled" target="*-Info.plist">
         <false />
     </config-file>
+    <splash src="res/screen/ios/June2020LaunchScreen.png" />
+    <preference name="BackupWebStorage" value="local" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
+    <preference name="FacebookAdvertiserIDCollectionEnabled" value="false" />
     <preference name="FadeSplashScreenDuration" value="0" />
     <preference name="AllowInlineMediaPlayback" value="false" />
-    <preference name="BackupWebStorage" value="cloud" />
     <preference name="EnableViewportScale" value="false" />
-    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
-    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <preference name="MediaTypesRequiringUserActionForPlayback" value="false" />
     <preference name="SuppressesIncrementalRendering" value="false" />
     <preference name="SuppressesLongPressGesture" value="false" />
     <preference name="Suppresses3DTouchGesture" value="false" />
@@ -108,5 +110,6 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="SplashScreenSpinnerColor" value="blue" />
-    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <preference name="WKWebViewOnly" value="true" />
+    <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
 </widget>
