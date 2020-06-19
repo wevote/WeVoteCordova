@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-               BuildableName = "We Vote.app"
+               BuildableName = "WeVoteCordova.app"
                BlueprintName = "WeVoteCordova"
                ReferencedContainer = "container:WeVoteCordova.xcodeproj">
             </BuildableReference>
@@ -27,17 +27,19 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "We Vote.app"
+            BuildableName = "WeVoteCordova.app"
             BlueprintName = "WeVoteCordova"
             ReferencedContainer = "container:WeVoteCordova.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <Testables>
-      </Testables>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -54,11 +56,13 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "We Vote.app"
+            BuildableName = "WeVoteCordova.app"
             BlueprintName = "WeVoteCordova"
             ReferencedContainer = "container:WeVoteCordova.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -71,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "We Vote.app"
+            BuildableName = "WeVoteCordova.app"
             BlueprintName = "WeVoteCordova"
             ReferencedContainer = "container:WeVoteCordova.xcodeproj">
          </BuildableReference>

@@ -12,12 +12,9 @@
     },
     "cordova-plugin-facebook4": {
       "APP_ID": "1097389196952441",
-      "APP_NAME": "WeVoteCordova",
+      "APP_NAME": "WeVoteWebApp",
       "FACEBOOK_HYBRID_APP_EVENTS": "false",
-      "FACEBOOK_ANDROID_SDK_VERSION": "5.5.2",
-      "PACKAGE_NAME": "org.wevote.cordova"
-    },
-    "cordova-plugin-inappbrowser": {
+      "FACEBOOK_ANDROID_SDK_VERSION": "5.13.0",
       "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-keyboard": {
@@ -36,6 +33,22 @@
       "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "org.wevote.cordova"
+    },
+    "cordova-plugin-sign-in-with-apple": {
+      "PACKAGE_NAME": "org.wevote.cordova"
+    },
+    "cordova-plugin-taptic-engine": {
+      "PACKAGE_NAME": "org.wevote.cordova"
+    },
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "wevotetwitterscheme",
+      "ANDROID_SCHEME": " ",
+      "ANDROID_HOST": " ",
+      "ANDROID_PATHPREFIX": "/",
+      "PACKAGE_NAME": "org.wevote.cordova"
+    },
+    "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "org.wevote.cordova"
     }
   },

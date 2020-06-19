@@ -25,6 +25,12 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
+    <preference name="FacebookAdvertiserIDCollectionEnabled" value="false" />
+    <feature name="Custom URL scheme">
+        <param name="id" value="cordova-plugin-customurlscheme" />
+        <param name="url" value="https://github.com/EddyVerbruggen/Custom-URL-scheme.git" />
+        <variable name="URL_SCHEME" value="wevotetwitterscheme" />
+    </feature>
     <platform name="android">
         <allow-intent href="market:*" />
         <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
@@ -46,11 +52,11 @@
         <allow-intent href="itms-apps:*" />
         <preference name="FadeSplashScreenDuration" value="0" />
         <preference name="AllowInlineMediaPlayback" value="false" />
-        <preference name="BackupWebStorage" value="cloud" />
+        <preference name="BackupWebStorage" value="local" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="EnableViewportScale" value="false" />
         <preference name="KeyboardDisplayRequiresUserAction" value="true" />
-        <preference name="MediaPlaybackRequiresUserAction" value="false" />
+        <preference name="MediaTypesRequiringUserActionForPlayback" value="false" />
         <preference name="SuppressesIncrementalRendering" value="false" />
         <preference name="SuppressesLongPressGesture" value="false" />
         <preference name="Suppresses3DTouchGesture" value="false" />
@@ -64,19 +70,24 @@
         <preference name="SplashScreenDelay" value="6000" />
         <preference name="SplashScreenSpinnerColor" value="blue" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+        <preference name="WKWebViewOnly" value="true" />
+        <feature name="CDVWKWebViewEngine">
+            <param name="ios-package" value="CDVWKWebViewEngine" />
+        </feature>
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
         <config-file parent="FacebookAutoLogAppEventsEnabled" target="*-Info.plist">
             <false />
         </config-file>
+        <splash src="res/screen/ios/June2020LaunchScreen.png" />
     </platform>
     <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
-    <plugin name="cordova-plugin-screensize" spec="^1.3.1" />
-    <plugin name="cordova-plugin-device" spec="^2.0.3" />
-    <plugin name="cordova-plugin-statusbar" spec="^2.4.3" />
-    <plugin name="cordova-plugin-safariviewcontroller" spec="^1.6.0" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^3.1.0" />
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.3" />
-    <plugin name="cordova-plugin-whitelist" spec="^1.3.4" />
-    <plugin name="cordova-plugin-facebook4" spec="^6.2.0">
+    <plugin name="cordova-plugin-screensize" spec="~1.3.1" />
+    <plugin name="cordova-plugin-device" spec="~2.0.3" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
+    <plugin name="cordova-plugin-safariviewcontroller" spec="~1.6.0" />
+    <plugin name="cordova-plugin-splashscreen" spec="~5.0.3" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.4" />
+    <plugin name="cordova-plugin-facebook4" spec="^6.4.0">
         <variable name="APP_ID" value="1097389196952441" />
         <variable name="APP_NAME" value="WeVoteCordova" />
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
