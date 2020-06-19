@@ -39,14 +39,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-inappbrowser": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-inappbrowser@3.1.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-splashscreen": {
     "source": {
       "type": "registry",
@@ -66,12 +58,46 @@
   "cordova-plugin-facebook4": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-facebook4@^6.2.0"
+      "id": "cordova-plugin-facebook4@6.4.0"
     },
     "is_top_level": true,
     "variables": {
       "APP_ID": "1097389196952441",
-      "APP_NAME": "WeVoteCordova"
+      "APP_NAME": "WeVoteWebApp"
     }
+  },
+  "cordova-plugin-sign-in-with-apple": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-sign-in-with-apple"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-taptic-engine": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/EddyVerbruggen/cordova-plugin-taptic-engine"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-customurlscheme": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-customurlscheme"
+    },
+    "is_top_level": true,
+    "variables": {
+      "URL_SCHEME": "wevotetwitterscheme"
+    }
+  },
+  "cordova-plugin-inappbrowser": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/apache/cordova-plugin-inappbrowser.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

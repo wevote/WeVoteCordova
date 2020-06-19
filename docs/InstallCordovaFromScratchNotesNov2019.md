@@ -2,11 +2,12 @@ Rebuild From Scratch
 
 ## MUST be at least at Cordova V9
 
+```
 Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ cd ~/WebstormProjects
 Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ cordova -v
 9.0.0 (cordova-lib@9.0.1)
 Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ 
-
+```
 If you are not, follow the instructions for cordova-cli release 9.0.0
 https://cordova.apache.org/announcements/2019/03/22/cordova-cli-release-9.0.0.html
 

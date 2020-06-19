@@ -1,3 +1,5 @@
 {
-    "SafariServices.framework": 1
+    "SafariServices.framework": 1,
+    "AuthenticationServices.framework": 1,
+    "AudioToolbox.framework": 1
 }

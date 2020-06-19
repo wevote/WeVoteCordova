@@ -66,12 +66,6 @@ Studio for Android).
    cd  /Users/stevepodell/WebstormProjects/WeVoteCordova
    ```
 
-1.  If you are re-installing, remove prior installs
-    ```
-    rm -fr WeVoteCordovaPopulated
-    rm -fr WeVoteCordova
-    ```
-
 1.  Clone the WeVoteCordova code
 
     ```
@@ -151,14 +145,6 @@ correct for your environment.
     Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ 
     ```
 
-1.  Manually remove all the Cordova plugins.  One of which we have source controlled a modified "Objective-C" file, and need
-to override the distribution.
-    
-    ```
-    cd /Users/your-username/MyProjects/WeVoteCordova
-    rm -fr plugins
-    ```
- 
 1.  Run the (destructive) Cordova CLI commands from within the `WeVoteCordova` directory. 
     ```
     cordova platform rm ios android
@@ -211,42 +197,7 @@ to override the distribution.
     Source and destination must not be the same.
     Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ 
     ```
-
-1.  Rename this code directory to a temporary name: `WeVoteCordovaPopulated`
-
-    ```
-    cd /Users/your-username/MyProjects
-    mv WeVoteCordova WeVoteCordovaPopulated
-    ```
-    Example:
-    ```
-    Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$ cd ..
-    Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ mv WeVoteCordova WeVoteCordovaPopulated
-    Steves-MacBook-Pro-32GB-Oct-2018:WebstormProjects stevepodell$ 
-    ```
-    This step has added all the Cordova libraries, installed up-to-date versions of the Cordova plugins, and set up directories for iOS and Android,
-    but it destroyed some of the source controlled configuration files by overwriting them with default scaffolding files.
-
-1.  Clone another copy of the WeVoteCordova code
-
-    ```
-    git clone https://github.com/wevote/WeVoteCordova.git
-    ```
-
-1.  Copy, recursively with no overwrites, all of the "Populated" Cordova files onto the target WeVoteCordova directory.
-    This new directory contains all the source controlled files from git,
-    and this step adds all the generated -- non-source controlled files.
-    ```
-    cp -Rvn WeVoteCordovaPopulated/ WeVoteCordova/
-    ```
-    At this point you can delete the WeVoteCordovaPopulated directory, it has served its purpose.
-    All the code for iOS and Android has been installed on your Mac, and we will now do the platform specific setup, then
-    setup the IDEs.
-    
-    ```
-    rm -rf WeVoteCordovaPopulated
-    ```
-    
+  
 1. On github.com, fork WeVoteCordova to your account. Navigate to https://github.com/wevote/WeVoteCordova and then click the "Fork" button in the upper right corner.
     
 1. You may need to setup your Github remotes
@@ -318,42 +269,31 @@ Throughout these instructions, remember to substitute your actual user name for 
     in place of 'your-username'!)
 
     ```
-    rm index.html
-    ln -s /Users/your-username/MyProjects/WeVoteCordova/www/index.html index.html
-    ln -s /Users/your-username/MyProjects/WebApp/build/css css
-    ln -s /Users/your-username/MyProjects/WebApp/src/img img
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % pwd
+    /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % rm index.html
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html index.html
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/build/css css
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/src/img img  
     ```
 
     When you are done the ios www directory will have changed as follows...
 
     ```
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ls -la
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ls -la
     total 152
-    drwxr-xr-x   8 stevepodell  staff    256 Nov 11 14:37 .
-    drwxr-xr-x   3 stevepodell  staff     96 Nov 11 14:37 ..
-    lrwxr-xr-x   1 stevepodell  staff     58 Nov 11 14:37 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/bundle.js
-    drwxr-xr-x   6 stevepodell  staff    192 Nov 11 14:37 cordova-js-src
-    -rw-r--r--   1 stevepodell  staff  65029 Nov 11 14:37 cordova.js
-    -rw-r--r--   1 stevepodell  staff   2501 Nov 11 14:37 cordova_plugins.js
-    -rw-r--r--   1 stevepodell  staff   6595 Nov 11 14:11 index.html
-    drwxr-xr-x  10 stevepodell  staff    320 Nov 11 14:37 plugins
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ rm index.html
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebStormProjects/WeVoteCordova/www/index.html index.html
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/WebApp/build/css css
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ln -s /Users/stevepodell/WebstormProjects/WebApp/src/img img
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ls -la
-    total 136
-    drwxr-xr-x  10 stevepodell  staff    320 Nov 11 17:29 .
-    drwxr-xr-x   3 stevepodell  staff     96 Nov 11 14:37 ..
-    lrwxr-xr-x   1 stevepodell  staff     58 Nov 11 14:37 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/bundle.js
-    drwxr-xr-x   6 stevepodell  staff    192 Nov 11 14:37 cordova-js-src
-    -rw-r--r--   1 stevepodell  staff  65029 Nov 11 14:37 cordova.js
-    -rw-r--r--   1 stevepodell  staff   2501 Nov 11 14:37 cordova_plugins.js
-    lrwxr-xr-x   1 stevepodell  staff     52 Nov 11 17:29 css -> /Users/stevepodell/WebstormProjects/WebApp/build/css
-    lrwxr-xr-x   1 stevepodell  staff     50 Nov 11 17:29 img -> /Users/stevepodell/WebstormProjects/WebApp/src/img
-    lrwxr-xr-x   1 stevepodell  staff     64 Nov 11 17:28 index.html -> /Users/stevepodell/WebStormProjects/WeVoteCordova/www/index.html
-    drwxr-xr-x  10 stevepodell  staff    320 Nov 11 14:37 plugins
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ 
+    drwxr-xr-x  11 stevepodell  staff    352 May 18 16:04 .
+    drwxr-xr-x  17 stevepodell  staff    544 May 18 15:04 ..
+    lrwxr-xr-x   1 stevepodell  staff     58 May 18 14:40 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/bundle.js
+    drwxr-xr-x   6 stevepodell  staff    192 May 18 14:40 cordova-js-src
+    -rw-r--r--   1 stevepodell  staff  69846 May 18 14:40 cordova.js
+    -rw-r--r--   1 stevepodell  staff    676 May 18 14:40 cordova_plugins.js
+    lrwxr-xr-x   1 stevepodell  staff     52 May 18 16:04 css -> /Users/stevepodell/WebstormProjects/WebApp/build/css
+    lrwxr-xr-x   1 stevepodell  staff     50 May 18 16:04 img -> /Users/stevepodell/WebstormProjects/WebApp/src/img
+    lrwxr-xr-x   1 stevepodell  staff     64 May 18 16:03 index.html -> /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html
+    drwxr-xr-x   4 stevepodell  staff    128 May 18 14:40 plugins
+    lrwxr-xr-x   1 stevepodell  staff     18 May 18 16:03 www -> /platforms/ios/www
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www %
     ```
         
 1.  You should test each one of those links, to make sure that they really point to where it needs to. It is much easier 
@@ -541,6 +481,21 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     ```
     Steves-iMac:WeVoteCordova your-username$ sudo gem install cocoapods
     ```
+    **May 2020:** The default gem for cocoapods failed with a fatal repository not found, or 
+    a “fatal: Unable to find remote helper for ‘https’” or a "fatal error: 'cstddef' file not found".  It was possible
+    to work around this problem by (loading a specific version)[https://github.com/CocoaPods/CocoaPods/issues/9270]...
+    ```
+    cd platforms/ios
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 ios % sudo gem install cocoapods -v1.8.4
+    ```
+
+1.   Update pod repository
+    The following command retrieves the latest pod version metadata from git
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 ios % pod repo update
+    ```
+
+    
 
 1.  Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
 
@@ -725,6 +680,19 @@ running on your Mac, while not using the simulator, some extra setup is required
 access to your Mac's localhost.
 
 [Testing with a Physical Phone and a localhost WeVote API Server](docs/TestingWithLocalHostFromPhone.md)
+
+
+## Making a movie recording of the simulator
+
+[See the article](https://sarunw.com/posts/take-screenshot-and-record-video-in-ios-simulator/)
+
+Start recording:
+
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % xcrun simctl io booted recordVideo myVideo.mov
+
+End the recording with Ctrl-c in the terminal window.  
+
+Just change myVideo.mov to a unique name of your choosing, and run the command to make a recording.
 
 
 ## Git

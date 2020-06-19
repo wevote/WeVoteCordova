@@ -27,7 +27,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.3.0'
     }
 }
 
@@ -294,7 +294,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    implementation "com.facebook.android:facebook-android-sdk:5.5.2"
+    implementation "com.facebook.android:facebook-android-sdk:5.13.0"
     implementation "com.android.support:customtabs:23.2.0"
     // SUB-PROJECT DEPENDENCIES END
 }
