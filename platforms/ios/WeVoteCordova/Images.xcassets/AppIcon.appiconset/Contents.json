@@ -1,151 +1,151 @@
 {
   "images" : [
     {
-      "filename" : "WeVoteAppIcon-40.png",
+      "filename" : "icon_20pt@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "WeVoteAppIcon-20@3x.png",
+      "filename" : "icon_20pt@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "WeVoteAppIcon-29.png",
+      "filename" : "icon_29pt.png",
       "idiom" : "iphone",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
-      "filename" : "WeVoteAppIcon-58.png",
+      "filename" : "icon_29pt@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "WeVoteAppIcon-87.png",
+      "filename" : "icon_29pt@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "WeVoteAppIcon-40@2x.png",
+      "filename" : "icon_40pt@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "WeVoteAppIcon-40@3x.png",
+      "filename" : "icon_40pt@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "WeVoteAppIcon-57.png",
+      "filename" : "icon_57pt.png",
       "idiom" : "iphone",
       "scale" : "1x",
       "size" : "57x57"
     },
     {
-      "filename" : "WeVoteAppIcon-57@2x.png",
+      "filename" : "icon_57pt@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "57x57"
     },
     {
-      "filename" : "WeVoteAppIcon-60@2x.png",
+      "filename" : "icon_60pt@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "WeVoteAppIcon-60@3x.png",
+      "filename" : "icon_60pt@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "WeVoteAppIcon-20.png",
+      "filename" : "icon_20pt.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
-      "filename" : "WeVoteAppIcon-20@2x.png",
+      "filename" : "icon_20pt@2x-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "WeVoteAppIcon-30.png",
+      "filename" : "icon_29pt-1.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
-      "filename" : "WeVoteAppIcon-29@2x.png",
+      "filename" : "icon_29pt@2x-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "WeVoteAppIcon-41.png",
+      "filename" : "icon_40pt.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
-      "filename" : "WeVoteAppIcon-40@2x-1.png",
+      "filename" : "icon_40pt@2x-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "WeVoteAppIcon-50.png",
+      "filename" : "icon_50pt.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "50x50"
     },
     {
-      "filename" : "WeVoteAppIcon-50@2x.png",
+      "filename" : "icon_50pt@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "50x50"
     },
     {
-      "filename" : "WeVoteAppIcon-72.png",
+      "filename" : "icon_72pt.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "72x72"
     },
     {
-      "filename" : "WeVoteAppIcon-72@2x.png",
+      "filename" : "icon_72pt@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "72x72"
     },
     {
-      "filename" : "WeVoteAppIcon-76.png",
+      "filename" : "icon_76pt.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
     },
     {
-      "filename" : "WeVoteAppIcon-76@2x.png",
+      "filename" : "icon_76pt@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "WeVoteAppIcon-83.5@2x.png",
+      "filename" : "icon_83.5@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "WeVoteAppIcon-1024.png",
+      "filename" : "icon_1024pt.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

@@ -98,7 +98,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../cordova-plugin-safariviewcontroller/cordova-SafariViewController-java18.gradle"
+apply from: "../cordova-plugin-safariviewcontroller/wevotecordova-SafariViewController-java18.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()

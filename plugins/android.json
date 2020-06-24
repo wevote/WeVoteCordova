@@ -1,0 +1,46 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-facebook4": {
+      "APP_ID": "1097389196952441",
+      "APP_NAME": "WeVoteCordova",
+      "FACEBOOK_HYBRID_APP_EVENTS": "false",
+      "FACEBOOK_ANDROID_SDK_VERSION": "5.13.0",
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-safariviewcontroller": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-screensize": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-sign-in-with-apple": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-taptic-engine": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
+    }
+  },
+  "dependent_plugins": {}
+}

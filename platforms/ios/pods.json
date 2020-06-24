@@ -1,0 +1,31 @@
+{
+    "declarations": {
+        "use_frameworks!": {
+            "declaration": "use_frameworks!",
+            "count": 1
+        }
+    },
+    "sources": {
+        "https://cdn.cocoapods.org/": {
+            "source": "https://cdn.cocoapods.org/",
+            "count": 1
+        }
+    },
+    "libraries": {
+        "FBSDKCoreKit": {
+            "name": "FBSDKCoreKit",
+            "spec": "5.15.0",
+            "count": 1
+        },
+        "FBSDKLoginKit": {
+            "name": "FBSDKLoginKit",
+            "spec": "5.15.0",
+            "count": 1
+        },
+        "FBSDKShareKit": {
+            "name": "FBSDKShareKit",
+            "spec": "5.15.0",
+            "count": 1
+        }
+    }
+}
