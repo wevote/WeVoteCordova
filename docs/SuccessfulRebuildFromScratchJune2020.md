@@ -193,5 +193,51 @@ stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www %
 That's it!  Rebuilt in about an hour.  
 
 
+## Android
+
+Dale was working on React.lazy, so no thee are lots of bundles, hopefully the names are stable
+
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ls -la /Users/stevepodell/WebstormProjects/WebApp/build
+    total 12600
+    drwxr-xr-x  18 stevepodell  staff      576 Jun 24 20:43 .
+    drwxr-xr-x  32 stevepodell  staff     1024 Jun 24 20:30 ..
+    -rw-r--r--   1 stevepodell  staff  1050239 Jun 24 20:43 bundle.bundle.6cfd1892.js
+    -rw-r--r--   1 stevepodell  staff  2629547 Jun 24 20:43 components.bundle.6045a1fb.js
+    drwxr-xr-x   4 stevepodell  staff      128 Jun 24 20:43 css
+    -rw-r--r--   1 stevepodell  staff  1432817 Jun 24 20:43 defaultVendors.bundle.4fc79d6e.js
+    -rw-r--r--   1 stevepodell  staff     8150 Jun 24 20:43 extension.html
+    drwxr-xr-x  45 stevepodell  staff     1440 Jun 24 20:43 img
+    -rw-r--r--   1 stevepodell  staff    10614 Jun 24 20:43 index.html
+    drwxr-xr-x   4 stevepodell  staff      128 Jun 24 20:43 javascript
+    -rw-r--r--   1 stevepodell  staff   484092 Jun 24 20:43 materialStyle.bundle.cadaeb81.js
+    -rw-r--r--   1 stevepodell  staff    30912 Jun 24 20:43 precache-manifest.baebc9a3b2957e0421d382cd732a3c1f.js
+    -rw-r--r--   1 stevepodell  staff   236199 Jun 24 20:43 reactCore.bundle.55ad9585.js
+    -rw-r--r--   1 stevepodell  staff   234412 Jun 24 20:43 ready.bundle.69e300fa.js
+    -rw-r--r--   1 stevepodell  staff       24 Jun 24 20:43 robots.txt
+    -rw-r--r--   1 stevepodell  staff     3182 Jun 24 20:43 runtime.bundle.c2a15a59.js
+    -rw-r--r--   1 stevepodell  staff   303812 Jun 24 20:43 stores.bundle.75187ce3.js
+    -rw-r--r--   1 stevepodell  staff     3652 Jun 24 20:43 sw.js
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ls -la /Users/stevepodell/WebstormProjects/WebApp/build/*bundle*          
+    -rw-r--r--  1 stevepodell  staff  2886889 Jun 24 20:46 /Users/stevepodell/WebstormProjects/WebApp/build/bundle.bundle.5b1e6b10.js
+    -rw-r--r--  1 stevepodell  staff  8082168 Jun 24 20:46 /Users/stevepodell/WebstormProjects/WebApp/build/components.bundle.bc1fa8c8.js
+    -rw-r--r--  1 stevepodell  staff  8742090 Jun 24 20:46 /Users/stevepodell/WebstormProjects/WebApp/build/defaultVendors.bundle.22af60ea.js
+    -rw-r--r--  1 stevepodell  staff  3875672 Jun 24 20:46 /Users/stevepodell/WebstormProjects/WebApp/build/materialStyle.bundle.469b4bf1.js
+    -rw-r--r--  1 stevepodell  staff  3653909 Jun 24 20:46 /Users/stevepodell/WebstormProjects/WebApp/build/reactCore.bundle.74b0f2f1.js
+    -rw-r--r--  1 stevepodell  staff   724137 Jun 24 20:46 /Users/stevepodell/WebstormProjects/WebApp/build/ready.bundle.4db4bbed.js
+    -rw-r--r--  1 stevepodell  staff    14604 Jun 24 20:46 /Users/stevepodell/WebstormProjects/WebApp/build/runtime.bundle.acfdeda3.js
+    -rw-r--r--  1 stevepodell  staff  1062086 Jun 24 20:46 /Users/stevepodell/WebstormProjects/WebApp/build/stores.bundle.79dd0d53.js
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % 
+
+
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % rm bundle.js
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/build/bundle.bundle.5b1e6b10.js bundle.js
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/build/components.bundle.bc1fa8c8.js components.bundle.bc1fa8c8.js
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/build/defaultVendors.bundle.22af60ea.js defaultVendors.bundle.22af60ea.js
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s  /Users/stevepodell/WebstormProjects/WebApp/build/materialStyle.bundle.469b4bf1.js materialStyle.bundle.469b4bf1.js
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/build/reactCore.bundle.74b0f2f1.js reactCore.bundle.74b0f2f1.js
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/build/ready.bundle.4db4bbed.js ready.bundle.4db4bbed.js
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/build/runtime.bundle.acfdeda3.js runtime.bundle.acfdeda3.js
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % ln -s /Users/stevepodell/WebstormProjects/WebApp/build/stores.bundle.79dd0d53.js stores.bundle.79dd0d53.js
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % 
 
 

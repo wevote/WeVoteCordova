@@ -40,6 +40,9 @@
     },
     "cordova-plugin-taptic-engine": {
       "PACKAGE_NAME": "us.wevote.wevotecordova"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "us.wevote.wevotecordova"
     }
   },
   "dependent_plugins": {}
