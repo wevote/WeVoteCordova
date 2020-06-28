@@ -59,6 +59,10 @@
             {
               "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"LaunchMyApp\"><param name=\"android-package\" value=\"nl.xservices.plugins.LaunchMyApp\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -114,6 +118,16 @@
               "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|screenLayout|screenSize|orientation\" android:label=\"@string/fb_app_name\" android:name=\"com.facebook.FacebookActivity\" />",
               "count": 1
             }
+          ],
+          "/manifest/application/activity": [
+            {
+              "xml": "<intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"android.intent.category.BROWSABLE\" /><data android:scheme=\"mycoolapp\" /></intent-filter>",
+              "count": 1
+            },
+            {
+              "xml": "<intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"android.intent.category.BROWSABLE\" /><data android:host=\" \" android:pathPrefix=\"/\" android:scheme=\" \" /></intent-filter>",
+              "count": 1
+            }
           ]
         }
       },
@@ -135,41 +149,48 @@
   },
   "installed_plugins": {
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-facebook4": {
       "APP_ID": "1097389196952441",
       "APP_NAME": "WeVoteCordova",
       "FACEBOOK_HYBRID_APP_EVENTS": "false",
       "FACEBOOK_ANDROID_SDK_VERSION": "5.13.0",
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-keyboard": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-safariviewcontroller": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-screensize": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-sign-in-with-apple": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-taptic-engine": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "us.wevote.wevotecordova"
+      "PACKAGE_NAME": "org.wevote.cordova"
+    },
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "mycoolapp",
+      "ANDROID_SCHEME": " ",
+      "ANDROID_HOST": " ",
+      "ANDROID_PATHPREFIX": "/",
+      "PACKAGE_NAME": "org.wevote.cordova"
     }
   },
   "dependent_plugins": {},
@@ -253,6 +274,14 @@
       "clobbers": [
         "TapticEngine"
       ]
+    },
+    {
+      "id": "cordova-plugin-customurlscheme.LaunchMyApp",
+      "file": "plugins/cordova-plugin-customurlscheme/www/android/LaunchMyApp.js",
+      "pluginId": "cordova-plugin-customurlscheme",
+      "clobbers": [
+        "window.plugins.launchmyapp"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -266,6 +295,7 @@
     "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-statusbar": "2.4.3",
     "cordova-plugin-taptic-engine": "2.1.0",
-    "cordova-plugin-whitelist": "1.3.4"
+    "cordova-plugin-whitelist": "1.3.4",
+    "cordova-plugin-customurlscheme": "5.0.1"
   }
 }

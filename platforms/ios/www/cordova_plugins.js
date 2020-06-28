@@ -79,6 +79,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "TapticEngine"
       ]
+    },
+    {
+      "id": "cordova-plugin-customurlscheme.LaunchMyApp",
+      "file": "plugins/cordova-plugin-customurlscheme/www/ios/LaunchMyApp.js",
+      "pluginId": "cordova-plugin-customurlscheme",
+      "clobbers": [
+        "window.plugins.launchmyapp"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -92,6 +100,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-statusbar": "2.4.3",
     "cordova-plugin-safariviewcontroller": "1.6.0",
     "cordova-plugin-taptic-engine": "2.1.0",
-    "cordova-plugin-whitelist": "1.3.4"
+    "cordova-plugin-whitelist": "1.3.4",
+    "cordova-plugin-customurlscheme": "5.0.1"
   };
 });

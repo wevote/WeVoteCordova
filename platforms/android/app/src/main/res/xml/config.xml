@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="us.wevote.wevotecordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.wevote.cordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/ns/widgets">
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
@@ -39,22 +39,47 @@
     </feature>
     <name>WeVoteCordova</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        We Vote Cordova wrapper for the We Vote WebApp root
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
-    </author>
     <content src="index.html" />
-    <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="*" />
+    <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />
+    <access origin="about:*" />
+    <access origin="*://*.facebook.com/*" />
+    <access origin="*://*.google.com/*" />
+    <access origin="*://*.youtube.com/*" />
+    <allow-navigation href="about:*" />
+    <allow-navigation href="data:*" />
+    <allow-navigation href="*://*.youtube.com/*" />
+    <allow-navigation href="*://*.facebook.com/*" />
+    <allow-navigation href="*://*.vimeo.com/*" />
+    <allow-navigation href="*://*.google.com/*" />
+    <allow-navigation href="*://*.googlevideo.com/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-navigation href="*" />
+    <allow-intent href="wevotetwitterscheme:" />
     <allow-intent href="market:*" />
+    <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
+    <splash density="land-mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
+    <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
+    <splash density="land-xhdpi" src="res/screen/android/screen-xdpi-landscape.png" />
+    <splash density="land-xxhdpi" src="res/screen/android/screen-xxhdpi-landscape.png" />
+    <splash density="land-xxxhdpi" src="res/screen/android/screen-xxxhdpi-landscape.png" />
+    <splash density="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
+    <splash density="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
+    <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
+    <splash density="port-xhdpi" src="res/screen/android/screen-xdpi-portrait.png" />
+    <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png" />
+    <splash density="port-xxxhdpi" src="res/screen/android/screen-xxxhdpi-portrait.png" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="android-minSdkVersion" value="19" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="6000" />
+    <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
+    <preference name="FacebookAdvertiserIDCollectionEnabled" value="false" />
+    <preference name="SplashScreenSpinnerColor" value="blue" />
+    <feature name="LaunchMyApp">
+        <param name="android-package" value="nl.xservices.plugins.LaunchMyApp" />
+    </feature>
 </widget>
