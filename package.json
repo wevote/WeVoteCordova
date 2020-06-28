@@ -15,6 +15,7 @@
   "dependencies": {
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.1.1",
+    "cordova-plugin-customurlscheme": "git+https://github.com/EddyVerbruggen/Custom-URL-scheme.git",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-facebook4": "6.4.0",
     "cordova-plugin-inappbrowser": "git+https://github.com/apache/cordova-plugin-inappbrowser.git",
@@ -47,7 +48,10 @@
       "cordova-plugin-sign-in-with-apple": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-taptic-engine": {}
+      "cordova-plugin-taptic-engine": {},
+      "cordova-plugin-customurlscheme": {
+        "URL_SCHEME": "wevotetwitterscheme"
+      }
     },
     "platforms": [
       "android"
