@@ -4,9 +4,9 @@
 # Ignore build files
 build
 
-# TernJS
-###################
-.tern-project
+# Ignore Cordova generated intermediate files
+platforms
+plugins
 
 # Logs
 ###################
@@ -36,10 +36,6 @@ coverage
 ###################
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-###################
-build/Release
-
 # Dependency directory
 ###################
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
@@ -53,69 +49,6 @@ node_modules
 ###################
 .node_repl_history
 
-# Compiled source #
-###################
-venv
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
-
-
-
-
-# PyInstaller #
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-###############
-*.manifest
-*.spec
-
-# Installer logs #
-##################
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports #
-################################
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-
-# Translations #
-################
-*.mo
-*.pot
-
-# Sphinx documentation #
-########################
-docs/_build/
-
-# PyBuilder #
-#############
-target/
-
-# Packages #
-############
-# it's better to unpack these files and commit the raw source
-# git has its own built in compression methods
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
 # OS generated files #
 ######################
 .DS_Store
@@ -128,24 +61,6 @@ Thumbs.db
 .AppleDouble
 .LSOverride
 
-# SublimeText #
-###############
-# cache files for sublime text
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-
-# workspace files are user-specific
-*.sublime-workspace
-
-# project files should be checked into the repository, unless a significant
-# proportion of contributors will probably not be using SublimeText
-# *.sublime-project
-
-# sftp configuration file #
-###########################
-sftp-config.json
-
 # Pycharm #
 ###########
 .idea
@@ -156,10 +71,6 @@ sftp-config.json
 *#
 *.swp
 *.swo
-
-# Compass / Sass #
-##################
-.sass-cache
 
 # Heroku Related #
 ##################
@@ -176,15 +87,3 @@ src/javascript/google-tag-manager.js
 src/javascript/google-analytics.js
 web_app/build/*
 yarn.lock
-
-/platforms/android/CordovaLib/
-/platforms/android/cordova/
-/platforms/android/platform_www/
-
-/platforms/ios/CordovaLib/
-/platforms/ios/platform_www/plugins/
-/platforms/ios/platform_www/cordova-js-src/
-/platforms/ios/WeVoteCordova/Plugins/
-/platforms/android/app/src/main/java/
-/platforms/android/app/src/main/assets/
-/platforms/android/app/src/main/libs/

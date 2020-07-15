@@ -1,7 +1,7 @@
 {
   "name": "us.wevote.wevotecordova",
   "displayName": "WeVoteCordova",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
   "scripts": {
@@ -43,7 +43,6 @@
       "cordova-plugin-device": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-keyboard": {},
-      "cordova-plugin-safariviewcontroller": {},
       "cordova-plugin-screensize": {},
       "cordova-plugin-sign-in-with-apple": {},
       "cordova-plugin-splashscreen": {},
@@ -51,9 +50,11 @@
       "cordova-plugin-taptic-engine": {},
       "cordova-plugin-customurlscheme": {
         "URL_SCHEME": "wevotetwitterscheme"
-      }
+      },
+      "cordova-plugin-safariviewcontroller": {}
     },
     "platforms": [
+      "ios",
       "android"
     ]
   }

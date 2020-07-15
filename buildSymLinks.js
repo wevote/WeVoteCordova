@@ -29,35 +29,41 @@ if (!__dirname.endsWith('/WeVoteCordova')) {
 const { unlinkSync, symlink } = fs;
 const iosDir = path.join(__dirname, 'platforms/ios/www/');
 const androidDir = path.join(__dirname, 'platforms/android/app/src/main/assets/www/');
-
-rimraf(androidDir + 'css', () => console.log('rmdir: ' + androidDir + 'css'));
-rimraf(iosDir + 'css', () => console.log('rmdir: ' + iosDir + 'css'));
-rimraf(androidDir + 'img', () => console.log('rmdir: ' + androidDir + 'img'));
-rimraf(iosDir + 'img', () => console.log('rmdir: ' + iosDir + 'img'));
-
-try {
-  unlinkSync(androidDir + 'index.html');
+const androidCss = androidDir + 'css';
+if (fs.existsSync(androidCss)) {
+  rimraf(androidCss, () => console.log('rmdir: ' + androidCss));
+}
+const iosCss = iosDir + 'css';
+if (fs.existsSync(iosCss)) {
+  rimraf(iosCss, () => console.log('rmdir: ' + iosCss));
+}
+const androidImg = androidDir + 'img';
+if (fs.existsSync(androidImg)) {
+  rimraf(androidImg, () => console.log('rmdir: ' + androidImg));
+}
+const iosImg = iosDir + 'img';
+if (fs.existsSync(iosImg)) {
+  rimraf(iosImg, () => console.log('rmdir: ' + iosImg));
+}
+const AndroidIndex = androidDir + 'index.html';
+if (fs.existsSync(AndroidIndex)) {
+  unlinkSync(AndroidIndex);
   console.log('unlink: android index.html');
-} catch(err) {
-  console.log(err);
 }
-try {
-  unlinkSync(iosDir + 'index.html');
+const iosIndex = iosDir + 'index.html';
+if (fs.existsSync(iosIndex)) {
+  unlinkSync(iosIndex);
   console.log('unlink: ios index.html');
-} catch(err) {
-  console.log(err);
 }
-try {
-  unlinkSync(androidDir + 'bundle.js');
+const androidBundle = androidDir + 'bundle.js';
+if (fs.existsSync(androidBundle)) {
+  unlinkSync(androidBundle);
   console.log('unlink: android bundle.js');
-} catch(err) {
-  console.log(err);
 }
-try {
-  unlinkSync(iosDir + 'bundle.js');
-  console.log('unlink: ios bundle.js');
-} catch(err) {
-  console.log(err);
+const iosBundle = iosDir + 'bundle.js';
+if (fs.existsSync(iosBundle)) {
+  unlinkSync(iosBundle);
+  console.log('unlink: iosDir bundle.js');
 }
 
 setTimeout( () => {
