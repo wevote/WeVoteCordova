@@ -162,37 +162,86 @@ WebApp and to the WeVoteCordova.
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects %
    ```
 
-1. cd to the newly created WeVoteCordova directory
+1. cd the  `WeVoteCordovaSaveoff` directory
     ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects % cd WeVoteCordova
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects % cd WeVoteCordovaSaveoff
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveff %
+    ```
+
+1. Run the `copyFromSaveoff` script to copy all the source controlled files to WeVoteCordova
+    
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % node copyFromSaveoff                                               
+    __dirname /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff
+    Removed scaffolding directory:  WeVoteCordova/www
+    ../WeVoteCordova/www Directory created successfully
+    ./.gitignore copied successfully
+    ./.npmignore copied successfully
+    ./copyFromSaveoff.js copied successfully
+    ./buildSymLinks.js copied successfully
+    package-lock.json copied successfully
+    ./www/index.html copied successfully
+    ./config.xml copied successfully
+    README.md copied successfully
+    ./package.json copied successfully
+    Copied the /res dir from ../WeVoteCordovaSaveoff
+    Copied the /docs dir from ../WeVoteCordovaSaveoff
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % 
+    ```
+1. cd to the `WeVoteCordova` directory
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % cd ../WeVoteCordova
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
     ```
 
-1. Overwrite `WeVoteCordova/www/index.html` with `WeVoteCordovaSaveoff/www/index.html`
-    
-    This introduces the source controlled index.html, that loads a Cordova specific loading screen
-    while loading the WebApp code within Cordova.  
-
-1. Overwrite `WeVoteCordova/config.xml` with `WeVoteCordovaSaveoff/config.xml`
-    
-    This introduces the source controlled config.xml file, that contains the list of Cordova Plugins
-    that add various features and capabilities.
-    
 1. Add the Cordova iOS and Android platforms directories
     ```
+    cordova platform add ios android
+    ```
+    Which runs in the terminal like this...
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % ls /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff/www/index.html
+    /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff/www/index.html
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % ls /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff/www/index.html
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % ls -la /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff/www/index.html
+    -rw-r--r--  1 stevepodell  staff  6592 Jul 22 20:02 /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff/www/index.html
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % ls -la /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html
+    ls: /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html: No such file or directory
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cd ..
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects % rm -fr WeVoteCordova
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects % cordova create  WeVoteCordova us.wevote.wevotecordova WeVoteCordova      
+    Creating a new cordova project.
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects % cd WeVoteCordovaSaveoff 
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % node copyFromSaveoff
+    __dirname /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff
+    Removed scaffolding directory:  WeVoteCordova/www
+    ../WeVoteCordova/www Directory created successfully
+    ./.gitignore copied successfully
+    ./.npmignore copied successfully
+    ./buildSymLinks.js copied successfully
+    ./copyFromSaveoff.js copied successfully
+    package-lock.json copied successfully
+    ./www/index.html copied successfully
+    ./package.json copied successfully
+    README.md copied successfully
+    Copied the /res dir from ../WeVoteCordovaSaveoff
+    Copied the /docs dir from ../WeVoteCordovaSaveoff
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % cd ../WeVoteCordova
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platform add ios android
-    Using cordova-fetch for cordova-ios@^5.0.0
-    (node:16212) Warning: Accessing non-existent property 'ios' of module exports inside circular dependency
+    Using cordova-fetch for cordova-ios@^5.1.1
+    (node:51470) Warning: Accessing non-existent property 'ios' of module exports inside circular dependency
     (Use `node --trace-warnings ...` to show where the warning was created)
-    (node:16212) Warning: Accessing non-existent property 'android' of module exports inside circular dependency
+    (node:51470) Warning: Accessing non-existent property 'android' of module exports inside circular dependency
     Adding ios project...
     Creating Cordova project for the iOS platform:
             Path: platforms/ios
             Package: us.wevote.wevotecordova
             Name: WeVoteCordova
     iOS project created with cordova-ios@5.1.1
-    Installing "cordova-plugin-customurlscheme" for ios
-    Installing "cordova-plugin-device" for ios
+    Discovered saved plugin "cordova-plugin-whitelist". Adding it to the project
+    Installing "cordova-plugin-whitelist" for ios
+    Adding cordova-plugin-whitelist to package.json
+    Discovered saved plugin "cordova-plugin-facebook4". Adding it to the project
     Installing "cordova-plugin-facebook4" for ios
     Running command: pod install --verbose
     /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
@@ -219,16 +268,36 @@ WebApp and to the WeVoteCordova.
     /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
     [!] The `WeVoteCordova [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-WeVoteCordova/Pods-WeVoteCordova.debug.xcconfig'. This can lead to problems with the CocoaPods installation
     [!] The `WeVoteCordova [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-WeVoteCordova/Pods-WeVoteCordova.release.xcconfig'. This can lead to problems with the CocoaPods installation
-    Installing "cordova-plugin-inappbrowser" for ios
+    
+    Adding cordova-plugin-facebook4 to package.json
+    Discovered saved plugin "cordova-plugin-device". Adding it to the project
+    Installing "cordova-plugin-device" for ios
+    Adding cordova-plugin-device to package.json
+    Discovered saved plugin "cordova-plugin-keyboard". Adding it to the project
     Installing "cordova-plugin-keyboard" for ios
-    Installing "cordova-plugin-safariviewcontroller" for ios
+    Adding cordova-plugin-keyboard to package.json
+    Discovered saved plugin "cordova-plugin-screensize". Adding it to the project
     Installing "cordova-plugin-screensize" for ios
+    Adding cordova-plugin-screensize to package.json
+    Discovered saved plugin "cordova-plugin-sign-in-with-apple". Adding it to the project
     Installing "cordova-plugin-sign-in-with-apple" for ios
+    Adding cordova-plugin-sign-in-with-apple to package.json
+    Discovered saved plugin "cordova-plugin-splashscreen". Adding it to the project
     Installing "cordova-plugin-splashscreen" for ios
+    Adding cordova-plugin-splashscreen to package.json
+    Discovered saved plugin "cordova-plugin-statusbar". Adding it to the project
     Installing "cordova-plugin-statusbar" for ios
+    Adding cordova-plugin-statusbar to package.json
+    Discovered saved plugin "cordova-plugin-taptic-engine". Adding it to the project
     Installing "cordova-plugin-taptic-engine" for ios
-    Installing "cordova-plugin-whitelist" for ios
-    Using cordova-fetch for cordova-android@^8.0.0
+    Adding cordova-plugin-taptic-engine to package.json
+    Discovered saved plugin "cordova-plugin-customurlscheme". Adding it to the project
+    Installing "cordova-plugin-customurlscheme" for ios
+    Adding cordova-plugin-customurlscheme to package.json
+    Discovered saved plugin "cordova-plugin-safariviewcontroller". Adding it to the project
+    Installing "cordova-plugin-safariviewcontroller" for ios
+    Adding cordova-plugin-safariviewcontroller to package.json
+    Using cordova-fetch for cordova-android@^8.1.0
     Adding android project...
     Creating Cordova project for the Android platform:
             Path: platforms/android
@@ -249,31 +318,14 @@ WebApp and to the WeVoteCordova.
     Subproject Path: CordovaLib
     Subproject Path: app
     Installing "cordova-plugin-screensize" for android
+    Installing "cordova-plugin-sign-in-with-apple" for android
     Installing "cordova-plugin-splashscreen" for android
     Installing "cordova-plugin-statusbar" for android
     Installing "cordova-plugin-taptic-engine" for android
     Installing "cordova-plugin-whitelist" for android
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
-
     ```
-1. Copy source controlled files from the `WeVoteCordovaSaveoff` dir you made earlier to the `WeVoteCordova` dir
-
-    You can do this with your IDE, or in Finder
-
-    First copy two directories:
-    ```
-    /docs
-    /res
-    ```
-    Then copy some files in the root directory
-    ```
-    .gitignore
-    .npmignore
-    buildSymLinks.js
-    README.MD
-    ```
-    At this point we are done with the `WeVoteCordovaSaveoff` dir, and will only be working on the `WeVoteCordova` dir
-
+    
 1. Set up the sym links for iOS and Android
     ```
     node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
@@ -340,6 +392,8 @@ WebApp and to the WeVoteCordova.
     screens and icons will not be correct, but the WebApp running within Cordova should look good.
     ![ScreenShot](docs/images/XCodeOpenedAndReady.png)
 
+    At this point you have a working Cordova iOS build, next we will fix up the icons and splashcreens.
+
 1. We hope this is not necessary.  Optional:  If the Cordova iOS app loads the html page (White "Loading We Vote" on blue, but crashes in JQuery regex), logs `SyntaxError: Invalid regular expression: range out of order in character class`
  and never advances to the first js page in the WebApp:
 
@@ -360,7 +414,7 @@ WebApp and to the WeVoteCordova.
     npm run start-https-singleBundle
     ```
    
-1. From now on, we will be working exclusively in the WeVoteCordova directory. Copy the icons from `res/` to the `LaunchStoryboard` `Images.xcassets` in Xcode
+1. Once you have the basic working Cordova iOS app going...  Copy the icons from `WeVoteCordova/res/` to the `LaunchStoryboard` `Images.xcassets` in the Xcode IDE
 
     If you have two monitors, they will be very handy for this step.  Open Xcode in one monitor, and your IDE in
     the other.  If you use PyCharm or WebStorm these pictures will show you exactly what to do.
@@ -384,7 +438,7 @@ WebApp and to the WeVoteCordova.
     recommends simply a icon, or a mockup of the first screen (which would not work well for our app).
     Change your IDE to show the pngs in `WeVoteCordova/res/screen/ios` and in XCode selecct LaunchStoryBoard in the edit
     window.  For each LaunchStoryBoard image configuration, drop the `WeVoteCordova/res/screen/ios/June2020LaunchScreen.png` onto each.
-    Yes, drop the same image 40 times into the different configurations.  We can do something
+    Yes, drop the same image 40 times into the different configurations.  XCode stores this setup in a binary file, so maybe we can do something
     fancier later, but this works well enough for now.
     ![ScreenShot](docs/images/LaunchStoryboardConfig.png)
 
@@ -417,11 +471,17 @@ WebApp and to the WeVoteCordova.
 
     No need to save in the Xcode IDE.  Next time the app starts, all these images should be in place.
    
+    You have a fully configured WeVoteCordova app running in your simulator!  Next step is to connect your new 
+    WeVoteCordova directory to Git.
+   
 ## Git setup
+1. On github.com, fork WeVoteCordova to your account. Navigate to https://github.com/wevote/WeVoteCordova and then click the "Fork" button in the upper right corner.
+
 1. Execute the following commands from your WeVoteCordova directory
     ```
     git init
     git checkout -b develop
+    git add -all
     git commit --allow-empty -m "initial commit"
     git remote add upstream https://github.com/wevote/WeVoteCordova.git
     git remote add origin https://github.com/SailingSteve/WeVoteCordova.git
@@ -435,9 +495,46 @@ WebApp and to the WeVoteCordova.
     Initialized empty Git repository in /Users/stevepodell/WebstormProjects/WeVoteCordova/.git/
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git checkout -b develop
     Switched to a new branch 'develop'
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git status
+    On branch develop
+    
+    No commits yet
+    
+    Untracked files:
+      (use "git add <file>..." to include in what will be committed)
+            .gitignore
+            .npmignore
+            README.md
+            buildSymLinks.js
+            config.xml
+            copyFromSaveoff.js
+            docs/
+            hooks/
+            package-lock.json
+            package.json
+            res/
+            www/
+    
+    nothing added to commit but untracked files present (use "git add" to track)
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git add --all
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git commit --allow-empty -m "initial commit"
-    [develop (root-commit) 2b7aa39] initial commit
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
+    [develop (root-commit) de7a1d4] initial commit
+     214 files changed, 6999 insertions(+)
+     create mode 100644 .gitignore
+     create mode 100644 .npmignore
+     create mode 100644 README.md
+     create mode 100644 buildSymLinks.js
+     create mode 100644 config.xml
+     create mode 100644 copyFromSaveoff.js
+     create mode 100644 docs/AlternateInstallProceedureRebuildFromScratch.md
+     (Many tedious creates of docs snipped out of this screen capture)
+     create mode 100644 hooks/README.md
+     create mode 100644 package-lock.json
+     create mode 100644 package.json
+     create mode 100644 res/README.md
+     create mode 100644 res/icon/android/hdpi/ic_launcher.png
+     (Many tedious creates of res files  snipped out of this screen capture)
+     create mode 100644 www/index.html
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git remote add upstream https://github.com/wevote/WeVoteCordova.git
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git remote add origin https://github.com/SailingSteve/WeVoteCordova.git
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git remote -v
@@ -446,16 +543,17 @@ WebApp and to the WeVoteCordova.
     upstream        https://github.com/wevote/WeVoteCordova.git (fetch)
     upstream        https://github.com/wevote/WeVoteCordova.git (push)
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git fetch
-    remote: Enumerating objects: 13, done.
-    remote: Counting objects: 100% (13/13), done.
-    remote: Compressing objects: 100% (13/13), done.
-    remote: Total 3539 (delta 4), reused 2 (delta 0), pack-reused 3526
-    Receiving objects: 100% (3539/3539), 80.16 MiB | 5.14 MiB/s, done.
-    Resolving deltas: 100% (1557/1557), done.
+    remote: Enumerating objects: 3577, done.
+    remote: Total 3577 (delta 0), reused 0 (delta 0), pack-reused 3577
+    Receiving objects: 100% (3577/3577), 85.73 MiB | 9.65 MiB/s, done.
+    Resolving deltas: 100% (1579/1579), done.
     From https://github.com/SailingSteve/WeVoteCordova
      * [new branch]      develop                                  -> origin/develop
      * [new branch]      master                                   -> origin/master
+     * [new branch]      steveCordovaJul22-835pm                  -> origin/steveCordovaJul22-835pm
      * [new branch]      steveCordovaJuly15-10am                  -> origin/steveCordovaJuly15-10am
+     * [new branch]      steveCordovaJuly22-1005am                -> origin/steveCordovaJuly22-1005am
+     * [new branch]      steveCordovaJuly22-541pm                 -> origin/steveCordovaJuly22-541pm
      * [new branch]      steveCordovaJune28                       -> origin/steveCordovaJune28
      * [new branch]      steveCordovaJune28-3                     -> origin/steveCordovaJune28-3
      * [new branch]      steveCordovaRemovePlatformsPluginsJuly14 -> origin/steveCordovaRemovePlatformsPluginsJuly14
@@ -464,154 +562,51 @@ WebApp and to the WeVoteCordova.
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
     ```
     You will a have different branch list than in this example.
-
-1. Add the bits you manually copied in to git, so that they will match develop (plus any changes you might have made)
-
-    ```
-    /docs
-    /res
-    /www/index.html
-    .gitignore
-    .npmignore
-    buildSymLinks.js
-    package.json
-    package-lock.json
-    README.MD
-    ```
-
-1. Now make a new branch (I used my IDE to do this), and called it steveCordovaJuly16-2pm
-Your develop branch might not be exactly matching upstream/develop but it should be very close -- close
-enougth not to worry about any differences.  Once you stash your changes, change branch to develop, `pull upstream develop`
-you should be working with the correct base, and you can go back to your working branch ... `steveCordovaJuly16-2pm` in
-my case, and make your pull request.
-
-That's it!  Installed from scratch in about an hour.
-
-   
-   
-1. On github.com, fork WeVoteCordova to your account. Navigate to https://github.com/wevote/WeVoteCordova and then click the "Fork" button in the upper right corner.
     
-1. You may need to setup your Github remotes
+        If you have trouble checking in the first branch that you make, and get a “refusing to merge unrelated histories”
+        error, you might have to...
+        
+        ```
+        git fetch --all
+        git reset --hard upstream/develop
+        git pull upstream develop
+        ```
+       This will give you an absolutely "related history" local develop that you cna build from.
 
-    ```
-    Example:
-    Steves-iMac: MyProjects your-username$ cd /Users/your-username/MyProjects/WeVoteCordova
-    Steves-iMac: WeVoteCordova your-username$ git remote -v
-    origin  https://github.com/SailingSteve/WeVoteCordova.git (fetch)
-    origin  https://github.com/SailingSteve/WeVoteCordova.git (push)
-    upstream        https://github.com/wevote/WeVoteCordova.git (fetch)
-    upstream        https://github.com/wevote/WeVoteCordova.git (push)
-    Steves-iMac: WeVoteCordova your-username$ 
-    ```
-    If you don't have remotes defined... (remember to substitute your github user name for "SailingSteve")
-    (The default setup might have the git origin pointing to https://github.com/wevote/WeVoteCordova.git,
-    which you will have to remove, since at We Vote we have the origin/upstream reversed from most other 
-    projects on github.)
-    ```
-    git remote rm origin
-    git remote add upstream https://github.com/wevote/WeVoteCordova.git
-    git remote add origin https://github.com/SailingSteve/WeVoteCordova.git
-    git remote -v
-    ```
-
-1. Run npm install (it doesn't hurt to do this multiple times!)
-    ```
-    npm install
-
-   on the example machine...
-   
-   Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$ npm install
-   npm WARN org.wevote.cordova@1.0.0 No repository field.
     
-   added 144 packages from 98 contributors and audited 357 packages in 3.698s
-   found 2 vulnerabilities (1 low, 1 moderate)
-     run `npm audit fix` to fix them, or `npm audit` for details
-   Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$ 
-   ```
-   At this point, don't worry about any reported vulnerabilites, and don't try to fix 
-   them at this moment.
-
-
-1.  Make sure you are in the WeVoteCordova directory and run the buildSymLinks.js script.  This allows the 
-Cordova build/run process to use the code from the WebApp.
-
+1. Now get the remotes in sync    
     ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % pwd
-    /Users/stevepodell/WebstormProjects/WeVoteCordova
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
-    __dirname /Users/stevepodell/WebstormProjects/WeVoteCordova
-    unlink: android index.html
-    unlink: ios index.html
-    unlink: android bundle.js
-    unlink: ios bundle.js
-    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/img
-    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/css
-    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/css
-    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/img
-    ln ios bundle.js successful
-    ln android bundle.js successful
-    ln android css successful
-    ln ios css successful
-    ln android img successful
-    ln ios img successful
-    ln ios index.html successful
-    ln android index.html successful
+    git checkout HEAD
+    git pull upstream develop --allow-unrelated-histories
+    git push origin develop --force
+    ```
+    As seen in the terminal
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git checkout HEAD 
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git pull upstream develop --allow-unrelated-histories
+    From https://github.com/wevote/WeVoteCordova
+     * branch            develop    -> FETCH_HEAD
+    Already up to date.
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git push origin develop --force
+    Enumerating objects: 228, done.
+    Counting objects: 100% (228/228), done.
+    Delta compression using up to 12 threads
+    Compressing objects: 100% (195/195), done.
+    Writing objects: 100% (228/228), 63.47 MiB | 551.00 KiB/s, done.
+    Total 228 (delta 19), reused 205 (delta 15), pack-reused 0
+    remote: Resolving deltas: 100% (19/19), done.
+    To https://github.com/SailingSteve/WeVoteCordova.git
+     + 1ed1d3b...de7a1d4 develop -> develop (forced update)
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
     ```
-
-
-# Platform specific iOS setup (Skip this section if your computer is running Windows or Linux)
-
-Throughout these instructions, remember to substitute your actual user name for "your-username"!
-
-1.  Confirm that the symlinks are in place for iOS
-
-    iOS serves the bundle.js, the index.html, and other files from `WeVoteCordova/platforms/ios/www`
-    buildSymLinks script should have setup the ios www directory will have changed as follows...
-
+    git fetch --all
+    git reset --hard upstream/develop
+    git pull upstream develop
     ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % ls -la platforms/ios/www 
-    total 152
-    drwxr-xr-x  11 stevepodell  staff    352 Jun 25 15:04 .
-    drwxr-xr-x  19 stevepodell  staff    608 Jun 24 13:59 ..
-    lrwxr-xr-x   1 stevepodell  staff     58 Jun 25 14:52 bundle.js -> /Users/stevepodell/WebstormProjects/WebApp/build/bundle.js
-    drwxr-xr-x   6 stevepodell  staff    192 Jun 24 09:24 cordova-js-src
-    -rw-r--r--   1 stevepodell  staff  69846 Jun 24 09:24 cordova.js
-    -rw-r--r--   1 stevepodell  staff   3110 Jun 25 13:51 cordova_plugins.js
-    lrwxr-xr-x   1 stevepodell  staff     52 Jun 25 14:52 css -> /Users/stevepodell/WebstormProjects/WebApp/build/css
-    lrwxr-xr-x   1 stevepodell  staff     52 Jun 25 14:52 img -> /Users/stevepodell/WebstormProjects/WebApp/build/img
-    lrwxr-xr-x   1 stevepodell  staff     64 Jun 25 14:52 index.html -> /Users/stevepodell/WebstormProjects/WeVoteCordova/www/index.html
-    drwxr-xr-x   3 stevepodell  staff     96 Jun 24 09:24 js
-    drwxr-xr-x  12 stevepodell  staff    384 Jun 24 09:36 plugins
-stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
-    ```
-        
-1.  You should test each one of those links, to make sure that they really point to where it needs to. It is much easier 
-to test first, rather than making a setup mistake and having to diagnose the problem later on.  Use `stat -L` to confirm 
-that the link points to a sizeable file (17856048 bytes in the case of bundle.js), if stat reports a file size of less than 
-100 bytes, then the link is probably incorrect.  Use `ls` to make sure that the links for directories, contain a few files.
+   This will give you an absolutely "related history" local develop that you can build from.
 
-    ```
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ pwd
-    /Users/stevepodell/WebStormProjects/WeVoteCordova/platforms/ios/www
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ stat -L bundle.js
-    16777220 134276137 -rw-r--r-- 1 stevepodell staff 0 26625098 "Nov 11 14:12:26 2019" "Nov 10 16:50:44 2019" "Nov 11 14:11:21 2019" "Nov 10 16:50:43 2019" 4096 52008 0 bundle.js
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ls css
-    bootstrap-social.css    loading-screen.css      main.css
-    bootstrap-social.css    loading-screen.css      main.css
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ls img
-    Dale_McGrew-200x200.jpg                         global                                          mixed-rating-icon.svg                           thumbs-down-icon.svg                            we-vote-logo-horizontal-color-200x66.svg
-    WelcomeForVoters-Ballot-20190507.png            glyphicons-halflings-88-remove-circle.svg       no-position-icon.svg                            thumbs-up-color-icon.svg                        we-vote-logo-horizontal-color-dark-141x46.svg
-    avatar-generic.svg                              google-logo.svg                                 organization-icon.svg                           thumbs-up-icon.svg                              welcome
-    check-mark-v2-40x43.svg                         group-icon.svg                                  positions-icon-24-x-24.svg                      tools                                           x-close.png
-    down-arrow-color-icon.svg                       how-it-works                                    public-icon.svg                                 up-arrow-color-icon.svg
-    endorsement-extension                           issue-generic.svg                               share-icon.svg                                  vip-logo-1000x208.png
-    ffwd-logo.png                                   issue-photo-generic.svg                         thumbs-down-color-icon.svg                      vote_dot_org_logo-530x200.png
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ 
-    ```
 
-**You are now done with the iOS specific setup.**
-
+**That's it!  Cordova iOS Installed from scratch in about an hour.** 
 
 # Platform specific Android setup (Everyone should install the Android software)
 
@@ -705,26 +700,7 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     v12.12.0
     Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$ 
     ```
-<!--
-As of June 2020, Cordova installs cocoapods for you
-1.  Install CocoaPods (an MacOS dependency manager).
-    ```
-    Steves-iMac:WeVoteCordova your-username$ sudo gem install cocoapods
-    ```
-    **May 2020:** The default gem for cocoapods failed with a fatal repository not found, or 
-    a “fatal: Unable to find remote helper for ‘https’” or a "fatal error: 'cstddef' file not found".  It was possible
-    to work around this problem by (loading a specific version)[https://github.com/CocoaPods/CocoaPods/issues/9270]...
-    ```
-    cd platforms/ios
-    stevepodell@Steves-MacBook-Pro ios % sudo gem install cocoapods -v1.8.4
-    ```
 
-1.   Update pod repository
-    The following command retrieves the latest pod version metadata from git
-    ```
-    stevepodell@Steves-MacBook-Pro ios % pod repo update
-    ```
--->
 1.  Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
 
     Be sure to open **`/Users/your-username/MyProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcworkspace`** each time, if
@@ -766,43 +742,6 @@ After clicking the "Open another project..." button, select the `WeVoteCordova.x
 Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangular green play button,
 and the app starts in the simulator.
 
-### Updating the art for the Splashscreen (a rarely required step)
-
-In order to handle the 12" iPad Pro I took the image supplied into Photoshop, resized it to 2732x2732, forced it to have no 
-transparent pixels, and renamed it to the required(?) name `Default@2x~universal~anyany.png`.  Then (not being an Xcode expert), 
-I dropped the image **within the Xcode program** into `WeVoteCordova/Resources//Images.xcassets/LaunchImage` into each 
-location in the universal section.
-
-<img width="1569" alt="screen shot 2018-03-23 at 8 44 35 am" src="https://user-images.githubusercontent.com/6923653/37838985-931e356c-2e76-11e8-8473-a1c18b31d87d.png">
-
-This resulted in these files being created:
-
-    ```
-    (WebAppEnv)Steves-iMac:ios your-username$ ls -la ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/*
-    -rw-r--r--  1 your-username  staff    3765 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Contents.json
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-1.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-10.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-11.png
-    -rw-r--r--@ 1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-2.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-3.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-4.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-5.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-6.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-7.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-8.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:27 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany-9.png
-    -rw-r--r--  1 your-username  staff  134330 Mar 22 08:26 ./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany.png
-    (WebAppEnv)Steves-iMac:ios your-username$
-    ```
-
-So to replace the splash screen, I would take `./WeVoteCordova/Images.xcassets/LaunchStoryboard.imageset/Default@2x~universal~anyany.png` and 
-replace it with same sized art, and if you wanted to be safe I would use the Xcode IDE to copy them (and automatically rename them)
-over the existing files, if you were feeling adventurous you could go directly to the files, and take the new image and 
-use it to replace the original and the 12 numbered copies of the old image.
-
-By the way Xcode stores way too much configuration info in a binary file, and messing with them can take days to fix, going directly to the filesystem to make changes is risky.
-
-
 ## Debugging Cordova Differences
 Browsers are single threaded, JavaScript on browsers is also single threaded, but JavaScript running in Cordova is 
 multi-threaded.  "JavaScript in the WebView does not run on the UI thread, it also has other threads to execute the 
@@ -833,65 +772,6 @@ bundle.js in 20 seconds (Two seconds to gather all the js scripts together, and 
 1. Press the play button in Xcode, which should start the Simulator, load, and then start the WeVote WebApp.
 1. In Safari open Develop/Simulator/WeVoteCordova/WeVote and the Safari Web Inspector appears.
 
-## Debugging Cordova Apps with the Chrome dev tools
-
-Chrome devtools is more familiar than the Safari debugger, but is a bit challenging to get working. See ...
-
-[medium.com article about the remotedebug-ios-webkit-adapter for debugging WebViews](https://medium.com/@auchenberg/hello-remotedebug-ios-webkit-adapter-debug-safari-and-ios-webviews-from-anywhere-2a8553df7465)
-
-[github.com readme about remotedebug-ios-webkit-adapter#getting-started](https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter#getting-started)
-
-Install the remotedebug_ios_webkit_adapter (from a terminal window):
-
-
-    brew update
-    brew install --HEAD libimobiledevice
-    brew install --HEAD ios-webkit-debug-proxy
-    npm install remotedebug-ios-webkit-adapter -g
-
-
-Run the remotedebug_ios_webkit_adapter:
-
-
-    (WebAppEnv)Steves-iMac:WeVoteCordova your-username$ remotedebug_ios_webkit_adapter --port=9000
-    remotedebug-ios-webkit-adapter is listening on port 9000
-    iosAdapter.getTargets
-    iosAdapter.getTargets
-    iosAdapter.getTargets
-    ...
-
-
-You may have to restart the remotedebug_ios_webkit_adapter from time to time, to get the
-`chrome://inspect/#devices` to see the simulator processes.
-
-After starting the remotedebug_ios_webkit_adapter (hopefully on the first attempt) when you navigate in the Google Chrome
-browser to `chrome://inspect` you will see the following screen, with the process to debug on the
-list below:
-
-![ScreenShot](docs/images/ChromeInspect.png)
-  
-Press that little blue 'inspect' to open the debugger, which should look like the following:
-
-
-![ScreenShot](docs/images/ChromeInspectWDebuggerShowing.png)
-
-
-If `chrome://inspect` doesn't list your target, then try restarting remotedebug_ios_webkit_adapter and maybe restarting
-your Cordova app via Xcode.  This is imperfect, but not too bad once you get the hang of it.
-
-Unfortunately in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
-of the app via Xcode, and also the files where you want to put the breakpoints have to be reopened each time.  (This deficiency
-is not the case in React-Native, so hopefully a fix will arrive some day.)
-
-Press ⌘+P to bring up the list of recently opened files -- this can save you a bunch of clicks.
-
-In spite of the previous problem, it is possible to debug a startup behaviour, one that would fly past before you could set the first 
-breakpoint -- on the upper left  corner of the chrome debugger, there is a "circular arrow, 
-reload button" (see the following image) that will allow you to restart the app within the Chrome Inspector while maintaining
-the current breakpoints.
-
-![ScreenShot](docs/images/ChromeCircularReloadButton.png)
-
 
 ## WebApp code changes needed to support Cordova
 
@@ -921,64 +801,6 @@ Start recording:
 End the recording with Ctrl-c in the terminal window.  
 
 Just change myVideo.mov to a unique name of your choosing, and run the command to make a recording.
-
-
-## Git
-
-The Git branching scheme for WeVoteCordova is the same as for the We Vote WebApp
-
-
-    git checkout develop
-    git pull upstream develop
-    git push origin develop
-
-
-otherwise all else in our github workflow is the same.
-
-
-## If the cordova plugins are not installed
-
-These should be installed by Git, but if not you might see error "-1100" lines in the log.
-
-In WeVoteCordova/platforms/ios/platform_www/cordova_plugins.js
-
-    module.exports.metadata = 
-    // TOP OF METADATA
-    {
-      "cordova-plugin-device": "2.0.3",
-      "cordova-plugin-facebook4": "6.2.0",
-      "cordova-plugin-inappbrowser": "3.1.0",
-      "cordova-plugin-keyboard": "1.2.0",
-      "cordova-plugin-safariviewcontroller": "1.6.0",
-      "cordova-plugin-screensize": "1.3.1",
-      "cordova-plugin-splashscreen": "5.0.3",
-      "cordova-plugin-statusbar": "2.4.3",
-      "cordova-plugin-whitelist": "1.3.4"
-    };
-    // BOTTOM OF METADATA
-
-If they are not present, the commands to install them (from the WeVoteCordova dir) are:
-
-    cordova plugin add cordova-plugin-device
-    cordova plugin add cordova-plugin-facebook4 --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteCordova"
-    cordova plugin add cordova-plugin-inappbrowser
-    cordova plugin add cordova-plugin-keyboard
-    cordova plugin add cordova-plugin-safariviewcontroller
-    cordova plugin add cordova-plugin-screensize
-    cordova plugin add cordova-plugin-splashscreen
-    cordova plugin add cordova-plugin-statusbar
-    cordova plugin add cordova-plugin-whitelist
-
-
-Note:  Sometimes the setup needs to be re-run
-
-    cordova platform remove android
-    cordova platform add android
-
-If you do this, your changes to ```WeVoteCordova/platforms/android/cordova-plugin-safariviewcontroller/cordova-SafariViewController-java18.gradle```
-and to ```WeVoteCordova/platforms/android/app/src/main/java/org/apache/cordova/inappbrowser/InAppBrowser.java``` will have to be redone.
-
-For getting the "Run" configuration to work again, you may have select on the file menu "Sync Project With Gradle Files"
 
 
 ## Android Setup
@@ -1088,22 +910,6 @@ remotedebug_ios_webkit_adapter server, something in Android or Android Studio ha
 Make sure the custom scheme URL Type is still setup in Xcode
 
 ![ScreenShot](docs/images/SettingUpTheIosCustomScheme.png)
-__
-### iOS has two config.xml files -- make sure you change both
-
-**Don't do this!:** The following commands are needed to upgrade the ios platform
-portion of the Cordova install, but otherwise don't do this...
-
-    cordova platform remove ios
-    cordova platform add ios
-
-or you will regenerate the iOS specific `config.xml` (platforms/ios/WeVoteCordova/config.xml), and this file will not have config that is
-in android specific blocks in the "root" config.xml.  
-
-At run time the only config.xml that matters for iOS is `platforms/ios/WeVoteCordova/config.xml`, so
-be sure to manually make the changes in both places (yuck).  If you make the mistake of removing platform for iOS, you will lose
-the entire directory for iOS including any configuration you made in XCode -- it might take you a lot of time to recover from
-this.
 
 ### Moving the spinner upwards on the iOS Splash screen and changing it from grey to white:  Manual step required
 
@@ -1155,5 +961,7 @@ and get a blank redirect screen, close it and try again.  It seems to always wor
 
 **[Update the icons and splashscreens with new artwork](res/screen/ios)**
 
-
+<!--
+Notes
 cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --variable URL_SCHEME=wevotetwitterscheme --save
+-->
