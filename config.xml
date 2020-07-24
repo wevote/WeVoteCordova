@@ -83,8 +83,5 @@
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="5.5.2" />
     </plugin>
-    <plugin name="cordova-plugin-customurlscheme" spec="^5.0.1">
-        <variable name="URL_SCHEME" value="wevotetwitterscheme" />
-    </plugin>
     <plugin name="cordova-plugin-sign-in-with-apple" spec="^0.1.1" />
 </widget>

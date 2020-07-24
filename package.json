@@ -46,10 +46,10 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-taptic-engine": {},
+      "cordova-plugin-safariviewcontroller": {},
       "cordova-plugin-customurlscheme": {
         "URL_SCHEME": "wevotetwitterscheme"
-      },
-      "cordova-plugin-safariviewcontroller": {}
+      }
     },
     "platforms": [
       "ios",
