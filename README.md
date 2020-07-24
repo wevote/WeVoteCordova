@@ -399,6 +399,22 @@ WebApp and to the WeVoteCordova.
     
     ![ScreenShot](docs/images/CDVLaunchScreenConfiguration.png)
 
+1. Define the `wevotetwitterscheme` in XCode
+
+    The `wevotetwitterscheme` allows Safari to respond to our `wevotetwitterscheme://` custom scheme on the OAuth response
+    when logging into Twitter.  This has to be manually configured in Xcode.  The scripted installation of the Cordova plugin 
+    for Facebook has already defined one custom scheme by this point, but we need to manually configure the scheme that is needed
+    for Twitter.
+    
+    In Xcode, select under Resources, the WeVoteCordova-info.plist, then under 'URL Types'/'Item 0'/'URL Schemes' you 
+    press the + button on 'Item 0' (the facebook oauth scheme) which opens an
+    entry field for 'Item 1' where you enter `wevotetwitterscheme` and press Enter or click somewhere else to save,
+
+    ![ScreenShot](docs/images/XcodeDefine-wevotetwitterscheme.png)
+    
+    You can test the custom scheme if you want to, by opening Safari in the simulator and typing in
+    `wevotetwitterscheme://` in a URL and it should open the WeVoteCordova app.
+
     No need to save in the Xcode IDE.  Next time the app starts, all these images should be in place.
    
 ## Git setup
@@ -1138,3 +1154,6 @@ and get a blank redirect screen, close it and try again.  It seems to always wor
 **[Testing with localhost from an actual phone](docs/TestingWithLocalHostFromPhone.md)**
 
 **[Update the icons and splashscreens with new artwork](res/screen/ios)**
+
+
+cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --variable URL_SCHEME=wevotetwitterscheme --save
