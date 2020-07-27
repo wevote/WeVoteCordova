@@ -68,11 +68,6 @@
         <config-file parent="FacebookAutoLogAppEventsEnabled" target="*-Info.plist">
             <false />
         </config-file>
-        <preference name="WKWebViewOnly" value="true" />
-        <feature name="CDVWKWebViewEngine">
-            <param name="ios-package" value="CDVWKWebViewEngine" />
-        </feature>
-        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
         <splash src="res/screen/ios/June2020LaunchScreen.png" />
     </platform>
     <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
@@ -89,5 +84,4 @@
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="5.5.2" />
     </plugin>
     <plugin name="cordova-plugin-sign-in-with-apple" spec="^0.1.1" />
-    <plugin name="cordova-plugin-wkwebview-engine" spec="1.2.1" />
 </widget>

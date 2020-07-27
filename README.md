@@ -962,7 +962,6 @@ and get a blank redirect screen, close it and try again.  It seems to always wor
 **[Update the icons and splashscreens with new artwork](res/screen/ios)**
 
 <!--
-Notes 7/27/20:
+Notes
 cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --variable URL_SCHEME=wevotetwitterscheme --save
-cordova plugin add cordova-plugin-wkwebview-engine --save
 -->
