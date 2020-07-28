@@ -22,7 +22,6 @@
     "cordova-plugin-safariviewcontroller": "^1.6.0",
     "cordova-plugin-screensize": "^1.3.1",
     "cordova-plugin-sign-in-with-apple": "^0.1.1",
-    "cordova-plugin-splashscreen": "^5.0.4",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-plugin-taptic-engine": "^2.1.0",
     "cordova-plugin-whitelist": "^1.3.4"
@@ -30,7 +29,7 @@
   "devDependencies": {
     "rimraf": "^3.0.2",
     "fs-extra": "^9.0.1"
-   },
+  },
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
@@ -44,7 +43,6 @@
       "cordova-plugin-keyboard": {},
       "cordova-plugin-screensize": {},
       "cordova-plugin-sign-in-with-apple": {},
-      "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-taptic-engine": {},
       "cordova-plugin-safariviewcontroller": {},
