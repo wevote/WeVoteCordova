@@ -22,10 +22,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="wevotetwitterscheme:" />
-    <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="6000" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
-    <preference name="FacebookAdvertiserIDCollectionEnabled" value="false" />
     <platform name="android">
         <allow-intent href="market:*" />
         <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
@@ -40,7 +37,12 @@
         <splash density="port-xhdpi" src="res/screen/android/screen-xdpi-portrait.png" />
         <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png" />
         <splash density="port-xxxhdpi" src="res/screen/android/screen-xxxhdpi-portrait.png" />
-        <preference name="SplashScreenSpinnerColor" value="blue" />
+        <custom-config-file parent="./application" target="AndroidManifest.xml">
+            <meta-data android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled" android:value="false" />
+            <meta-data android:name="com.facebook.sdk.AutoLogAppEventsEnabled" android:value="false" />
+        </custom-config-file>
+        <preference name="android-minSdkVersion" value="19" />
+        <preference name="android-targetSdkVersion" value="28" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -68,14 +70,17 @@
         <config-file parent="FacebookAutoLogAppEventsEnabled" target="*-Info.plist">
             <false />
         </config-file>
+        <config-file parent="FacebookAdvertiserIDCollectionEnabled" target="*-Info.plist">
+            <false />
+        </config-file>
         <splash src="res/screen/ios/June2020LaunchScreen.png" />
     </platform>
     <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
     <plugin name="cordova-plugin-screensize" spec="~1.3.1" />
+    <plugin name="cordova-plugin-splashscreen" spec="6.0.0" />
     <plugin name="cordova-plugin-device" spec="~2.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
     <plugin name="cordova-plugin-safariviewcontroller" spec="~1.6.0" />
-    <plugin name="cordova-plugin-splashscreen" spec="~5.0.3" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.4" />
     <plugin name="cordova-plugin-facebook4" spec="^6.4.0">
         <variable name="APP_ID" value="1097389196952441" />
@@ -84,4 +89,5 @@
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="5.5.2" />
     </plugin>
     <plugin name="cordova-plugin-sign-in-with-apple" spec="^0.1.1" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^4.0.0" />
 </widget>
