@@ -36,7 +36,7 @@ and get it to start up at least once, and then return here when you are done.
 If you can't find a file called `WebApp/build/bundle.js` on your machine, don't proceed
 until you can find it.
 
-Note July 2020:  It is **so much better** if you are using 13.x node.  The latest 14.x nodehas a minimum version
+Note July 2020:  It is **so much better** if you are using 13.x node.  The latest 14.x node has a minimum version
 dependency with node-sass, and there are other unpredictable issues that crop up that occasionally prevent
 the app from loading.
 
@@ -391,15 +391,21 @@ WebApp and to the WeVoteCordova.
     window.  For each LaunchStoryBoard image configuration, drop the `WeVoteCordova/res/screen/ios/June2020LaunchScreen.png` onto each.
     Yes, drop the same image 40 times into the different configurations.  XCode stores this setup in a binary file, so maybe we can do something
     fancier later, but this works well enough for now.
-    ![ScreenShot](docs/images/LaunchStoryboardConfig.png)
+    ![ScreenShot](docs/images/CDVLaunchScreenConfiguration.png)
 
 1. Configure the Cordova CDVLaunchScreen to use the LaunchStoryboard
 
     In Xcode, click on the WeVoteCordova path in the left pane, which displays the 'General' editor.
 
-    Under 'Deployment Info', 'Main Interface', select `CDVLaunchScreen.storyboard`
+    a) Under 'Identity', 'Display Name', change the name from `WeVoteCordova` to `We Vote`
 
-    Under 'App Icons and LaunchImages' click on the pulldown for 'Launch File Screen' and select the only option that is available:
+    b) Under 'Identity', 'Version' and 'Build, change the number for Version to the appropriate next release number, and Build must
+    be incremented and unique for every new Archive that is uploaded to Test Flight as a potential
+    release candidate. 
+
+    c) Under 'Deployment Info', 'Main Interface', select `CDVLaunchScreen.storyboard`
+
+    d) Under 'App Icons and LaunchImages' click on the pulldown for 'Launch File Screen' and select the only option that is available:
     `CDVLaunchScreen`.
 
     ![ScreenShot](docs/images/CDVLaunchScreenConfiguration.png)
@@ -410,6 +416,8 @@ WebApp and to the WeVoteCordova.
     when logging into Twitter.  This has to be manually configured in Xcode.  The scripted installation of the Cordova plugin
     for Facebook has already defined one custom scheme by this point, but we need to manually configure the scheme that is needed
     for Twitter.
+    
+    If the `wevotetwitterscheme` is already defined, even if under a different 'Item', then skip this step.
 
     In Xcode, select under Resources, the WeVoteCordova-info.plist, then under 'URL Types'/'Item 0'/'URL Schemes' you
     press the + button on 'Item 0' (the facebook oauth scheme) which opens an
@@ -561,34 +569,6 @@ WebApp and to the WeVoteCordova.
    drwxr-xr-x  12 stevepodell  staff    384 Jun 25 14:01 plugins
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
    ```
-
-1.  You should test each one of those links, to make sure that they really point to where it needs to. It is much easier
-to test first, rather than making a setup mistake and having to diagnose the problem later on.  Use `stat -L` to confirm
-that the link points to a sizeable file (17856048 bytes in the case of bundle.js), if stat reports a file size of less than
-100 bytes, then the link is probably incorrect.  Use `ls` to make sure that the links for directories, contain a few files.
-
-    ```
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ pwd
-    /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ stat -L bundle.js
-    16777220 134276137 -rw-r--r-- 1 stevepodell staff 0 26625098 "Nov 11 14:33:16 2019" "Nov 10 16:50:44 2019" "Nov 11 14:11:21 2019" "Nov 10 16:50:43 2019" 4096 52008 0 bundle.js
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ls css
-    bootstrap-social.css    loading-screen.css      main.css
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ ls img
-    endorsement-extension   endorsement-icon48.png  global                  how-it-works            sierra.pdf              tools                   welcome
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$ head index.html
-    <!DOCTYPE html>
-    <!--
-        index.html for WeVoteCordova
-
-        NOTE NOTE NOTE
-           Due to the symlinks, this file will appear in multiple places in WeVoteCordova
-           The location of the source controlled version of this file is
-           WeVoteCordova/www/index.html
-
-    -->
-    Steves-MacBook-Pro-32GB-Oct-2018:www stevepodell$
-    ```
 
 **You are now done with the Android specific setup.**
 
@@ -751,7 +731,7 @@ start.
 
 ### Running Android Cordova for the first time
 
-1.  Download and install Android Studio
+1.  Download and install [Android Studio](https://developer.android.com/studio)
 
     Click "ok" to downloading and installing any jars or packages that the installer recommends.
 
@@ -782,6 +762,88 @@ start.
 
     You might see a warning: "**WARNING:** Configuration 'compile' is obsolete and has been replaced with 'implementation'
     and 'api'.", but it is safe to ignore
+    
+1.  If you get an error relating to accepting the Android SDK license
+
+    Run the sdkmanager and accept all the licenses (feel free to read them first)
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 android % pwd
+    /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 android % cd /Users/stevepodell/Library/Android/sdk/tools/bin           
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 bin % ./sdkmanager --licenses
+    Warning: File /Users/stevepodell/.android/repositories.cfg could not be loaded. 
+    7 of 7 SDK package licenses not accepted. 100% Computing updates...             
+    Review licenses that have not been accepted (y/N)? y
+    ...
+    10.8 Open Source Software. In the event Open Source software is included with Evaluation Software, such Open Source software is licensed pursuant to the applicable Open Source software license agreement identified in the Open Source software comments in the applicable source code file(s) and/or file header as indicated in the Evaluation Software. Additional detail may be available (where applicable) in the accompanying on-line documentation. With respect to the Open Source software, nothing in this Agreement limits any rights under, or grants rights that supersede, the terms of any applicable Open Source software license agreement.
+    ---------------------------------------
+    Accept? (y/N): y
+    All SDK package licenses accepted
+    
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 bin % 
+    ```
+    Then run File/Sync Project with Gradle Files and you "should" see the following success message in the Sync status pane at the lower right corner of the IDE.
+    ```
+    KotlinDslScriptsParameter(correlationId=102692066094524, scriptFiles=[]) => StandardKotlinDslScriptsModel(scripts=[], commonModel=CommonKotlinDslScriptModel(classPath=[], sourcePath=[], implicitImports=[]), dehydratedScriptModels={}) - took 0.0 secs
+    Checking the license for package Android SDK Platform 28 in /Users/stevepodell/Library/Android/sdk/licenses
+    License for package Android SDK Platform 28 accepted.
+    Preparing "Install Android SDK Platform 28 (revision: 6)".
+    "Install Android SDK Platform 28 (revision: 6)" ready.
+    Installing Android SDK Platform 28 in /Users/stevepodell/Library/Android/sdk/platforms/android-28
+    "Install Android SDK Platform 28 (revision: 6)" complete.
+    "Install Android SDK Platform 28 (revision: 6)" finished.
+    
+    CONFIGURE SUCCESSFUL in 24s
+    ```
+    
+    <!--If you have trouble look at the [Cordova Android Platform Guide](https://cordova.apache.org/docs/en/latest/guide/platforms/android/)-->
+
+1. You will then need to download some simulator Virtual Devices to test with.  Go to Tools/AVD Manager
+    ![ScreenShot](docs/images/AndroidVirtualDeviceManager.png)
+    Download those that you can, some will have API versions that need to be increased to the minimum that is configured.  These simulators are huge
+    and contain most of the commercial boot image for the phone that you will be simulating.  
+    you probably will need to come back here later to add more, but at least get one
+    downloaded so you can do a test run in the Simulator.
+    
+1. Invalidate Caches are restart
+
+   Go to File/"Invalidate Caches / Restart" and choose the option to restart. 
+    
+1. Increase the minimum SDK version to what is recommended
+   
+   When I tried to run the app, I got the following output in the Build Output window     
+    ```
+    Manifest merger failed : uses-sdk:minSdkVersion 15 cannot be smaller than version 19 declared in library [:CordovaLib] /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml as the library might be using APIs not available in 15
+    	Suggestion: use a compatible library with a minSdk of at most 15,
+    		or increase this project's minSdk version to at least 19,
+    		or use tools:overrideLibrary="org.apache.cordova" to force usage (may lead to runtime failures)
+    ```
+   
+   So in the IDE I did a global search for `minSdkVersion` (Click in the editor and press Command+Shift+F)
+   and replace the instance in android.json from 15 to 19 
+    ```
+   "xml": "<preference name=\"android-minSdkVersion\" value=\"15\" />",
+    ```
+    and replace the instance in config.xml from 15 to 19 
+    ```
+    <preference name="android-minSdkVersion" value="19" />
+    ```
+    The source controlled WeVoteCordova/config.xml as of July 30, 2020 has a minimum version
+    set of "19", so you may not need to do this.  At 'cordova platform add android', the root config.xml
+    is process and a `WeVoteCordova/platforms/android/app/src/main/res/xml/config.xml` is created on
+    the fly.
+    
+1. The gradle run that is automatically launched failed for me so I had to upgrade the [Android Gradle plugin](https://developer.android.com/studio/releases/gradle-plugin.html#revisions)
+
+   [Gradle](https://gradle.org/) is a build tool for Java, that serves the same purpose as Ant, or Make, or Webpack.
+   
+   Since the Gradle version that came with Android Studio was `6.1.1`, edited android/build.gradle to load version 4.00 instead of the version `3.0.0` that came
+   preinstalled.
+
+    ![ScreenShot](docs/images/UpgradeAndroidPlugin.png)
+    
+    After making that edit, simply click file/"Sync Project with Gradle Files" which forces a reload of the the Andorid Gradle plugin, and 
+    rebuilds the app.     
 
 1. Press the green "play" button to attempt to start running
 
@@ -867,18 +929,33 @@ to
 
     _activityView.center = CGPointMake(parentView.bounds.size.width / 2, parentView.bounds.size.height * 1 / 5 );
 
-### Authentication to Facebook and Twitter in the Simulators
+## WeVoteCordova/config.xml and WeVoteCordova/package.json background
 
-**Android:** Works fine!
+The Cordova project used to have all configuration for platforms, plugins installed, and plugin variables stored in their proprietary config.xml.  The `WeVoteCordova/config.xml` file is
+parsed at build time and rewritten to WeVoteCordova/platforms/ios/WeVoteCordova/config.xml and is used somewhere in Android.
 
-**iOS with Facebook:** Facebook auth usually does not work -- depending on complicated circumstances.  It is possible
-to test Facebook auth with a local build -- you can use your USB tethered physical device to load your
-latest bundle.js onto the phone, then unplug the phone, and run your test directly through the
-internet.
+In 2019 it appears that Cordova started using WeVoteCordova/package.json as the
+authoritative source of versions of the platform components and plugins
+that are used to build the app.  For pulling in libraries (plugins, platforms and Cordova core compoents)Cordova first looks in packages.json, then in config.xml, and
+finally it will load plugins that are not configured, but are present in the
+plugins directories:  `WeVoteCordova/platforms/ios/WeVoteCordova/Plugins `and `WeVoteCordova/platforms/android/app/src/main/assets/www/plugins` and 
+`WeVoteCordova/Plugins`
+ 
+ The safest way to remove a plugin is, for example `cordova plugin remove cordova-plugin-foo` which adjusts all the
+ configuration files, and physically removes the plugin code.   `cordova plugin add cordova-plugin-foo --save` will add it back in,
+ and might add the configuration for the plugin version in `WeVoteCordova/config.xml`.  If it doesn't you
+ can add it into the `WeVoteCordova/config.xml` manually, or just not worry about it and have
+ the code version picked up from `package.json`
 
-**iOS with Twitter:** It is usable, but not very elegant.  There is a QuickTime movie in this repository that shows the
-login steps (`docs/images/TwitterSignIn4.mov`) -- you can play it on your Mac.  Another note: if you click "Sign in with Twitter"
-and get a blank redirect screen, close it and try again.  It seems to always work on the second try.
+Running ...
+ 
+    cordova platform remove ios android
+    cordova platform add ios android
+  
+will remove everything from the platforms directory, and rebuild all the config files in the platforms directory, but will
+also remove all the manual configuration and symlinks that you add.  This is a powerful last resort if all else is going wrong.
+
+
 
 ----------
 ## Other documentation pages:
@@ -901,4 +978,6 @@ cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --var
 // nono cordova plugin add cordova-plugin-wkwebview-engine --save
 // NONO cordova plugin add cordova-plugin-wkwebview-file-xhr --save
 cordova platform add ios@6.1.0 android@9.0.0
+cordova plugin add cordova-plugin-inappbrowser --save
+cordova plugin add cordova-plugin-splashscreen --save
 -->

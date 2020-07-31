@@ -18,10 +18,12 @@
     "cordova-plugin-customurlscheme": "git+https://github.com/EddyVerbruggen/Custom-URL-scheme.git",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-facebook4": "6.4.0",
+    "cordova-plugin-inappbrowser": "4.0.0",
     "cordova-plugin-keyboard": "^1.2.0",
     "cordova-plugin-safariviewcontroller": "^1.6.0",
     "cordova-plugin-screensize": "^1.3.1",
     "cordova-plugin-sign-in-with-apple": "^0.1.1",
+    "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-plugin-taptic-engine": "^2.1.0",
     "cordova-plugin-whitelist": "^1.3.4"
@@ -48,7 +50,9 @@
       "cordova-plugin-safariviewcontroller": {},
       "cordova-plugin-customurlscheme": {
         "URL_SCHEME": "wevotetwitterscheme"
-      }
+      },
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-splashscreen": {}
     },
     "platforms": [
       "ios",
