@@ -140,14 +140,7 @@ WebApp and to the WeVoteCordova.
     Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$
     ```
 
-    (The example machine had a symlink in `/usr/local/bin/` that did not point to where the Cordova 9 was installed earlier in this step, and that
-    symlink had to be manually fixed.)
-
-    a. `cordova` is not added automatically to your path. You might need to run from the symlink you saved above (ex/ `/usr/local/Cellar/node/12.5.0/bin/cordova`)
-
-    b. You might be asked: `? May Cordova anonymously report usage statistics to improve the tool over time? (Y/n)` -- that is your choice, either choice is fine.
-    ```
-1. Create a new "empty" instance of the WeVoteCordova (with some minimal scaffolding)
+1. Create a new "empty" instance of the WeVoteCordova (with some minimal scaffolding that our copyFromSaveoff script will remove in an upcoming step)
 
     This will create a "Hello World" Cordova app, named WeVoteCordova -- the scaffolding, which we will throw away, is
     is in two files `/www/index.html` and `/www/us/index.js`
@@ -173,8 +166,7 @@ WebApp and to the WeVoteCordova.
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff %
     ```
 
-1. Run the `copyFromSaveoff` script to copy all the source controlled files to WeVoteCordova
-
+1. Run the `copyFromSaveoff` script to copy all the source controlled files from WeVoteCordovaSaveoff to WeVoteCordova 
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % node copyFromSaveoff
     __dirname /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff
@@ -338,14 +330,13 @@ WebApp and to the WeVoteCordova.
     ```
 1.  Run the WeVoteCordova app from XCode.
 
-    In Xcode, Click File/Open and select `/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/` and press the Play (Triagular) button, and
-    a minute or two later you should get a rough version of the Cordova app running in a simulator.  The startup
-    screens and icons will not be correct, but the WebApp running within Cordova should look good.
+    In Xcode, Click File/Open and select `/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/` and press the Play (Triangular) button, and
+    a minute or two later you should get the WeVoteCordova app running in a simulator. 
     ![ScreenShot](docs/images/XCodeOpenedAndReady.png)
 
-    At this point you have a working Cordova iOS build, next we will fix up the icons and splashcreens.
+    At this point you have a fully working Cordova iOS build.
 
-1. We hope this is not necessary.  ONLY IF NEEDED:  If the Cordova iOS app loads the html page (White "Loading We Vote" on blue, but crashes in JQuery regex), logs `SyntaxError: Invalid regular expression: range out of order in character class`
+1. **ONLY IF NEEDED:** We hope this step is not necessary.   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue, but crashes in JQuery regex), logs `SyntaxError: Invalid regular expression: range out of order in character class`
  and never advances to the first js page in the WebApp:
 
     In the WebApp, delete
@@ -365,80 +356,19 @@ WebApp and to the WeVoteCordova.
     npm run start-https-singleBundle
     ```
 
-1. Once you have the basic working Cordova iOS app going...  Copy the icons from `WeVoteCordova/res/` to the `LaunchStoryboard` `Images.xcassets` in the Xcode IDE
-
-    If you have two monitors, they will be very handy for this step.  Open Xcode in one monitor, and your IDE in
-    the other.  If you use PyCharm or WebStorm these pictures will show you exactly what to do.
-
-    In Xcode, click on the file folder icon in the upper right corner
-    ![ScreenShot](docs/images/FileFolderIconLocation.png)
-    Then navigate to WeVoteCordova/Resources/images.xcassets and within the edit window select AppIcon.  All of the application icons
-    that are displayed are the default cordova icons from the scaffolding.  Replace then all from WeVoteCordova/res/icon/ios
-    ![ScreenShot](docs/images/AppIconConfigScreen.png)
-    Replace then all from WeVoteCordova/res/icon/ios in your IDE (or finder!)
-    ![ScreenShot](docs/images/IDEShowingAppIcons.png)
-    The very first icon in XCode is the '2x' 'iPhone Notification for iOS 7-13' '20pt', so drag
-    `icon_20pt@2x.png` from your IDE and drop it on the image in Xcode.
-    ![ScreenShot](docs/images/XCodeAfterFirstIconDrop.png)
-    Repeat this for all of the icons on the AppIcon editor page up to 'App Store IOS 1024pt'.  There is no need to
-    do anything for the 'Apple Watch' icons.  If you drop the wrong size in a configuration, the XCode IDE will tell
-    you and you can try again.
-
-1. Setup the LaunchStoryboard
-    As of iOS 13, we can no longer have the hand crafted launch images "View your ballot for the next election..." Apple now
-    recommends simply a icon, or a mockup of the first screen (which would not work well for our app).
-    Change your IDE to show the pngs in `WeVoteCordova/res/screen/ios` and in XCode selecct LaunchStoryBoard in the edit
-    window.  For each LaunchStoryBoard image configuration, drop the `WeVoteCordova/res/screen/ios/June2020LaunchScreen.png` onto each.
-    Yes, drop the same image 40 times into the different configurations.  XCode stores this setup in a binary file, so maybe we can do something
-    fancier later, but this works well enough for now.
-    ![ScreenShot](docs/images/CDVLaunchScreenConfiguration.png)
-
-1. Configure the Cordova CDVLaunchScreen to use the LaunchStoryboard
-
-    In Xcode, click on the WeVoteCordova path in the left pane, which displays the 'General' editor.
-
-    a) Under 'Identity', 'Display Name', change the name from `WeVoteCordova` to `We Vote`
-
-    b) Under 'Identity', 'Version' and 'Build, change the number for Version to the appropriate next release number, and Build must
-    be incremented and unique for every new Archive that is uploaded to Test Flight as a potential
-    release candidate. 
-
-    c) Under 'Deployment Info', 'Main Interface', select `CDVLaunchScreen.storyboard`
-
-    d) Under 'App Icons and LaunchImages' click on the pulldown for 'Launch File Screen' and select the only option that is available:
-    `CDVLaunchScreen`.
-
-    ![ScreenShot](docs/images/CDVLaunchScreenConfiguration.png)
-
-1. Define the `wevotetwitterscheme` in XCode
-
-    The `wevotetwitterscheme` allows Safari to respond to our `wevotetwitterscheme://` custom scheme on the OAuth response
-    when logging into Twitter.  This has to be manually configured in Xcode.  The scripted installation of the Cordova plugin
-    for Facebook has already defined one custom scheme by this point, but we need to manually configure the scheme that is needed
-    for Twitter.
-    
-    If the `wevotetwitterscheme` is already defined, even if under a different 'Item', then skip this step.
-
-    In Xcode, select under Resources, the WeVoteCordova-info.plist, then under 'URL Types'/'Item 0'/'URL Schemes' you
-    press the + button on 'Item 0' (the facebook oauth scheme) which opens an
-    entry field for 'Item 1' where you enter `wevotetwitterscheme` and press Enter or click somewhere else to save,
-
-    ![ScreenShot](docs/images/XcodeDefine-wevotetwitterscheme.png)
-
-    You can test the custom scheme if you want to, by opening Safari in the simulator and typing in
-    `wevotetwitterscheme://` in a URL and it should open the WeVoteCordova app.
-
-    No need to save in the Xcode IDE.  Next time the app starts, all these images should be in place.
-
-    You have a fully configured WeVoteCordova app running in your simulator!  Next step is to connect your new
+    At this point you "should" have a fully configured WeVoteCordova app running in your simulator.  Next step is to connect your new
     WeVoteCordova directory to Git.
 
 ## Git setup
-1. On github.com, fork WeVoteCordova to your account. Navigate to https://github.com/wevote/WeVoteCordova and then click the "Fork" button in the upper right corner.
+1. On github.com, fork WeVoteCordova to your account. 
 
-1. Execute the following commands from your WeVoteCordova directory
+    Navigate to https://github.com/wevote/WeVoteCordova and then click the "Fork" button in the upper right corner.
 
-    **Be sure to substitute your forked remote for the one for SailingSteve !**
+    This will create a new directory on Github like ... `https://github.com/SailingSteve/WeVoteCordova.git`
+
+1. Execute the following commands from your WeVoteCordova directory on your Mac/PC
+
+    **Remember to substitute the name of your forked remote for "SailingSteve" in the following commands!**
     ```
     git init
     git checkout -b develop
@@ -516,43 +446,11 @@ WebApp and to the WeVoteCordova.
     ```
     You will a have different branch list than in this example.
 
-<!--1. Now get the remotes in sync
-    ```
-    git checkout HEAD
-    git pull upstream develop --allow-unrelated-histories
-    git push origin develop --force
-    ```
-    As seen in the terminal
-    ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git checkout HEAD
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git pull upstream develop --allow-unrelated-histories
-    From https://github.com/wevote/WeVoteCordova
-     * branch            develop    -> FETCH_HEAD
-    Already up to date.
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % git push origin develop --force
-    Enumerating objects: 228, done.
-    Counting objects: 100% (228/228), done.
-    Delta compression using up to 12 threads
-    Compressing objects: 100% (195/195), done.
-    Writing objects: 100% (228/228), 63.47 MiB | 551.00 KiB/s, done.
-    Total 228 (delta 19), reused 205 (delta 15), pack-reused 0
-    remote: Resolving deltas: 100% (19/19), done.
-    To https://github.com/SailingSteve/WeVoteCordova.git
-     + 1ed1d3b...de7a1d4 develop -> develop (forced update)
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
-    ```
-    git fetch --all
-    git reset --hard upstream/develop
-    git pull upstream develop
-    ```
-   This will give you an absolutely "related history" local develop that you can build from.
--->
-
 **That's it!  Cordova iOS Installed from scratch in about an hour.**
 
 # Platform specific Android setup (Everyone should install the Android software)
 
-1. Confim that buildSymLinks setup the iOS www directory properly
+1. Confim that buildSymLinks setup we ran initiallly for the iOS www directory, has set up the Android platform directory properly
    ```
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % ls -la platforms/android/app/src/main/assets/www
    total 136
@@ -569,6 +467,7 @@ WebApp and to the WeVoteCordova.
    drwxr-xr-x  12 stevepodell  staff    384 Jun 25 14:01 plugins
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
    ```
+   If you don't see the symlinks, they you can run buildSymLinks again.
 
 **You are now done with the Android specific setup.**
 
@@ -638,31 +537,12 @@ You probably will run into the need to "Clean Build Folder".  To do this in XCod
 (on your Mac keyboard) and select "Clean Build Folder", after it completes (about 10 seconds), press the triangular
 Run (Play) button do to a full rebuild
 
-
-## Opening the project in Xcode
-
-This is very similar to the way we do it with the WeVoteReactNative iOS development.
-
-Download Xcode from the MacOS App Store, and launch it:
-
-Don't use the last opened list, instead click on "Open another project..." (We use an Apple specific packager
-called CocoaPods, which forces us to ignore that handy last opened menu.)
-
-After clicking the "Open another project..." button, select the `WeVoteCordova.xcworkspace` file and press Open.
-
-![ScreenShot](docs/images/WeVoteCordova.xcworkspace.png)
-
-
-Select a simulator type from the menu on top (I use iPhone 8p in this example), then press the triangular green play button,
-and the app starts in the simulator.
-
 ## Debugging Cordova Differences
 Browsers are single threaded, JavaScript on browsers is also single threaded, but JavaScript running in Cordova is
 multi-threaded.  "JavaScript in the WebView does not run on the UI thread, it also has other threads to execute the
 html component and carry out CSS transitions."  This can cause some confusion when debugging Cordova for the first time.
 
 ## Debugging Cordova Apps with the Safari debugger
-
 
 ![ScreenShot](docs/images/SafariDevelopMenu.png)
 
@@ -674,9 +554,8 @@ often don't make it to the log.
 
 ![ScreenShot](docs/images/SafariSimulatorRunning.png)
 
-It is easy to get the Safari debugger working, and over time Apple is adding more of the features we are used to
+It is easy to get the Safari debugger working, and over time Apple has added almost all of the features we are used to
 from the Chrome Devtools Debugger.
-
 
 1. Enable debugging in Safari, [see this article](http://geeklearning.io/apache-cordova-and-remote-debugging-on-ios/)
 1. Build your 'compiled' javascript app file `bundle.js`, on my Mac it is at `build/bundle.js`.  This file needs to be symlinked
@@ -724,10 +603,6 @@ Just change myVideo.mov to a unique name of your choosing, and run the command t
 It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, RubyMine, or IntelliJ it should be instantly familar.
 
 [https://developer.android.com/studio/index.html](https://developer.android.com/studio/index.html)
-
-TODO: On a clean machine, capture all the steps it takes to get Android Studio
-going, and the Java environment setup.  The Android and [Cordova](https://cordova.apache.org/docs/en/latest/) documentation are a good
-start.
 
 ### Running Android Cordova for the first time
 
@@ -805,35 +680,11 @@ start.
     you probably will need to come back here later to add more, but at least get one
     downloaded so you can do a test run in the Simulator.
     
-1. Invalidate Caches are restart
+1. Invalidate Caches and restart
 
    Go to File/"Invalidate Caches / Restart" and choose the option to restart. 
-    
-1. Increase the minimum SDK version to what is recommended
-   
-   When I tried to run the app, I got the following output in the Build Output window     
-    ```
-    Manifest merger failed : uses-sdk:minSdkVersion 15 cannot be smaller than version 19 declared in library [:CordovaLib] /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml as the library might be using APIs not available in 15
-    	Suggestion: use a compatible library with a minSdk of at most 15,
-    		or increase this project's minSdk version to at least 19,
-    		or use tools:overrideLibrary="org.apache.cordova" to force usage (may lead to runtime failures)
-    ```
-   
-   So in the IDE I did a global search for `minSdkVersion` (Click in the editor and press Command+Shift+F)
-   and replace the instance in android.json from 15 to 19 
-    ```
-   "xml": "<preference name=\"android-minSdkVersion\" value=\"15\" />",
-    ```
-    and replace the instance in config.xml from 15 to 19 
-    ```
-    <preference name="android-minSdkVersion" value="19" />
-    ```
-    The source controlled WeVoteCordova/config.xml as of July 30, 2020 has a minimum version
-    set of "19", so you may not need to do this.  At 'cordova platform add android', the root config.xml
-    is process and a `WeVoteCordova/platforms/android/app/src/main/res/xml/config.xml` is created on
-    the fly.
-    
-1. The gradle run that is automatically launched failed for me so I had to upgrade the [Android Gradle plugin](https://developer.android.com/studio/releases/gradle-plugin.html#revisions)
+  
+1. The gradle run that is automatically launched failed for me, so I had to upgrade the [Android Gradle plugin](https://developer.android.com/studio/releases/gradle-plugin.html#revisions)
 
    [Gradle](https://gradle.org/) is a build tool for Java, that serves the same purpose as Ant, or Make, or Webpack.
    
@@ -859,42 +710,7 @@ start.
     ![ScreenShot](docs/images/AndoridEditConfigNoAndroidSDK.png)
     ![ScreenShot](docs/images/AndroidSDKSetup.png)
 
-<!-- November 12, 2019 The Jack change seems to be no longer needed.  The We Vote project has  pull request against the cordova core plugin cordova-plugin-inappbrowser,
-has been adopted and relased by the Apache Cordova team, so no special intervention is needed in this area anymore.
-### Modify Build Configuration
-
-1.  As of March 29, 2018, if you get a project compile error in AndroidStudio ```Could not find method jackOptions() for arguments [cordova_SafariViewController_...```
-you might have to remove the jack settings in ```WeVoteCordova/platforms/android/cordova-plugin-safariviewcontroller/cordova-SafariViewController-java18.gradle```
-this file is source controlled by We Vote, but updating the plugin could expose this problem again. See "Migrate from Jack" at https://developer.android.com/studio/write/java8-support.html.
-
-    ```
-    ext.postBuildExtras = {
-        android {
-            defaultConfig {
-    //            jackOptions {
-    //                enabled true
-    //                additionalParameters('jack.incremental': 'true')
-    //            }
-            }
-            compileOptions {
-                sourceCompatibility JavaVersion.VERSION_1_8
-                targetCompatibility JavaVersion.VERSION_1_8
-            }
-        }
-    }
-    ```
-
-2. The We Vote project has made a pull request against the cordova core plugin cordova-plugin-inappbrowser, which we need
-to allow our oAuth flow for Twitter and Facebook to work.
-
-See [https://github.com/SailingSteve/cordova-plugin-inappbrowser](https://github.com/SailingSteve/cordova-plugin-inappbrowser)
--->
-
-### Running Android Cordova for the first time
-
-![ScreenShot](docs/images/AndoridEditConfigNoAndroidSDK.png)
-![ScreenShot](docs/images/AndroidSDKSetup.png)
-
+That it! you should have a basic Android Cordova app running in the simulator!
 
 ### Debugging Android Cordova
 
