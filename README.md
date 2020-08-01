@@ -73,12 +73,13 @@ script to add back in version I needed
 
 ## Directories
 
-These instructions have changed so often as Cordova evolves, that we are going to use the actual directories on one specific computer, you will have
+These instructions have changed so often, as Cordova evolves, that we are going to use the actual directories on one specific computer in these instructions. You will have
 to change all file paths in these instructions to match your computer.  These are the example paths to the
-WebApp and to the WeVoteCordova.
+WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will use briefly to merge Cordova supplied code, with our Code from GIT).
 ```
     /Users/stevepodell/WebstormProjects/WebApp
     /Users/stevepodell/WebstormProjects/WeVoteCordova
+    /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff
 ```
 
 ## Install our Code and the Cordova Libraries
@@ -140,7 +141,7 @@ WebApp and to the WeVoteCordova.
     Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$
     ```
 
-1. Create a new "empty" instance of the WeVoteCordova (with some minimal scaffolding that our copyFromSaveoff script will remove in an upcoming step)
+1. Use `cordova create` to install a new "empty" instance of the WeVoteCordova (with some minimal scaffolding that our copyFromSaveoff script will remove in an upcoming step)
 
     This will create a "Hello World" Cordova app, named WeVoteCordova -- the scaffolding, which we will throw away, is
     is in two files `/www/index.html` and `/www/us/index.js`
@@ -200,6 +201,7 @@ WebApp and to the WeVoteCordova.
 
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
     ```
+    At this point we are done with the `WeVoteCordovaSaveoff` directory, you can delete it whenever you choose to.
 
 1. Add the Cordova iOS and Android platforms directories
     ```
@@ -207,16 +209,13 @@ WebApp and to the WeVoteCordova.
     ```
     Which runs in the terminal like this...
     ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platform rm ios android
-    Removing ios from cordova.platforms array in package.json
-    Removing android from cordova.platforms array in package.json
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platform add ios android
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platforms add ios android
     Using cordova-fetch for cordova-ios@^5.0.0
     Adding ios project...
     Creating Cordova project for the iOS platform:
             Path: platforms/ios
             Package: org.wevote.cordova
-            Name: WeVoteCordova
+            Name: We Vote
     iOS project created with cordova-ios@5.1.1
     Installing "cordova-plugin-customurlscheme" for ios
     Installing "cordova-plugin-device" for ios
@@ -244,15 +243,14 @@ WebApp and to the WeVoteCordova.
     /usr/local/lib/ruby/gems/2.7.0/gems/nanaimo-0.2.6/lib/nanaimo/writer/pbxproj.rb:13: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
     /usr/local/lib/ruby/gems/2.7.0/gems/nanaimo-0.2.6/lib/nanaimo/writer.rb:35: warning: The called method `initialize' is defined here
     /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    
-    [!] The `WeVoteCordova [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-WeVoteCordova/Pods-WeVoteCordova.debug.xcconfig'. This can lead to problems with the CocoaPods installation
-    
-    [!] The `WeVoteCordova [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-WeVoteCordova/Pods-WeVoteCordova.release.xcconfig'. This can lead to problems with the CocoaPods installation
-    
+    [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    Installing "cordova-plugin-inappbrowser" for ios
     Installing "cordova-plugin-keyboard" for ios
     Installing "cordova-plugin-safariviewcontroller" for ios
     Installing "cordova-plugin-screensize" for ios
     Installing "cordova-plugin-sign-in-with-apple" for ios
+    Installing "cordova-plugin-splashscreen" for ios
     Installing "cordova-plugin-statusbar" for ios
     Installing "cordova-plugin-taptic-engine" for ios
     Installing "cordova-plugin-whitelist" for ios
@@ -261,7 +259,7 @@ WebApp and to the WeVoteCordova.
     Creating Cordova project for the Android platform:
             Path: platforms/android
             Package: org.wevote.cordova
-            Name: WeVoteCordova
+            Name: We_Vote
             Activity: MainActivity
             Android target: android-28
     Subproject Path: CordovaLib
@@ -272,12 +270,14 @@ WebApp and to the WeVoteCordova.
     Installing "cordova-plugin-facebook4" for android
     Subproject Path: CordovaLib
     Subproject Path: app
+    Installing "cordova-plugin-inappbrowser" for android
     Installing "cordova-plugin-keyboard" for android
     Installing "cordova-plugin-safariviewcontroller" for android
     Subproject Path: CordovaLib
     Subproject Path: app
     Installing "cordova-plugin-screensize" for android
     Installing "cordova-plugin-sign-in-with-apple" for android
+    Installing "cordova-plugin-splashscreen" for android
     Installing "cordova-plugin-statusbar" for android
     Installing "cordova-plugin-taptic-engine" for android
     Installing "cordova-plugin-whitelist" for android
@@ -288,7 +288,8 @@ WebApp and to the WeVoteCordova.
     ```
     node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
     ```
-    These symlinks allow us to compile the WebApp and have all the necessary components available for the Cordova builds
+    These symlinks allow us to access the compiled WebApp and have all the necessary components available for the
+    Cordova builds that need to include our WebApp software.
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % pwd
     /Users/stevepodell/WebstormProjects/WeVoteCordova
@@ -310,7 +311,9 @@ WebApp and to the WeVoteCordova.
     ln android index.html successful
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
     ```
-
+   If you have installation troubles, you can run `buildSymLinks` as often as you need to,
+   it cleans out earlier links, before adding the new links in.
+   
 1. Check that cordova requirements have been met (No errors means success)
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % cordova requirements
@@ -336,8 +339,8 @@ WebApp and to the WeVoteCordova.
 
     At this point you have a fully working Cordova iOS build.
 
-1. **ONLY IF NEEDED:** We hope this step is not necessary.   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue, but crashes in JQuery regex), logs `SyntaxError: Invalid regular expression: range out of order in character class`
- and never advances to the first js page in the WebApp:
+1. **ONLY IF NEEDED:** We hope this step is not necessary.   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue, but crashes in JQuery regex), logs `SyntaxError: Invalid regular expression: range out of order in character class`,
+ and never advances to the first React page in the WebApp:
 
     In the WebApp, delete
     ```
@@ -447,6 +450,11 @@ WebApp and to the WeVoteCordova.
     You will a have different branch list than in this example.
 
 **That's it!  Cordova iOS Installed from scratch in about an hour.**
+
+At this point you can use Git to create branches, use Stash, and use git pull and push to get ready to make pull requests.
+
+**You should only have to follow these install from scratch instructions once (unless you delete your WeVoteCordova directory.)**
+
 
 # Platform specific Android setup (Everyone should install the Android software)
 
@@ -617,7 +625,6 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
     directory, then to platforms, then to android and press Open.  `/Users/your-username/MyProjects/WeVoteCordova/platforms/android`
 
 1.  At that point there will be a series of updates and "syncing" options, where you should follow all the default choices.
-    ![ScreenShot](docs/images/GradleSyncWarning.png)
 
 1.  You will probably be prompted to upgrade Gradle, Genymotion, Cordova plugins, etc.
 
@@ -640,7 +647,7 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
     
 1.  If you get an error relating to accepting the Android SDK license
 
-    Run the sdkmanager and accept all the licenses (feel free to read them first)
+    Run the `sdkmanager` and accept all the licenses (feel free to read them first)
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 android % pwd
     /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android
@@ -675,7 +682,12 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
 
 1. You will then need to download some simulator Virtual Devices to test with.  Go to Tools/AVD Manager
     ![ScreenShot](docs/images/AndroidVirtualDeviceManager.png)
-    Download those that you can, some will have API versions that need to be increased to the minimum that is configured.  These simulators are huge
+    
+    It is possible that the list will be empty, and you have to use to "+ Create Virtual device..." button to add them from
+    scrach, start with at least one.
+     
+    If your list contains only entries that require downloading, download those that you can, some will have API versions 
+    that need to be increased to the minimum that is configured.  These simulators are huge (1GB)
     and contain most of the commercial boot image for the phone that you will be simulating.  
     you probably will need to come back here later to add more, but at least get one
     downloaded so you can do a test run in the Simulator.
@@ -693,7 +705,7 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
 
     ![ScreenShot](docs/images/UpgradeAndroidPlugin.png)
     
-    After making that edit, simply click file/"Sync Project with Gradle Files" which forces a reload of the the Andorid Gradle plugin, and 
+    After making that edit, simply click File/"Sync Project with Gradle Files" which forces a reload of the the Andorid Gradle plugin, and 
     rebuilds the app.     
 
 1. Press the green "play" button to attempt to start running
@@ -704,11 +716,6 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
     enabled (google this. it varies between phone manufacturers).  If it is enabled you will see the name of the
     connected device (Motorola Moto G, in this example) in the dialog.  Press "OK", and the CordovaApp should start right up on
     the phone.
-
-    ![ScreenShot](docs/images/AndroidDeviceConnected.png)
-    ![ScreenShot](docs/images/AndroidStudioEditRunConfigurations.png)
-    ![ScreenShot](docs/images/AndoridEditConfigNoAndroidSDK.png)
-    ![ScreenShot](docs/images/AndroidSDKSetup.png)
 
 That it! you should have a basic Android Cordova app running in the simulator!
 
