@@ -73,8 +73,10 @@ script to add back in version I needed
 
 ## Directories
 
-These instructions have changed so often, as Cordova evolves, that we are going to use the actual directories on one specific computer in these instructions. You will have
-to change all file paths in these instructions to match your computer.  These are the example paths to the
+As Cordova evolves these instructions have had to change fairly ofen, so these instructions use the actual directories on one specific computer. You will have
+to change all file paths in these instructions to match the paths in your setup.  
+
+These are the example paths to the
 WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will use briefly to merge Cordova supplied code, with our Code from GIT).
 ```
     /Users/stevepodell/WebstormProjects/WebApp
@@ -102,7 +104,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects %
     ```
 
-1.  Install the Apache Cordova software, this is a command line interface (CLI) that is installed globally on your PC or Mac.
+1.  Install the Apache Cordova software.  This is the Cordova command line interface (CLI) that is installed globally on your PC or Mac.
 
     First do an uninstall, since since any earlier install of the Cordova CLI prior to Version 9, will no longer work.  If you have never installed
     cordova, the uninstall will not do anything (and that is not a problem!).
@@ -132,7 +134,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     stevepodell@Steves-MacBook-Pro WeVoteCordova %
     ```
 
-    You can most likely ignore any warning that installing Cordova might have generated.
+    Most version warnings that installing Cordova might have generated, are unlikely to make any difference.
 
     Do not proceed until you are at Cordova V9, or higher.
     ```
@@ -143,8 +145,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
 
 1. Use `cordova create` to install a new "empty" instance of the WeVoteCordova (with some minimal scaffolding that our copyFromSaveoff script will remove in an upcoming step)
 
-    This will create a "Hello World" Cordova app, named WeVoteCordova -- the scaffolding, which we will throw away, is
-    is in two files `/www/index.html` and `/www/us/index.js`
+    This will create a "Hello World" Cordova app, named WeVoteCordova.
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects % cordova create  WeVoteCordova us.wevote.wevotecordova WeVoteCordova
     Creating a new cordova project.
@@ -167,7 +168,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff %
     ```
 
-1. Run the `copyFromSaveoff` script to copy all the source controlled files from WeVoteCordovaSaveoff to WeVoteCordova 
+1. Run the `copyFromSaveoff` script to copy all the source controlled files from `WeVoteCordovaSaveoff` to `WeVoteCordova `
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % node copyFromSaveoff
     __dirname /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff
@@ -312,7 +313,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
     ```
    If you have installation troubles, you can run `buildSymLinks` as often as you need to,
-   it cleans out earlier links, before adding the new links in.
+   since the script cleans out conflicting links that might already in place, before adding in the new links.
    
 1. Check that cordova requirements have been met (No errors means success)
     ```
@@ -337,9 +338,9 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     a minute or two later you should get the WeVoteCordova app running in a simulator. 
     ![ScreenShot](docs/images/XCodeOpenedAndReady.png)
 
-    At this point you have a fully working Cordova iOS build.
+    **At this point you have a fully working Cordova iOS build.**
 
-1. **ONLY IF NEEDED:** We hope this step is not necessary.   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue, but crashes in JQuery regex), logs `SyntaxError: Invalid regular expression: range out of order in character class`,
+1. **ONLY IF NEEDED:** (We hope this step is not necessary.)   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue, but crashes in JQuery regex), logs `SyntaxError: Invalid regular expression: range out of order in character class`,
  and never advances to the first React page in the WebApp:
 
     In the WebApp, delete
@@ -501,26 +502,6 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
 
     The easiest way to install Xcode is via the
     <a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Mac App Store.</a>  The Xcode.app download is approximately 10gb in size.
-
-1.  Install Node and Watchman
-
-    We recommend installing node and watchman via Homebrew.
-    ```
-    brew install node
-    brew install watchman
-    ```
-
-    On a machine where node may already have been installed, we want to have version 10 or heigher:
-    ```
-    Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$ node -v
-    v11.14.0
-    Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$
-    Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$ brew upgrade node
-    Updating Homebrew...
-    Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$ node -v
-    v12.12.0
-    Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$
-    ```
 
 1.  Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
 
