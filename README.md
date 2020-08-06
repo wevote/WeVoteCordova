@@ -784,4 +784,9 @@ cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --var
 cordova platform add ios@6.1.0 android@9.0.0
 cordova plugin add cordova-plugin-inappbrowser --save
 cordova plugin add cordova-plugin-splashscreen --save
+./ngrok http https://localhost:3000 -host-header="localhost:3000"
+https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin#4c-share-popover-on-ipad
+---
+cordova plugin add cordova-plugin-x-socialsharing
+cordova prepare
 -->
