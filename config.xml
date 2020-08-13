@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.w3.org/ns/widgets"
         id="org.wevote.cordova"
         version="1.2.8"
-        android-versionCode="1.2.8"
+        android-versionCode="1288"
         ios-CFBundleVersion="1.2.8.8">
     <name>We Vote</name>
     <description>
