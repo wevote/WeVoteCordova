@@ -661,6 +661,12 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
     
     <!--If you have trouble look at the [Cordova Android Platform Guide](https://cordova.apache.org/docs/en/latest/guide/platforms/android/)-->
 
+1. If you get a red symbol on your run icon, and a "No default run configuration" error or warning
+    
+    try re-installing npm globally
+    
+    `stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % sudo npm install -g npm `
+
 1. You will then need to download some simulator Virtual Devices to test with.  Go to Tools/AVD Manager
     ![ScreenShot](docs/images/AndroidVirtualDeviceManager.png)
     
@@ -789,4 +795,118 @@ https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin#4c-share-popover
 ---
 cordova plugin add cordova-plugin-x-socialsharing
 cordova prepare
+
+8/20/20
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platform remove ios android
+Removing ios from cordova.platforms array in package.json
+Removing android from cordova.platforms array in package.json
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %                             
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platform add ios@6.1.0 android@9.0.0
+Using cordova-fetch for cordova-ios@6.1.0
+Adding ios project...
+Creating Cordova project for the iOS platform:
+        Path: platforms/ios
+        Package: org.wevote.cordova
+        Name: We Vote
+iOS project created with cordova-ios@6.1.0
+Installing "cordova-plugin-customurlscheme" for ios
+Installing "cordova-plugin-device" for ios
+Installing "cordova-plugin-facebook4" for ios
+Running command: pod install --verbose
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/cache.rb:114: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/request.rb:61: warning: The called method `slug' is defined here
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/cache.rb:100: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/request.rb:61: warning: The called method `slug' is defined here
+
+/usr/local/lib/ruby/gems/2.7.0/gems/nanaimo-0.2.6/lib/nanaimo/writer/pbxproj.rb:13: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
+/usr/local/lib/ruby/gems/2.7.0/gems/nanaimo-0.2.6/lib/nanaimo/writer.rb:35: warning: The called method `initialize' is defined here
+
+/usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+
+[!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+
+[!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+
+Installing "cordova-plugin-inappbrowser" for ios
+Installing "cordova-plugin-keyboard" for ios
+Installing "cordova-plugin-safariviewcontroller" for ios
+Installing "cordova-plugin-screensize" for ios
+Installing "cordova-plugin-sign-in-with-apple" for ios
+Installing "cordova-plugin-splashscreen" for ios
+Installing "cordova-plugin-statusbar" for ios
+Installing "cordova-plugin-taptic-engine" for ios
+Installing "cordova-plugin-whitelist" for ios
+Installing "cordova-plugin-x-socialsharing" for ios
+Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
+Installing "es6-promise-plugin" for ios
+Dependent plugin "es6-promise-plugin" already installed on ios.
+Using cordova-fetch for cordova-android@9.0.0
+Adding android project...
+Creating Cordova project for the Android platform:
+        Path: platforms/android
+        Package: org.wevote.cordova
+        Name: We_Vote
+        Activity: MainActivity
+        Android target: android-29
+Subproject Path: CordovaLib
+Subproject Path: app
+Android project created with cordova-android@9.0.0
+Installing "cordova-plugin-customurlscheme" for android
+Installing "cordova-plugin-device" for android
+Installing "cordova-plugin-facebook4" for android
+Subproject Path: CordovaLib
+Subproject Path: app
+Installing "cordova-plugin-inappbrowser" for android
+Installing "cordova-plugin-keyboard" for android
+Installing "cordova-plugin-safariviewcontroller" for android
+Subproject Path: CordovaLib
+Subproject Path: app
+Installing "cordova-plugin-screensize" for android
+Installing "cordova-plugin-sign-in-with-apple" for android
+Installing "cordova-plugin-splashscreen" for android
+Installing "cordova-plugin-statusbar" for android
+Installing "cordova-plugin-taptic-engine" for android
+Installing "cordova-plugin-whitelist" for android
+Installing "cordova-plugin-x-socialsharing" for android
+Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
+Installing "es6-promise-plugin" for android
+Subproject Path: CordovaLib
+Subproject Path: app
+Dependent plugin "es6-promise-plugin" already installed on android.
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %        
+
 -->
