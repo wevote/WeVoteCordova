@@ -1,3 +1,12 @@
+## Sign In With Apple, OAuth Back Channel Testing
+
+    ./ngrok http http://localhost:8000 -host-header="localhost:8000" 
+
+    https://cc37b176e346.ngrok.io/apis/v1/appleSignInOauthRedirectDestination
+
+
+
+
 [TJITJING BLOG](http://blog.tjitjing.com/index.php/2020/01/tutorial-sign-in-with-apple-siwa-and-ionic-cordova-angularfire-firebase.html)
 
 stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova plugin add cordova-plugin-apple-login
