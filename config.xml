@@ -3,9 +3,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.w3.org/ns/widgets"
         id="org.wevote.cordova"
-        version="1.3.0"
-        android-versionCode="1300"
-        ios-CFBundleVersion="1.3.0.0">
+        version="2.0.0"
+        android-versionCode="200200"
+        ios-CFBundleVersion="2.0.0.2">
     <name>We Vote</name>
     <description>
         We Vote Cordova wrapper for the We Vote WebApp root
@@ -17,6 +17,7 @@
     <access origin="*://*.facebook.com/*" />
     <access origin="*://*.google.com/*" />
     <access origin="*://*.youtube.com/*" />
+    <access origin="https://wevote.us/*" />
     <allow-navigation href="about:*" />
     <allow-navigation href="data:*" />
     <allow-navigation href="*://*.youtube.com/*" />
@@ -32,7 +33,7 @@
     <allow-intent href="wevotetwitterscheme:" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
     <platform name="android">
-        <preference name="android-manifest/@android:versionName" value="1.5.2.0" />
+        <preference name="android-manifest/@android:versionName" value="2.0.0" />
         <allow-intent href="market:*" />
         <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
         <splash density="land-mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
@@ -52,19 +53,13 @@
         <icon src="res/icon/android/xhdpi/ic_launcher.png" density="xhdpi" />
         <icon src="res/icon/android/xxhdpi/ic_launcher.png" density="xxhdpi" />
         <icon src="res/icon/android/xxxhdpi/ic_launcher.png" density="xxxhdpi" />
-        <preference name="android-minSdkVersion" value="19" />
+        <preference name="android-minSdkVersion" value="22" />
         <preference name="android-targetSdkVersion" value="28" />
         <feature name="SocialSharing">
             <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
         </feature>
     </platform>
     <platform name="ios">
-        <config-file parent="CFBundleShortVersionString" target="*-Info.plist" mode="replace">
-            <string>12.3.4</string>
-        </config-file>
-        <config-file parent="CFBundleVersion" target="*-Info.plist" mode="replace">
-            <string>5.6.7</string>
-        </config-file>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <preference name="FadeSplashScreenDuration" value="0" />
@@ -84,8 +79,8 @@
         <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="StatusBarStyle" value="lightcontent" />
         <preference name="SplashScreen" value="screen" />
-        <preference name="SplashScreenDelay" value="6000" />
-        <preference name="SplashScreenSpinnerColor" value="blue" />
+        <preference name="SplashScreenDelay" value="3000" />
+        <preference name="AutoHideSplashScreen" value="false" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
         <config-file parent="FacebookAutoLogAppEventsEnabled" target="*-Info.plist">
             <false />
@@ -93,30 +88,11 @@
         <config-file parent="FacebookAdvertiserIDCollectionEnabled" target="*-Info.plist">
             <false />
         </config-file>
+        <config-file parent="UIMainStoryboardFile" target="*-Info.plist">
+            <string>CDVLaunchScreen</string>
+        </config-file>
         <splash src="res/screen/ios/June2020LaunchScreen.png" />
-        <splash width="1125" height="2436" src="res/screen/ios/Launch1125x2436.png" />
-        <splash width="2436" height="1125" src="res/screen/ios/Launch2436x1125.png" />
-        <splash width="2208" height="1242" src="res/screen/ios/launchLandscape2208x1242.png" />
-        <splash width="1242" height="2208" src="res/screen/ios/LaunchPortrait1242x2208.png" />
-        <splash width="750" height="1334" src="res/screen/ios/LaunchPortrait750x1334.png" />
-        <splash width="640" height="960" src="res/screen/ios/LaunchPortrait640x960.png" />
-        <splash width="640" height="1136" src="res/screen/ios/LaunchPortrait640x1136.png" />
-        <splash width="640" height="1024" src="res/screen/ios/LaunchPortrait768x1024.png" />
-        <splash width="768" height="1024" src="res/screen/ios/LaunchPortrait768x1024.png" />
-        <splash width="414" height="736" src="res/screen/ios/Launch414x736.png" />
-        <splash width="1536" height="2048" src="res/screen/ios/LaunchPortrait1536x2048.png" />
-        <splash width="1024" height="768" src="res/screen/ios/LaunchLandscape1024x768.png" />
-        <splash width="2048" height="1536" src="res/screen/ios/LaunchLandscape2048x1536.png" />
-        <splash width="320" height="480" src="res/screen/ios/LaunchPortrait320x480.png" />
-        <splash width="768" height="1004" src="res/screen/ios/LaunchPortraint768x1004.png" />
-        <splash width="1536" height="2008" src="res/screen/ios/LaunchPortrait1536x2008.png" />
-        <splash height="1136" src="res/screen/ios/June2020LaunchScreen.png" width="640" />
-        <splash height="1334" src="res/screen/ios/June2020LaunchScreen.png" width="750" />
-        <splash height="2208" src="res/screen/ios/June2020LaunchScreen.png" width="1242" />
-        <splash height="2048" src="res/screen/ios/June2020LaunchScreen.png" width="1536" />
-        <splash height="1024" src="res/screen/ios/June2020LaunchScreen.png" width="768" />
-        <splash height="960" src="res/screen/ios/June2020LaunchScreen.png" width="640" />
-        <splash height="480" src="res/screen/ios/June2020LaunchScreen.png" width="320" />
+        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
         <icon height="20" src="res/icon/ios/icon_20pt.png" width="20" />
         <icon height="29" src="res/icon/ios/icon_29pt.png" width="29" />
         <icon height="40" src="res/icon/ios/icon_20pt@2x.png" width="40" />

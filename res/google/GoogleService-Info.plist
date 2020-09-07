@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>901895533456-j6peasba1nkbcul4vm2072bmm1rlmbev.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.901895533456-j6peasba1nkbcul4vm2072bmm1rlmbev</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDRK-ftkzPTmG9dQq5F9fLnNMbYp2BmIDk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>901895533456</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.wevote.cordova</string>
+	<key>PROJECT_ID</key>
+	<string>wevoteapps</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wevoteapps.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:901895533456:ios:4caf40288a999bcbec3915</string>
+	<key>DATABASE_URL</key>
+	<string>https://wevoteapps.firebaseio.com</string>
+</dict>
+</plist>

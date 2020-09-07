@@ -26,42 +26,42 @@ if (!__dirname.endsWith('/WeVoteCordova')) {
   process.exit();
 }
 
-const { unlinkSync, symlink } = fs;
+const { existsSync, symlink, unlinkSync } = fs;
 const iosDir = path.join(__dirname, 'platforms/ios/www/');
 const androidDir = path.join(__dirname, 'platforms/android/app/src/main/assets/www/');
 const androidCss = androidDir + 'css';
-if (fs.existsSync(androidCss)) {
+if (existsSync(androidCss)) {
   rimraf(androidCss, () => console.log('rmdir: ' + androidCss));
 }
 const iosCss = iosDir + 'css';
-if (fs.existsSync(iosCss)) {
+if (existsSync(iosCss)) {
   rimraf(iosCss, () => console.log('rmdir: ' + iosCss));
 }
 const androidImg = androidDir + 'img';
-if (fs.existsSync(androidImg)) {
+if (existsSync(androidImg)) {
   rimraf(androidImg, () => console.log('rmdir: ' + androidImg));
 }
 const iosImg = iosDir + 'img';
-if (fs.existsSync(iosImg)) {
+if (existsSync(iosImg)) {
   rimraf(iosImg, () => console.log('rmdir: ' + iosImg));
 }
 const AndroidIndex = androidDir + 'index.html';
-if (fs.existsSync(AndroidIndex)) {
+if (existsSync(AndroidIndex)) {
   unlinkSync(AndroidIndex);
   console.log('unlink: android index.html');
 }
 const iosIndex = iosDir + 'index.html';
-if (fs.existsSync(iosIndex)) {
+if (existsSync(iosIndex)) {
   unlinkSync(iosIndex);
   console.log('unlink: ios index.html');
 }
 const androidBundle = androidDir + 'bundle.js';
-if (fs.existsSync(androidBundle)) {
+if (existsSync(androidBundle)) {
   unlinkSync(androidBundle);
   console.log('unlink: android bundle.js');
 }
 const iosBundle = iosDir + 'bundle.js';
-if (fs.existsSync(iosBundle)) {
+if (existsSync(iosBundle)) {
   unlinkSync(iosBundle);
   console.log('unlink: iosDir bundle.js');
 }
@@ -78,4 +78,7 @@ setTimeout( () => {
 
   symlink(__dirname + '/www/index.html', androidDir + 'index.html', err => console.log(err ? err : 'ln android index.html successful'));
   symlink(__dirname + '/www/index.html', iosDir + 'index.html', err => console.log(err ? err : 'ln ios index.html successful'));
+
+  // copyFile("res/google/GoogleService-Info.plist", "platforms/ios/GoogleService-Info.plist",
+  //   err => console.log(err ? err : 'cp ios GoogleService-Info.plist successful'));
 }, 1000);
