@@ -106,7 +106,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
 
 1.  Install the Apache Cordova software.  This is the Cordova command line interface (CLI) that is installed globally on your PC or Mac.
 
-    First do an uninstall, since since any earlier install of the Cordova CLI prior to Version 9, will no longer work.  If you have never installed
+    First do an uninstall, since any earlier install of the Cordova CLI prior to Version 9, will no longer work.  If you have never installed
     cordova, the uninstall will not do anything (and that is not a problem!).
 
     ```
@@ -389,7 +389,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     in XCode, and accept the default options by pressing 'Finish'. (You can't just copy the file
     in MacOS, you have to drag and drop the file, since that action causes XCode
     to link in the file.)
-    ![ScreenShot](docs/images/AcceptDefaultOptions.png)
+    ![ScreenShot](docs/images/AcceptDefaultOptions2.png)
     Plist successfully added:
     ![ScreenShot](docs/images/GoogleServicesPlistAdded.png) 
     The final step is to stop and restart the running simulator.
