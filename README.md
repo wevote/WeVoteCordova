@@ -325,32 +325,36 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     ```
 
 1. Set up the sym links for iOS and Android
+
+    In addition to creating the symlinks, this script also makes changes to three
+    Android Gradle (Java/Groovy build scripts) for Firebase Messaging.    
     ```
     node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
     ```
     These symlinks allow us to access the compiled WebApp and have all the necessary components available for the
     Cordova builds that need to include our WebApp software.
     ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % pwd
-    /Users/stevepodell/WebstormProjects/WeVoteCordova
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
     __dirname /Users/stevepodell/WebstormProjects/WeVoteCordova
     unlink: android index.html
     unlink: ios index.html
     rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/css
-    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/img
-    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/img
     rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/css
+    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/img
+    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/img
     ln ios css successful
     ln android bundle.js successful
     ln ios bundle.js successful
     ln android css successful
-    ln android img successful
     ln ios img successful
     ln android index.html successful
     ln ios index.html successful
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
-
+    ln android img successful
+    cp android google-services.json successful
+    updateGradleProperties changed settings in ./platforms/android/gradle.properties
+    updateAppBuildGradle add an implementation in ./platforms/android/app/build.gradle
+    updateProjectBuildGradle added a classpath in ./platforms/android/build.gradle
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
     ```
    If you have installation troubles, you can run `buildSymLinks` as often as you need to,
    since the script cleans out conflicting links that might already in place, before adding in the new links.

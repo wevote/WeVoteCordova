@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "901895533456",
+    "firebase_url": "https://wevoteapps.firebaseio.com",
+    "project_id": "wevoteapps",
+    "storage_bucket": "wevoteapps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901895533456:android:8785838511b1f958ec3915",
+        "android_client_info": {
+          "package_name": "org.wevote.cordova"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901895533456-gnua3m53l8e8t5tv9k1tk3tecui6uqbj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbeEFK1cSYwmIqPMbuyjHZpw07fC1koYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901895533456-gnua3m53l8e8t5tv9k1tk3tecui6uqbj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "901895533456-j6peasba1nkbcul4vm2072bmm1rlmbev.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.wevote.cordova",
+                "app_store_id": "1347335726"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
