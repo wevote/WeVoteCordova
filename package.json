@@ -1,7 +1,7 @@
 {
   "name": "org.wevote.wevotecordova",
   "displayName": "WeVoteCordova",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "WeVote's Cordova wrapper for the We Vote WebApp",
   "main": "index.js",
   "scripts": {
@@ -13,31 +13,33 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "dependencies": {
-    "cordova-android": "^9.0.0",
-    "cordova-ios": "^6.1.0",
+    "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-customurlscheme": "git+https://github.com/EddyVerbruggen/Custom-URL-scheme.git",
-    "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-device": "git+https://github.com/SailingSteve/cordova-plugin-device.git",
     "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-facebook4": "6.4.0",
     "cordova-plugin-firebase-analytics": "4.4.1",
-    "cordova-plugin-firebase-messaging": "4.5.0",
+    "cordova-plugin-firebase-messaging": "^4.5.0",
     "cordova-plugin-inappbrowser": "4.0.0",
     "cordova-plugin-keyboard": "^1.2.0",
-    "cordova-plugin-safariviewcontroller": "git+https://github.com/SailingSteve/cordova-plugin-safariviewcontroller.git",
     "cordova-plugin-screensize": "^1.3.1",
     "cordova-plugin-sign-in-with-apple": "^0.1.1",
     "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-plugin-taptic-engine": "^2.1.0",
     "cordova-plugin-whitelist": "^1.3.4",
-    "cordova-plugin-x-socialsharing": "6.0.2",
     "cordova-support-android-plugin": "1.0.2",
     "cordova-support-google-services": "^1.4.1",
-    "es6-promise-plugin": "4.2.2"
+    "cordova.plugins.diagnostic": "6.0.2",
+    "jetifier": "^1.6.6"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2",
-    "fs-extra": "^9.0.1"
+    "cordova-android": "^9.0.0",
+    "cordova-ios": "^6.1.1",
+    "cordova-plugin-safariviewcontroller": "git+https://github.com/SailingSteve/cordova-plugin-safariviewcontroller.git",
+    "es6-promise-plugin": "^4.2.2",
+    "fs-extra": "^9.0.1",
+    "rimraf": "^3.0.2"
   },
   "cordova": {
     "plugins": {
@@ -54,7 +56,6 @@
       "cordova-plugin-sign-in-with-apple": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-taptic-engine": {},
-      "cordova-plugin-safariviewcontroller": {},
       "cordova-plugin-customurlscheme": {
         "URL_SCHEME": "wevotetwitterscheme"
       },
@@ -66,6 +67,11 @@
         "ANDROIDX_CORE_VERSION": "1.3.+",
         "IOS_FIREBASE_MESSAGING_VERSION": "~> 6.31.0"
       },
+      "cordova.plugins.diagnostic": {
+        "ANDROIDX_VERSION": "1.+"
+      },
+      "cordova-plugin-app-version": {},
+      "cordova-plugin-safariviewcontroller": {},
       "cordova-plugin-x-socialsharing": {
         "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly."

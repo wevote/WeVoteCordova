@@ -16,8 +16,12 @@ const updateGradleProperties = () => {
     const newGradle = [];
     rl.on('line', (line) => {
       if (line.startsWith('android.useAndroidX')) {
+        console.log('adding::: android.useAndroidX=true ::: to android/gradle.properties');
         newGradle.push('android.useAndroidX=true');
       } else if (line.startsWith('android.enableJetifier')) {
+        console.log('adding::: android.enableJetifier=true ::: to android/gradle.properties');
+        console.log('adding::: android.enableJetifier=true ::: to android/gradle.properties');
+
         newGradle.push('android.enableJetifier=true');
       } else {
         newGradle.push(line);
@@ -44,6 +48,9 @@ const updateProjectBuildGradle = () => {
     rl.on('line', (line) => {
       if (line.startsWith('        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin')) {
         newGradle.push(line);
+
+        console.log('adding::: classpath \'com.google.gms:google-services:4.3.3\' ::: to android/build.gradle');
+
         newGradle.push('        classpath \'com.google.gms:google-services:4.3.3\'');
       } else {
         newGradle.push(line);
@@ -70,10 +77,14 @@ const updateAppBuildGradle = () => {
     rl.on('line', (line) => {
       if (line.startsWith('apply plugin: \'com.android.application\'')) {
         newGradle.push(line);
+        console.log('adding::: apply plugin: \'com.google.gms.google-services\' ::: to android/app/build.gradle');
         newGradle.push('apply plugin: \'com.google.gms.google-services\'');
       } else if (line.startsWith('    implementation fileTree(dir: \'libs\', include: \'*.jar\')')) {
         newGradle.push(line);
+        console.log('adding::: implementation \'com.google.firebase:firebase-analytics:17.5.0\' ::: to android/app/build.gradle');
         newGradle.push('    implementation \'com.google.firebase:firebase-analytics:17.5.0\'');
+        console.log('adding::: implementation \'androidx.browser:browser:1.2.0\' ::: to android/app/build.gradle');
+
         newGradle.push('    implementation \'androidx.browser:browser:1.2.0\'');
       } else {
         newGradle.push(line);
@@ -111,7 +122,9 @@ if (!__dirname.endsWith('/WeVoteCordova')) {
   process.exit();
 }
 
-const { copyFile, existsSync, symlink, unlinkSync } = fs;
+
+const { existsSync, symlink, unlinkSync } = fs;
+
 const iosDir = path.join(__dirname, 'platforms/ios/www/');
 const androidDir = path.join(__dirname, 'platforms/android/app/src/main/assets/www/');
 const androidCss = androidDir + 'css';
@@ -164,8 +177,10 @@ setTimeout( () => {
   symlink(__dirname + '/www/index.html', androidDir + 'index.html', err => console.log(err ? err : 'ln android index.html successful'));
   symlink(__dirname + '/www/index.html', iosDir + 'index.html', err => console.log(err ? err : 'ln ios index.html successful'));
 
-  copyFile("res/google/google-services.json", "platforms/android/app/google-services.json",
-    err => console.log(err ? err : 'cp android google-services.json successful'));
+  // we now do this via config.xml, which is much better
+  // copyFile("res/google/google-services.json", "platforms/android/app/google-services.json",
+  //   err => console.log(err ? err : 'cp android google-services.json successful'));
+
 
   updateGradleProperties();
   updateProjectBuildGradle();
