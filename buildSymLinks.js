@@ -21,6 +21,7 @@ const updateGradleProperties = () => {
       } else if (line.startsWith('android.enableJetifier')) {
         console.log('adding::: android.enableJetifier=true ::: to android/gradle.properties');
         console.log('adding::: android.enableJetifier=true ::: to android/gradle.properties');
+
         newGradle.push('android.enableJetifier=true');
       } else {
         newGradle.push(line);
@@ -47,7 +48,9 @@ const updateProjectBuildGradle = () => {
     rl.on('line', (line) => {
       if (line.startsWith('        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin')) {
         newGradle.push(line);
+
         console.log('adding::: classpath \'com.google.gms:google-services:4.3.3\' ::: to android/build.gradle');
+
         newGradle.push('        classpath \'com.google.gms:google-services:4.3.3\'');
       } else {
         newGradle.push(line);
@@ -81,6 +84,7 @@ const updateAppBuildGradle = () => {
         console.log('adding::: implementation \'com.google.firebase:firebase-analytics:17.5.0\' ::: to android/app/build.gradle');
         newGradle.push('    implementation \'com.google.firebase:firebase-analytics:17.5.0\'');
         console.log('adding::: implementation \'androidx.browser:browser:1.2.0\' ::: to android/app/build.gradle');
+
         newGradle.push('    implementation \'androidx.browser:browser:1.2.0\'');
       } else {
         newGradle.push(line);
@@ -118,7 +122,9 @@ if (!__dirname.endsWith('/WeVoteCordova')) {
   process.exit();
 }
 
+
 const { existsSync, symlink, unlinkSync } = fs;
+
 const iosDir = path.join(__dirname, 'platforms/ios/www/');
 const androidDir = path.join(__dirname, 'platforms/android/app/src/main/assets/www/');
 const androidCss = androidDir + 'css';
@@ -174,6 +180,7 @@ setTimeout( () => {
   // we now do this via config.xml, which is much better
   // copyFile("res/google/google-services.json", "platforms/android/app/google-services.json",
   //   err => console.log(err ? err : 'cp android google-services.json successful'));
+
 
   updateGradleProperties();
   updateProjectBuildGradle();

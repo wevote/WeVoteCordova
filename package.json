@@ -1,5 +1,5 @@
 {
-  "name": "us.wevote.wevotecordova",
+  "name": "org.wevote.wevotecordova",
   "displayName": "WeVoteCordova",
   "version": "2.1.0",
   "description": "WeVote's Cordova wrapper for the We Vote WebApp",

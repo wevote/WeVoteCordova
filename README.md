@@ -226,7 +226,8 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     Running command: pod install --verbose
     /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
     ...
-     /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
       
     [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
     
@@ -253,7 +254,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
     
     [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
-    
+
     Installing "cordova-plugin-inappbrowser" for ios
     Installing "cordova-plugin-keyboard" for ios
     Installing "cordova-plugin-safariviewcontroller" for ios
@@ -331,6 +332,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     Installing "cordova.plugins.diagnostic" for android
     Subproject Path: CordovaLib
     Subproject Path: app
+
     Dependent plugin "es6-promise-plugin" already installed on android.
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
     ```
@@ -372,6 +374,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     updateProjectBuildGradle added a classpath in ./platforms/android/build.gradle
     updateAppBuildGradle add an implementation in ./platforms/android/app/build.gradle
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
+
     ```
    If you have installation troubles, you can run `buildSymLinks` as often as you need to,
    since the script cleans out conflicting links that might already in place, before adding in the new links.
@@ -417,6 +420,22 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     Select a simulator that you would like to see the code executing on.  In the example below, we have selected the iPhone 11 Pro Max.  Then press the Play (Triangular) button, and
     a minute or two later you should get the WeVoteCordova app running in a simulator. 
     ![ScreenShot](docs/images/XCodeOpenedAndReady.png)
+    
+1.  Manually copy the GoogleServices.plist file into the root of the app in XCode 
+
+    Open `WeVoteCordova/res/google in finder` 
+    ![ScreenShot](docs/images/OpenGoogleServcePlist.png)
+    In XCode, click the left most file folder icon (under the red close button),
+    click "We Vote" until you have exposed config.xml
+    ![ScreenShot](docs/images/ExposeConfigXML.png)
+    Drag the 'GoogleService-info.plist' file from the finder window, to just under the config.xml file
+    in XCode, and accept the default options by pressing 'Finish'. (You can't just copy the file
+    in MacOS, you have to drag and drop the file, since that action causes XCode
+    to link in the file.)
+    ![ScreenShot](docs/images/AcceptDefaultOptions2.png)
+    Plist successfully added:
+    ![ScreenShot](docs/images/GoogleServicesPlistAdded.png) 
+    The final step is to stop and restart the running simulator.
 
     If when you run the app in XCode, you get an error like ...
     
