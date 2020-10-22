@@ -106,7 +106,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
 
 1.  Install the Apache Cordova software.  This is the Cordova command line interface (CLI) that is installed globally on your PC or Mac.
 
-    First do an uninstall, since since any earlier install of the Cordova CLI prior to Version 9, will no longer work.  If you have never installed
+    First do an uninstall, since any earlier install of the Cordova CLI prior to Version 9, will no longer work.  If you have never installed
     cordova, the uninstall will not do anything (and that is not a problem!).
 
     ```
@@ -205,47 +205,55 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     At this point we are done with the `WeVoteCordovaSaveoff` directory, you can delete it whenever you choose to.
 
 1. Add the Cordova iOS and Android platforms directories
+
     ```
-    cordova platform add ios android
+    cordova platform add ios@latest android@latest
     ```
     Which runs in the terminal like this...
     ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platforms add ios android
-    Using cordova-fetch for cordova-ios@^5.0.0
+    Using cordova-fetch for cordova-ios@latest
     Adding ios project...
     Creating Cordova project for the iOS platform:
             Path: platforms/ios
             Package: org.wevote.cordova
             Name: We Vote
-    iOS project created with cordova-ios@5.1.1
+    iOS project created with cordova-ios@6.1.1
+    Installing "cordova-plugin-app-version" for ios
     Installing "cordova-plugin-customurlscheme" for ios
     Installing "cordova-plugin-device" for ios
+    Installing "cordova-plugin-dialogs" for ios
     Installing "cordova-plugin-facebook4" for ios
     Running command: pod install --verbose
     /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/cache.rb:114: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/request.rb:61: warning: The called method `slug' is defined here
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/cache.rb:100: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-1.8.4/lib/cocoapods/downloader/request.rb:61: warning: The called method `slug' is defined here
-    /usr/local/lib/ruby/gems/2.7.0/gems/nanaimo-0.2.6/lib/nanaimo/writer/pbxproj.rb:13: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
-    /usr/local/lib/ruby/gems/2.7.0/gems/nanaimo-0.2.6/lib/nanaimo/writer.rb:35: warning: The called method `initialize' is defined here
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    ...
+     /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+      
     [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    
     [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    
+    Installing "cordova-plugin-firebase-analytics" for ios
+    Running command: pod install --verbose
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    ...
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    
+    [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    
+    [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    
+    Installing "cordova-plugin-firebase-messaging" for ios
+    Plugin dependency "cordova-plugin-firebase-analytics@4.4.1" already fetched, using that version.
+    Dependent plugin "cordova-plugin-firebase-analytics" already installed on ios.
+    Running command: pod install --verbose
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    ...
+    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
+    
+    [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    
+    [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    
     Installing "cordova-plugin-inappbrowser" for ios
     Installing "cordova-plugin-keyboard" for ios
     Installing "cordova-plugin-safariviewcontroller" for ios
@@ -255,20 +263,49 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     Installing "cordova-plugin-statusbar" for ios
     Installing "cordova-plugin-taptic-engine" for ios
     Installing "cordova-plugin-whitelist" for ios
-    Using cordova-fetch for cordova-android@^8.0.0
+    Installing "cordova-plugin-x-socialsharing" for ios
+    Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
+    Installing "es6-promise-plugin" for ios
+    Installing "cordova-support-android-plugin" for ios
+    Installing "cordova-support-google-services" for ios
+    Installing "cordova.plugins.diagnostic" for ios
+    Dependent plugin "es6-promise-plugin" already installed on ios.
+    Using cordova-fetch for cordova-android@latest
     Adding android project...
     Creating Cordova project for the Android platform:
             Path: platforms/android
             Package: org.wevote.cordova
             Name: We_Vote
             Activity: MainActivity
-            Android target: android-28
+            Android target: android-29
     Subproject Path: CordovaLib
     Subproject Path: app
-    Android project created with cordova-android@8.1.0
+    Android project created with cordova-android@9.0.0
+    Installing "cordova-plugin-app-version" for android
     Installing "cordova-plugin-customurlscheme" for android
     Installing "cordova-plugin-device" for android
+    Installing "cordova-plugin-dialogs" for android
     Installing "cordova-plugin-facebook4" for android
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    Installing "cordova-plugin-firebase-analytics" for android
+    Plugin dependency "cordova-support-android-plugin@1.0.2" already fetched, using that version.
+    Installing "cordova-support-android-plugin" for android
+    Plugin dependency "cordova-support-google-services@1.4.1" already fetched, using that version.
+    Installing "cordova-support-google-services" for android
+    Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
+    Skipping 'cordova-support-google-services' for android
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    Installing "cordova-plugin-firebase-messaging" for android
+    Plugin dependency "cordova-plugin-firebase-analytics@4.4.1" already fetched, using that version.
+    Dependent plugin "cordova-plugin-firebase-analytics" already installed on android.
+    Plugin dependency "cordova-support-android-plugin@1.0.2" already fetched, using that version.
+    Dependent plugin "cordova-support-android-plugin" already installed on android.
+    Plugin dependency "cordova-support-google-services@1.4.1" already fetched, using that version.
+    Installing "cordova-support-google-services" for android
+    Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
+    Skipping 'cordova-support-google-services' for android
     Subproject Path: CordovaLib
     Subproject Path: app
     Installing "cordova-plugin-inappbrowser" for android
@@ -282,35 +319,59 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     Installing "cordova-plugin-statusbar" for android
     Installing "cordova-plugin-taptic-engine" for android
     Installing "cordova-plugin-whitelist" for android
+    Installing "cordova-plugin-x-socialsharing" for android
+    Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
+    Installing "es6-promise-plugin" for android
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    Dependent plugin "cordova-support-android-plugin" already installed on android.
+    Installing "cordova-support-google-services" for android
+    Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
+    Skipping 'cordova-support-google-services' for android
+    Installing "cordova.plugins.diagnostic" for android
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    Dependent plugin "es6-promise-plugin" already installed on android.
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
     ```
 
-1. Set up the sym links for iOS and Android
+1. Run a script to set up the sym links for iOS and Android and make changes to some build files
+
+    In addition to creating the symlinks, this script also makes changes to three
+    Android Gradle (Java/Groovy build scripts) for Firebase Messaging.    
     ```
     node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
     ```
     These symlinks allow us to access the compiled WebApp and have all the necessary components available for the
     Cordova builds that need to include our WebApp software.
     ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % pwd
-    /Users/stevepodell/WebstormProjects/WeVoteCordova
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
     __dirname /Users/stevepodell/WebstormProjects/WeVoteCordova
     unlink: android index.html
     unlink: ios index.html
-    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/css
     rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/img
     rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/img
+    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/css
     rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/css
-    ln android css successful
     ln ios bundle.js successful
-    ln android bundle.js successful
+    ln android css successful
     ln ios css successful
-    ln ios img successful
+    ln android bundle.js successful
     ln android img successful
+    ln ios img successful
     ln ios index.html successful
     ln android index.html successful
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
+    adding::: android.useAndroidX=true ::: to android/gradle.properties
+    adding::: android.enableJetifier=true ::: to android/gradle.properties
+    adding::: android.enableJetifier=true ::: to android/gradle.properties
+    adding::: classpath 'com.google.gms:google-services:4.3.3' ::: to android/build.gradle
+    adding::: apply plugin: 'com.google.gms.google-services' ::: to android/app/build.gradle
+    adding::: implementation 'com.google.firebase:firebase-analytics:17.5.0' ::: to android/app/build.gradle
+    adding::: implementation 'androidx.browser:browser:1.2.0' ::: to android/app/build.gradle
+    updateGradleProperties changed settings in ./platforms/android/gradle.properties
+    updateProjectBuildGradle added a classpath in ./platforms/android/build.gradle
+    updateAppBuildGradle add an implementation in ./platforms/android/app/build.gradle
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
     ```
    If you have installation troubles, you can run `buildSymLinks` as often as you need to,
    since the script cleans out conflicting links that might already in place, before adding in the new links.
@@ -334,13 +395,39 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     ```
 1.  Run the WeVoteCordova app from XCode.
 
-    In Xcode, Click File/Open and select `/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/` and press the Play (Triangular) button, and
+    In Xcode, Click File/Open and select `/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/` to open the project in xCode.
+        
+    <!-- Automated as of 10/15/20 ... 1.  Manually create a reference to the GoogleServices.plist file in the root of the app in XCode 
+    
+    Open `WeVoteCordova/res/google in finder` 
+    ![ScreenShot](docs/images/OpenGoogleServcePlist.png)
+    In XCode, click the left most file folder icon (under the red close button),
+    click "We Vote" until you have exposed config.xml
+    ![ScreenShot](docs/images/ExposeConfigXML.png)
+    Drag the 'GoogleService-info.plist' file from the finder window, to just under the config.xml file
+    in XCode, and accept the default options by pressing 'Finish'. (You can't just copy the file
+    in MacOS, you have to drag and drop the file, since that action causes XCode to create a "reference" to the
+    file which remains in its original location.)
+    ![ScreenShot](docs/images/AcceptDefaultOptions2.png)
+    Plist successfully added:
+    ![ScreenShot](docs/images/GoogleServicesPlistAdded.png)-->    
+
+1. The final step is to start the simulator
+
+    Select a simulator that you would like to see the code executing on.  In the example below, we have selected the iPhone 11 Pro Max.  Then press the Play (Triangular) button, and
     a minute or two later you should get the WeVoteCordova app running in a simulator. 
     ![ScreenShot](docs/images/XCodeOpenedAndReady.png)
 
+    If when you run the app in XCode, you get an error like ...
+    
+    `2020-09-12 14:30:41.754049-0700 We Vote[19777:428998] 6.31.0 - [Firebase/Core][I-COR000012] Could not locate configuration file: 'GoogleService-Info.plist'.`
+
+    ... then you haven't created the reference to the plist correctly.
+
     **At this point you have a fully working Cordova iOS build.**
 
-1. **ONLY IF NEEDED:** (We hope this step is not necessary.)   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue, but crashes in JQuery regex), logs `SyntaxError: Invalid regular expression: range out of order in character class`,
+1. **ONLY IF NEEDED:** (We hope this step is not necessary.)   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue), 
+but crashes in JQuery regex, and logs `SyntaxError: Invalid regular expression: range out of order in character class`,
  and never advances to the first React page in the WebApp:
 
     In the WebApp, delete
@@ -360,8 +447,9 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     npm run start-https-singleBundle
     ```
 
-    At this point you "should" have a fully configured WeVoteCordova app running in your simulator.  Next step is to connect your new
-    WeVoteCordova directory to Git.
+    At this point you "should" have a fully configured WeVoteCordova app running in your simulator.  
+    
+    The next step is to connect your new WeVoteCordova directory to Git.
 
 ## Git setup
 1. On github.com, fork WeVoteCordova to your account. 
