@@ -224,37 +224,9 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     Installing "cordova-plugin-dialogs" for ios
     Installing "cordova-plugin-facebook4" for ios
     Running command: pod install --verbose
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    ...
 
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-      
-    [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
-    
-    [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
-    
-    Installing "cordova-plugin-firebase-analytics" for ios
-    Running command: pod install --verbose
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
     ...
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    
-    [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
-    
-    [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
-    
-    Installing "cordova-plugin-firebase-messaging" for ios
-    Plugin dependency "cordova-plugin-firebase-analytics@4.4.1" already fetched, using that version.
-    Dependent plugin "cordova-plugin-firebase-analytics" already installed on ios.
-    Running command: pod install --verbose
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    ...
-    /usr/local/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.8.4/lib/cocoapods-core/cdn_source.rb:326: warning: URI.escape is obsolete
-    
-    [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
-    
-    [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
-
+   
     Installing "cordova-plugin-inappbrowser" for ios
     Installing "cordova-plugin-keyboard" for ios
     Installing "cordova-plugin-safariviewcontroller" for ios
@@ -399,54 +371,18 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
 1.  Run the WeVoteCordova app from XCode.
 
     In Xcode, Click File/Open and select `/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/` to open the project in xCode.
-        
-    <!-- Automated as of 10/15/20 ... 1.  Manually create a reference to the GoogleServices.plist file in the root of the app in XCode 
-    
-    Open `WeVoteCordova/res/google in finder` 
-    ![ScreenShot](docs/images/OpenGoogleServcePlist.png)
-    In XCode, click the left most file folder icon (under the red close button),
-    click "We Vote" until you have exposed config.xml
-    ![ScreenShot](docs/images/ExposeConfigXML.png)
-    Drag the 'GoogleService-info.plist' file from the finder window, to just under the config.xml file
-    in XCode, and accept the default options by pressing 'Finish'. (You can't just copy the file
-    in MacOS, you have to drag and drop the file, since that action causes XCode to create a "reference" to the
-    file which remains in its original location.)
-    ![ScreenShot](docs/images/AcceptDefaultOptions2.png)
-    Plist successfully added:
-    ![ScreenShot](docs/images/GoogleServicesPlistAdded.png)-->    
-
+          
 1. The final step is to start the simulator
 
     Select a simulator that you would like to see the code executing on.  In the example below, we have selected the iPhone 11 Pro Max.  Then press the Play (Triangular) button, and
     a minute or two later you should get the WeVoteCordova app running in a simulator. 
     ![ScreenShot](docs/images/XCodeOpenedAndReady.png)
+    Note: This screen shot shows the logging with the developer option `LOG_RENDER_EVENTS: true,` set in the webapp.
     
-1.  Manually copy the GoogleServices.plist file into the root of the app in XCode 
-
-    Open `WeVoteCordova/res/google in finder` 
-    ![ScreenShot](docs/images/OpenGoogleServcePlist.png)
-    In XCode, click the left most file folder icon (under the red close button),
-    click "We Vote" until you have exposed config.xml
-    ![ScreenShot](docs/images/ExposeConfigXML.png)
-    Drag the 'GoogleService-info.plist' file from the finder window, to just under the config.xml file
-    in XCode, and accept the default options by pressing 'Finish'. (You can't just copy the file
-    in MacOS, you have to drag and drop the file, since that action causes XCode
-    to link in the file.)
-    ![ScreenShot](docs/images/AcceptDefaultOptions2.png)
-    Plist successfully added:
-    ![ScreenShot](docs/images/GoogleServicesPlistAdded.png) 
-    The final step is to stop and restart the running simulator.
-
-    If when you run the app in XCode, you get an error like ...
-    
-    `2020-09-12 14:30:41.754049-0700 We Vote[19777:428998] 6.31.0 - [Firebase/Core][I-COR000012] Could not locate configuration file: 'GoogleService-Info.plist'.`
-
-    ... then you haven't created the reference to the plist correctly.
-
     **At this point you have a fully working Cordova iOS build.**
 
 1. **ONLY IF NEEDED:** (We hope this step is not necessary.)   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue), 
-but crashes in JQuery regex, and logs `SyntaxError: Invalid regular expression: range out of order in character class`,
+but crashes in a JQuery regex, and logs `SyntaxError: Invalid regular expression: range out of order in character class`,
  and never advances to the first React page in the WebApp:
 
     In the WebApp, delete
