@@ -284,6 +284,14 @@ script to add back in version I needed
 
    ```
 <!--
+    <plugin name="cordova-plugin-facebook4" spec="^6.4.0">
+        <variable name="APP_ID" value="1097389196952441" />
+        <variable name="APP_NAME" value="WeVoteCordova" />
+        <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
+        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="5.5.2" />
+    </plugin>
+
+
 1. Manually install the plugins
     ```
     cordova plugin add cordova-plugin-facebook4 --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteWebApp"

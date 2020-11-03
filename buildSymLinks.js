@@ -165,6 +165,10 @@ if (existsSync(iosBundle)) {
 }
 
 setTimeout( () => {
+  console.log('sleep for 1');
+  fs.readdir(iosDir, function(err, items) {
+    console.log(items);
+ });
   symlink(webAppPath + 'bundle.js', androidDir + 'bundle.js', err => console.log(err ? err : 'ln android bundle.js successful'));
   symlink(webAppPath + 'bundle.js', iosDir + 'bundle.js', err => console.log(err ? err : 'ln ios bundle.js successful'));
 
@@ -185,5 +189,9 @@ setTimeout( () => {
   updateGradleProperties();
   updateProjectBuildGradle();
   updateAppBuildGradle();
-}, 1000);
+  fs.readdir(iosDir, function(err, items) {
+    console.log(items);
+  });
+
+}, 10000);
 
