@@ -808,7 +808,35 @@ Running ...
 will remove everything from the platforms directory, and rebuild all the config files in the platforms directory, but will
 also remove all the manual configuration and symlinks that you add.  This is a powerful last resort if all else is going wrong.
 
+## Apple Silicon, Nov 2020
+At this point there are problems compiling the google notifications code.  Calls to the code are disabled if isIOSAppOnMac(), but the binary libraries need to be 
+removed if compiling on Apple Silicon at this time.
 
+In package.json, remove the following lines:
+    "cordova-plugin-firebase-messaging": "^4.5.0",
+    "cordova-support-google-services": "^1.4.1",
+    "cordova-plugin-firebase-analytics": "^4.5.0",
+    "cordova-plugin-firebase-messaging": {
+      "ANDROID_FIREBASE_MESSAGING_VERSION": "20.2.+",
+      "ANDROIDX_CORE_VERSION": "1.3.+",
+      "IOS_FIREBASE_MESSAGING_VERSION": "~> 6.31.0"
+    },
+
+remove the /plugins directory 
+
+In the WebApp, in webpackConfig.js, remove
+    './src/sass/main.scss'
+    {
+      loader: 'sass-loader',
+    },
+
+
+stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platforms remove ios android
+stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platform add ios@latest android@latest
+stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % node buildSymLinks /Users/stevepodellsilicon/WebstormProjects/WebApp/build
+In XCode, reset the development teams settings
+
+manually copy `main.css` to `/Users/stevepodellsilicon/WebstormProjects/WebApp/build/css`  since it can not be compiled by node-scss at this time
 
 ----------
 ## Other documentation pages:
