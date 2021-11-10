@@ -1,10 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="2010000" id="org.wevote.cordova" ios-CFBundleVersion="2.1.0.0" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/ns/widgets">
+<widget android-versionCode="2020000" id="org.wevote.cordova" ios-CFBundleVersion="2.2.0" version="2.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>We Vote</name>
     <description>
         We Vote Cordova wrapper for the We Vote WebApp root
     </description>
     <version />
+    <author email="info@wevote.us" href="http://wevote.us">
+        We Vote Cordova Team
+    </author>
     <content src="index.html" />
     <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />
     <access origin="about:*" />
@@ -28,7 +31,7 @@
     <allow-intent href="wevotetwitterscheme:" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
     <platform name="android">
-        <preference name="android-manifest/@android:versionName" value="2.1.0" />
+        <preference name="android-manifest/@android:versionName" value="2.2.0" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="GradlePluginGoogleServicesVersion" value="4.2.0" />
 <!--        <framework src="com.android.support:customtabs:28.0.0" />-->
@@ -54,17 +57,23 @@
         <icon density="xxhdpi" src="res/icon/android/xxhdpi/ic_launcher.png" />
         <icon density="xxxhdpi" src="res/icon/android/xxxhdpi/ic_launcher.png" />
 
-        <preference name="android-minSdkVersion" value="22" />
-        <preference name="android-targetSdkVersion" value="28" />
         <feature name="SocialSharing">
             <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
         </feature>
+        <preference name="defaultBuildToolsVersion" value="30.0.3" />
+        <!-- these are set in the gradle.properties set by $GRADLE_USER_HOME -->
+        <!-- <preference name="android-useAndroidX" value="true" />-->
+        <!-- <preference name="android-minSdkVersion" value="22" /> -->
+        <!-- <preference name="android-targetSdkVersion" value="28" /> -->
+
     </platform>
     <platform name="ios">
-        <resource-file src="res/google/GoogleService-Info.plist" />
-
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <access origin="*" subdomains="true" />
+        <resource-file src="res/google/GoogleService-Info.plist" />
+        <preference name="scheme" value="app" />
+        <preference name="hostname" value="localhost" />
         <preference name="FadeSplashScreenDuration" value="0" />
         <preference name="AllowInlineMediaPlayback" value="false" />
         <preference name="BackupWebStorage" value="local" />

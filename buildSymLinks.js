@@ -49,9 +49,9 @@ const updateProjectBuildGradle = () => {
       if (line.startsWith('        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin')) {
         newGradle.push(line);
 
-        console.log('adding::: classpath \'com.google.gms:google-services:4.3.3\' ::: to android/build.gradle');
+        console.log('adding::: classpath \'com.google.gms:google-services:4.3.10\' ::: to android/build.gradle');
 
-        newGradle.push('        classpath \'com.google.gms:google-services:4.3.3\'');
+        newGradle.push('        classpath \'com.google.gms:google-services:4.3.10\'');
       } else {
         newGradle.push(line);
       }
@@ -81,11 +81,11 @@ const updateAppBuildGradle = () => {
         newGradle.push('apply plugin: \'com.google.gms.google-services\'');
       } else if (line.startsWith('    implementation fileTree(dir: \'libs\', include: \'*.jar\')')) {
         newGradle.push(line);
-        console.log('adding::: implementation \'com.google.firebase:firebase-analytics:17.5.0\' ::: to android/app/build.gradle');
-        newGradle.push('    implementation \'com.google.firebase:firebase-analytics:17.5.0\'');
-        console.log('adding::: implementation \'androidx.browser:browser:1.2.0\' ::: to android/app/build.gradle');
+        console.log('adding::: implementation \'com.google.firebase:firebase-analytics:19.0.2\' ::: to android/app/build.gradle');
+        newGradle.push('    implementation \'com.google.firebase:firebase-analytics:19.0.2\'');
+        console.log('adding::: implementation \'androidx.browser:browser:1.3.0\' ::: to android/app/build.gradle');
 
-        newGradle.push('    implementation \'androidx.browser:browser:1.2.0\'');
+        newGradle.push('    implementation \'androidx.browser:browser:1.3.0\'');
       } else {
         newGradle.push(line);
       }
@@ -172,6 +172,9 @@ setTimeout( () => {
   symlink(webAppPath + 'bundle.js', androidDir + 'bundle.js', err => console.log(err ? err : 'ln android bundle.js successful'));
   symlink(webAppPath + 'bundle.js', iosDir + 'bundle.js', err => console.log(err ? err : 'ln ios bundle.js successful'));
 
+  symlink(webAppPath + 'bundle.js.map', androidDir + 'bundle.js.map', err => console.log(err ? err : 'ln android bundle.js.map successful'));
+  symlink(webAppPath + 'bundle.js.map', iosDir + 'bundle.js.map', err => console.log(err ? err : 'ln ios bundle.js.map successful'));
+
   symlink(webAppPath + 'css', androidDir + 'css', err => console.log(err ? err : 'ln android css successful'));
   symlink(webAppPath + 'css', iosDir + 'css', err => console.log(err ? err : 'ln ios css successful'));
 
@@ -181,12 +184,14 @@ setTimeout( () => {
   symlink(__dirname + '/www/index.html', androidDir + 'index.html', err => console.log(err ? err : 'ln android index.html successful'));
   symlink(__dirname + '/www/index.html', iosDir + 'index.html', err => console.log(err ? err : 'ln ios index.html successful'));
 
+  // ln -s /Users/stevepodell/WebstormProjects/WebApp/build/bundle.js.map bundle.js.map
+
   // we now do this via config.xml, which is much better
   // copyFile("res/google/google-services.json", "platforms/android/app/google-services.json",
   //   err => console.log(err ? err : 'cp android google-services.json successful'));
 
 
-  updateGradleProperties();
+  // updateGradleProperties(); No longer needed as of October 12, 2021
   updateProjectBuildGradle();
   updateAppBuildGradle();
   fs.readdir(iosDir, function(err, items) {
