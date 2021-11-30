@@ -1,9 +1,9 @@
 # Making an iOS release
 
 1. After testing,and making your React changes in the WebApp, check in those changes and prepare (ideally) to build from a fully 
-up-to-date WebApp develop.
+up-to-date WebApp develop.  Compile the WebApp with `npm run buildCordova` to build a single bundle.js with all of the lazy loading removed.
 
-1. Your WebApp config.js, should look like this:
+2. Your WebApp config.js, should look like this:
     ```
     module.exports = {
       WE_VOTE_URL_PROTOCOL: "https://",  // "http://" for local dev or "https://" for live server
@@ -30,26 +30,36 @@ up-to-date WebApp develop.
     };
     ```
 
-    That `IS_CORDOVA` value has been abandoned, and does not need to be changed.
     
     Be sure to double check that you are using these production config values, it
     would be difficult (but possible) to detect a misconfiguration while testing.
 
-1. In the WebApp 'npm run buildCordova', to update the build directory and to create the the WebApp `bundle.js`
+3. In the WebApp 'npm run buildCordova', to update the build directory and to create the the WebApp `bundle.js`
 
-2. On WeVoteCordova side,on the Target General Properties tab, increment the 
-build number by one.  For example build 3, becomes Build 4.
+4. On WeVoteCordova side,on the Target General Properties tab, make sure the build has been incremented by one.
+   In config.xml the second line ...
+    `<widget android-versionCode="2020001" id="org.wevote.cordova" ios-CFBundleVersion="2.2.1.3" version="2.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">`
+   has the iOS release version (in this case 2.2.1), and the iOS build number (in this case 2.2.1.3).  You will probably go through multiple builds uploaded to Test Flight
+   before you are ready to release to the App Store, so keep incrementing that build number each time.
+   Note:  The info in config.xml is only loaded into Xcode when you run "cordova platform add ios", so changes that you make to versions in the Xcode ide will have to be manually entered in config.xml
 
-    ![ScreenShot](images/XcodeGeneralProperties.png)
+   ![ScreenShot](images/XcodeGeneralProperties.png)
     
-    This may be the only change that gets made in the WeVoteCordova repository,
-    but it is important to check it in so that we have a record of how each build was
-    made.  When you do check it it, please include a reference to the WebApp
-    Git commit that resulted in the `bundle.js`
+   Be sure to check in the changes to config.xml every time you make a release, by commiting your changes
+   in WeVoteCordova to git.  When you do check it it, please include a reference to the WebApp
+   Git commit that resulted in the `bundle.js`
 
-3. Before checking in WeVoteCordova, test on a simulator for both an iPhone and iPad.
+6. Before checking in WeVoteCordova, test on a simulator for both an iPhone and iPad.
 
-4. Build a release candidate in Xcode 
+7. November 2021:  Remove the two "Main nib file base name" fields
+
+    Navigate to the Info tab in the Xcode ide (this edits the Info.plist file behind the scenes).
+   ![ScreenShot](images/RemoveMainNib.png)
+    Select the "Main nib file base name (iPad)" entry, then press the little '-' sign to remove this entry.
+   ![ScreenShot](images/RemoveMainNibFileBaseName.png)
+   Select the "Main nib file base name" entry, then press the little '-' sign to remove this entry.
+
+8. Build a release candidate in Xcode 
 
    * You will need a physical iPhone plugged into your computer via a USB cable (It is possible that an iPad or iPod touch would work for this purpose.)  Make sure the iPhone is not asleep.
    * Your build target should be set to 'We Vote > Any iOS Device (arm64)'

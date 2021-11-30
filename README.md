@@ -175,112 +175,113 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     At this point we are done with the `WeVoteCordovaSaveoff` directory, you can delete it whenever you choose to.
 
 9. Add the Cordova iOS and Android platforms directories
+     Note: November 18, 2021:  Dobn't use latest for android for now, so we use version 9 instead of version 10
 
-    ```
-    cordova platform add ios@latest android@latest
-    ```
-    Which runs in the terminal like this...
-    ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platforms add ios android
-    Using cordova-fetch for cordova-ios@^5.0.0
-    Adding ios project...
-    Creating Cordova project for the iOS platform:
-            Path: platforms/ios
-            Package: org.wevote.cordova
-            Name: We Vote
-    iOS project created with cordova-ios@6.1.1
-    Installing "cordova-plugin-app-version" for ios
-    Installing "cordova-plugin-customurlscheme" for ios
-    Installing "cordova-plugin-device" for ios
-    Installing "cordova-plugin-dialogs" for ios
-    Installing "cordova-plugin-facebook4" for ios
-    Running command: pod install --verbose
+     ```
+     cordova platform add ios@latest android
+     ```
+     Which runs in the terminal like this...
+     ```
+     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platforms add ios android
+     Using cordova-fetch for cordova-ios@^5.0.0
+     Adding ios project...
+     Creating Cordova project for the iOS platform:
+             Path: platforms/ios
+             Package: org.wevote.cordova
+             Name: We Vote
+     iOS project created with cordova-ios@6.1.1
+     Installing "cordova-plugin-app-version" for ios
+     Installing "cordova-plugin-customurlscheme" for ios
+     Installing "cordova-plugin-device" for ios
+     Installing "cordova-plugin-dialogs" for ios
+     Installing "cordova-plugin-facebook4" for ios
+     Running command: pod install --verbose
 
-    ...
+     ...
    
-    Installing "cordova-plugin-inappbrowser" for ios
-    Installing "cordova-plugin-keyboard" for ios
-    Installing "cordova-plugin-safariviewcontroller" for ios
-    Installing "cordova-plugin-screensize" for ios
-    Installing "cordova-plugin-sign-in-with-apple" for ios
-    Installing "cordova-plugin-splashscreen" for ios
-    Installing "cordova-plugin-statusbar" for ios
-    Installing "cordova-plugin-taptic-engine" for ios
-    Installing "cordova-plugin-whitelist" for ios
-    Installing "cordova-plugin-x-socialsharing" for ios
-    Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
-    Installing "es6-promise-plugin" for ios
-    Installing "cordova-support-android-plugin" for ios
-    Installing "cordova-support-google-services" for ios
-    Installing "cordova.plugins.diagnostic" for ios
-    Dependent plugin "es6-promise-plugin" already installed on ios.
-    Using cordova-fetch for cordova-android@latest
-    Adding android project...
-    Creating Cordova project for the Android platform:
-            Path: platforms/android
-            Package: org.wevote.cordova
-            Name: We_Vote
-            Activity: MainActivity
-            Android target: android-29
-    Subproject Path: CordovaLib
-    Subproject Path: app
-    Android project created with cordova-android@9.0.0
-    Installing "cordova-plugin-app-version" for android
-    Installing "cordova-plugin-customurlscheme" for android
-    Installing "cordova-plugin-device" for android
-    Installing "cordova-plugin-dialogs" for android
-    Installing "cordova-plugin-facebook4" for android
-    Subproject Path: CordovaLib
-    Subproject Path: app
-    Installing "cordova-plugin-firebase-analytics" for android
-    Plugin dependency "cordova-support-android-plugin@1.0.2" already fetched, using that version.
-    Installing "cordova-support-android-plugin" for android
-    Plugin dependency "cordova-support-google-services@1.4.1" already fetched, using that version.
-    Installing "cordova-support-google-services" for android
-    Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
-    Skipping 'cordova-support-google-services' for android
-    Subproject Path: CordovaLib
-    Subproject Path: app
-    Installing "cordova-plugin-firebase-messaging" for android
-    Plugin dependency "cordova-plugin-firebase-analytics@4.4.1" already fetched, using that version.
-    Dependent plugin "cordova-plugin-firebase-analytics" already installed on android.
-    Plugin dependency "cordova-support-android-plugin@1.0.2" already fetched, using that version.
-    Dependent plugin "cordova-support-android-plugin" already installed on android.
-    Plugin dependency "cordova-support-google-services@1.4.1" already fetched, using that version.
-    Installing "cordova-support-google-services" for android
-    Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
-    Skipping 'cordova-support-google-services' for android
-    Subproject Path: CordovaLib
-    Subproject Path: app
-    Installing "cordova-plugin-inappbrowser" for android
-    Installing "cordova-plugin-keyboard" for android
-    Installing "cordova-plugin-safariviewcontroller" for android
-    Subproject Path: CordovaLib
-    Subproject Path: app
-    Installing "cordova-plugin-screensize" for android
-    Installing "cordova-plugin-sign-in-with-apple" for android
-    Installing "cordova-plugin-splashscreen" for android
-    Installing "cordova-plugin-statusbar" for android
-    Installing "cordova-plugin-taptic-engine" for android
-    Installing "cordova-plugin-whitelist" for android
-    Installing "cordova-plugin-x-socialsharing" for android
-    Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
-    Installing "es6-promise-plugin" for android
-    Subproject Path: CordovaLib
-    Subproject Path: app
-    Dependent plugin "cordova-support-android-plugin" already installed on android.
-    Installing "cordova-support-google-services" for android
-    Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
-    Skipping 'cordova-support-google-services' for android
-    Installing "cordova.plugins.diagnostic" for android
-    Subproject Path: CordovaLib
-    Subproject Path: app
+     Installing "cordova-plugin-inappbrowser" for ios
+     Installing "cordova-plugin-keyboard" for ios
+     Installing "cordova-plugin-safariviewcontroller" for ios
+     Installing "cordova-plugin-screensize" for ios
+     Installing "cordova-plugin-sign-in-with-apple" for ios
+     Installing "cordova-plugin-splashscreen" for ios
+     Installing "cordova-plugin-statusbar" for ios
+     Installing "cordova-plugin-taptic-engine" for ios
+     Installing "cordova-plugin-whitelist" for ios
+     Installing "cordova-plugin-x-socialsharing" for ios
+     Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
+     Installing "es6-promise-plugin" for ios
+     Installing "cordova-support-android-plugin" for ios
+     Installing "cordova-support-google-services" for ios
+     Installing "cordova.plugins.diagnostic" for ios
+     Dependent plugin "es6-promise-plugin" already installed on ios.
+     Using cordova-fetch for cordova-android@latest
+     Adding android project...
+     Creating Cordova project for the Android platform:
+             Path: platforms/android
+             Package: org.wevote.cordova
+             Name: We_Vote
+             Activity: MainActivity
+             Android target: android-29
+     Subproject Path: CordovaLib
+     Subproject Path: app
+     Android project created with cordova-android@9.0.0
+     Installing "cordova-plugin-app-version" for android
+     Installing "cordova-plugin-customurlscheme" for android
+     Installing "cordova-plugin-device" for android
+     Installing "cordova-plugin-dialogs" for android
+     Installing "cordova-plugin-facebook4" for android
+     Subproject Path: CordovaLib
+     Subproject Path: app
+     Installing "cordova-plugin-firebase-analytics" for android
+     Plugin dependency "cordova-support-android-plugin@1.0.2" already fetched, using that version.
+     Installing "cordova-support-android-plugin" for android
+     Plugin dependency "cordova-support-google-services@1.4.1" already fetched, using that version.
+     Installing "cordova-support-google-services" for android
+     Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
+     Skipping 'cordova-support-google-services' for android
+     Subproject Path: CordovaLib
+     Subproject Path: app
+     Installing "cordova-plugin-firebase-messaging" for android
+     Plugin dependency "cordova-plugin-firebase-analytics@4.4.1" already fetched, using that version.
+     Dependent plugin "cordova-plugin-firebase-analytics" already installed on android.
+     Plugin dependency "cordova-support-android-plugin@1.0.2" already fetched, using that version.
+     Dependent plugin "cordova-support-android-plugin" already installed on android.
+     Plugin dependency "cordova-support-google-services@1.4.1" already fetched, using that version.
+     Installing "cordova-support-google-services" for android
+     Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
+     Skipping 'cordova-support-google-services' for android
+     Subproject Path: CordovaLib
+     Subproject Path: app
+     Installing "cordova-plugin-inappbrowser" for android
+     Installing "cordova-plugin-keyboard" for android
+     Installing "cordova-plugin-safariviewcontroller" for android
+     Subproject Path: CordovaLib
+     Subproject Path: app
+     Installing "cordova-plugin-screensize" for android
+     Installing "cordova-plugin-sign-in-with-apple" for android
+     Installing "cordova-plugin-splashscreen" for android
+     Installing "cordova-plugin-statusbar" for android
+     Installing "cordova-plugin-taptic-engine" for android
+     Installing "cordova-plugin-whitelist" for android
+     Installing "cordova-plugin-x-socialsharing" for android
+     Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
+     Installing "es6-promise-plugin" for android
+     Subproject Path: CordovaLib
+     Subproject Path: app
+     Dependent plugin "cordova-support-android-plugin" already installed on android.
+     Installing "cordova-support-google-services" for android
+     Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
+     Skipping 'cordova-support-google-services' for android
+     Installing "cordova.plugins.diagnostic" for android
+     Subproject Path: CordovaLib
+     Subproject Path: app
 
-    Dependent plugin "es6-promise-plugin" already installed on android.
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
-    ```
+     Dependent plugin "es6-promise-plugin" already installed on android.
+     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
+     ```
 
-10. Run a script to set up the sym links for iOS and Android and make changes to some build files
+11. Run a script to set up the sym links for iOS and Android and make changes to some build files
 
      In addition to creating the symlinks, this script also makes changes to three
      Android Gradle (Java/Groovy build scripts) for Firebase Messaging.    
@@ -321,7 +322,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     If you have installation troubles, you can run `buildSymLinks` as often as you need to,
     since the script cleans out conflicting links that might already in place, before adding in the new links.
 
-11. **ONLY IF the install fails** with a pod (CocoaPods) error:
+12. **ONLY IF the install fails** with a pod (CocoaPods) error:
 
    Try:
    ```
@@ -630,31 +631,36 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
 2. Then In Android Studio run File/'Sync Project With Gradle Files'
 3. I needed to upgrade to the latest Java JDK @ https://www.oracle.com/java/technologies/downloads/#jdk17-mac
 4. Then in Android Studio at Preferences | Build, Execution, Deployment | Build Tools | Gradle
-   Change the Gradele JDK to version 17 and Apply
-5. stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % vi ~/.bash_profile                                                 
+   Change the Gradle JDK to version 17 and Apply
+5. On November 16, 2021 I had to set the gradle directory to a place in the libary path
+
+![ScreenShot](docs/images/GradleSettingsNov2021.png)
+
+
+6. stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % vi ~/.bash_profile                                                 
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % vi ~/.bash_profile
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % source ~/.bash_profile
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
-6. 2669  vim .zshrc
+7. 2669  vim .zshrc
    2670  source .zshrc
    2671  env
 
 
 
 
-1.  Download and install [Android Studio](https://developer.android.com/studio)
+1. Download and install [Android Studio](https://developer.android.com/studio)
 
     Click "ok" to downloading and installing any jars or packages that the installer recommends.
 
-1.  On the welcome screen, select "open an existing project"
+2. On the welcome screen, select "open an existing project"
 
     The existing project is the WeVoteCordova project that you have already pulled down from git.  Our Android project is
     contained within the WeVoteCordova project. In the open (file selection) dialog, navigate to your WeVoteCordova working
     directory, then to platforms, then to android and press Open.  `/Users/your-username/MyProjects/WeVoteCordova/platforms/android`
 
-1.  At that point there will be a series of updates and "syncing" options, where you should follow all the default choices.
+3. At that point there will be a series of updates and "syncing" options, where you should follow all the default choices.
 
-1.  You will probably be prompted to upgrade Gradle, Genymotion, Cordova plugins, etc.
+4. You will probably be prompted to upgrade Gradle, Genymotion, Cordova plugins, etc.
 
     Update them all before continuing.  Restart as recommended.
 
@@ -664,7 +670,7 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
 
     ![ScreenShot](docs/images/SucessInstallAndroidStudio.png)
 
-1.  Android (Java) projects need a Run configuration to start
+7. Android (Java) projects need a Run configuration to start
 
     ![ScreenShot](docs/images/AndroidStudioAcceptDefaultSettings.png)
 
@@ -673,7 +679,7 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
     You might see a warning: "**WARNING:** Configuration 'compile' is obsolete and has been replaced with 'implementation'
     and 'api'.", but it is safe to ignore
     
-1.  If you get an error relating to accepting the Android SDK license
+8. If you get an error relating to accepting the Android SDK license
 
     Run the `sdkmanager` and accept all the licenses (feel free to read them first)
     ```
@@ -708,48 +714,48 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
     
     <!--If you have trouble look at the [Cordova Android Platform Guide](https://cordova.apache.org/docs/en/latest/guide/platforms/android/)-->
 
-1. If you get a red symbol on your run icon, and a "No default run configuration" error or warning
+9. If you get a red symbol on your run icon, and a "No default run configuration" error or warning
     
     try re-installing npm globally
     
     `stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % sudo npm install -g npm `
 
-1. You will then need to download some simulator Virtual Devices to test with.  Go to Tools/AVD Manager
-    ![ScreenShot](docs/images/AndroidVirtualDeviceManager.png)
+10. You will then need to download some simulator Virtual Devices to test with.  Go to Tools/AVD Manager
+     ![ScreenShot](docs/images/AndroidVirtualDeviceManager.png)
     
-    It is possible that the list will be empty, and you have to use to "+ Create Virtual device..." button to add them from
-    scrach, start with at least one.
+     It is possible that the list will be empty, and you have to use to "+ Create Virtual device..." button to add them from
+     scrach, start with at least one.
      
-    If your list contains only entries that require downloading, download those that you can, some will have API versions 
-    that need to be increased to the minimum that is configured.  These simulators are huge (1GB)
-    and contain most of the commercial boot image for the phone that you will be simulating.  
-    you probably will need to come back here later to add more, but at least get one
-    downloaded so you can do a test run in the Simulator.
+     If your list contains only entries that require downloading, download those that you can, some will have API versions 
+     that need to be increased to the minimum that is configured.  These simulators are huge (1GB)
+     and contain most of the commercial boot image for the phone that you will be simulating.  
+     you probably will need to come back here later to add more, but at least get one
+     downloaded so you can do a test run in the Simulator.
     
-1. Invalidate Caches and restart
+11. Invalidate Caches and restart
 
-   Go to File/"Invalidate Caches / Restart" and choose the option to restart. 
+    Go to File/"Invalidate Caches / Restart" and choose the option to restart. 
   
-1. The gradle run that is automatically launched failed for me, so I had to upgrade the [Android Gradle plugin](https://developer.android.com/studio/releases/gradle-plugin.html#revisions)
+12. The gradle run that is automatically launched failed for me, so I had to upgrade the [Android Gradle plugin](https://developer.android.com/studio/releases/gradle-plugin.html#revisions)
 
-   [Gradle](https://gradle.org/) is a build tool for Java, that serves the same purpose as Ant, or Make, or Webpack.
+    [Gradle](https://gradle.org/) is a build tool for Java, that serves the same purpose as Ant, or Make, or Webpack.
    
-   Since the Gradle version that came with Android Studio was `6.1.1`, edited android/build.gradle to load version 4.00 instead of the version `3.0.0` that came
-   preinstalled.
+    Since the Gradle version that came with Android Studio was `6.1.1`, edited android/build.gradle to load version 4.00 instead of the version `3.0.0` that came
+    preinstalled.
 
-    ![ScreenShot](docs/images/UpgradeAndroidPlugin.png)
+     ![ScreenShot](docs/images/UpgradeAndroidPlugin.png)
     
-    After making that edit, simply click File/"Sync Project with Gradle Files" which forces a reload of the the Andorid Gradle plugin, and 
-    rebuilds the app.     
+     After making that edit, simply click File/"Sync Project with Gradle Files" which forces a reload of the the Andorid Gradle plugin, and 
+     rebuilds the app.     
 
-1. Press the green "play" button to attempt to start running
+13. Press the green "play" button to attempt to start running
 
-    ![ScreenShot](docs/images/AndroidStudioNoDeploymentTarget.png)
+     ![ScreenShot](docs/images/AndroidStudioNoDeploymentTarget.png)
 
-    If you have an Android phone or tablet, you can plug it in via USB.  Make sure debugging via tethering is
-    enabled (google this. it varies between phone manufacturers).  If it is enabled you will see the name of the
-    connected device (Motorola Moto G, in this example) in the dialog.  Press "OK", and the CordovaApp should start right up on
-    the phone.
+     If you have an Android phone or tablet, you can plug it in via USB.  Make sure debugging via tethering is
+     enabled (google this. it varies between phone manufacturers).  If it is enabled you will see the name of the
+     connected device (Motorola Moto G, in this example) in the dialog.  Press "OK", and the CordovaApp should start right up on
+     the phone.
 
 That it! you should have a basic Android Cordova app running in the simulator!
 

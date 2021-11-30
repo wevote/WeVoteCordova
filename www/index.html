@@ -26,6 +26,7 @@
 -->
 <html lang="en">
 <head>
+    <meta charset="utf-8">
     <!--
     Customize this policy to fit your own app's needs. For more guidance, see:
         https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
@@ -40,17 +41,30 @@
     -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src * wevotetwitterscheme: data: content: gap: https://ssl.gstatic.com;
-      img-src *  data: https://* blob: android-webview-video-poster: ;
-      style-src * 'unsafe-inline';
+      img-src *  https://*.twimg.com https://*.twitter.com/ data: https: blob: android-webview-video-poster: ;
+      style-src * https://*.twimg.com 'unsafe-inline';
       script-src 'self' http://*  'unsafe-inline' 'unsafe-eval';
-      frame-src http://*.facebook.com https://*.facebook.com https://*.facebook.com https://*.twitter.com https://twitter.com https://*.vimeo.com  https://*.googlevideo.com https://*.youtube.com gap: ;
+      frame-src http://*.facebook.com https://*.facebook.com https://*.facebook.com https://*.twitter.com https://twitter.com https://*.vimeo.com  https://*.googlevideo.com https://*.youtube.com gap: 'unsafe-inline';
       child-src gap://* ;
       font-src *;
       media-src *;
     " />
+<!--        style-src 'self' 'unsafe-inline';-->
+<!--        media-src *;-->
+<!--        img-src 'self' data: content:;">-->
+<!--        &ndash;&gt;-->
+<!--    <meta http-equiv="Content-Security-Policy" content="-->
+<!--        default-src * 'self' data: gap: ws: ssl.gstatic.com 'unsafe-inline';-->
+<!--        script-src-elem * 'self' gap: 'unsafe-inline';-->
+<!--        style-src * 'unsafe-inline';-->
+<!--        script-src * 'unsafe-inline' 'unsafe-eval';-->
+<!--        img-src * data: 'unsafe-inline';-->
+<!--        connect-src * 'self' ws: 'unsafe-inline';-->
+<!--        frame-src *;">-->
+<!--    <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *">-->
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, viewport-fit=cover, shrink-to-fit=NO">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <!-- Feb 2018 WeVote: re 'viewport-fit=cover' see https://issues.apache.org/jira/browse/CB-12886 -->
 <!--    <link rel="stylesheet" type="text/css" href="css/index.css">-->
     <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossOrigin="anonymous" rel="stylesheet" />
@@ -103,7 +117,7 @@
     //   $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyC2VUrtN0GlbRtAEjvNCQ922QznueInCJE&callback=initMap&libraries=places");
     // }
   } catch (e) {
-    console.log("ERROR: INDEX.HTML Cordova jQuery ERROR");
+    console.log("ERROR: INDEX.HTML Cordova jQuery ERROR", e);
   }
 </script>
 <script type="text/javascript" src="cordova.js"></script>
@@ -114,7 +128,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TimelineLite.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<!--<script type="text/javascript" async src="https://checkout.stripe.com/checkout.js"></script>-->
+<script type="text/javascript" async src="https://checkout.stripe.com/checkout.js"></script>
 <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
 </body>
 </html>
