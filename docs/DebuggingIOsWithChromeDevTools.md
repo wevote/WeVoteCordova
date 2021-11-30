@@ -50,7 +50,7 @@ your Cordova app via Xcode.  This is imperfect, but not too bad once you get the
 
 Unfortunately in both the Apple and Chrome debuggers, breakpoints are not maintained between restarts
 of the app via Xcode, and also the files where you want to put the breakpoints have to be reopened each time.  (This deficiency
-is not the case in React-Native, so hopefully a fix will arrive some day.)
+is not the case in React-Native, so hopefully a fix will arrive some day.)  December 2021: The breakpoints are now saved in Chrome.
 
 Press ⌘+P to bring up the list of recently opened files -- this can save you a bunch of clicks.
 

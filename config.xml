@@ -1,10 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="2010000" id="org.wevote.cordova" ios-CFBundleVersion="2.1.0.0" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/ns/widgets">
+<widget android-versionCode="2020001" id="org.wevote.cordova" ios-CFBundleVersion="2.2.1.5" version="2.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>We Vote</name>
     <description>
         We Vote Cordova wrapper for the We Vote WebApp root
     </description>
     <version />
+    <author email="info@wevote.us" href="http://wevote.us">
+        We Vote Cordova Team
+    </author>
     <content src="index.html" />
     <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />
     <access origin="about:*" />
@@ -13,6 +16,8 @@
     <access origin="*://*.youtube.com/*" />
     <access origin="*://wevote.us/*" />
     <access origin="*://*.wevoteusa.org/*" />
+    <access origin="*://cdnjs.cloudflare.com/*" />
+    <access origin="*" />
     <allow-navigation href="about:*" />
     <allow-navigation href="data:*" />
     <allow-navigation href="*://*.youtube.com/*" />
@@ -26,25 +31,35 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="wevotetwitterscheme:" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="*" />
+    <!-- A wildcard can be used to whitelist the entire network, over HTTP and HTTPS. *NOT RECOMMENDED* -->
+    <allow-navigation href="*" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
     <platform name="android">
-        <preference name="android-manifest/@android:versionName" value="2.1.0" />
+        <allow-intent href="market:*" />
+        <preference name="Scheme" value="app" />
+        <preference name="Hostname" value="localhost" />
+        <preference name="android-manifest/@android:versionName" value="2.2.1" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="GradlePluginGoogleServicesVersion" value="4.2.0" />
-<!--        <framework src="com.android.support:customtabs:28.0.0" />-->
         <resource-file src="res/google/google-services.json" target="app/google-services.json" />
-
         <allow-intent href="market:*" />
+        <!-- 11/19/21:  If you get too many "E/chromium: [ERROR:tile_manager.cc(793)] WARNING: tile memory limits exceeded, some content may not draw"
+                        errors, Android basically hangs.  Make sure that each splash size matches.  If you remove cordova-plugin-splashscreen, all these errors go away.
+                        I think it has to do with relying on the platform to resize an ill-fitting splash screen.
+                        https://cordova.apache.org/docs/en/10.x/reference/cordova-plugin-splashscreen/index.html#platform-splash-screen-image-configuration-->
         <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
         <splash density="land-mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
         <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
-        <splash density="land-xhdpi" src="res/screen/android/screen-xdpi-landscape.png" />
+        <splash density="land-xhdpi" src="res/screen/android/screen-xhdpi-landscape.png" />
         <splash density="land-xxhdpi" src="res/screen/android/screen-xxhdpi-landscape.png" />
         <splash density="land-xxxhdpi" src="res/screen/android/screen-xxxhdpi-landscape.png" />
         <splash density="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
         <splash density="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
         <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
-        <splash density="port-xhdpi" src="res/screen/android/screen-xdpi-portrait.png" />
+        <splash density="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
         <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png" />
         <splash density="port-xxxhdpi" src="res/screen/android/screen-xxxhdpi-portrait.png" />
         <icon density="hdpi" src="res/icon/android/hdpi/ic_launcher.png" />
@@ -53,18 +68,28 @@
         <icon density="xhdpi" src="res/icon/android/xhdpi/ic_launcher.png" />
         <icon density="xxhdpi" src="res/icon/android/xxhdpi/ic_launcher.png" />
         <icon density="xxxhdpi" src="res/icon/android/xxxhdpi/ic_launcher.png" />
-
-        <preference name="android-minSdkVersion" value="22" />
-        <preference name="android-targetSdkVersion" value="28" />
         <feature name="SocialSharing">
             <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
         </feature>
+        <!-- https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/issues/1150 -->
+        <config-file parent="/manifest" target="AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">
+            <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+        </config-file>
+        <preference name="defaultBuildToolsVersion" value="30.0.3" />
+        <!-- these are set in the gradle.properties set by $GRADLE_USER_HOME -->
+        <!-- <preference name="android-useAndroidX" value="true" />-->
+        <!--  11/19/2021: These next two sdk variables are ignored by cordova-android-when we choose to pgrade to version 10 -->
+        <preference name="android-minSdkVersion" value="16" />
+        <preference name="android-targetSdkVersion" value="31" /> -->
+
     </platform>
     <platform name="ios">
-        <resource-file src="res/google/GoogleService-Info.plist" />
-
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <access origin="*" subdomains="true" />
+        <resource-file src="res/google/GoogleService-Info.plist" />
+        <preference name="scheme" value="app" />
+        <preference name="hostname" value="localhost" />
         <preference name="FadeSplashScreenDuration" value="0" />
         <preference name="AllowInlineMediaPlayback" value="false" />
         <preference name="BackupWebStorage" value="local" />
@@ -99,14 +124,17 @@
         <icon height="20" src="res/icon/ios/icon_20pt.png" width="20" />
         <icon height="29" src="res/icon/ios/icon_29pt.png" width="29" />
         <icon height="40" src="res/icon/ios/icon_20pt@2x.png" width="40" />
+        <icon height="44" src="res/icon/ios/icon_22pt@2x.png" width="44" />
         <icon height="50" src="res/icon/ios/icon_50pt.png" width="50" />
         <icon height="57" src="res/icon/ios/icon_57pt.png" width="57" />
         <icon height="58" src="res/icon/ios/icon_29pt@2x.png" width="58" />
         <icon height="60" src="res/icon/ios/icon_20pt@3x.png" width="60" />
+        <icon height="66" src="res/icon/ios/icon_33pt@2x.png" width="66" />
         <icon height="72" src="res/icon/ios/icon_72pt.png" width="72" />
         <icon height="76" src="res/icon/ios/icon_76pt.png" width="76" />
         <icon height="80" src="res/icon/ios/icon_40pt@2x.png" width="80" />
         <icon height="87" src="res/icon/ios/icon_29pt@3x.png" width="87" />
+        <icon height="88" src="res/icon/ios/icon_44pt@2x.png" width="88" />
         <icon height="100" src="res/icon/ios/icon_50pt@2X.png" width="100" />
         <icon height="114" src="res/icon/ios/icon_57pt@2x.png" width="114" />
         <icon height="120" src="res/icon/ios/icon_40pt@3x.png" width="120" />
@@ -114,6 +142,8 @@
         <icon height="152" src="res/icon/ios/icon_76pt@2x.png" width="152" />
         <icon height="167" src="res/icon/ios/icon_83.5@2x.png" width="167" />
         <icon height="180" src="res/icon/ios/icon_60pt@3x.png" width="180" />
+        <icon height="216" src="res/icon/ios/icon_108pt@2x.png" width="216" />
+        <icon height="234" src="res/icon/ios/icon_117pt@2x.png" width="234" />
         <icon height="1024" src="res/icon/ios/icon_1024pt.png" width="1024" />
         <feature name="SocialSharing">
             <param name="ios-package" value="SocialSharing" />
