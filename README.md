@@ -828,6 +828,43 @@ also remove all the manual configuration and symlinks that you add.  This is a p
 The WeVote web app that has been developed as described below, can be tested on your mac.
 But do not check in these library changes, they are only needed for testing, and the Cordova build without these changes runs on a M1 processor (or later) Mac.
 
+### You may need to reinstall cocoapods
+
+```
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % brew install cocoapods
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cd platforms/ios
+stevepodell@Steves-MBP-M1-Dec2021 ios % pod install     
+Analyzing dependencies
+Downloading dependencies
+Installing FBAEMKit (11.1.0)
+Installing FBSDKCoreKit (11.1.0)
+Installing FBSDKCoreKit_Basics (11.1.0)
+Installing FBSDKLoginKit (11.1.0)
+Installing FBSDKShareKit (11.1.0)
+Generating Pods project
+Integrating client project
+Pod installation complete! There are 3 dependencies from the Podfile and 5 total pods installed.
+
+[!] The `We Vote [Debug]` target overrides the `ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+- Use the `$(inherited)` flag, or
+- Remove the build settings from the target.
+
+[!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+- Use the `$(inherited)` flag, or
+- Remove the build settings from the target.
+
+[!] The `We Vote [Release]` target overrides the `ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+- Use the `$(inherited)` flag, or
+- Remove the build settings from the target.
+
+[!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+- Use the `$(inherited)` flag, or
+- Remove the build settings from the target.
+stevepodell@Steves-MBP-M1-Dec2021 ios %
+```
+
+
+
 ### I think you will need access to WeVote's apple@wevote.us account to proceed
 If you get an error like
 
