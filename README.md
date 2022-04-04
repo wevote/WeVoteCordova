@@ -43,7 +43,7 @@ until you can find it.
 
 ## Directories
 
-As Cordova evolves these instructions have had to change fairly ofen, so these instructions use the actual directories on one specific computer. You will have
+As Cordova evolves these instructions have had to change fairly often, so these instructions use the actual directories on one specific computer. You will have
 to change all file paths in these instructions to match the paths in your setup.  
 
 These are the example paths to the
@@ -175,7 +175,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     At this point we are done with the `WeVoteCordovaSaveoff` directory, you can delete it whenever you choose to.
 
 9. Add the Cordova iOS and Android platforms directories
-     Note: November 18, 2021:  Dobn't use latest for android for now, so we use version 9 instead of version 10
+     Note: November 18, 2021:  Don't use latest for android for now, so we use version 9 instead of version 10
 
      ```
      cordova platform add ios@latest android
@@ -334,7 +334,13 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
 
 12. Check that cordova requirements have been met (No errors means success)
      ```
-     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www % cordova requirements
+     stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cd www
+     stevepodell@Steves-MBP-M1-Dec2021 www % sudo npm install -g ios-deploy
+     
+     added 1 package, and audited 2 packages in 13s
+     
+    found 0 vulnerabilities
+    stevepodell@Steves-MBP-M1-Dec2021 www % cordova requirements
 
      Requirements check results for android:
      Java JDK: installed 17.0.0
@@ -347,7 +353,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
      Xcode: installed 13.0
      ios-deploy: installed 1.10.0
      CocoaPods: installed 1.11.0
-     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 www %
+     stevepodell@Steves-MBP-M1-Dec2021 www %
      ```
 14. Run the WeVoteCordova app from XCode.
 
@@ -818,37 +824,106 @@ Running ...
 will remove everything from the platforms directory, and rebuild all the config files in the platforms directory, but will
 also remove all the manual configuration and symlinks that you add.  This is a powerful last resort if all else is going wrong.
 
-## Apple Silicon, Nov 2020
-At this point there are problems compiling the google notifications code.  Calls to the code are disabled if isIOSAppOnMac(), but the binary libraries need to be 
-removed if compiling on Apple Silicon at this time.
+## Apple Silicon, Nov 2020 (Updated April 2022)
+The WeVote web app that has been developed as described below, can be tested on your mac.
+But do not check in these library changes, they are only needed for testing, and the Cordova build without these changes runs on a M1 processor (or later) Mac.
 
-In package.json, remove the following lines:
-    "cordova-plugin-firebase-messaging": "^4.5.0",
-    "cordova-support-google-services": "^1.4.1",
-    "cordova-plugin-firebase-analytics": "^4.5.0",
-    "cordova-plugin-firebase-messaging": {
-      "ANDROID_FIREBASE_MESSAGING_VERSION": "20.2.+",
-      "ANDROIDX_CORE_VERSION": "1.3.+",
-      "IOS_FIREBASE_MESSAGING_VERSION": "~> 6.31.0"
-    },
+### You may need to reinstall cocoapods
 
-remove the /plugins directory 
+```
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % brew install cocoapods
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cd platforms/ios
+stevepodell@Steves-MBP-M1-Dec2021 ios % pod install     
+Analyzing dependencies
+Downloading dependencies
+Installing FBAEMKit (11.1.0)
+Installing FBSDKCoreKit (11.1.0)
+Installing FBSDKCoreKit_Basics (11.1.0)
+Installing FBSDKLoginKit (11.1.0)
+Installing FBSDKShareKit (11.1.0)
+Generating Pods project
+Integrating client project
+Pod installation complete! There are 3 dependencies from the Podfile and 5 total pods installed.
 
-In the WebApp, in webpackConfig.js, remove
-    './src/sass/main.scss'
-    {
-      loader: 'sass-loader',
-    },
+[!] The `We Vote [Debug]` target overrides the `ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+- Use the `$(inherited)` flag, or
+- Remove the build settings from the target.
+
+[!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+- Use the `$(inherited)` flag, or
+- Remove the build settings from the target.
+
+[!] The `We Vote [Release]` target overrides the `ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+- Use the `$(inherited)` flag, or
+- Remove the build settings from the target.
+
+[!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+- Use the `$(inherited)` flag, or
+- Remove the build settings from the target.
+stevepodell@Steves-MBP-M1-Dec2021 ios %
+```
 
 
+
+### I think you will need access to WeVote's apple@wevote.us account to proceed
+If you get an error like
+
+`The operation couldn’t be completed. Unable to log in with account 'apple@wevote.us'. The login details for account 'apple@wevote.us' were rejected.`
+
+First try to satisfy this requirement with your personal iCloud Apple email address and signin
+, but if that doesn't work you will
+need to talk to Dale and get a password for apple@wevote.us, and then add it to your 
+Xcodes's "Preferences" -> "Accounts" page
+
+![ScreenShot](docs/images/MacOsAccounts.png)
+
+### Add your computer ot the iOS Team Provisioning Profile
+
+If you get an error like:`Provisioning profile "iOS Team Provisioning Profile: org.wevote.cordova" doesn't include the currently selected device "Steve's MBP M1 Dec2021" (identifier 00006001-001451D92102801E).`
+
+I had to go to `Signing and Capabilities` and add my latest Mac's name.
+
+### At this point there are problems compiling the google notifications code.  Calls to the code are disabled if isIOSAppOnMac(), but the binary libraries need to be removed if compiling on Apple Silicon at this time.
+
+In package.json, remove the following lines (**DON"T CHECK IN THESE CHANGES**):
+
+From "devDependencies":
+  ```
+  "cordova-plugin-firebase-analytics": "^6.1.0",
+  "cordova-plugin-firebase-messaging": "^6.1.0",
+  ```
+From "dependencies":
+  ```
+  "cordova-support-google-services": "^1.4.1",
+  ```
+From "cordova": {  "plugins": 
+  ```
+  "cordova-plugin-firebase-messaging": {
+    "ANDROID_FIREBASE_MESSAGING_VERSION": "21.0.0",
+    "ANDROIDX_CORE_VERSION": "1.3.+",
+    "IOS_FIREBASE_MESSAGING_VERSION": "~> 6.31.0",
+    "IOS_FIREBASE_POD_VERSION": "~> 8.8.0"
+  },
+  "cordova-plugin-firebase-analytics": {
+    "IOS_FIREBASE_POD_VERSION": "~> 8.8.0",
+    "ANDROID_FIREBASE_CRASHLYTICS_VERSION": "19.0.+",
+    "ANALYTICS_COLLECTION_ENABLED": "true",
+    "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true"
+  },
+  ```
+### Run the App
+![ScreenShot](docs/images/SuccessfulRunAppleSilicon.png)
+And it should show up running in a container on the desktop (like a native app, which it kind of is)
+![ScreenShot](docs/images/AppleSiliconRunning.png)
+
+
+### Maybe you have to do this again (try running the app first) 
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platforms remove ios android
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platform add ios@latest android@latest
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % node buildSymLinks /Users/stevepodellsilicon/WebstormProjects/WebApp/build
-In XCode, reset the development teams settings
 
-manually copy `main.css` to `/Users/stevepodellsilicon/WebstormProjects/WebApp/build/css`  since it can not be compiled by node-scss at this time
 
-----------
+
 ## Other documentation pages:
 
 **[Setting up your Computer for Android Development](docs/AndroidSetup.md)**
