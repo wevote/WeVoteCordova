@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="2020001" id="org.wevote.cordova" ios-CFBundleVersion="2.2.1.5" version="2.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="2020200" id="org.wevote.cordova" ios-CFBundleVersion="2.2.1.5" version="2.2.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>We Vote</name>
     <description>
         We Vote Cordova wrapper for the We Vote WebApp root
@@ -41,7 +41,7 @@
         <allow-intent href="market:*" />
         <preference name="Scheme" value="app" />
         <preference name="Hostname" value="localhost" />
-        <preference name="android-manifest/@android:versionName" value="2.2.1" />
+        <preference name="android-manifest/@android:versionName" value="2.2.2" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="GradlePluginGoogleServicesVersion" value="4.2.0" />
         <resource-file src="res/google/google-services.json" target="app/google-services.json" />
@@ -119,6 +119,9 @@
         <config-file parent="UIMainStoryboardFile" target="*-Info.plist">
             <string>CDVLaunchScreen</string>
         </config-file>
+        <edit-config file="*-Info.plist" mode="merge" target="NSContactsUsageDescription">
+            <string>This app requires access to the contacts to allow users to encourage their friends to vote.</string>
+        </edit-config>
         <splash src="res/screen/ios/June2020LaunchScreen.png" />
         <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
         <icon height="20" src="res/icon/ios/icon_20pt.png" width="20" />

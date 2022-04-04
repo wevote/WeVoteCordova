@@ -33,7 +33,7 @@ size of the prior packaging output file (the APK).  AAB files are required for r
 7. Generate a Signed Bundle (aab)
 ![ScreenShot](images/GenerateAbb.png)
 
-8. After the signing and building, a pop-up will appear that allows you to locate the `app.aab` file (the bundle).
+8. After the signing and building, a pop-up will appear that allows you to locate the `app-release.aab` file (the bundle).
 ![ScreenShot](images/AndroidReleaseLocation.png) 
   If that pop-up disappears before you can "locate" the build, you can rebuild the app, and watch more carefully for the appearance pop-up.
 ![ScreenShot](images/LocationOfAAB.png)
