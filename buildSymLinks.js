@@ -1,4 +1,8 @@
 //Program to build the symlinks from WeVoteCordova www directories to the the WebApp build directory
+/*
+Debugging this node program
+node inspect buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
+*/
 /*jshint esversion: 6 */
 /*jslint node: true */
 /*global process, __dirname */
@@ -85,6 +89,53 @@ const updateAndroidBuildGradle = () => {
   });
 };
 
+const updateMainAndroidManifest = () => {
+  // /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/AndroidManifest.xml
+  // Apps targeting Android 12 and higher are required to specify an explicit value for `android:exported` when the corresponding component has an intent filter defined
+  const originalFile = './platforms/android/app/src/main/AndroidManifest.xml';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newGradle = [];
+    rl.on('line', (line) => {
+      if (line.startsWith('<manifest')) {
+        if (!line.includes('xmlns:android')) {
+          line = line.replace('>', ' xmlns:android="http://schemas.android.com/apk/res/android">')
+          console.log('adding::: xmlns:android="http://schemas.android.com/apk/res/android" ::: to android/app/src/main/AndroidManifest.xml');
+        }
+        newGradle.push(line);
+      } else if (line.includes('<service android:name')) {
+        if (!line.includes('android:exported="true"')) {
+          line = line.replace('>', ' android:exported="true">');
+          console.log('adding::: android:exported="true (for <service android:name)  ::: to android/app/src/main/AndroidManifest.xml');
+        }
+        newGradle.push(line);
+      } else if (line.includes('<receiver ')) {
+        if (!line.includes('android:exported="true"')) {
+          line = line.replace('>', ' android:exported="true">');
+          console.log('adding::: android:exported="true (for <receiver )  ::: to android/app/src/main/AndroidManifest.xml');
+        }
+        newGradle.push(line);
+      } else {
+        newGradle.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const buildGradle = fs.openSync(originalFile, 'w');
+
+      newGradle.forEach((txt) => {
+        fs.writeSync(buildGradle, `${txt}\n`);
+      });
+      console.log(`updateAndroidBuildGradle added a classpath in ${originalFile}`);
+      updateCordovaLibBuildGradle();
+    });
+  });
+};
+
 // /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/CordovaLib/build.gradle
 const updateCordovaLibBuildGradle = () => {
   const originalFile = './platforms/android/CordovaLib/build.gradle';
@@ -134,11 +185,11 @@ const updateAppBuildGradle = () => {
         newGradle.push(line.replace('cordovaConfig.MIN_SDK_VERSION', '16'));
         console.log('hardcoding::: minSdkVersion ::: to 16 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
       } else if (line.includes('targetSdkVersion cordovaConfig.SDK_VERSION')) {
-        newGradle.push(line.replace('cordovaConfig.SDK_VERSION', '30'));
-        console.log('hardcoding::: targetSdkVersion ::: to 30 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
+        newGradle.push(line.replace('cordovaConfig.SDK_VERSION', '31'));
+        console.log('hardcoding::: targetSdkVersion ::: to 31 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
       } else if (line.includes('maxSdkVersion cordovaConfig.MAX_SDK_VERSION')) {
-        newGradle.push(line.replace('cordovaConfig.MAX_SDK_VERSION', '30'));
-        console.log('hardcoding::: maxSdkVersion ::: to 30 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
+        newGradle.push(line.replace('cordovaConfig.MAX_SDK_VERSION', '33'));
+        console.log('hardcoding::: maxSdkVersion ::: to 33 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
       } else if (line.includes('compileSdkVersion cordovaConfig.SDK_VERSION')) {
         newGradle.push(line.replace('cordovaConfig.SDK_VERSION', '31'));
         console.log('hardcoding::: compileSdkVersion ::: to 31 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
@@ -264,6 +315,7 @@ setTimeout( () => {
   //   err => console.log(err ? err : 'cp android google-services.json successful'));
 
   updateGradleProperties();
+  updateMainAndroidManifest();
 
   fs.readdir(iosDir, function(err, items) {
     console.log(items);
