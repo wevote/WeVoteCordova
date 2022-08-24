@@ -922,6 +922,14 @@ stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platforms remove ios
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platform add ios@latest android@latest
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % node buildSymLinks /Users/stevepodellsilicon/WebstormProjects/WebApp/build
 
+## Insufficient Storage warning on Android Simulator
+![ScreenShot](docs/images/InstallFailedInsufficientStorage.png)
+This happens too often, here are some steps that usually resolve it.
+1) Close the "Emulator" window (hopefully, but not always ending the emulator session.)  This step is sometimes all it takes.
+2) Open the device in the Device Manager, and "Change" the named device settings, "Edit the device", and make sure the Memory has not been reset to MB.  Set the memory to a very big number like "1 TB" (we don't have a native app, so this does not matter).  You will also probably have to reset the "Default Skin" to match the device if it says pull-down says "No Skin".
+3) Delete any lock files in the emulator directory: `WeVoteCordova % rm  ~/.android/avd/Galaxy_Z_Fold_3_Samsung_API_33.avd/*lock`
+4) Sometimes you have to exit out of Android Studio, and restart it.
+5) Sometimes an old setup, or one that references an old skin, needs to be deleted and recreated. 
 
 
 ## Other documentation pages:
@@ -1064,5 +1072,56 @@ Subproject Path: CordovaLib
 Subproject Path: app
 Dependent plugin "es6-promise-plugin" already installed on android.
 stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %        
+
+Aug 19, 2022:
+
+
+stevepodell@StevesM1Dec2021 apk % cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/build/outputs/apk/debug
+stevepodell@StevesM1Dec2021 debug % ls
+app-debug.apk           output-metadata.json
+stevepodell@StevesM1Dec2021 debug % keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+Alias name: androiddebugkey
+Creation date: Sep 29, 2017
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: C=US, O=Android, CN=Android Debug
+Issuer: C=US, O=Android, CN=Android Debug
+Serial number: 1
+Valid from: Fri Sep 29 18:28:57 PDT 2017 until: Sun Sep 22 18:28:57 PDT 2047
+Certificate fingerprints:
+         SHA1: 67:25:62:FE:33:8E:FB:36:3B:DF:D2:AB:62:00:A1:65:C9:07:3F:28
+         SHA256: 04:1F:E1:F5:EB:E9:98:91:88:68:95:1A:8B:2A:D5:09:A7:80:58:59:25:4B:0A:54:4B:DB:FB:42:0B:1C:26:59
+Signature algorithm name: SHA1withRSA (weak)
+Subject Public Key Algorithm: 1024-bit RSA key (weak)
+Version: 1
+
+Warning:
+The certificate uses the SHA1withRSA signature algorithm which is considered a security risk. This algorithm will be disabled in a future update.
+The certificate uses a 1024-bit RSA key which is considered a security risk. This key size will be disabled in a future update.
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore /Users/stevepodell/.android/debug.keystore -destkeystore /Users/stevepodell/.android/debug.keystore -deststoretype pkcs12".
+stevepodell@StevesM1Dec2021 debug % 
+stevepodell@StevesM1Dec2021 debug % keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+Alias name: androiddebugkey
+Creation date: Sep 29, 2017
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: C=US, O=Android, CN=Android Debug
+Issuer: C=US, O=Android, CN=Android Debug
+Serial number: 1
+Valid from: Fri Sep 29 18:28:57 PDT 2017 until: Sun Sep 22 18:28:57 PDT 2047
+Certificate fingerprints:
+         SHA1: 67:25:62:FE:33:8E:FB:36:3B:DF:D2:AB:62:00:A1:65:C9:07:3F:28
+         SHA256: 04:1F:E1:F5:EB:E9:98:91:88:68:95:1A:8B:2A:D5:09:A7:80:58:59:25:4B:0A:54:4B:DB:FB:42:0B:1C:26:59
+Signature algorithm name: SHA1withRSA (weak)
+Subject Public Key Algorithm: 1024-bit RSA key (weak)
+Version: 1
+
+Warning:
+The certificate uses the SHA1withRSA signature algorithm which is considered a security risk. This algorithm will be disabled in a future update.
+The certificate uses a 1024-bit RSA key which is considered a security risk. This key size will be disabled in a future update.
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore /Users/stevepodell/.android/debug.keystore -destkeystore /Users/stevepodell/.android/debug.keystore -deststoretype pkcs12".
+stevepodell@StevesM1Dec2021 debug % 
 
 -->

@@ -1,5 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="2030000" id="org.wevote.cordova" ios-CFBundleVersion="2.3.0.4" version="2.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget
+        android-versionCode="2030001"
+        id="org.wevote.cordova"
+        ios-CFBundleVersion="2.3.0.7"
+        version="2.3.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
     <name>We Vote</name>
     <description>
         We Vote Cordova wrapper for the We Vote WebApp root
@@ -13,6 +20,7 @@
     <access origin="about:*" />
     <access origin="*://*.facebook.com/*" />
     <access origin="*://*.google.com/*" />
+    <access origin="*://*.googleapis.com/*" />
     <access origin="*://*.youtube.com/*" />
     <access origin="*://wevote.us/*" />
     <access origin="*://*.wevoteusa.org/*" />
@@ -33,6 +41,9 @@
     <allow-intent href="wevotetwitterscheme:" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-intent href="app://apis.google.com/*" />
+    <allow-intent href="*://*.googleapis.com/*" />
+
     <allow-intent href="*" />
     <!-- A wildcard can be used to whitelist the entire network, over HTTP and HTTPS. *NOT RECOMMENDED* -->
     <allow-navigation href="*" />
@@ -41,15 +52,21 @@
         <allow-intent href="market:*" />
         <preference name="Scheme" value="app" />
         <preference name="Hostname" value="localhost" />
-        <preference name="android-manifest/@android:versionName" value="2.2.2" />
+        <preference name="android-manifest/@android:versionName" value="2.3.0" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
-        <preference name="GradlePluginGoogleServicesVersion" value="4.2.0" />
+        <preference name="GradlePluginGoogleServicesVersion" value="4.3.13" />
         <resource-file src="res/google/google-services.json" target="app/google-services.json" />
         <allow-intent href="market:*" />
         <!-- 11/19/21:  If you get too many "E/chromium: [ERROR:tile_manager.cc(793)] WARNING: tile memory limits exceeded, some content may not draw"
                         errors, Android basically hangs.  Make sure that each splash size matches.  If you remove cordova-plugin-splashscreen, all these errors go away.
                         I think it has to do with relying on the platform to resize an ill-fitting splash screen.
                         https://cordova.apache.org/docs/en/10.x/reference/cordova-plugin-splashscreen/index.html#platform-splash-screen-image-configuration-->
+        <splash density="ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
+        <splash density="mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
+        <splash density="hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
+        <splash density="xhdpi" src="res/screen/android/screen-xhdpi-landscape.png" />
+        <splash density="xxhdpi" src="res/screen/android/screen-xxhdpi-landscape.png" />
+        <splash density="xxxhdpi" src="res/screen/android/screen-xxxhdpi-landscape.png" />
         <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
         <splash density="land-mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
         <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -72,15 +89,24 @@
             <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
         </feature>
         <!-- https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/issues/1150 -->
-        <config-file parent="/manifest" target="AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">
-            <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+<!--        Removed 8/23/22 with "GloriaTM commented on May 1" substitute approach from the issue above-->
+<!--        <config-file parent="/manifest" target="AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--            <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />-->
+<!--        </config-file>-->
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <queries>
+                <intent>
+                    <action android:name="android.intent.action.SENDTO" />
+                    <data android:scheme="mailto" />
+                </intent>
+            </queries>
         </config-file>
         <preference name="defaultBuildToolsVersion" value="30.0.3" />
         <!-- these are set in the gradle.properties set by $GRADLE_USER_HOME -->
         <!-- <preference name="android-useAndroidX" value="true" />-->
-        <!--  11/19/2021: These next two sdk variables are ignored by cordova-android-when we choose to pgrade to version 10 -->
-        <preference name="android-minSdkVersion" value="16" />
-        <preference name="android-targetSdkVersion" value="31" /> -->
+        <!--  11/19/2021: These next two sdk variables are ignored by cordova-android-when we choose to upgrade to version 10 -->
+<!--        <preference name="android-minSdkVersion" value="16" />-->
+<!--        <preference name="android-targetSdkVersion" value="31" /> &ndash;&gt;-->
 
     </platform>
     <platform name="ios">
@@ -105,7 +131,7 @@
         <preference name="PaginationBreakingMode" value="page" />
         <preference name="PaginationMode" value="unpaginated" />
         <preference name="StatusBarOverlaysWebView" value="true" />
-        <preference name="StatusBarStyle" value="lightcontent" />
+        <preference name="XXXXStatusBarStyle" value="darkcontent" />
         <preference name="SplashScreen" value="screen" />
         <preference name="SplashScreenDelay" value="3000" />
         <preference name="AutoHideSplashScreen" value="false" />
