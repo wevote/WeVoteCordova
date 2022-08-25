@@ -178,7 +178,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
      Note: November 18, 2021:  Don't use latest for android for now, so we use version 9 instead of version 10
 
      ```
-     cordova platform add ios@latest android
+     cordova platform add ios android
      ```
      Which runs in the terminal like this...
      ```
@@ -215,7 +215,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
      Installing "cordova-support-google-services" for ios
      Installing "cordova.plugins.diagnostic" for ios
      Dependent plugin "es6-promise-plugin" already installed on ios.
-     Using cordova-fetch for cordova-android@latest
+     Using cordova-fetch for cordova-android
      Adding android project...
      Creating Cordova project for the Android platform:
              Path: platforms/android
@@ -919,7 +919,7 @@ And it should show up running in a container on the desktop (like a native app, 
 
 ### Maybe you have to do this again (try running the app first) 
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platforms remove ios android
-stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platform add ios@latest android@latest
+stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platform add ios android
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % node buildSymLinks /Users/stevepodellsilicon/WebstormProjects/WebApp/build
 
 ## Insufficient Storage warning on Android Simulator
