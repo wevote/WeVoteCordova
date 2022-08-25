@@ -45,7 +45,6 @@
     <allow-intent href="*://*.googleapis.com/*" />
 
     <allow-intent href="*" />
-    <!-- A wildcard can be used to whitelist the entire network, over HTTP and HTTPS. *NOT RECOMMENDED* -->
     <allow-navigation href="*" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
     <platform name="android">
@@ -55,12 +54,9 @@
         <preference name="android-manifest/@android:versionName" value="2.3.0" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="GradlePluginGoogleServicesVersion" value="4.3.13" />
+        <preference name="GradleVersion" value="7.2.2" />
         <resource-file src="res/google/google-services.json" target="app/google-services.json" />
         <allow-intent href="market:*" />
-        <!-- 11/19/21:  If you get too many "E/chromium: [ERROR:tile_manager.cc(793)] WARNING: tile memory limits exceeded, some content may not draw"
-                        errors, Android basically hangs.  Make sure that each splash size matches.  If you remove cordova-plugin-splashscreen, all these errors go away.
-                        I think it has to do with relying on the platform to resize an ill-fitting splash screen.
-                        https://cordova.apache.org/docs/en/10.x/reference/cordova-plugin-splashscreen/index.html#platform-splash-screen-image-configuration-->
         <splash density="ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
         <splash density="mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
         <splash density="hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -88,11 +84,6 @@
         <feature name="SocialSharing">
             <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
         </feature>
-        <!-- https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/issues/1150 -->
-<!--        Removed 8/23/22 with "GloriaTM commented on May 1" substitute approach from the issue above-->
-<!--        <config-file parent="/manifest" target="AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">-->
-<!--            <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />-->
-<!--        </config-file>-->
         <config-file parent="/manifest" target="AndroidManifest.xml">
             <queries>
                 <intent>
@@ -102,12 +93,6 @@
             </queries>
         </config-file>
         <preference name="defaultBuildToolsVersion" value="30.0.3" />
-        <!-- these are set in the gradle.properties set by $GRADLE_USER_HOME -->
-        <!-- <preference name="android-useAndroidX" value="true" />-->
-        <!--  11/19/2021: These next two sdk variables are ignored by cordova-android-when we choose to upgrade to version 10 -->
-<!--        <preference name="android-minSdkVersion" value="16" />-->
-<!--        <preference name="android-targetSdkVersion" value="31" /> &ndash;&gt;-->
-
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -130,12 +115,13 @@
         <preference name="PageLength" value="0" />
         <preference name="PaginationBreakingMode" value="page" />
         <preference name="PaginationMode" value="unpaginated" />
-        <preference name="StatusBarOverlaysWebView" value="true" />
-        <preference name="XXXXStatusBarStyle" value="darkcontent" />
         <preference name="SplashScreen" value="screen" />
         <preference name="SplashScreenDelay" value="3000" />
         <preference name="AutoHideSplashScreen" value="false" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+        <config-file parent="UIStatusBarStyle" platform="ios" target="*-Info.plist">
+            <string>Dark Content</string>
+        </config-file>
         <config-file parent="FacebookAutoLogAppEventsEnabled" target="*-Info.plist">
             <false />
         </config-file>

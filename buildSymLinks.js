@@ -164,8 +164,39 @@ const updateCordovaLibBuildGradle = () => {
       newGradle.forEach((txt) => {
         fs.writeSync(buildGradle, `${txt}\n`);
       });
-      console.log(`updateCordovaLibBuildGradle hardcoded some android versions in  ${originalFile}`);
-      updateAppBuildGradle();
+    });
+  });
+};
+
+// /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/cdv-gradle-config.json
+// This should be solved in a upcoming version of cordova-android with <preference name="GradleVersion" value="7.2.2" />
+const updateCdvGradleConfig = () => {
+  const originalFile = './platforms/android/cdv-gradle-config.json';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newGradle = [];
+    rl.on('line', (line) => {
+      if (line.includes('AGP_VERSION')) {
+        newGradle.push('  "AGP_VERSION": "7.2.2",');
+        console.log('hardcoding::: AGP_VERSION ::: to 7.2.2 in android/cdv-gradle-config.json');
+      } else if (line.includes('MIN_SDK_VERSION')) {
+        newGradle.push('  "MIN_SDK_VERSION": 16,');
+        console.log('hardcoding::: MIN_SDK_VERSION ::: to 16 in android/cdv-gradle-config.json');
+      } else {
+        newGradle.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const buildGradle = fs.openSync(originalFile, 'w');
+
+      newGradle.forEach((txt) => {
+        fs.writeSync(buildGradle, `${txt}\n`);
+      });
     });
   });
 };
@@ -315,6 +346,7 @@ setTimeout( () => {
   //   err => console.log(err ? err : 'cp android google-services.json successful'));
 
   updateGradleProperties();
+  updateCdvGradleConfig();
   updateMainAndroidManifest();
 
   fs.readdir(iosDir, function(err, items) {
