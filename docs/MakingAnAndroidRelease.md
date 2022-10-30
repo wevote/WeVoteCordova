@@ -9,46 +9,58 @@
     for android testing in a year or so.  2021:  I found a very nice current model Samsung Galaxy A11 on Amazon for $69, it comes configured for Tracfone, but 
     there is no need to activate its cell services, and it works fine as a WIFI only device.
 
-2. Bump the android release version number in ```platforms/android/app/src/main/AndroidManifest.xml```
+2. Bump the android release version number in `config.xml`
 
-   On the line that says something like...
-   
-   ```<manifest android:hardwareAccelerated="true" android:versionCode="100001" android:versionName="1.0.3" package="org.wevote.cordova" xmlns:android="http://schemas.android.com/apk/res/android">```
-   
-   Increment the `android:versionCode` by one, and update the `android:versionName` as desired (this usually should be the same
-    as the new iOS release name that we are releasing at the same time).
+   The beginning of the config.xlm file will look something like this.
+   ```
+    <widget
+      android-versionCode="2030104"
+      id="org.wevote.cordova"
+      ios-CFBundleVersion="2.3.1.7"
+      version="2.3.1"
+   ```
+   The version number is the release version and is shared by the iOS and Android release, if you need to add a point release 
+   (like 2.3.2 for this examole) increase the version line, no need to change the `ios-CFBundleVersion` for an Android release. 
+   Most importantly change the `android-versionCode` -- No decimal points are allowed, so leave zeros to fill the spaces, 2.3.1 bundle 4 becomes 2030104.
 
-3. Make sure your changes are in a pull request against the WeVoteCordova project, and ideally merged!
+3. Then at the command line type
+    ```
+    cordova platform remove ios android
+    cordova platform add ios android
+    node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
+   ```
+   This seems like a bit of overkill, but only takes a minute, and gets those new version numbers you created into all the generated Android intermediate files.
 
-4. Generate a signed "Android App Bundle" an AAB file (a file that contains the entire app, with duplicate code removed).  Bundles are about half the
-size of the prior packaging output file (the APK).  AAB files are required for releases to the Google Play Store.
+4. Make sure your changes are in a pull request against the WeVoteCordova project, and ideally merged!
+
+5. Generate a signed "Android App Bundle" an AAB file (a file that contains the entire app, with duplicate code removed).  Bundles are about half the
+size of the prior packaging output file (the APK).  AAB files are preferred for releases to the Google Play Store.  Sometimes ABB files error out, and can't be built without a big exploratory effort, it is perfectly ok to build a signed APk instead, and Google Play will accept them.
 ![ScreenShot](images/AndroidReleaseGenerateSignedBundle.png)
 
-5. Get the signing certificate (AndroidKeyStore file) and access to the WeVote Android developer account from Dale McGrew.  On my machine it is stored here:
+6. Get the signing certificate (AndroidKeyStore file) and access to the WeVote Android developer account from Dale McGrew.  On my machine it is stored here:
 ![ScreenShot](images/AndroidKeyStore.png)
 
-6. Make sure your build Variants are set to release
+7. Make sure your build Variants are set to release
 ![ScreenShot](images/ReleaseVariants.png)
 
-7. Generate a Signed Bundle (aab)
+8. Generate a Signed Bundle (aab)
 ![ScreenShot](images/GenerateAbb.png)
 
-8. After the signing and building, a pop-up will appear that allows you to locate the `app-release.aab` file (the bundle).
+9. After the signing and building, a pop-up will appear that allows you to locate the `app-release.aab` file (the bundle).
 ![ScreenShot](images/AndroidReleaseLocation.png) 
   If that pop-up disappears before you can "locate" the build, you can rebuild the app, and watch more carefully for the appearance pop-up.
 ![ScreenShot](images/LocationOfAAB.png)
    My app ended up at `/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/release`
-9. Rename the file to the version code you specified in `<widget android-versionCode="2020001"` (to make it easier to track different builds in the Google Play Console.)
-10. Navigate to the [Google Play Console](https://play.google.com/apps/publish/?account=5667543967745776856#AppListPlace), 
+11. Navigate to the [Google Play Console](https://play.google.com/apps/publish/?account=5667543967745776856#AppListPlace), 
 and login
 ![ScreenShot](images/AndroidReleasePlayGoogleCom.png)
     
      Drag the AAB file to the browser "BROWSE FILES" pane on the https://play.google.com/apps/publish/  "Google Play", "App Releases" tab, which uploads the file to Google.
 
-11. Finally, update any marketing documentation on https://play.google.com/apps/publish/ and type in a brief release note
+12. Finally, update any marketing documentation on https://play.google.com/apps/publish/ and type in a brief release note
 in the English section of the "What's new in this release?" pane.
 
-12. Possible new step, August 2022:Inside the fence our outsi
+13. Possible new step, August 2022:
      1. cd to the directory that contains the apk
      2. 'cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/build/outputs/apk/debug'
      3. run  `stevepodell@StevesM1Dec2021 debug % keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android`
