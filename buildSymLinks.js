@@ -3,6 +3,11 @@
 Debugging this node program
 node inspect buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
 */
+/*
+Example program that adds to the plist
+https://github.com/MaximBelov/cordova-plugin-fbsdk/blob/master/scripts/ios/after_prepare.js
+*/
+
 /*jshint esversion: 6 */
 /*jslint node: true */
 /*global process, __dirname */
@@ -246,6 +251,115 @@ const updateAppBuildGradle = () => {
   });
 };
 
+const updateXcodeProj = () => {
+  const originalFile = './platforms/ios/We Vote.xcodeproj/project.pbxproj';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newProjectPbxproj = [];
+    let conf = 'Debug';
+    rl.on('line', (line) => {
+      if (line.includes('PRODUCT_NAME = "$(TARGET_NAME)";')) {
+        newProjectPbxproj.push(line);
+        newProjectPbxproj.push("\t\t\t\tSWIFT_VERSION = 4.2;");
+        console.log('hardcoding::: SWIFT_VERSION (' + conf + ')::: to 4.2 in We Vote.xcodeproj/project.pbxproj ');
+        conf = 'Release';
+      } else {
+        newProjectPbxproj.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const buildXproj = fs.openSync(originalFile, 'w');
+
+      newProjectPbxproj.forEach((txt) => {
+        // console.log(txt);
+        fs.writeSync(buildXproj, `${txt}\n`);
+      });
+      console.log(`updateXcodeProj hardcoded iOS Swift version in ${originalFile}`);
+    });
+  });
+};
+
+const updateXcodePlist = () => {
+  const originalFile = './platforms/ios/We Vote/We Vote-Info.plist';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newWeVoteInfoPlist = [];
+    let deleteNextLine = false;
+    rl.on('line', (line) => {
+      if (deleteNextLine) {
+        // Do not push the line, ie delete it
+        console.log('deleting::: "' + line.trim() + '" that followed the previous deleted line in We Vote/We Vote-Info.plist');
+        deleteNextLine = false;
+      } else if (line.includes('<key>NSMainNibFile</key>')) {
+        // Do not push the line, ie delete it
+        deleteNextLine = true;
+        console.log('deleting::: <key>NSMainNibFile</key> in We Vote/We Vote-Info.plist');
+      } else if (line.includes('<key>NSMainNibFile~ipad</key>')) {
+        // Do not push the line, ie delete it
+        deleteNextLine = true;
+        console.log('deleting::: <key>NSMainNibFile</key> in We Vote/We Vote-Info.plist');
+      } else if (line.includes('FACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>')) {
+        newWeVoteInfoPlist.push(line.replace('FACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>', 'suffix</string>'));
+        console.log('hardcoding ::: spurious FACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER from cordova-plugin-fbsdk ::: targetSdkVersion ::: to "suffix" in We Vote/We Vote-Info.plist');
+      } else if (line.includes('OTHER_APP_SCHEMES_PLACEHOLDER</string>')) {
+        newWeVoteInfoPlist.push(line.replace('OTHER_APP_SCHEMES_PLACEHOLDER</string>', 'other-app-schemes-placeholder</string>'));
+        console.log('hardcoding ::: spurious OTHER_APP_SCHEMES_PLACEHOLDER from cordova-plugin-fbsdk ::: targetSdkVersion ::: to "other-app-schemes-placeholder" in We Vote/We Vote-Info.plist');
+      } else {
+        newWeVoteInfoPlist.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const buildXproj = fs.openSync(originalFile, 'w');
+
+      newWeVoteInfoPlist.forEach((txt) => {
+        // console.log(txt);
+        fs.writeSync(buildXproj, `${txt}\n`);
+      });
+      console.log(`updateXcodePlist updated ${originalFile}`);
+    });
+  });
+};
+
+const updateBuildReleaseXCConfig = () => {
+  const originalFile = './platforms/ios/cordova/build-release.xcconfig';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newBuildReleaseXcconfig = [];
+    rl.on('line', (line) => {
+      if (line.includes('iPhone Distribution')) {
+        newBuildReleaseXcconfig.push(line.replace('iPhone Distribution', 'Apple Development'));
+        console.log('updated ::: "iPhone Distribution" to "Apple Development" in  in ios/cordova/build-release.xcconfig');
+      } else {
+        newBuildReleaseXcconfig.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const buildXcconfig = fs.openSync(originalFile, 'w');
+
+      newBuildReleaseXcconfig.forEach((txt) => {
+        // console.log(txt);
+        fs.writeSync(buildXcconfig, `${txt}\n`);
+      });
+      console.log(`updateBuildReleaseXCConfig updated  ${originalFile}`);
+    });
+  });
+};
+
 
 // Inline code follows
 const myArgs = process.argv.slice(2);
@@ -322,8 +436,8 @@ if (existsSync(iosBundleMap)) {
 setTimeout( () => {
   console.log('sleep for 1');
   fs.readdir(iosDir, function(err, items) {
-    console.log(items);
- });
+    console.log(JSON.stringify(items));
+  });
   symlink(webAppPath + 'bundle.js', androidDir + 'bundle.js', err => console.log(err ? err : 'ln android bundle.js successful'));
   symlink(webAppPath + 'bundle.js', iosDir + 'bundle.js', err => console.log(err ? err : 'ln ios bundle.js successful'));
 
@@ -345,12 +459,15 @@ setTimeout( () => {
   // copyFile("res/google/google-services.json", "platforms/android/app/google-services.json",
   //   err => console.log(err ? err : 'cp android google-services.json successful'));
 
+  updateXcodePlist();
+  updateBuildReleaseXCConfig()
   updateGradleProperties();
   updateCdvGradleConfig();
   updateMainAndroidManifest();
+  updateXcodeProj();
 
   fs.readdir(iosDir, function(err, items) {
-    console.log(items);
+    console.log(JSON.stringify(items));
   });
 
 }, 10000);

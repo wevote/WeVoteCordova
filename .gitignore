@@ -29,11 +29,8 @@ staticfiles
 
 # Other #
 #########
-/geo/data/
-/**/migrations/*.py
-!/**/migrations/__init__.py
-src/js/config.js
-src/javascript/google-tag-manager.js
-src/javascript/google-analytics.js
-web_app/build/*
 yarn.lock
+
+# Cordova #
+www/css/*
+www/css/index.css

@@ -8,8 +8,8 @@ For a very simple app, you literally just drop it into Cordova and go, for more 
 changes to be made.  See [Cordova JavaScript Differences](docs/CordovaJavaScriptDifferences.md).
 
 We use a very thin Apache Cordova wrapper to encapsulate the We Vote React WebApp.  The WeVoteCordova side is so thin, that
-all it contains is Apache Cordova, some Documentation, and the iOS and Android config (and possibly a small amount of
-native code).  All of the JavaScript and React code, and the libraries that they rely on, remains in the WeVote WebApp.
+all it contains is Apache Cordova, some Cordova optional libraries, some Documentation, and the iOS and Android config (and possibly a small amount of
+native code).  All the WebApp's JavaScript and React code, and the libraries that they rely on, remains within the WeVote WebApp, which is wrapped with Cordova for iOS and Android.
 
 This Cordova App has two build targets, iOS and Android, and they each
 wrap an identical `bundle.js` that is compiled by the We Vote WebApp project.
@@ -35,11 +35,6 @@ and get it to start up at least once, then build it for Cordova with `buildCordo
 
 If you can't find a file called `WebApp/build/bundle.js` on your machine, don't proceed
 until you can find it.
-
-[comment]: <> node-sass has been removed from WebApp and Campaigns which makes things much simpler, no binary dependencies with OS version differences
-[comment]: <> (Note July 2020:  It is **so much better** if you are using 13.x node.  The latest 14.x node has a minimum version)
-[comment]: <> (dependency with node-sass, and there are other unpredictable issues that crop up that occasionally prevent)
-[comment]: <> (the app from loading.)
 
 ## Directories
 
@@ -947,6 +942,20 @@ This happens too often, here are some steps that usually resolve it.
 **[Update the icons and splashscreens with new artwork](res/screen/ios)**
 
 <!--
+Notes 12/1/22:
+Switched from cordova-plugin-facebook-connect to a fork called ordova-plugin-fbsdk for support for latest FBSDK versions
+cordova plugin remove cordova-plugin-facebook-connect
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova plugin add cordova-plugin-fbsdk --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteCordova" --variable CLIENT_TOKEN="503c231a732b0372e57b3fbddeeaf2c0" 
+Plugin "cordova-plugin-fbsdk" already installed on ios.
+Adding cordova-plugin-fbsdk to package.json
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % 
+
+General Identity
+
+fb431082375696800%3A%2F%2Fauthorize%2F
+
+
+
 Notes 7/27/20:
 cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --variable URL_SCHEME=wevotetwitterscheme --save
 // nono cordova plugin add cordova-plugin-wkwebview-engine --save
