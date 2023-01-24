@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="2030104"
+        android-versionCode="2030200"
         id="org.wevote.cordova"
-        ios-CFBundleVersion="2.3.1.7"
-        version="2.3.1"
+        ios-CFBundleVersion="2.3.2.2"
+        version="2.3.2"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -99,6 +99,7 @@
         <allow-intent href="itms-apps:*" />
         <access origin="*" subdomains="true" />
         <resource-file src="res/google/GoogleService-Info.plist" />
+        <preference name="UseSwiftLanguageVersion" value="5" />
         <preference name="scheme" value="app" />
         <preference name="hostname" value="localhost" />
         <preference name="FadeSplashScreenDuration" value="0" />
@@ -119,6 +120,8 @@
         <preference name="SplashScreenDelay" value="3000" />
         <preference name="AutoHideSplashScreen" value="false" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+        <preference name="FACEBOOK_URL_SCHEME_SUFFIX" default="suffix" />
+        <preference name="orientation" value="portrait" />
         <config-file parent="UIStatusBarStyle" platform="ios" target="*-Info.plist">
             <string>Dark Content</string>
         </config-file>

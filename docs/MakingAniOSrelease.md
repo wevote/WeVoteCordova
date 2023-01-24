@@ -73,6 +73,7 @@ up-to-date WebApp develop.  Compile the WebApp with `npm run buildCordova` to bu
    * Make sure your "Build Settings" "Signing" "Code Signing Identity" is set to "Apple Development"
      * ![ScreenShot](images/CodeSigningIdentity.png)
    * Clean the build dir, to guarantee all the config is applied, in Xcode via Product > Clean Build Folder
+   * Your iPhone or iPad must be plugged in at this point via a cable, and must be specified on the top line (a simulator can not be selected or the Archive menu item will be disabled)
    * Then build the release candidate, in Xcode via Product > Archive (Takes a few minutes)
      * Then press Distribute App (if the build succeeded)
      * Select "App Store Connect" and press Next
