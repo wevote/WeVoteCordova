@@ -132,6 +132,10 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
 
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff %
     ```
+    **Note August 2023:  cordova-plugin-screen-orientation needs a [temporary patch](https://github.com/apache/cordova-plugin-screen-orientation/pull/116) from cordova-plugin-screen-orientation
+    which is built into the package.json, but should be evaluated and removed as sooon as there is a released fix that supports
+    this plugin on iOS 16.4 and newer.**
+
 
 7. Run the `copyFromSaveoff` script to copy all the source controlled files from `WeVoteCordovaSaveoff` to `WeVoteCordova `
     ```
@@ -171,9 +175,10 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
 
 9. Add the Cordova iOS and Android platforms directories
      Note: November 18, 2021:  Don't use latest for android for now, so we use version 9 instead of version 10
+     Note: August 2023, need to use ios6.3 or higher to have the app be inspectable with Safari
 
      ```
-     cordova platform add ios android
+     cordova platform add ios@6.3 android
      ```
      Which runs in the terminal like this...
      ```
@@ -811,10 +816,10 @@ plugins directories:  `WeVoteCordova/platforms/ios/WeVoteCordova/Plugins `and `W
  can add it into the `WeVoteCordova/config.xml` manually, or just not worry about it and have
  the code version picked up from `package.json`
 
-Running ...
- 
+Running ...  (Note: August 2023: Need to use a minimum of ios 6.3 see https://github.com/apache/cordova-ios/issues/1301)
+
     cordova platform remove ios android
-    cordova platform add ios android
+    cordova platform add ios@6.3  android
   
 will remove everything from the platforms directory, and rebuild all the config files in the platforms directory, but will
 also remove all the manual configuration and symlinks that you add.  This is a powerful last resort if all else is going wrong.
