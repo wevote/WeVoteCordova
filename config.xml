@@ -2,6 +2,7 @@
 <widget
         android-versionCode="2030200"
         id="org.wevote.cordova"
+        namespace="org.wevote.cordova"
         ios-CFBundleVersion="2.3.2.2"
         version="2.3.2"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -51,10 +52,17 @@
         <allow-intent href="market:*" />
         <preference name="Scheme" value="app" />
         <preference name="Hostname" value="localhost" />
-        <preference name="android-manifest/@android:versionName" value="2.3.0" />
+        <preference name="AndroidGradlePluginVersion" value="8.1.0" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
-        <preference name="GradlePluginGoogleServicesVersion" value="4.3.13" />
-        <preference name="GradleVersion" value="7.2.2" />
+        <preference name="GradlePluginGoogleServicesVersion" value="4.3.15" />
+        <preference name="GradleVersion" value="8.2.1" />
+
+        <preference name="android-buildToolsVersion" value="34.0.0" />
+        <preference name="defaultBuildToolsVersion" value="34.0.0" />
+        <preference name="android-compileSdkVersion" value="33" />
+        <preference name="android-manifest/@android:versionName" value="2.3.0" />
+        <preference name="android-minSdkVersion" value="31" />
+        <preference name="cdvCompileSdkVersion" value="16.0.2.7.1" />
         <resource-file src="res/google/google-services.json" target="app/google-services.json" />
         <allow-intent href="market:*" />
         <splash density="ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
@@ -92,7 +100,6 @@
                 </intent>
             </queries>
         </config-file>
-        <preference name="defaultBuildToolsVersion" value="30.0.3" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

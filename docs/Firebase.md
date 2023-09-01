@@ -1,4 +1,58 @@
-Sept 2, 2020
+## August 11, 2023
+```
+Removed from package.json:
+    "cordova-plugin-firebase-analytics": "^6.1.0",
+    "cordova-plugin-firebase-messaging": "^6.1.0",
+    
+Removed from package.json at about line 45:
+     "cordova-plugin-firebase-messaging": {
+        "ANDROID_FIREBASE_MESSAGING_VERSION": "21.0.0",
+        "ANDROIDX_CORE_VERSION": "1.3.+",
+        "IOS_FIREBASE_MESSAGING_VERSION": "~> 6.31.0",
+        "IOS_FIREBASE_POD_VERSION": "~> 8.8.0"
+      },
+      "cordova-plugin-firebase-analytics": {
+        "IOS_FIREBASE_POD_VERSION": "~> 8.8.0",
+        "ANDROID_FIREBASE_CRASHLYTICS_VERSION": "19.0.+",
+        "ANALYTICS_COLLECTION_ENABLED": "true",
+        "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true"
+      },
+
+To Avoid:
+
+2023-08-11 14:05:26.673 6227-6273/org.wevote.cordova E/FirebaseInstanceId: Failed to get FIS auth token
+    java.util.concurrent.ExecutionException: com.google.firebase.installations.FirebaseInstallationsException: Firebase Installations Service is unavailable. Please try again later.
+        at com.google.android.gms.tasks.Tasks.zzb(Unknown Source:61)
+        at com.google.android.gms.tasks.Tasks.await(Unknown Source:23)
+        at com.google.firebase.iid.GmsRpc.setDefaultAttributesToBundle(com.google.firebase:firebase-iid@@21.0.0:55)
+        at com.google.firebase.iid.GmsRpc.startRpc(com.google.firebase:firebase-iid@@21.0.0:37)
+        at com.google.firebase.iid.GmsRpc.getToken(com.google.firebase:firebase-iid@@21.0.0:13)
+        at com.google.firebase.iid.FirebaseInstanceId.lambda$getInstanceId$1$FirebaseInstanceId(com.google.firebase:firebase-iid@@21.0.0:158)
+        at com.google.firebase.iid.FirebaseInstanceId$$Lambda$3.start(Unknown Source:8)
+        at com.google.firebase.iid.RequestDeduplicator.getOrStartGetTokenRequest(com.google.firebase:firebase-iid@@21.0.0:14)
+        at com.google.firebase.iid.FirebaseInstanceId.lambda$getInstanceId$2$FirebaseInstanceId(com.google.firebase:firebase-iid@@21.0.0:157)
+        at com.google.firebase.iid.FirebaseInstanceId$$Lambda$0.then(Unknown Source:6)
+        at com.google.android.gms.tasks.zzf.run(Unknown Source:2)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+        at com.google.android.gms.common.util.concurrent.zza.run(Unknown Source:6)
+        at java.lang.Thread.run(Thread.java:1012)
+     Caused by: com.google.firebase.installations.FirebaseInstallationsException: Firebase Installations Service is unavailable. Please try again later.
+        at com.google.firebase.installations.remote.FirebaseInstallationServiceClient.createFirebaseInstallation(FirebaseInstallationServiceClient.java:183)
+        at com.google.firebase.installations.FirebaseInstallations.registerFidWithServer(FirebaseInstallations.java:489)
+        at com.google.firebase.installations.FirebaseInstallations.doNetworkCallIfNecessary(FirebaseInstallations.java:360)
+        at com.google.firebase.installations.FirebaseInstallations.lambda$doRegistrationOrRefresh$2(FirebaseInstallations.java:350)
+        at com.google.firebase.installations.FirebaseInstallations$$Lambda$4.run(Unknown Source:4)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+        at java.lang.Thread.run(Thread.java:1012) 
+2023-08-11 14:05:26.687 6227-6272/org.wevote.cordova E/FirebaseInstanceId: Topic sync or token retrieval failed on hard failure exceptions: AUTHENTICATION_FAILED. Won't retry the operation.
+```
+Answer 2: https://stackoverflow.com/questions/70754272/repost-failed-to-get-fis-auth-token
+
+
+
+## Sept 2, 2020
 
 1 yr old starting up and app for android video, using semi-abandoned plugins
 https://www.youtube.com/watch?v=AD_I0Z4SRaA
