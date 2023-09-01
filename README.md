@@ -393,6 +393,12 @@ but crashes in a JQuery regex, and logs `SyntaxError: Invalid regular expression
     
      The next step is to connect your new WeVoteCordova directory to Git.
 
+## While repeatedly compiling with buildCordova during development
+This comand only relinks the newly compiled bundle.js and bundle.js.map, and completes quickly
+
+     node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build bundleOnly
+
+
 ## Git setup
 1. On github.com, fork WeVoteCordova to your account. 
 
@@ -506,7 +512,7 @@ At this point you can use Git to create branches, use Stash, and use git pull an
    drwxr-xr-x  12 stevepodell  staff    384 Jun 25 14:01 plugins
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
    ```
-   If you don't see the symlinks, they you can run buildSymLinks again.
+   If you don't see the symlinks, you can run buildSymLinks again.
 
 **You are now done with the Android specific setup.**
 
@@ -623,36 +629,53 @@ It's free!  It is based on Intellij, so if you have used PyCharm, WebStorm, Ruby
 
 [https://developer.android.com/studio/index.html](https://developer.android.com/studio/index.html)
 
+August 2023:  Needed to update to the latest IDE "Giraffe"
+then `brew upgrade gradle` from 4.2 to 8.2.1
+then in Settings > Build, Execution, Deployment > Build Tools > Gradle 
+in the Use Gradle From (Specified Location) I had to use /opt/homebrew/Cellar/gradle/8.2.1/libexec
+The key was /opt/homebrew/Cellar/gradle/8.2.1/libexec NOT /opt/homebrew/Cellar/gradle/8.2.1/bin
+
+
 ### Running Android Cordova for the first time
 
-1. October 2021: Needed to add a line for the `sdk.dir` variable in `gradle.properties`
-   In the file `/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/gradle.properties`
-   add the final line as shown below.
-   ``` 
-   org.gradle.jvmargs=-Xmx2048m
-   android.useAndroidX=true
-   android.enableJetifier=true
-   sdk.dir=/Users/stevepodell/Library/Android/sdk
-   ```
-2. Then In Android Studio run File/'Sync Project With Gradle Files'
-3. I needed to upgrade to the latest Java JDK @ https://www.oracle.com/java/technologies/downloads/#jdk17-mac
+1. In Android Studio run File/'Sync Project With Gradle Files'
+3. I needed to upgrade to the latest Java JDK which I got from Amazon, since Oracle wanted too much info, https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html
 4. Then in Android Studio at Preferences | Build, Execution, Deployment | Build Tools | Gradle
    Change the Gradle JDK to version 17 and Apply
-5. On November 16, 2021 I had to set the gradle directory to a place in the libary path
+5. On November 16, 2021 I had to set the gradle directory to a place in the library path
 
 ![ScreenShot](docs/images/GradleSettingsNov2021.png)
 
-
-6. stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % vi ~/.bash_profile                                                 
-   stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % vi ~/.bash_profile
+6. Confirm the relevant paths
+```
+stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % vi ~/.bash_profile
+```
+```
+export ANDROID_HOME=/Users/stevepodell/Library/Android/sdk
+export ANDROID_SDK_ROOT=/Users/stevepodell/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.0
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator/
+export PATH="/usr/local/opt/node@6/bin:$PATH"
+export GRADLE_USER_HOME=/opt/homebrew/bin/gradle
+export GRADLE_HOME=/opt/homebrew/bin/gradle
+```
+7. If you made any changes, source the edited bash_profile (Can't hurt in any case)
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % source ~/.bash_profile
-   stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova %
-7. 2669  vim .zshrc
-   2670  source .zshrc
-   2671  env
-
-
-
+7. Some changes (JAVA_HOME) might be in the z shell config
+   ```
+   stevepodell@StevesM1Dec2021 android % vim ~/.zshrc
+   ```
+   ```
+   export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home
+   ```
+   ```
+   stevepodell@StevesM1Dec2021 android % source ~/.zshrc
+   ```
+8. You may need to use the SDK installer in AndroidStudio to download/update to the latest SDK (Can take 10 minutes)
 
 1. Download and install [Android Studio](https://developer.android.com/studio)
 

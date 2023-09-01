@@ -1,9 +1,10 @@
-//Program to build the symlinks from WeVoteCordova www directories to the the WebApp build directory
+//Program to build the symlinks from WeVoteCordova www directories to the WebApp build directory
 /*
-Debugging this node program
+
+To debug this node program ...
 node inspect buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
-*/
-/*
+
+Note:
 Example program that adds to the plist
 https://github.com/MaximBelov/cordova-plugin-fbsdk/blob/master/scripts/ios/after_prepare.js
 */
@@ -13,86 +14,20 @@ https://github.com/MaximBelov/cordova-plugin-fbsdk/blob/master/scripts/ios/after
 /*global process, __dirname */
 const path = require('path');
 const fs = require('fs');
-const rimraf = require('rimraf');
+const { rimrafSync } = require('rimraf');
 const readline = require('readline');
 
-// TODO: November 18, 2021:  This has some code for cordova-android 9.1 (Which we need to use today) and cordova-android 10 (which was not ready for prime time)
 
-const updateGradleProperties = () => {
-  const originalFile = './platforms/android/gradle.properties';
-  const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
-  fs.rename(originalFile, saveOffFile, () => {
-    const rl = readline.createInterface({
-      input: fs.createReadStream(saveOffFile),
-      crlfDelay: Infinity,
-    });
-    const newGradle = [];
-    rl.on('line', (line) => {
-      if (line.startsWith('android.useAndroidX')) {
-        console.log('adding::: android.useAndroidX=true ::: in android/gradle.properties');
-        newGradle.push('android.useAndroidX=true');
-      } else if (line.startsWith('android.enableJetifier')) {
-        console.log('adding::: android.enableJetifier=true ::: in android/gradle.properties');
-        newGradle.push('android.enableJetifier=true');
-      } else if (line.startsWith('cdvMinSdkVersion=')) {
-        cdvMinSdkVersion=15
-        console.log('updating::: cdvMinSdkVersion ::: to16 in  android/gradle.properties');
-        newGradle.push('cdvMinSdkVersion=16');
-      } else {
-        newGradle.push(line);
-      }
-    });
-    rl.on('close', () => {
-      const gradleProperties = fs.openSync(originalFile, 'w');
-
-      newGradle.forEach((txt) => {
-        fs.writeSync(gradleProperties, `${txt}\n`);
-      });
-      console.log(`updateGradleProperties changed settings in ${originalFile}`);
-      updateAndroidBuildGradle();
-
-    });
+function writeCordovaLibGradleWrapperProperties () {
+  // Needed for Gradle 8
+  const path = './platforms/android/gradle.wrapper.properties';
+  const newValue='distributionUrl=https\\://services.gradle.org/distributions/gradle-8.2.1-all.zip\n';
+  fs.writeFile(path, newValue, 'utf-8', () => {
+    console.log('Created file: ', path);
   });
-};
 
-const updateAndroidBuildGradle = () => {
-  const originalFile = './platforms/android/build.gradle';
-  const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
-  fs.rename(originalFile, saveOffFile, () => {
-    const rl = readline.createInterface({
-      input: fs.createReadStream(saveOffFile),
-      crlfDelay: Infinity,
-    });
-    const newGradle = [];
-    rl.on('line', (line) => {
-      if (line.startsWith('        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin')) {
-        newGradle.push(line);
-        console.log('adding::: classpath \'com.google.gms:google-services:4.3.10\' ::: to android/build.gradle');
-        newGradle.push('        classpath \'com.google.gms:google-services:4.3.10\'');
-      } else if (line.includes('project.ext')) {
-        newGradle.push(line);
-        console.log('adding::: androidXCore = "1.6.0" ::: (force a downgrade from 1.7.0) to android/build.gradle');  // https://stackoverflow.com/questions/69021225/resource-linking-fails-on-lstar#answer-69024140
-        newGradle.push('      androidXCore = "1.6.0"');
-      } else if (line.includes('defaultCompileSdkVersion=')) {
-        console.log('changing ::: defaultCompileSdkVersion from 29 ::: to 31 to android/build.gradle');
-        newGradle.push(line.replace('=29', '=31'));
-      } else {
-        newGradle.push(line);
-      }
-    });
-    rl.on('close', () => {
-      const buildGradle = fs.openSync(originalFile, 'w');
+}
 
-      newGradle.forEach((txt) => {
-        fs.writeSync(buildGradle, `${txt}\n`);
-      });
-      console.log(`updateAndroidBuildGradle added a classpath in ${originalFile}`);
-      updateCordovaLibBuildGradle();
-    });
-  });
-};
 
 const updateMainAndroidManifest = () => {
   // /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/AndroidManifest.xml
@@ -136,72 +71,6 @@ const updateMainAndroidManifest = () => {
         fs.writeSync(buildGradle, `${txt}\n`);
       });
       console.log(`updateAndroidBuildGradle added a classpath in ${originalFile}`);
-      updateCordovaLibBuildGradle();
-    });
-  });
-};
-
-// /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/CordovaLib/build.gradle
-const updateCordovaLibBuildGradle = () => {
-  const originalFile = './platforms/android/CordovaLib/build.gradle';
-  const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
-  fs.rename(originalFile, saveOffFile, () => {
-    const rl = readline.createInterface({
-      input: fs.createReadStream(saveOffFile),
-      crlfDelay: Infinity,
-    });
-    const newGradle = [];
-    rl.on('line', (line) => {
-      if (line.includes('compileSdkVersion cordovaConfig.SDK_VERSION')) {
-        newGradle.push(line.replace('cordovaConfig.SDK_VERSION', '31'));
-        console.log('hardcoding::: compileSdkVersion ::: to 31 in CordovaLib/src/build.gradle (Hack needed for cordova-android 10.1.1)');
-      } else if (line.includes('minSdkVersion cordovaConfig.MIN_SDK_VERSION')) {
-        newGradle.push(line.replace('cordovaConfig.MIN_SDK_VERSION', '16'));
-        console.log('hardcoding::: minSdkVersion ::: to 16 CordovaLib/src/build.gradle (Hack needed for cordova-android 10.1.1)');
-      } else {
-          newGradle.push(line);
-      }
-    });
-    rl.on('close', () => {
-      const buildGradle = fs.openSync(originalFile, 'w');
-
-      newGradle.forEach((txt) => {
-        fs.writeSync(buildGradle, `${txt}\n`);
-      });
-    });
-  });
-};
-
-// /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/cdv-gradle-config.json
-// This should be solved in a upcoming version of cordova-android with <preference name="GradleVersion" value="7.2.2" />
-const updateCdvGradleConfig = () => {
-  const originalFile = './platforms/android/cdv-gradle-config.json';
-  const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
-  fs.rename(originalFile, saveOffFile, () => {
-    const rl = readline.createInterface({
-      input: fs.createReadStream(saveOffFile),
-      crlfDelay: Infinity,
-    });
-    const newGradle = [];
-    rl.on('line', (line) => {
-      if (line.includes('AGP_VERSION')) {
-        newGradle.push('  "AGP_VERSION": "7.2.2",');
-        console.log('hardcoding::: AGP_VERSION ::: to 7.2.2 in android/cdv-gradle-config.json');
-      } else if (line.includes('MIN_SDK_VERSION')) {
-        newGradle.push('  "MIN_SDK_VERSION": 16,');
-        console.log('hardcoding::: MIN_SDK_VERSION ::: to 16 in android/cdv-gradle-config.json');
-      } else {
-        newGradle.push(line);
-      }
-    });
-    rl.on('close', () => {
-      const buildGradle = fs.openSync(originalFile, 'w');
-
-      newGradle.forEach((txt) => {
-        fs.writeSync(buildGradle, `${txt}\n`);
-      });
     });
   });
 };
@@ -224,11 +93,11 @@ const updateAppBuildGradle = () => {
         newGradle.push(line.replace('cordovaConfig.SDK_VERSION', '31'));
         console.log('hardcoding::: targetSdkVersion ::: to 31 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
       } else if (line.includes('maxSdkVersion cordovaConfig.MAX_SDK_VERSION')) {
-        newGradle.push(line.replace('cordovaConfig.MAX_SDK_VERSION', '33'));
-        console.log('hardcoding::: maxSdkVersion ::: to 33 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
+        newGradle.push(line.replace('cordovaConfig.MAX_SDK_VERSION', '34'));
+        console.log('hardcoding::: maxSdkVersion ::: to 34 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
       } else if (line.includes('compileSdkVersion cordovaConfig.SDK_VERSION')) {
-        newGradle.push(line.replace('cordovaConfig.SDK_VERSION', '31'));
-        console.log('hardcoding::: compileSdkVersion ::: to 31 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
+        newGradle.push(line.replace('cordovaConfig.SDK_VERSION', '34'));
+        console.log('hardcoding::: compileSdkVersion ::: to 34 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
       } else if (line.includes('String gradlePluginGoogleServicesClassPath =')) {
         newGradle.push(line.replace('${cordovaConfig.GRADLE_PLUGIN_GOOGLE_SERVICES_VERSION}', '4.3.8'));
         console.log('hardcoding::: gradlePluginGoogleServicesClassPath ::: version 4.3.8 in android/app/build.gradle (Hack needed for cordova-android 10.1.1)');
@@ -330,6 +199,36 @@ const updateXcodePlist = () => {
   });
 };
 
+const updateCordovaLibBuildGradle = () => {
+  const originalFile = './platforms/android/CordovaLib/build.gradle';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newGradle = [];
+    rl.on('line', (line) => {
+      if (line.includes('assets.srcDirs =')) {
+        newGradle.push(line);
+        newGradle.push('            namespace = \'org.wevote.cordova\'');
+        console.log('adding::: namespace = "org.wevote.cordova" ::: to android/CordovaLib/build.gradle');
+      } else {
+        newGradle.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const buildGradle = fs.openSync(originalFile, 'w');
+
+      newGradle.forEach((txt) => {
+        fs.writeSync(buildGradle, `${txt}\n`);
+      });
+      console.log(`updateAndroidBuildGradle added a namespace in ${originalFile}`);
+    });
+  });
+}
+
 const updateBuildReleaseXCConfig = () => {
   const originalFile = './platforms/ios/cordova/build-release.xcconfig';
   const saveOffFile = originalFile + '.previous'
@@ -360,115 +259,229 @@ const updateBuildReleaseXCConfig = () => {
   });
 };
 
-
-// Inline code follows
-const myArgs = process.argv.slice(2);
-if ((myArgs.length === 0) || ((!myArgs[0].includes('/build')))) {
-  console.log('Need to supply a path to the WebApp build directory!  For example:');
-  console.log('  node buildSymLinks  /Users/stevepodell/WebstormProjects/WebApp/build/');
-  process.exit();
+const removeSymLink = (path) => {
+  try {
+    rimrafSync(path);
+    console.log('rmdir: ' + path);
+  } catch (e) {
+    console.log('rimrafSync error ' + e);
+  }
 }
 
-let webAppPath = myArgs[0];
-if (webAppPath.endsWith('build')) {
-  webAppPath += '/';
-}
+/*************************************************************************************************
+ * The following code is run inline when this script is loaded
+*************************************************************************************************/
+{
+  const myArgs = process.argv.slice(2);
+  if ((myArgs.length === 0) || ((!myArgs[0].includes('/build')))) {
+    console.log('Need to supply a path to the WebApp build directory!  For example:');
+    console.log('  node buildSymLinks  /Users/stevepodell/WebstormProjects/WebApp/build/');
+    process.exit();
+  }
 
-console.log('__dirname', __dirname);
+  let webAppPath = myArgs[0];
+  if (webAppPath.endsWith('build')) {
+    webAppPath += '/';
+  }
 
-if (!__dirname.endsWith('/WeVoteCordova')) {
-  console.log('buildSymLinks must be run from the weVoteCordova directory');
-  process.exit();
-}
+  let buildAll = true;
+  let bundleOnlyArg = myArgs[1] || '';
+  console.log('--------------------- bundleOnlyArg ', bundleOnlyArg);
+  if (bundleOnlyArg === 'bundleOnly') {
+    buildAll = false;
+  }
+  console.log('--------------------- buildAll ', buildAll);
+  console.log('__dirname', __dirname);
 
+  if (!__dirname.endsWith('/WeVoteCordova')) {
+    console.log('buildSymLinks must be run from the weVoteCordova directory');
+    process.exit();
+  }
 
-const { existsSync, symlink, unlinkSync } = fs;
+  const {symlink} = fs;
 
-const iosDir = path.join(__dirname, 'platforms/ios/www/');
-const androidDir = path.join(__dirname, 'platforms/android/app/src/main/assets/www/');
-const androidCss = androidDir + 'css';
-if (existsSync(androidCss)) {
-  rimraf(androidCss, () => console.log('rmdir: ' + androidCss));
-}
-const iosCss = iosDir + 'css';
-if (existsSync(iosCss)) {
-  rimraf(iosCss, () => console.log('rmdir: ' + iosCss));
-}
-const androidImg = androidDir + 'img';
-if (existsSync(androidImg)) {
-  rimraf(androidImg, () => console.log('rmdir: ' + androidImg));
-}
-const iosImg = iosDir + 'img';
-if (existsSync(iosImg)) {
-  rimraf(iosImg, () => console.log('rmdir: ' + iosImg));
-}
-const AndroidIndex = androidDir + 'index.html';
-if (existsSync(AndroidIndex)) {
-  unlinkSync(AndroidIndex);
-  console.log('unlink: android index.html');
-}
-const iosIndex = iosDir + 'index.html';
-if (existsSync(iosIndex)) {
-  unlinkSync(iosIndex);
-  console.log('unlink: ios index.html');
-}
-const androidBundle = androidDir + 'bundle.js';
-if (existsSync(androidBundle)) {
-  unlinkSync(androidBundle);
-  console.log('unlink: android bundle.js');
-}
-const androidBundleMap = androidDir + 'bundle.js.map';
-if (existsSync(androidBundleMap)) {
-  unlinkSync(androidBundleMap);
-  console.log('unlink: android bundle.js.map');
-}
-const iosBundle = iosDir + 'bundle.js';
-if (existsSync(iosBundle)) {
-  unlinkSync(iosBundle);
-  console.log('unlink: iosDir bundle.js');
-}
-const iosBundleMap = iosDir + 'bundle.js.map';
-if (existsSync(iosBundleMap)) {
-  unlinkSync(iosBundleMap);
-  console.log('unlink: iosDir bundle.js.map');
-}
+  const iosDir = path.join(__dirname, 'platforms/ios/www/');
+  const androidDir = path.join(__dirname, 'platforms/android/app/src/main/assets/www/');
+  if (buildAll) {
+    removeSymLink(androidDir + 'css');
+    removeSymLink(iosDir + 'css');
+    removeSymLink(androidDir + 'img');
+    removeSymLink(iosDir + 'img');
+    removeSymLink(androidDir + 'index.html');
+    removeSymLink(iosDir + 'index.html');
+  }
+  removeSymLink(androidDir + 'bundle.js');
+  removeSymLink(androidDir + 'bundle.js.map');
+  removeSymLink(iosDir + 'bundle.js');
+  removeSymLink(iosDir + 'bundle.js.map');
 
-setTimeout( () => {
-  console.log('sleep for 1');
-  fs.readdir(iosDir, function(err, items) {
-    console.log(JSON.stringify(items));
-  });
   symlink(webAppPath + 'bundle.js', androidDir + 'bundle.js', err => console.log(err ? err : 'ln android bundle.js successful'));
   symlink(webAppPath + 'bundle.js', iosDir + 'bundle.js', err => console.log(err ? err : 'ln ios bundle.js successful'));
 
   symlink(webAppPath + 'bundle.js.map', androidDir + 'bundle.js.map', err => console.log(err ? err : 'ln android bundle.js.map successful'));
   symlink(webAppPath + 'bundle.js.map', iosDir + 'bundle.js.map', err => console.log(err ? err : 'ln ios bundle.js.map successful'));
 
-  symlink(webAppPath + 'css', androidDir + 'css', err => console.log(err ? err : 'ln android css successful'));
-  symlink(webAppPath + 'css', iosDir + 'css', err => console.log(err ? err : 'ln ios css successful'));
+  if (buildAll) {
+    symlink(webAppPath + 'css', androidDir + 'css', err => console.log(err ? err : 'ln android css successful'));
+    symlink(webAppPath + 'css', iosDir + 'css', err => console.log(err ? err : 'ln ios css successful'));
 
-  symlink(webAppPath + 'img', androidDir + 'img', err => console.log(err ? err : 'ln android img successful'));
-  symlink(webAppPath + 'img', iosDir + 'img', err => console.log(err ? err : 'ln ios img successful'));
+    symlink(webAppPath + 'img', androidDir + 'img', err => console.log(err ? err : 'ln android img successful'));
+    symlink(webAppPath + 'img', iosDir + 'img', err => console.log(err ? err : 'ln ios img successful'));
 
-  symlink(__dirname + '/www/index.html', androidDir + 'index.html', err => console.log(err ? err : 'ln android index.html successful'));
-  symlink(__dirname + '/www/index.html', iosDir + 'index.html', err => console.log(err ? err : 'ln ios index.html successful'));
+    symlink(__dirname + '/www/index.html', androidDir + 'index.html', err => console.log(err ? err : 'ln android index.html successful'));
+    symlink(__dirname + '/www/index.html', iosDir + 'index.html', err => console.log(err ? err : 'ln ios index.html successful'));
 
-  // ln -s /Users/stevepodell/WebstormProjects/WebApp/build/bundle.js.map bundle.js.map
+    updateXcodePlist();
+    updateBuildReleaseXCConfig()
+    updateMainAndroidManifest();
+    writeCordovaLibGradleWrapperProperties();
+    updateCordovaLibBuildGradle();
+    updateXcodeProj();
+    fs.readdir(iosDir, function (err, items) {
+      console.log(JSON.stringify(items));
+    });
+  }
+}
 
-  // we now do this via config.xml, which is much better
-  // copyFile("res/google/google-services.json", "platforms/android/app/google-services.json",
-  //   err => console.log(err ? err : 'cp android google-services.json successful'));
+// // /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/CordovaLib/build.gradle
+// const updateCordovaLibBuildGradle = () => {
+//   const originalFile = './platforms/android/CordovaLib/build.gradle';
+//   const saveOffFile = originalFile + '.previous'
+//   console.log(`Processing ${originalFile}`);
+//   fs.rename(originalFile, saveOffFile, () => {
+//     const rl = readline.createInterface({
+//       input: fs.createReadStream(saveOffFile),
+//       crlfDelay: Infinity,
+//     });
+//     const newGradle = [];
+//     rl.on('line', (line) => {
+//       if (line.includes('compileSdkVersion cordovaConfig.SDK_VERSION')) {
+//         newGradle.push(line.replace('cordovaConfig.SDK_VERSION', '31'));
+//         console.log('hardcoding::: compileSdkVersion ::: to 31 in CordovaLib/src/build.gradle (Hack needed for cordova-android 10.1.1)');
+//       } else if (line.includes('minSdkVersion cordovaConfig.MIN_SDK_VERSION')) {
+//         newGradle.push(line.replace('cordovaConfig.MIN_SDK_VERSION', '16'));
+//         console.log('hardcoding::: minSdkVersion ::: to 16 CordovaLib/src/build.gradle (Hack needed for cordova-android 10.1.1)');
+//       } else {
+//           newGradle.push(line);
+//       }
+//     });
+//     rl.on('close', () => {
+//       const buildGradle = fs.openSync(originalFile, 'w');
+//
+//       newGradle.forEach((txt) => {
+//         fs.writeSync(buildGradle, `${txt}\n`);
+//       });
+//     });
+//   });
+// };
 
-  updateXcodePlist();
-  updateBuildReleaseXCConfig()
-  updateGradleProperties();
-  updateCdvGradleConfig();
-  updateMainAndroidManifest();
-  updateXcodeProj();
+// /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/cdv-gradle-config.json
+// This should be solved in an upcoming version of cordova-android with <preference name="GradleVersion" value="7.2.2" /> -- Still not there Aug 2023
+// Obsolete Aug 2023:  MIN_SDK_VERSION is now a preference ... "android-minSdkVersion" and AGP_VERSION is now "7.4.2" when we get here
+// const updateCdvGradleConfig = () => {
+//   const originalFile = './platforms/android/cdv-gradle-config.json';
+//   const saveOffFile = originalFile + '.previous'
+//   console.log(`Processing ${originalFile}`);
+//   fs.rename(originalFile, saveOffFile, () => {
+//     const rl = readline.createInterface({
+//       input: fs.createReadStream(saveOffFile),
+//       crlfDelay: Infinity,
+//     });
+//     const newGradle = [];
+//     rl.on('line', (line) => {
+//       if (line.includes('AGP_VERSION')) {
+//         newGradle.push('  "AGP_VERSION": "7.2.2",');
+//         console.log('hardcoding::: AGP_VERSION ::: to 7.2.2 in android/cdv-gradle-config.json');
+//       } else if (line.includes('MIN_SDK_VERSION')) {
+//         newGradle.push('  "MIN_SDK_VERSION": 16,');
+//         console.log('hardcoding::: MIN_SDK_VERSION ::: to 16 in android/cdv-gradle-config.json');
+//       } else {
+//         newGradle.push(line);
+//       }
+//     });
+//     rl.on('close', () => {
+//       const buildGradle = fs.openSync(originalFile, 'w');
+//
+//       newGradle.forEach((txt) => {
+//         fs.writeSync(buildGradle, `${txt}\n`);
+//       });
+//     });
+//   });
+// };
 
-  fs.readdir(iosDir, function(err, items) {
-    console.log(JSON.stringify(items));
-  });
+// November 18, 2021:  This has some code for cordova-android 9.1 (Which we need to use today) and cordova-android 10 (which was not ready for prime time)
+// August 2023: No longer needed, these changes are allready in the file when we get here
+// const updateGradleProperties = () => {
+//   const originalFile = './platforms/android/gradle.properties';
+//   const saveOffFile = originalFile + '.previous'
+//   console.log(`Processing ${originalFile}`);
+//   fs.rename(originalFile, saveOffFile, () => {
+//     const rl = readline.createInterface({
+//       input: fs.createReadStream(saveOffFile),
+//       crlfDelay: Infinity,
+//     });
+//     const newGradle = [];
+//     rl.on('line', (line) => {
+//       if (line.startsWith('android.useAndroidX')) {
+//         console.log('adding::: android.useAndroidX=true ::: in android/gradle.properties');
+//         newGradle.push('android.useAndroidX=true');
+//       } else if (line.startsWith('android.enableJetifier')) {
+//         console.log('adding::: android.enableJetifier=true ::: in android/gradle.properties');
+//         newGradle.push('android.enableJetifier=true');
+//       } else if (line.startsWith('cdvMinSdkVersion=')) {
+//         cdvMinSdkVersion=15
+//         console.log('updating::: cdvMinSdkVersion ::: to16 in  android/gradle.properties');
+//         newGradle.push('cdvMinSdkVersion=16');
+//       } else {
+//         newGradle.push(line);
+//       }
+//     });
+//     rl.on('close', () => {
+//       const gradleProperties = fs.openSync(originalFile, 'w');
+//
+//       newGradle.forEach((txt) => {
+//         fs.writeSync(gradleProperties, `${txt}\n`);
+//       });
+//       console.log(`updateGradleProperties changed settings in ${originalFile}`);
+//       updateAndroidBuildGradle();
+//
+//     });
+//   });
+// };
 
-}, 10000);
-
+// const updateAndroidBuildGradle = () => {
+//   const originalFile = './platforms/android/build.gradle';
+//   const saveOffFile = originalFile + '.previous'
+//   console.log(`Processing ${originalFile}`);
+//   fs.rename(originalFile, saveOffFile, () => {
+//     const rl = readline.createInterface({
+//       input: fs.createReadStream(saveOffFile),
+//       crlfDelay: Infinity,
+//     });
+//     const newGradle = [];
+//     rl.on('line', (line) => {
+//       if (line.startsWith('        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin')) {
+//         newGradle.push(line);
+//         console.log('adding::: classpath \'com.google.gms:google-services:4.3.10\' ::: to android/build.gradle');
+//         newGradle.push('        classpath \'com.google.gms:google-services:4.3.10\'');
+//       } else if (line.includes('project.ext')) {
+//         newGradle.push(line);
+//         console.log('adding::: androidXCore = "1.6.0" ::: (force a downgrade from 1.7.0) to android/build.gradle');  // https://stackoverflow.com/questions/69021225/resource-linking-fails-on-lstar#answer-69024140
+//         newGradle.push('      androidXCore = "1.6.0"');
+//       } else if (line.includes('defaultCompileSdkVersion=')) {
+//         console.log('changing ::: defaultCompileSdkVersion from 29 ::: to 31 to android/build.gradle');
+//         newGradle.push(line.replace('=29', '=31'));
+//       } else {
+//         newGradle.push(line);
+//       }
+//     });
+//     rl.on('close', () => {
+//       const buildGradle = fs.openSync(originalFile, 'w');
+//
+//       newGradle.forEach((txt) => {
+//         fs.writeSync(buildGradle, `${txt}\n`);
+//       });
+//       console.log(`updateAndroidBuildGradle added a classpath in ${originalFile}`);
+//     });
+//   });
+// };
