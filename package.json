@@ -14,6 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "cordova-android": "^12.0.1",
+    "cordova-ios": "6.3",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-contacts-x": "^2.0.3",
     "cordova-plugin-customurlscheme": "github:EddyVerbruggen/Custom-URL-scheme",
@@ -21,6 +22,7 @@
     "cordova-plugin-inappbrowser": "^5.0.0",
     "cordova-plugin-safariviewcontroller": "github:SailingSteve/cordova-plugin-safariviewcontroller",
     "cordova-plugin-screen-orientation": "github:jcesarmobile/cordova-plugin-screen-orientation",
+    "cordova-plugin-splashscreen": "^6.0.2",
     "cordova-plugin-x-socialsharing": "github:/styleseat/SocialSharing-PhoneGap-Plugin",
     "es6-promise-plugin": "^4.2.2",
     "fs-extra": "^10.0.0"
@@ -63,7 +65,7 @@
     "cordova": "^12.0.0",
     "cordova-plugin-app-version": "^0.1.14",
     "cordova-plugin-dialogs": "^2.0.2",
-    "cordova-plugin-fbsdk": "4.0.2",
+    "cordova-plugin-fbsdk": "^4.0.4",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-screensize": "^1.3.1",
     "cordova-plugin-sign-in-with-apple": "0.1.2",
