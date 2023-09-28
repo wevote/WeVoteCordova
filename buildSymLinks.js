@@ -268,6 +268,13 @@ const removeSymLink = (path) => {
   }
 }
 
+/* Sept 21, 2023
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % find . -type f -name "*.xcconfig"
+To fix this temporarily until CocoaPods was update, you can replace DT_TOOLCHAIN_DIR with TOOLCHAIN_DIR in the Firebase related files with the .xcconfig extension, this worked for me
+
+
+ */
+
 /*************************************************************************************************
  * The following code is run inline when this script is loaded
 *************************************************************************************************/
@@ -315,21 +322,21 @@ const removeSymLink = (path) => {
   removeSymLink(iosDir + 'bundle.js');
   removeSymLink(iosDir + 'bundle.js.map');
 
-  symlink(webAppPath + 'bundle.js', androidDir + 'bundle.js', err => console.log(err ? err : 'ln android bundle.js successful'));
-  symlink(webAppPath + 'bundle.js', iosDir + 'bundle.js', err => console.log(err ? err : 'ln ios bundle.js successful'));
+  symlink(webAppPath + 'bundle.js', androidDir + 'bundle.js', 'file', err => console.log(err ? err : 'ln android bundle.js successful'));
+  symlink(webAppPath + 'bundle.js', iosDir + 'bundle.js', 'file', err => console.log(err ? err : 'ln ios bundle.js successful'));
 
-  symlink(webAppPath + 'bundle.js.map', androidDir + 'bundle.js.map', err => console.log(err ? err : 'ln android bundle.js.map successful'));
-  symlink(webAppPath + 'bundle.js.map', iosDir + 'bundle.js.map', err => console.log(err ? err : 'ln ios bundle.js.map successful'));
+  symlink(webAppPath + 'bundle.js.map', androidDir + 'bundle.js.map', 'file', err => console.log(err ? err : 'ln android bundle.js.map successful'));
+  symlink(webAppPath + 'bundle.js.map', iosDir + 'bundle.js.map', 'file', err => console.log(err ? err : 'ln ios bundle.js.map successful'));
 
   if (buildAll) {
-    symlink(webAppPath + 'css', androidDir + 'css', err => console.log(err ? err : 'ln android css successful'));
-    symlink(webAppPath + 'css', iosDir + 'css', err => console.log(err ? err : 'ln ios css successful'));
+    symlink(webAppPath + 'css', androidDir + 'css', 'dir', err => console.log(err ? err : 'ln android css successful'));
+    symlink(webAppPath + 'css', iosDir + 'css', 'dir', err => console.log(err ? err : 'ln ios css successful'));
 
-    symlink(webAppPath + 'img', androidDir + 'img', err => console.log(err ? err : 'ln android img successful'));
-    symlink(webAppPath + 'img', iosDir + 'img', err => console.log(err ? err : 'ln ios img successful'));
+    symlink(webAppPath + 'img', androidDir + 'img', 'dir', err => console.log(err ? err : 'ln android img successful'));
+    symlink(webAppPath + 'img', iosDir + 'img', 'dir', err => console.log(err ? err : 'ln ios img successful'));
 
-    symlink(__dirname + '/www/index.html', androidDir + 'index.html', err => console.log(err ? err : 'ln android index.html successful'));
-    symlink(__dirname + '/www/index.html', iosDir + 'index.html', err => console.log(err ? err : 'ln ios index.html successful'));
+    symlink(__dirname + '/www/index.html', androidDir + 'index.html', 'file', err => console.log(err ? err : 'ln android index.html successful'));
+    symlink(__dirname + '/www/index.html', iosDir + 'index.html', 'file', err => console.log(err ? err : 'ln ios index.html successful'));
 
     updateXcodePlist();
     updateBuildReleaseXCConfig()

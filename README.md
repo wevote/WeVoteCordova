@@ -103,9 +103,9 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
 
     Do not proceed until you are at Cordova V9, or higher.
     ```
-    Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$ cordova -v
-    10.0.0
-    Steves-MacBook-Pro-32GB-Oct-2018:WeVoteCordova stevepodell$
+    stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova -v
+    12.0.0 (cordova-lib@12.0.1)
+    stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova %
     ```
 
 5. Use `cordova create` to install a new "empty" instance of the WeVoteCordova (with some minimal scaffolding that our copyFromSaveoff script will remove in an upcoming step)
@@ -137,7 +137,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     this plugin on iOS 16.4 and newer.**
 
 
-7. Run the `copyFromSaveoff` script to copy all the source controlled files from `WeVoteCordovaSaveoff` to `WeVoteCordova `
+1. Run the `copyFromSaveoff` script to copy all the source controlled files from `WeVoteCordovaSaveoff` to `WeVoteCordova `
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % node copyFromSaveoff
     __dirname /Users/stevepodell/WebstormProjects/WeVoteCordovaSaveoff
@@ -156,7 +156,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     Copied the /docs dir from ../WeVoteCordovaSaveoff
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff %
     ```
-8. cd to the `WeVoteCordova` directory and run `npm install`
+2. cd to the `WeVoteCordova` directory and run `npm install`
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % cd ../WeVoteCordova
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % npm install
@@ -173,7 +173,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     ```
     At this point we are done with the `WeVoteCordovaSaveoff` directory, you can delete it whenever you choose to.
 
-9. Add the Cordova iOS and Android platforms directories
+3. Add the Cordova iOS and Android platforms directories
      Note: November 18, 2021:  Don't use latest for android for now, so we use version 9 instead of version 10
      Note: August 2023, need to use ios6.3 or higher to have the app be inspectable with Safari
 
@@ -281,48 +281,48 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
      stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
      ```
 
-11. Run a script to set up the sym links for iOS and Android and make changes to some build files
+4. Run a script to set up the sym links for iOS and Android and make changes to some build files
 
-     In addition to creating the symlinks, this script also makes changes to three
-     Android Gradle (Java/Groovy build scripts) for Firebase Messaging.    
-     ```
-     node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
-     ```
-     These symlinks allow us to access the compiled WebApp and have all the necessary components available for the
-     Cordova builds that need to include our WebApp software.
-     ```
-     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
-     __dirname /Users/stevepodell/WebstormProjects/WeVoteCordova
-     unlink: android index.html
-     unlink: ios index.html
-     rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/img
-     rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/img
-     rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/css
-     rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/css
-     ln ios bundle.js successful
-     ln android css successful
-     ln ios css successful
-     ln android bundle.js successful
-     ln android img successful
-     ln ios img successful
-     ln ios index.html successful
-     ln android index.html successful
-     adding::: android.useAndroidX=true ::: to android/gradle.properties
-     adding::: android.enableJetifier=true ::: to android/gradle.properties
-     adding::: android.enableJetifier=true ::: to android/gradle.properties
-     adding::: classpath 'com.google.gms:google-services:4.3.3' ::: to android/build.gradle
-     adding::: apply plugin: 'com.google.gms.google-services' ::: to android/app/build.gradle
-     adding::: implementation 'com.google.firebase:firebase-analytics:17.5.0' ::: to android/app/build.gradle
-     adding::: implementation 'androidx.browser:browser:1.2.0' ::: to android/app/build.gradle
-     updateGradleProperties changed settings in ./platforms/android/gradle.properties
-     updateProjectBuildGradle added a classpath in ./platforms/android/build.gradle
-     updateAppBuildGradle add an implementation in ./platforms/android/app/build.gradle
-     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
-     ```
-    If you have installation troubles, you can run `buildSymLinks` as often as you need to,
-    since the script cleans out conflicting links that might already in place, before adding in the new links.
+    In addition to creating the symlinks, this script also makes changes to three
+    Android Gradle (Java/Groovy build scripts) for Firebase Messaging.    
+    ```
+    node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
+    ```
+    These symlinks allow us to access the compiled WebApp and have all the necessary components available for the
+    Cordova builds that need to include our WebApp software.
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build
+    __dirname /Users/stevepodell/WebstormProjects/WeVoteCordova
+    unlink: android index.html
+    unlink: ios index.html
+    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/img
+    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/img
+    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/assets/www/css
+    rmdir: /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/www/css
+    ln ios bundle.js successful
+    ln android css successful
+    ln ios css successful
+    ln android bundle.js successful
+    ln android img successful
+    ln ios img successful
+    ln ios index.html successful
+    ln android index.html successful
+    adding::: android.useAndroidX=true ::: to android/gradle.properties
+    adding::: android.enableJetifier=true ::: to android/gradle.properties
+    adding::: android.enableJetifier=true ::: to android/gradle.properties
+    adding::: classpath 'com.google.gms:google-services:4.3.3' ::: to android/build.gradle
+    adding::: apply plugin: 'com.google.gms.google-services' ::: to android/app/build.gradle
+    adding::: implementation 'com.google.firebase:firebase-analytics:17.5.0' ::: to android/app/build.gradle
+    adding::: implementation 'androidx.browser:browser:1.2.0' ::: to android/app/build.gradle
+    updateGradleProperties changed settings in ./platforms/android/gradle.properties
+    updateProjectBuildGradle added a classpath in ./platforms/android/build.gradle
+    updateAppBuildGradle add an implementation in ./platforms/android/app/build.gradle
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
+    ```
+   If you have installation troubles, you can run `buildSymLinks` as often as you need to,
+   since the script cleans out conflicting links that might already in place, before adding in the new links.
 
-12. **ONLY IF the install fails** with a pod (CocoaPods) error:
+5. **ONLY IF the install fails** with a pod (CocoaPods) error:
 
    Try:
    ```
