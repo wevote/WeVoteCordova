@@ -57,7 +57,14 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
    cd  /Users/stevepodell/WebstormProjects
    ```
 
-2. Clone the WeVoteCordova code
+2. Remove any earlier attempts at installation
+
+   ```
+   rm -rf WeVoteCordova
+   rm -rf WeVoteCordovaSaveoff
+   ```
+
+3. Clone the WeVoteCordova code
 
     ```
     git clone https://github.com/wevote/WeVoteCordova.git
@@ -86,15 +93,6 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     /usr/local/bin/cordova -> /usr/local/lib/node_modules/cordova/bin/cordova
     + cordova@10.0.0
     added 432 packages from 355 contributors in 14.165s
-
-
-       ╭────────────────────────────────────────────────────────────────╮
-       │                                                                │
-       │      New patch version of npm available! 6.14.4 → 6.14.5       │
-       │   Changelog: https://github.com/npm/cli/releases/tag/v6.14.5   │
-       │               Run npm install -g npm to update!                │
-       │                                                                │
-       ╰────────────────────────────────────────────────────────────────╯
 
     stevepodell@Steves-MacBook-Pro WeVoteCordova %
     ```
@@ -156,6 +154,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     Copied the /docs dir from ../WeVoteCordovaSaveoff
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff %
     ```
+
 2. cd to the `WeVoteCordova` directory and run `npm install`
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff % cd ../WeVoteCordova
@@ -281,7 +280,42 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
      stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
      ```
 
-4. Run a script to set up the sym links for iOS and Android and make changes to some build files
+4. **ONLY IF the platform install fails** with a pod (CocoaPods) error:
+
+   Try:
+   ```
+   brew update
+   brew upgrade
+   pod repo update
+   ```
+
+5. **ONLY IF the platform install fails on Apple M1 processor (or later)** with a "Failed to install 'cordova-plugin-fbsdk':" error
+    ```
+    Running command: pod install --verbose
+    Failed to install 'cordova-plugin-fbsdk': Error: pod: Command failed with exit code 1
+    at ChildProcess.whenDone (/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/cordova/node_modules/cordova-common/src/superspawn.js:136:25)
+   ```
+    try:
+    ```
+    sudo arch -arm64 gem install ffi
+    arch -arm64 pod install 
+    ```
+
+6. **ONLY IF the platform install fails on Apple M1 processor (or later)** with a "Specs satisfying the `FBSDKCoreKit (= 16.0.1)` dependency were found, but they required a higher minimum deployment target." error
+   Manually edit the  /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/Podfile
+   and change the `platform :ios, '11.0'` line to `platform :ios, '12.0'`
+   then run
+   ```
+    cd platforms/ios
+    arch -arm64 pod install
+   ```
+   then 
+   ```
+   cd ../..
+   cordova platform add android
+   ```
+
+7. Run a script to set up the sym links for iOS and Android and make changes to some build files
 
     In addition to creating the symlinks, this script also makes changes to three
     Android Gradle (Java/Groovy build scripts) for Firebase Messaging.    
@@ -971,7 +1005,7 @@ This happens too often, here are some steps that usually resolve it.
 
 <!--
 Notes 12/1/22:
-Switched from cordova-plugin-facebook-connect to a fork called ordova-plugin-fbsdk for support for latest FBSDK versions
+Switched from  to a fork called cordova-plugin-fbsdk for support for latest FBSDK versions
 cordova plugin remove cordova-plugin-facebook-connect
 stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova plugin add cordova-plugin-fbsdk --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteCordova" --variable CLIENT_TOKEN="503c231a732b0372e57b3fbddeeaf2c0" 
 Plugin "cordova-plugin-fbsdk" already installed on ios.
