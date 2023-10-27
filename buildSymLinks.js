@@ -20,10 +20,31 @@ const readline = require('readline');
 
 function writeCordovaLibGradleWrapperProperties () {
   // Needed for Gradle 8
-  const path = './platforms/android/gradle.wrapper.properties';
-  const newValue='distributionUrl=https\\://services.gradle.org/distributions/gradle-8.2.1-all.zip\n';
-  fs.writeFile(path, newValue, 'utf-8', () => {
-    console.log('Created file: ', path);
+  const path0 = './platforms/android/gradle';
+  const path = './platforms/android/gradle/wrapper';
+  const file = path + '/gradle.wrapper.properties';
+  const altFile = './platforms/android/app/gradle.wrapper.properties';
+  const altFile2 = './platforms/android/gradle.wrapper.properties';
+  try {
+    if (!fs.existsSync(path)) {
+      fs.mkdirSync(path0);
+      fs.mkdirSync(path);
+    }
+  } catch (err) {
+    console.error('Error: Writing ' + file + " - " + err);
+  }
+
+
+  // const newValue='distributionUrl=https\\://services.gradle.org/distributions/gradle-8.2.1-all.zip\n';
+  const newValue='distributionUrl=https\\://maven.google.com/com/android/tools/build/gradle-8.0-all.zip\n';
+  fs.writeFile(file, newValue, 'utf-8', () => {
+    console.log('Created file: ', file);
+  });
+  fs.writeFile(altFile, newValue, 'utf-8', () => {
+    console.log('Created file: ', altFile);
+  });
+  fs.writeFile(altFile, newValue, 'utf-8', () => {
+    console.log('Created file: ', altFile2);
   });
 
 }
@@ -32,6 +53,12 @@ function writeCordovaLibGradleWrapperProperties () {
 const updateMainAndroidManifest = () => {
   // /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/AndroidManifest.xml
   // Apps targeting Android 12 and higher are required to specify an explicit value for `android:exported` when the corresponding component has an intent filter defined
+
+  // 10/27/23:  play.console.com gave warning:
+  //   Anomalous Permission Usage
+  //   Your app is requesting permissions which are used by less than 1% of functionally similar apps:
+  //   * android.permission.WRITE_CONTACTS
+  // And we don't need to update a user's contacts, so removing it here
   const originalFile = './platforms/android/app/src/main/AndroidManifest.xml';
   const saveOffFile = originalFile + '.previous'
   console.log(`Processing ${originalFile}`);
@@ -60,6 +87,9 @@ const updateMainAndroidManifest = () => {
           console.log('adding::: android:exported="true (for <receiver )  ::: to android/app/src/main/AndroidManifest.xml');
         }
         newGradle.push(line);
+      } else if (line.includes('<uses-permission android:name="android.permission.WRITE_CONTACTS" />')) {
+        console.log('removing::: android.permission.WRITE_CONTACTS  ::: from android/app/src/main/AndroidManifest.xml');
+        // Don't push the line, thereby deleting it
       } else {
         newGradle.push(line);
       }
@@ -71,6 +101,27 @@ const updateMainAndroidManifest = () => {
         fs.writeSync(buildGradle, `${txt}\n`);
       });
       console.log(`updateAndroidBuildGradle added a classpath in ${originalFile}`);
+    });
+  });
+};
+
+const updateAndroidJson = () => {
+  // 10/27/23   Not sure if this is necessary, but just in case
+  // 10/27/23:  play.console.com gave warning:
+  //   Anomalous Permission Usage
+  //   Your app is requesting permissions which are used by less than 1% of functionally similar apps:
+  //   * android.permission.WRITE_CONTACTS
+  // And we don't need to update a user's contacts, so removing it here
+  const originalFile = './platforms/android/android.json';
+
+  const saveOffFile = originalFile + '.previous'
+  console.log(`Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    fs.readFile(saveOffFile, 'utf8', function(err, data){
+      data = data.replace(/^.*?\{\n.*?android.permission.WRITE_CONTACTS[^}]*\},\n/gm, '')
+      fs.writeFile(originalFile, data, 'utf8', () => {
+        console.log(`updateAndroidJson removed 'android.permission.WRITE_CONTACTS' in ${originalFile}`);
+      });
     });
   });
 };
@@ -259,6 +310,36 @@ const updateBuildReleaseXCConfig = () => {
   });
 };
 
+const updatePodfile = () => {
+  const originalFile = './platforms/ios/Podfile';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newBuildReleaseXcconfig = [];
+    rl.on('line', (line) => {
+      if (line.includes('platform :ios')) {
+        newBuildReleaseXcconfig.push(line.replace('11.0', '15.0'));
+        console.log('updated ::: platform : ios 11.0 to  15.0  in ios/Podfile');
+      } else {
+        newBuildReleaseXcconfig.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const buildXcconfig = fs.openSync(originalFile, 'w');
+
+      newBuildReleaseXcconfig.forEach((txt) => {
+        // console.log(txt);
+        fs.writeSync(buildXcconfig, `${txt}\n`);
+      });
+      console.log(`updatePodfile updated  ${originalFile}`);
+    });
+  });
+};
+
 const removeSymLink = (path) => {
   try {
     rimrafSync(path);
@@ -270,10 +351,8 @@ const removeSymLink = (path) => {
 
 /* Sept 21, 2023
 stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % find . -type f -name "*.xcconfig"
-To fix this temporarily until CocoaPods was update, you can replace DT_TOOLCHAIN_DIR with TOOLCHAIN_DIR in the Firebase related files with the .xcconfig extension, this worked for me
-
-
- */
+To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN_DIR with TOOLCHAIN_DIR in the Firebase related files with the .xcconfig extension, this worked for me
+*/
 
 /*************************************************************************************************
  * The following code is run inline when this script is loaded
@@ -339,8 +418,10 @@ To fix this temporarily until CocoaPods was update, you can replace DT_TOOLCHAIN
     symlink(__dirname + '/www/index.html', iosDir + 'index.html', 'file', err => console.log(err ? err : 'ln ios index.html successful'));
 
     updateXcodePlist();
+    updatePodfile();
     updateBuildReleaseXCConfig()
     updateMainAndroidManifest();
+    updateAndroidJson();
     writeCordovaLibGradleWrapperProperties();
     updateCordovaLibBuildGradle();
     updateXcodeProj();

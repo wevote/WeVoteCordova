@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="2030200"
+        android-versionCode="2040100"
         id="org.wevote.cordova"
         namespace="org.wevote.cordova"
-        ios-CFBundleVersion="2.3.2.2"
-        version="2.3.2"
+        ios-CFBundleVersion="2.4.1.0"
+        version="2.4.1"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -55,8 +55,8 @@
         <preference name="AndroidGradlePluginVersion" value="8.1.0" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="GradlePluginGoogleServicesVersion" value="4.3.15" />
-        <preference name="GradleVersion" value="8.2.1" />
-
+        <preference name="GradleVersion" value="8.4" />
+        <preference name="APG_VERSION" value="8.4" />
         <preference name="android-buildToolsVersion" value="34.0.0" />
         <preference name="defaultBuildToolsVersion" value="34.0.0" />
         <preference name="android-compileSdkVersion" value="33" />
@@ -65,30 +65,7 @@
         <preference name="cdvCompileSdkVersion" value="16.0.2.7.1" />
         <resource-file src="res/google/google-services.json" target="app/google-services.json" />
         <allow-intent href="market:*" />
-        <splash density="ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
-        <splash density="mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
-        <splash density="hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
-        <splash density="xhdpi" src="res/screen/android/screen-xhdpi-landscape.png" />
-        <splash density="xxhdpi" src="res/screen/android/screen-xxhdpi-landscape.png" />
-        <splash density="xxxhdpi" src="res/screen/android/screen-xxxhdpi-landscape.png" />
-        <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
-        <splash density="land-mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
-        <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
-        <splash density="land-xhdpi" src="res/screen/android/screen-xhdpi-landscape.png" />
-        <splash density="land-xxhdpi" src="res/screen/android/screen-xxhdpi-landscape.png" />
-        <splash density="land-xxxhdpi" src="res/screen/android/screen-xxxhdpi-landscape.png" />
-        <splash density="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
-        <splash density="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
-        <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
-        <splash density="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
-        <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png" />
-        <splash density="port-xxxhdpi" src="res/screen/android/screen-xxxhdpi-portrait.png" />
-        <icon density="hdpi" src="res/icon/android/hdpi/ic_launcher.png" />
-        <icon density="ldpi" src="res/icon/android/ldpi/ic_launcher.png" />
-        <icon density="mdpi" src="res/icon/android/mdpi/ic_launcher.png" />
-        <icon density="xhdpi" src="res/icon/android/xhdpi/ic_launcher.png" />
-        <icon density="xxhdpi" src="res/icon/android/xxhdpi/ic_launcher.png" />
-        <icon density="xxxhdpi" src="res/icon/android/xxxhdpi/ic_launcher.png" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/universal_launch.png" />
         <feature name="SocialSharing">
             <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
         </feature>
@@ -102,6 +79,7 @@
         </config-file>
     </platform>
     <platform name="ios">
+        <preference name="deployment-target" value="15.0" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <access origin="*" subdomains="true" />
