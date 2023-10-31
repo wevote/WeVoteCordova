@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="2040100"
+        android-versionCode="2040200"
         id="org.wevote.cordova"
         namespace="org.wevote.cordova"
-        ios-CFBundleVersion="2.4.1.0"
-        version="2.4.1"
+        ios-CFBundleVersion="2.4.2.0"
+        version="2.4.2"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -65,6 +65,15 @@
         <preference name="cdvCompileSdkVersion" value="16.0.2.7.1" />
         <resource-file src="res/google/google-services.json" target="app/google-services.json" />
         <allow-intent href="market:*" />
+        <!-- These icons are supposed to work on the splash screen, but maybe only work as the app icon on the phone home screen-->
+        <icon density="hdpi" src="res/android/ic_launcher.png" />
+        <icon density="ldpi" src="res/mipmap-ldpi/ic_launcher.png" />
+        <icon density="mdpi" src="res/mipmap-mdpi/ic_launcher.png" />
+        <icon density="xhdpi" src="res/mipmap-xhdpi/ic_launcher.png" />
+        <icon density="xxhdpi" src="res/mipmap-xxhdpi/ic_launcher.png" />
+        <icon density="xxxhdpi" src="res/mipmap-xxxhdpi/ic_launcher.png" />
+        <icon src="universal_launch.png" />
+        <!-- This icon is for the deprecated splash screen plug in, but is the only thing that puts an icon on the default android splash screen -- October 2023-->
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/universal_launch.png" />
         <feature name="SocialSharing">
             <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
@@ -122,8 +131,6 @@
         <edit-config file="*-Info.plist" mode="merge" target="NSContactsUsageDescription">
             <string>This app requires access to the contacts to allow users to encourage their friends to vote.</string>
         </edit-config>
-        <splash src="res/screen/ios/June2020LaunchScreen.png" />
-        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
         <icon height="20" src="res/icon/ios/icon_20pt.png" width="20" />
         <icon height="29" src="res/icon/ios/icon_29pt.png" width="29" />
         <icon height="40" src="res/icon/ios/icon_20pt@2x.png" width="40" />
