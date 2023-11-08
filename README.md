@@ -30,7 +30,7 @@ one command:
     npm run buildCordova
     
 
-If you haven't done this yet, don't waste your time, go setup the WebApp with current code,
+If you haven't done this yet, don't waste your time, go set up the WebApp with current code,
 and get it to start up at least once, then build it for Cordova with `buildCordova` and then return here when you are done.
 
 If you can't find a file called `WebApp/build/bundle.js` on your machine, don't proceed
@@ -65,18 +65,18 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
    ```
 
 3. Clone the WeVoteCordova code
-
+    
     ```
     git clone https://github.com/wevote/WeVoteCordova.git
     ```
-
-3. Rename the directory you just created which contains the latest WeVoteCordova software
+    
+4. Rename the directory you just created which contains the latest WeVoteCordova software
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects % mv WeVoteCordova WeVoteCordovaSaveoff
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects %
     ```
 
-4. Install the Apache Cordova software.  This is the Cordova command line interface (CLI) that is installed globally on your PC or Mac.
+5. Install the Apache Cordova software.  This is the Cordova command line interface (CLI) that is installed globally on your PC or Mac.
 
     First do an uninstall, since any earlier install of the Cordova CLI prior to Version 9, will no longer work.  If you have never installed
     cordova, the uninstall will not do anything (and that is not a problem!).
@@ -106,7 +106,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova %
     ```
 
-5. Use `cordova create` to install a new "empty" instance of the WeVoteCordova (with some minimal scaffolding that our copyFromSaveoff script will remove in an upcoming step)
+6. Use `cordova create` to install a new "empty" instance of the WeVoteCordova (with some minimal scaffolding that our copyFromSaveoff script will remove in an upcoming step)
 
     This will create a "Hello World" Cordova app, named WeVoteCordova.
     ```
@@ -115,7 +115,7 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects %
    ```
 
-6. cd the  `WeVoteCordovaSaveoff` directory and run `npm install`
+7. cd the  `WeVoteCordovaSaveoff` directory and run `npm install`
     ```
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WebstormProjects % cd WeVoteCordovaSaveoff
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveff % npm install
@@ -315,8 +315,8 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
    cordova platform add android
    ```
 
-7. Run a script to set up the sym links for iOS and Android and make changes to some build files
-
+7. Run a script to set up the symlinks for iOS and Android and make changes to some build files
+    
     In addition to creating the symlinks, this script also makes changes to three
     Android Gradle (Java/Groovy build scripts) for Firebase Messaging.    
     ```
@@ -355,54 +355,53 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     ```
    If you have installation troubles, you can run `buildSymLinks` as often as you need to,
    since the script cleans out conflicting links that might already in place, before adding in the new links.
-
-5. **ONLY IF the install fails** with a pod (CocoaPods) error:
-
+    
+8. **ONLY IF the install fails** with a pod (CocoaPods) error:
+    
    Try:
    ```
    brew update
    brew upgrade
    pod repo update
    ```
-
-
-12. Check that cordova requirements have been met (No errors means success)
-     ```
-     stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cd www
-     stevepodell@Steves-MBP-M1-Dec2021 www % sudo npm install -g ios-deploy
+    
+9. Check that cordova requirements have been met (No errors means success)
+    ```
+    stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cd www
+    stevepodell@Steves-MBP-M1-Dec2021 www % sudo npm install -g ios-deploy
      
-     added 1 package, and audited 2 packages in 13s
+    added 1 package, and audited 2 packages in 13s
      
-    found 0 vulnerabilities
-    stevepodell@Steves-MBP-M1-Dec2021 www % cordova requirements
+   found 0 vulnerabilities
+   stevepodell@Steves-MBP-M1-Dec2021 www % cordova requirements
 
-     Requirements check results for android:
-     Java JDK: installed 17.0.0
-     Android SDK: installed true
-     Android target: installed android-Q,android-28,android-27,android-26,android-25,android-24,android-23
-     Gradle: installed /usr/local/Cellar/gradle/7.2/bin/gradle
+    Requirements check results for android:
+    Java JDK: installed 17.0.0
+    Android SDK: installed true
+    Android target: installed android-Q,android-28,android-27,android-26,android-25,android-24,android-23
+    Gradle: installed /usr/local/Cellar/gradle/7.2/bin/gradle
 
-     Requirements check results for ios:
-     Apple macOS: installed darwin
-     Xcode: installed 13.0
-     ios-deploy: installed 1.10.0
-     CocoaPods: installed 1.11.0
-     stevepodell@Steves-MBP-M1-Dec2021 www %
-     ```
-14. Run the WeVoteCordova app from XCode.
+    Requirements check results for ios:
+    Apple macOS: installed darwin
+    Xcode: installed 13.0
+    ios-deploy: installed 1.10.0
+    CocoaPods: installed 1.11.0
+    stevepodell@Steves-MBP-M1-Dec2021 www %
+    ```
+10. Run the WeVoteCordova app from XCode.
 
      In Xcode, Click File/Open and select `/Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/` to open the project in xCode.
           
-15. The final step is to start the simulator
+11. The final step is to start the simulator
 
      Select a simulator that you would like to see the code executing on.  In the example below, we have selected the iPhone 11 Pro Max.  Then press the Play (Triangular) button, and
      a minute or two later you should get the WeVoteCordova app running in a simulator. 
      ![ScreenShot](docs/images/XCodeOpenedAndReady.png)
-     Note: This screen shot shows the logging with the developer option `LOG_RENDER_EVENTS: true,` set in the webapp.
+     Note: This screenshot shows the logging with the developer option `LOG_RENDER_EVENTS: true,` set in the webapp.
     
      **At this point you have a fully working Cordova iOS build.**
 
-16. **ONLY IF NEEDED:** (We hope this step is not necessary.)   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue), 
+12. **ONLY IF NEEDED:** (We hope this step is not necessary.)   If the Cordova iOS app loads the html page (White "Loading We Vote" on blue), 
 but crashes in a JQuery regex, and logs `SyntaxError: Invalid regular expression: range out of order in character class`,
  and never advances to the first React page in the WebApp:
 
@@ -434,13 +433,13 @@ This comand only relinks the newly compiled bundle.js and bundle.js.map, and com
 
 
 ## Git setup
-1. On github.com, fork WeVoteCordova to your account. 
-
+1. On GitHub.com, fork WeVoteCordova to your account. 
+    
     Navigate to https://github.com/wevote/WeVoteCordova and then click the "Fork" button in the upper right corner.
 
-    This will create a new directory on Github like ... `https://github.com/SailingSteve/WeVoteCordova.git`
-
-1. Execute the following commands from your WeVoteCordova directory on your Mac/PC
+    This will create a new directory on GitHub like ... `https://github.com/SailingSteve/WeVoteCordova.git`
+    
+2. Execute the following commands from your WeVoteCordova directory on your Mac/PC
 
     **Remember to substitute the name of your forked remote for "SailingSteve" in the following commands!**
     ```
@@ -556,24 +555,24 @@ At this point you can use Git to create branches, use Stash, and use git pull an
 
 It is possible to develop for Cordova without IDEs, but you are on your own if you take that path.
 An important note about both IDEs, is that they are "needed" for running and debugging iOS and Android apps, but there
-is no need to setup GIT in either of them, all the changes that you make within the IDEs affect files that are in the WeVoteCordova
+is no need to set up GIT in either of them, all the changes that you make within the IDEs affect files that are in the WeVoteCordova
 directory that you just made.  Checkin any changes from the WeVoteCordova directory with the same tools you use to develope
 the webapp.  Most Cordova changes in this mature app, are version upgrades of included packages, and version changes for the
 apps we deploy in the Apple iOS App Store and the Google Android Play Store.
 
-Install Apple Xcode from the MacOS App Store, you will need a Mac for the iOS part of this project, and a Mac will also be
+Install Apple Xcode from the macOS App Store, you will need a Mac for the iOS part of this project, and a Mac will also be
 fine for Android development.
 
 For Android, install the [Android Studio](https://developer.android.com/studio/index.html)
 (a free  IDE, from JetBrains, the makers of PyCharm, WebStorm, IntelliJ, etc.)
 
 ## iOS specific IDE and Environment setup (Only follow these instructions if your computer is a Mac)
-1.  Install Xcode
-
+1. Install Xcode
+    
     The easiest way to install Xcode is via the
     <a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Mac App Store.</a>  The Xcode.app download is approximately 10gb in size.
-
-1.  Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
+    
+2. Opening the project with Xcode -- Open xcworkspace, not xcodeproj directories (or else)
 
     Be sure to open **`/Users/your-username/MyProjects/WeVoteCordova/platforms/ios/WeVoteCordova.xcworkspace`** each time, if
     you forget to do this portions of the app will not be in your build, since you won't have referenced the cocopods (a dependency manger,
@@ -584,10 +583,10 @@ For Android, install the [Android Studio](https://developer.android.com/studio/i
     references to `.xcodeproj` **and** `.xcworkspace` files, but the descriptions are too short to tell the difference.  (Hint:  When that Welcome dialog is displayed, **it is** possible to open the xcworkspace from the File/"Open Recent" menu,
     just be sure to open the xcworkspace.)
 
-![ScreenShot]![ScreenShot](docs/images/WelcomeToXcode.png)
+    ![ScreenShot]![ScreenShot](docs/images/WelcomeToXcode.png)
 
-And in the "Welcome to Xcode" dialog, again, don't pick anything from the history list (those are all xcodeproj files), you have to
-click "Open another project..." and navigate to the 'WeVoteReactNative.xcworkspace' item (which is actually a directory).
+    And in the "Welcome to Xcode" dialog, again, don't pick anything from the history list (those are all xcodeproj files), you have to
+    click "Open another project..." and navigate to the 'WeVoteReactNative.xcworkspace' item (which is actually a directory).
 
 
 **Clean Build:**
@@ -598,7 +597,7 @@ Run (Play) button do to a full rebuild
 
 ## Debugging Cordova Differences
 Browsers are single threaded, JavaScript on browsers is also single threaded, but JavaScript running in Cordova is
-multi-threaded.  "JavaScript in the WebView does not run on the UI thread, it also has other threads to execute the
+multithreaded.  "JavaScript in the WebView does not run on the UI thread, it also has other threads to execute the
 html component and carry out CSS transitions."  This can cause some confusion when debugging Cordova for the first time.
 
 ## Debugging Cordova Apps with the Safari debugger
@@ -606,23 +605,23 @@ html component and carry out CSS transitions."  This can cause some confusion wh
 ![ScreenShot](docs/images/SafariDevelopMenu.png)
 
 You don't have to actually use Safari for Mac for anything, but launching its remote debugger.  You can see it opened on its
-smallest default page in the picture above, it just has to be running so you can get to that "Develop" menu.  Once you
+smallest default page in the picture above, it just has to be running, so you can get to that "Develop" menu.  Once you
 open the "We Vote Cordova" page that is currently being displayed, in the picture it is the "Welcome to We Vote" page.
 One of the symptoms, of this otherwise good thing (multiple-threads) is tha console.log lines in the resolution of promises
 often don't make it to the log.
 
 ![ScreenShot](docs/images/SafariSimulatorRunning.png)
 
-It is easy to get the Safari debugger working, and over time Apple has added almost all of the features we are used to
+It is easy to get the Safari debugger working, and over time Apple has added almost all the features we are used to
 from the Chrome Devtools Debugger.
 
 1. Enable debugging in Safari, [see this article](http://geeklearning.io/apache-cordova-and-remote-debugging-on-ios/)
-1. Build your 'compiled' javascript app file `bundle.js`, on my Mac it is at `build/bundle.js`.  This file needs to be symlinked
+2. Build your 'compiled' javascript app file `bundle.js`, on my Mac it is at `build/bundle.js`.  This file needs to be symlinked
 into your www directory (see the section on symlinks above).
     1. On my Mac in WebStorm, I have a Gulp task that has a target "build", when I press the play button for that task, it builds the
 bundle.js in 20 seconds (Two seconds to gather all the js scripts together, and 18 seconds to recompile sass).
-1. Press the play button in Xcode, which should start the Simulator, load, and then start the WeVote WebApp.
-1. In Safari open Develop/Simulator/WeVoteCordova/WeVote and the Safari Web Inspector appears.
+3. Press the play button in Xcode, which should start the Simulator, load, and then start the WeVote WebApp.
+4. In Safari open Develop/Simulator/WeVoteCordova/WeVote and the Safari Web Inspector appears.
 
 
 ## WebApp code changes needed to support Cordova
@@ -673,31 +672,31 @@ The key was /opt/homebrew/Cellar/gradle/8.2.1/libexec NOT /opt/homebrew/Cellar/g
 ### Running Android Cordova for the first time
 
 1. In Android Studio run File/'Sync Project With Gradle Files'
-3. I needed to upgrade to the latest Java JDK which I got from Amazon, since Oracle wanted too much info, https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html
-4. Then in Android Studio at Preferences | Build, Execution, Deployment | Build Tools | Gradle
+2. I needed to upgrade to the latest Java JDK which I got from Amazon, since Oracle wanted too much info, https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html
+3. Then in Android Studio at Preferences | Build, Execution, Deployment | Build Tools | Gradle
    Change the Gradle JDK to version 17 and Apply
-5. On November 16, 2021 I had to set the gradle directory to a place in the library path
-
-![ScreenShot](docs/images/GradleSettingsNov2021.png)
-
-6. Confirm the relevant paths
-```
-stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % vi ~/.bash_profile
-```
-```
-export ANDROID_HOME=/Users/stevepodell/Library/Android/sdk
-export ANDROID_SDK_ROOT=/Users/stevepodell/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.0
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
-export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator/
-export PATH="/usr/local/opt/node@6/bin:$PATH"
-export GRADLE_USER_HOME=/opt/homebrew/bin/gradle
-export GRADLE_HOME=/opt/homebrew/bin/gradle
-```
-7. If you made any changes, source the edited bash_profile (Can't hurt in any case)
+4. On November 16, 2021 I had to set the gradle directory to a place in the library path
+   
+   ![ScreenShot](docs/images/GradleSettingsNov2021.png)
+   
+5. Confirm the relevant paths
+    ```
+    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % vi ~/.bash_profile
+    ```
+    ```
+    export ANDROID_HOME=/Users/stevepodell/Library/Android/sdk
+    export ANDROID_SDK_ROOT=/Users/stevepodell/Library/Android/sdk
+    export PATH=$PATH:$ANDROID_HOME/tools
+    export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.0
+    export PATH=$PATH:$ANDROID_HOME/platform-tools
+    export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+    export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/
+    export PATH=$PATH:$ANDROID_SDK_ROOT/emulator/
+    export PATH="/usr/local/opt/node@6/bin:$PATH"
+    export GRADLE_USER_HOME=/opt/homebrew/bin/gradle
+    export GRADLE_HOME=/opt/homebrew/bin/gradle
+    ```
+6. If you made any changes, source the edited bash_profile (Can't hurt in any case)
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % source ~/.bash_profile
 7. Some changes (JAVA_HOME) might be in the z shell config
    ```
@@ -711,79 +710,79 @@ export GRADLE_HOME=/opt/homebrew/bin/gradle
    ```
 8. You may need to use the SDK installer in AndroidStudio to download/update to the latest SDK (Can take 10 minutes)
 
-1. Download and install [Android Studio](https://developer.android.com/studio)
+9. Download and install [Android Studio](https://developer.android.com/studio)
 
     Click "ok" to downloading and installing any jars or packages that the installer recommends.
 
-2. On the welcome screen, select "open an existing project"
+10. On the welcome screen, select "open an existing project"
 
-    The existing project is the WeVoteCordova project that you have already pulled down from git.  Our Android project is
-    contained within the WeVoteCordova project. In the open (file selection) dialog, navigate to your WeVoteCordova working
-    directory, then to platforms, then to android and press Open.  `/Users/your-username/MyProjects/WeVoteCordova/platforms/android`
+     The existing project is the WeVoteCordova project that you have already pulled down from git.  Our Android project is
+     contained within the WeVoteCordova project. In the open (file selection) dialog, navigate to your WeVoteCordova working
+     directory, then to platforms, then to android and press Open.  `/Users/your-username/MyProjects/WeVoteCordova/platforms/android`
 
-3. At that point there will be a series of updates and "syncing" options, where you should follow all the default choices.
+11. At that point there will be a series of updates and "syncing" options, where you should follow all the default choices.
 
-4. You will probably be prompted to upgrade Gradle, Genymotion, Cordova plugins, etc.
+12. You will probably be prompted to upgrade Gradle, Genymotion, Cordova plugins, etc.
 
-    Update them all before continuing.  Restart as recommended.
+     Update them all before continuing.  Restart as recommended.
 
-    Don't worry about setting a version control root or remote, all changes that you want to get into
-    git are in the WeVoteCordova enclosing project -- That is where you should do your pull requests,
-    not within Android Studio.
+     Don't worry about setting a version control root or remote, all changes that you want to get into
+     git are in the WeVoteCordova enclosing project -- That is where you should do your pull requests,
+     not within Android Studio.
 
-    ![ScreenShot](docs/images/SucessInstallAndroidStudio.png)
+     ![ScreenShot](docs/images/SucessInstallAndroidStudio.png)
 
-7. Android (Java) projects need a Run configuration to start
+13. Android (Java) projects need a Run configuration to start
 
-    ![ScreenShot](docs/images/AndroidStudioAcceptDefaultSettings.png)
+     ![ScreenShot](docs/images/AndroidStudioAcceptDefaultSettings.png)
 
-    Accept the default settings and press "OK"
+     Accept the default settings and press "OK"
 
-    You might see a warning: "**WARNING:** Configuration 'compile' is obsolete and has been replaced with 'implementation'
-    and 'api'.", but it is safe to ignore
+     You might see a warning: "**WARNING:** Configuration 'compile' is obsolete and has been replaced with 'implementation'
+     and 'api'.", but it is safe to ignore
     
-8. If you get an error relating to accepting the Android SDK license
+14. If you get an error relating to accepting the Android SDK license
 
-    Run the `sdkmanager` and accept all the licenses (feel free to read them first)
-    ```
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 android % pwd
-    /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 android % cd /Users/stevepodell/Library/Android/sdk/tools/bin           
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 bin % ./sdkmanager --licenses
-    Warning: File /Users/stevepodell/.android/repositories.cfg could not be loaded. 
-    7 of 7 SDK package licenses not accepted. 100% Computing updates...             
-    Review licenses that have not been accepted (y/N)? y
-    ...
-    10.8 Open Source Software. In the event Open Source software is included with Evaluation Software, such Open Source software is licensed pursuant to the applicable Open Source software license agreement identified in the Open Source software comments in the applicable source code file(s) and/or file header as indicated in the Evaluation Software. Additional detail may be available (where applicable) in the accompanying on-line documentation. With respect to the Open Source software, nothing in this Agreement limits any rights under, or grants rights that supersede, the terms of any applicable Open Source software license agreement.
-    ---------------------------------------
-    Accept? (y/N): y
-    All SDK package licenses accepted
+     Run the `sdkmanager` and accept all the licenses (feel free to read them first)
+     ```
+     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 android % pwd
+     /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android
+     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 android % cd /Users/stevepodell/Library/Android/sdk/tools/bin           
+     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 bin % ./sdkmanager --licenses
+     Warning: File /Users/stevepodell/.android/repositories.cfg could not be loaded. 
+     7 of 7 SDK package licenses not accepted. 100% Computing updates...             
+     Review licenses that have not been accepted (y/N)? y
+     ...
+     10.8 Open Source Software. In the event Open Source software is included with Evaluation Software, such Open Source software is licensed pursuant to the applicable Open Source software license agreement identified in the Open Source software comments in the applicable source code file(s) and/or file header as indicated in the Evaluation Software. Additional detail may be available (where applicable) in the accompanying on-line documentation. With respect to the Open Source software, nothing in this Agreement limits any rights under, or grants rights that supersede, the terms of any applicable Open Source software license agreement.
+     ---------------------------------------
+     Accept? (y/N): y
+     All SDK package licenses accepted
     
-    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 bin % 
-    ```
-    Then run File/Sync Project with Gradle Files and you "should" see the following success message in the Sync status pane at the lower right corner of the IDE.
-    ```
-    KotlinDslScriptsParameter(correlationId=102692066094524, scriptFiles=[]) => StandardKotlinDslScriptsModel(scripts=[], commonModel=CommonKotlinDslScriptModel(classPath=[], sourcePath=[], implicitImports=[]), dehydratedScriptModels={}) - took 0.0 secs
-    Checking the license for package Android SDK Platform 28 in /Users/stevepodell/Library/Android/sdk/licenses
-    License for package Android SDK Platform 28 accepted.
-    Preparing "Install Android SDK Platform 28 (revision: 6)".
-    "Install Android SDK Platform 28 (revision: 6)" ready.
-    Installing Android SDK Platform 28 in /Users/stevepodell/Library/Android/sdk/platforms/android-28
-    "Install Android SDK Platform 28 (revision: 6)" complete.
-    "Install Android SDK Platform 28 (revision: 6)" finished.
+     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 bin % 
+     ```
+     Then run File/Sync Project with Gradle Files and you "should" see the following success message in the Sync status pane in the lower right corner of the IDE.
+     ```
+     KotlinDslScriptsParameter(correlationId=102692066094524, scriptFiles=[]) => StandardKotlinDslScriptsModel(scripts=[], commonModel=CommonKotlinDslScriptModel(classPath=[], sourcePath=[], implicitImports=[]), dehydratedScriptModels={}) - took 0.0 secs
+     Checking the license for package Android SDK Platform 28 in /Users/stevepodell/Library/Android/sdk/licenses
+     License for package Android SDK Platform 28 accepted.
+     Preparing "Install Android SDK Platform 28 (revision: 6)".
+     "Install Android SDK Platform 28 (revision: 6)" ready.
+     Installing Android SDK Platform 28 in /Users/stevepodell/Library/Android/sdk/platforms/android-28
+     "Install Android SDK Platform 28 (revision: 6)" complete.
+     "Install Android SDK Platform 28 (revision: 6)" finished.
     
-    CONFIGURE SUCCESSFUL in 24s
-    ```
+     CONFIGURE SUCCESSFUL in 24s
+     ```
     
-    <!--If you have trouble look at the [Cordova Android Platform Guide](https://cordova.apache.org/docs/en/latest/guide/platforms/android/)-->
+     <!--If you have trouble look at the [Cordova Android Platform Guide](https://cordova.apache.org/docs/en/latest/guide/platforms/android/)-->
 
-9. If you get a red symbol on your run icon, and a "No default run configuration" error or warning
+15. If you get a red symbol on your run icon, and a "No default run configuration" error or warning
     
-    try re-installing npm globally
+     try re-installing npm globally
     
-    `stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % sudo npm install -g npm `
+     `stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % sudo npm install -g npm `
 
-10. You will then need to download some simulator Virtual Devices to test with.  Go to Tools/AVD Manager
+16. You will then need to download some simulator Virtual Devices to test with.  Go to Tools/AVD Manager
      ![ScreenShot](docs/images/AndroidVirtualDeviceManager.png)
     
      It is possible that the list will be empty, and you have to use to "+ Create Virtual device..." button to add them from
@@ -793,13 +792,13 @@ export GRADLE_HOME=/opt/homebrew/bin/gradle
      that need to be increased to the minimum that is configured.  These simulators are huge (1GB)
      and contain most of the commercial boot image for the phone that you will be simulating.  
      you probably will need to come back here later to add more, but at least get one
-     downloaded so you can do a test run in the Simulator.
+     downloaded, so you can do a test run in the Simulator.
     
-11. Invalidate Caches and restart
+17. Invalidate Caches and restart
 
     Go to File/"Invalidate Caches / Restart" and choose the option to restart. 
   
-12. The gradle run that is automatically launched failed for me, so I had to upgrade the [Android Gradle plugin](https://developer.android.com/studio/releases/gradle-plugin.html#revisions)
+18. The gradle run that is automatically launched failed for me, so I had to upgrade the [Android Gradle plugin](https://developer.android.com/studio/releases/gradle-plugin.html#revisions)
 
     [Gradle](https://gradle.org/) is a build tool for Java, that serves the same purpose as Ant, or Make, or Webpack.
    
@@ -808,10 +807,10 @@ export GRADLE_HOME=/opt/homebrew/bin/gradle
 
      ![ScreenShot](docs/images/UpgradeAndroidPlugin.png)
     
-     After making that edit, simply click File/"Sync Project with Gradle Files" which forces a reload of the the Andorid Gradle plugin, and 
+     After making that edit, simply click File/"Sync Project with Gradle Files" which forces a reload of the Andorid Gradle plugin, and 
      rebuilds the app.     
 
-13. Press the green "play" button to attempt to start running
+19. Press the green "play" button to attempt to start running
 
      ![ScreenShot](docs/images/AndroidStudioNoDeploymentTarget.png)
 
@@ -860,7 +859,7 @@ to
 The Cordova project used to have all configuration for platforms, plugins installed, and plugin variables stored in their proprietary config.xml.  The `WeVoteCordova/config.xml` file is
 parsed at build time and rewritten to WeVoteCordova/platforms/ios/WeVoteCordova/config.xml and is used somewhere in Android.
 
-In 2019 it appears that Cordova started using WeVoteCordova/package.json as the
+In 2019, it appears that Cordova started using WeVoteCordova/package.json as the
 authoritative source of versions of the platform components and plugins
 that are used to build the app.  For pulling in libraries (plugins, platforms and Cordova core compoents)Cordova first looks in packages.json, then in config.xml, and
 finally it will load plugins that are not configured, but are present in the
@@ -882,7 +881,7 @@ will remove everything from the platforms directory, and rebuild all the config 
 also remove all the manual configuration and symlinks that you add.  This is a powerful last resort if all else is going wrong.
 
 ## Apple Silicon, Nov 2020 (Updated April 2022)
-The WeVote web app that has been developed as described below, can be tested on your mac.
+The WeVote web app that has been developed as described below, can be tested on your Mac.
 But do not check in these library changes, they are only needed for testing, and the Cordova build without these changes runs on a M1 processor (or later) Mac.
 
 ### You may need to reinstall cocoapods
@@ -940,7 +939,7 @@ If you get an error like:`Provisioning profile "iOS Team Provisioning Profile: o
 
 I had to go to `Signing and Capabilities` and add my latest Mac's name.
 
-### At this point there are problems compiling the google notifications code.  Calls to the code are disabled if isIOSAppOnMac(), but the binary libraries need to be removed if compiling on Apple Silicon at this time.
+### At this point there are problems compiling the Google notifications code.  Calls to the code are disabled if isIOSAppOnMac(), but the binary libraries need to be removed if compiling on Apple Silicon at this time.
 
 In package.json, remove the following lines (**DON"T CHECK IN THESE CHANGES**):
 
