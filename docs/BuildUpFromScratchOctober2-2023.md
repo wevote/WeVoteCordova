@@ -142,6 +142,18 @@ Skipping 'cordova-support-google-services' for android
 Plugin stopped working and was deprecated cordova-plugin-app-version
 Replaced with some scripting in bldSrcCordova
 
-## Building an IPA 2023 -- Better way!
+## Nov 1, 2023
+No longer works for iOS and Android
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova plugin rm cordova-plugin-splashscreen
 
-https://docs.saucelabs.com/mobile-apps/automated-testing/ipa-files/
+
+## Nov 8, 2023
+Needed for Android  https://developers.facebook.com/docs/android/troubleshooting/#faq_267321845055988
+    <queries>
+        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
+        <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
+        <package android:name="com.facebook.katana" />
+    </queries>
+Needs Dale to do a Business Verification to get rid of 
+
+![img.png](images/SubmitForLoginReview.png)

@@ -22,33 +22,24 @@ function writeCordovaLibGradleWrapperProperties () {
   // Needed for Gradle 8
   const path0 = './platforms/android/gradle';
   const path = './platforms/android/gradle/wrapper';
-  const file = path + '/gradle.wrapper.properties';
-  const altFile = './platforms/android/app/gradle.wrapper.properties';
-  const altFile2 = './platforms/android/gradle.wrapper.properties';
+  const file = path + '/gradle-wrapper.properties';
+  console.log(`Processing ${file}`);
   try {
     if (!fs.existsSync(path)) {
+      console.log('Making directory ' + path0);
       fs.mkdirSync(path0);
+      console.log('Making directory ' + path);
       fs.mkdirSync(path);
     }
   } catch (err) {
-    console.error('Error: Writing ' + file + " - " + err);
+    console.error('Error: Making directory for ' + file + " - " + err);
   }
 
-
   // const newValue='distributionUrl=https\\://services.gradle.org/distributions/gradle-8.2.1-all.zip\n';
-  const newValue='distributionUrl=https\\://maven.google.com/com/android/tools/build/gradle-8.0-all.zip\n';
-  fs.writeFile(file, newValue, 'utf-8', () => {
-    console.log('Created file: ', file);
-  });
-  fs.writeFile(altFile, newValue, 'utf-8', () => {
-    console.log('Created file: ', altFile);
-  });
-  fs.writeFile(altFile, newValue, 'utf-8', () => {
-    console.log('Created file: ', altFile2);
-  });
-
+  const newValue='distributionUrl=https://services.gradle.org/distributions/gradle-8.4-all.zip\n';
+  fs.writeFileSync(file, newValue, 'utf8');
+  console.log('Created file: ', file);
 }
-
 
 const updateMainAndroidManifest = () => {
   // /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/app/src/main/AndroidManifest.xml
@@ -349,6 +340,22 @@ const removeSymLink = (path) => {
   }
 }
 
+const copyGoogleServices = () => {
+  const originalFile = './res/google/google-services.json';
+  const destinationFile = './platforms/android/app/google-services.json';
+  if (fs.existsSync(destinationFile)) {
+    console.log('google-services.json is good to go');
+  } else {
+    fs.copyFile(originalFile, destinationFile, fs.constants.COPYFILE_EXCL, (err) => {
+      if (err) {
+        console.log("Copy file error Found:", err);
+      } else {
+        console.log('Created file: ', destinationFile);
+      }
+    });
+  }
+}
+
 /* Sept 21, 2023
 stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % find . -type f -name "*.xcconfig"
 To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN_DIR with TOOLCHAIN_DIR in the Firebase related files with the .xcconfig extension, this worked for me
@@ -372,7 +379,6 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
 
   let buildAll = true;
   let bundleOnlyArg = myArgs[1] || '';
-  console.log('--------------------- bundleOnlyArg ', bundleOnlyArg);
   if (bundleOnlyArg === 'bundleOnly') {
     buildAll = false;
   }
@@ -422,6 +428,7 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
     updateBuildReleaseXCConfig()
     updateMainAndroidManifest();
     updateAndroidJson();
+    copyGoogleServices();
     writeCordovaLibGradleWrapperProperties();
     updateCordovaLibBuildGradle();
     updateXcodeProj();
@@ -498,7 +505,7 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
 // };
 
 // November 18, 2021:  This has some code for cordova-android 9.1 (Which we need to use today) and cordova-android 10 (which was not ready for prime time)
-// August 2023: No longer needed, these changes are allready in the file when we get here
+// August 2023: No longer needed, these changes are already in the file when we get here
 // const updateGradleProperties = () => {
 //   const originalFile = './platforms/android/gradle.properties';
 //   const saveOffFile = originalFile + '.previous'
