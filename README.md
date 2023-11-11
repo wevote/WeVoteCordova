@@ -675,7 +675,7 @@ The key was /opt/homebrew/Cellar/gradle/8.2.1/libexec NOT /opt/homebrew/Cellar/g
 2. I needed to upgrade to the latest Java JDK which I got from Amazon, since Oracle wanted too much info, https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html
 3. Then in Android Studio at Preferences | Build, Execution, Deployment | Build Tools | Gradle
    Change the Gradle JDK to version 17 and Apply
-4. On November 16, 2021 I had to set the gradle directory to a place in the library path
+4. On November 16, 2021, I had to set the gradle directory to a place in the library path
    
    ![ScreenShot](docs/images/GradleSettingsNov2021.png)
    
@@ -786,7 +786,7 @@ The key was /opt/homebrew/Cellar/gradle/8.2.1/libexec NOT /opt/homebrew/Cellar/g
      ![ScreenShot](docs/images/AndroidVirtualDeviceManager.png)
     
      It is possible that the list will be empty, and you have to use to "+ Create Virtual device..." button to add them from
-     scrach, start with at least one.
+     scratch, start with at least one.
      
      If your list contains only entries that require downloading, download those that you can, some will have API versions 
      that need to be increased to the minimum that is configured.  These simulators are huge (1GB)
@@ -807,7 +807,7 @@ The key was /opt/homebrew/Cellar/gradle/8.2.1/libexec NOT /opt/homebrew/Cellar/g
 
      ![ScreenShot](docs/images/UpgradeAndroidPlugin.png)
     
-     After making that edit, simply click File/"Sync Project with Gradle Files" which forces a reload of the Andorid Gradle plugin, and 
+     After making that edit, simply click File/"Sync Project with Gradle Files" which forces a reload of the Android Gradle plugin, and 
      rebuilds the app.     
 
 19. Press the green "play" button to attempt to start running
@@ -861,7 +861,7 @@ parsed at build time and rewritten to WeVoteCordova/platforms/ios/WeVoteCordova/
 
 In 2019, it appears that Cordova started using WeVoteCordova/package.json as the
 authoritative source of versions of the platform components and plugins
-that are used to build the app.  For pulling in libraries (plugins, platforms and Cordova core compoents)Cordova first looks in packages.json, then in config.xml, and
+that are used to build the app.  For pulling in libraries (plugins, platforms and Cordova core components)Cordova first looks in packages.json, then in config.xml, and
 finally it will load plugins that are not configured, but are present in the
 plugins directories:  `WeVoteCordova/platforms/ios/WeVoteCordova/Plugins `and `WeVoteCordova/platforms/android/app/src/main/assets/www/plugins` and 
 `WeVoteCordova/Plugins`
