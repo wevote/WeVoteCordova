@@ -23,7 +23,7 @@ function writeCordovaLibGradleWrapperProperties () {
   const path0 = './platforms/android/gradle';
   const path = './platforms/android/gradle/wrapper';
   const file = path + '/gradle-wrapper.properties';
-  console.log(`Processing ${file}`);
+  console.log(`> Processing ${file}`);
   try {
     if (!fs.existsSync(path)) {
       console.log('Making directory ' + path0);
@@ -52,7 +52,7 @@ const updateMainAndroidManifest = () => {
   // And we don't need to update a user's contacts, so removing it here
   const originalFile = './platforms/android/app/src/main/AndroidManifest.xml';
   const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
+  console.log(`> Processing ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
     const rl = readline.createInterface({
       input: fs.createReadStream(saveOffFile),
@@ -106,7 +106,7 @@ const updateAndroidJson = () => {
   const originalFile = './platforms/android/android.json';
 
   const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
+  console.log(`> Processing ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
     fs.readFile(saveOffFile, 'utf8', function(err, data){
       data = data.replace(/^.*?\{\n.*?android.permission.WRITE_CONTACTS[^}]*\},\n/gm, '')
@@ -120,7 +120,7 @@ const updateAndroidJson = () => {
 const updateAppBuildGradle = () => {
   const originalFile = './platforms/android/app/build.gradle';
   const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
+  console.log(`> Processing ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
     const rl = readline.createInterface({
       input: fs.createReadStream(saveOffFile),
@@ -162,10 +162,45 @@ const updateAppBuildGradle = () => {
   });
 };
 
+function getVersionsFromConfigXML () {
+  const path = './config.xml';
+  const versions = {
+    version: 'error',
+    iosBundleVersion: 'error',
+    androidBundleVersion: 'error',
+  };
+  const data = fs.readFileSync(path, 'utf-8');
+  let regex = /version="(.*?)"/;
+  let found = data.match(regex);
+  if (found.length > 0) {
+    console.log('version from config.xml: ', found[1]);
+    versions.version = found[1];
+  } else {
+    console.log('version from config.xml: error');
+  }
+  regex = /ios-CFBundleVersion="(.*?)"/;
+  found = data.match(regex);
+  if (found.length > 0) {
+    console.log('ios-CFBundleVersion from config.xml: ', found[1]);
+    versions.iosBundleVersion = found[1];
+  } else {
+    console.log('ios-CFBundleVersion from config.xml: error');
+  }
+  regex = /android-versionCode="(.*?)"/;
+  found = data.match(regex);
+  if (found.length > 0) {
+    console.log('android-versionCode from config.xml: ', found[1]);
+    versions.androidBundleVersion = found[1];
+  } else {
+    console.log('android-versionCode from config.xml: error');
+  }
+  return versions;
+}
+
 const updateXcodeProj = () => {
   const originalFile = './platforms/ios/We Vote.xcodeproj/project.pbxproj';
   const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
+  console.log(`> Processing ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
     const rl = readline.createInterface({
       input: fs.createReadStream(saveOffFile),
@@ -198,7 +233,7 @@ const updateXcodeProj = () => {
 const updateXcodePlist = () => {
   const originalFile = './platforms/ios/We Vote/We Vote-Info.plist';
   const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
+  console.log(`> Processing ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
     const rl = readline.createInterface({
       input: fs.createReadStream(saveOffFile),
@@ -244,7 +279,7 @@ const updateXcodePlist = () => {
 const updateCordovaLibBuildGradle = () => {
   const originalFile = './platforms/android/CordovaLib/build.gradle';
   const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
+  console.log(`> Processing ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
     const rl = readline.createInterface({
       input: fs.createReadStream(saveOffFile),
@@ -274,7 +309,7 @@ const updateCordovaLibBuildGradle = () => {
 const updateBuildReleaseXCConfig = () => {
   const originalFile = './platforms/ios/cordova/build-release.xcconfig';
   const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
+  console.log(`> Processing ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
     const rl = readline.createInterface({
       input: fs.createReadStream(saveOffFile),
@@ -304,7 +339,7 @@ const updateBuildReleaseXCConfig = () => {
 const updatePodfile = () => {
   const originalFile = './platforms/ios/Podfile';
   const saveOffFile = originalFile + '.previous'
-  console.log(`Processing ${originalFile}`);
+  console.log(`> Processing ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
     const rl = readline.createInterface({
       input: fs.createReadStream(saveOffFile),
@@ -442,7 +477,7 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
 // const updateCordovaLibBuildGradle = () => {
 //   const originalFile = './platforms/android/CordovaLib/build.gradle';
 //   const saveOffFile = originalFile + '.previous'
-//   console.log(`Processing ${originalFile}`);
+//   console.log(`> Processing ${originalFile}`);
 //   fs.rename(originalFile, saveOffFile, () => {
 //     const rl = readline.createInterface({
 //       input: fs.createReadStream(saveOffFile),
@@ -476,7 +511,7 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
 // const updateCdvGradleConfig = () => {
 //   const originalFile = './platforms/android/cdv-gradle-config.json';
 //   const saveOffFile = originalFile + '.previous'
-//   console.log(`Processing ${originalFile}`);
+//   console.log(`> Processing ${originalFile}`);
 //   fs.rename(originalFile, saveOffFile, () => {
 //     const rl = readline.createInterface({
 //       input: fs.createReadStream(saveOffFile),
@@ -509,7 +544,7 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
 // const updateGradleProperties = () => {
 //   const originalFile = './platforms/android/gradle.properties';
 //   const saveOffFile = originalFile + '.previous'
-//   console.log(`Processing ${originalFile}`);
+//   console.log(`> Processing ${originalFile}`);
 //   fs.rename(originalFile, saveOffFile, () => {
 //     const rl = readline.createInterface({
 //       input: fs.createReadStream(saveOffFile),
@@ -547,7 +582,7 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
 // const updateAndroidBuildGradle = () => {
 //   const originalFile = './platforms/android/build.gradle';
 //   const saveOffFile = originalFile + '.previous'
-//   console.log(`Processing ${originalFile}`);
+//   console.log(`> Processing ${originalFile}`);
 //   fs.rename(originalFile, saveOffFile, () => {
 //     const rl = readline.createInterface({
 //       input: fs.createReadStream(saveOffFile),
