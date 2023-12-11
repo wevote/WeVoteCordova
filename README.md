@@ -1003,6 +1003,10 @@ This happens too often, here are some steps that usually resolve it.
 **[Update the icons and splashscreens with new artwork](res/screen/ios)**
 
 <!--
+Notes 11/11/23
+To see all the manifest.xml permitted queries
+stevepodell@Steves-MBP-M1-Dec2021 android % /Users/stevepodell/Library/Android/sdk/platform-tools/adb shell dumpsys package queries
+
 Notes 12/1/22:
 Switched from  to a fork called cordova-plugin-fbsdk for support for latest FBSDK versions
 cordova plugin remove cordova-plugin-facebook-connect

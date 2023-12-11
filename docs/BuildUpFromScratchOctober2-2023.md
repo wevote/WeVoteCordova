@@ -157,3 +157,16 @@ Needed for Android  https://developers.facebook.com/docs/android/troubleshooting
 Needs Dale to do a Business Verification to get rid of 
 
 ![img.png](images/SubmitForLoginReview.png)
+
+
+## Nov 13, 2023
+/Users/stevepodell/Library/Android/sdk/platform-tools/adb shell dumpsys package queries | grep facebook
+
+### Update to the latest FB SDK
+cordova plugin add cordova-plugin-facebook-connect --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteCordova" --variable FACEBOOK_ANDROID_SDK_VERSION="16.0.0"
+
+Still no resolution to the "Apps that target Android API 30+ (Android 11+) cannot call Facebook native apps unless the package visibility needs are declared." problem
+
+Opened an issue for the plugin, which is getting 3800 weekly downloads, but no maintenance since Sept 17, 2021 
+https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect/issues/139
+
