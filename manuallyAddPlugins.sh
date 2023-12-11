@@ -11,7 +11,7 @@ cordova plugins add cordova-plugin-sign-in-with-apple
 cordova plugins add cordova-plugin-taptic-engine
 cordova plugins add cordova-plugin-x-socialsharing
 cordova plugins add cordova.plugins.diagnostic
-cordova plugin add cordova-plugin-facebook-connect --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteCordova"
+cordova plugin add cordova-plugin-facebook-connect --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteCordova" --variable FACEBOOK_ANDROID_SDK_VERSION="16.0.0"
 #cordova-plugin-facebook-connect": {
 #        "APP_ID": "1097389196952441",
 #        "APP_NAME": "WeVoteCordova",

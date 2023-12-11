@@ -78,6 +78,10 @@ const updateMainAndroidManifest = () => {
           console.log('adding::: android:exported="true (for <receiver )  ::: to android/app/src/main/AndroidManifest.xml');
         }
         newGradle.push(line);
+      } else if (line.includes('AdvertiserIDCollectionEnabled')) {
+        console.log('adding dummy::: com.facebook.sdk.ClientToken  ::: from android/app/src/main/AndroidManifest.xml');
+        newGradle.push(line);
+        newGradle.push('        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="YOUR-CLIENT-TOKEN-HERE" />');
       } else if (line.includes('<uses-permission android:name="android.permission.WRITE_CONTACTS" />')) {
         console.log('removing::: android.permission.WRITE_CONTACTS  ::: from android/app/src/main/AndroidManifest.xml');
         // Don't push the line, thereby deleting it
