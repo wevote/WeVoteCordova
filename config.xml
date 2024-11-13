@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="2040501"
+        android-versionCode="2050001"
         id="org.wevote.cordova"
         namespace="org.wevote.cordova"
-        ios-CFBundleVersion="2.4.5.1"
-        version="2.4.5"
+        ios-CFBundleVersion="2.5.0.1"
+        version="2.5.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -49,6 +49,16 @@
     <allow-navigation href="*" />
     <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
     <platform name="android">
+<!--        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--            <application android:debuggable="true" />-->
+<!--        </edit-config>-->
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.READ_CONTACTS" />
+            <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.NETWORK_ACCESS" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        </config-file>
         <allow-intent href="market:*" />
         <preference name="Scheme" value="app" />
         <preference name="Hostname" value="localhost" />
@@ -59,7 +69,8 @@
         <preference name="APG_VERSION" value="8.4" />
         <preference name="android-buildToolsVersion" value="34.0.0" />
         <preference name="defaultBuildToolsVersion" value="34.0.0" />
-        <preference name="android-compileSdkVersion" value="33" />
+        <preference name="android-compileSdkVersion" value="34" />
+        <preference name="android-targetSdkVersion" value="34" />
         <preference name="android-manifest/@android:versionName" value="2.3.0" />
         <preference name="android-minSdkVersion" value="31" />
         <preference name="cdvCompileSdkVersion" value="16.0.2.7.1" />
@@ -84,17 +95,17 @@
         <feature name="SocialSharing">
             <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
         </feature>
-        <config-file parent="/manifest" target="AndroidManifest.xml">
-            <queries>
-                <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
-                <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
-                <package android:name="com.facebook.katana" />
-                <intent>
-                    <action android:name="android.intent.action.SENDTO" />
-                    <data android:scheme="mailto" />
-                </intent>
-            </queries>
-        </config-file>
+<!--        <config-file parent="/manifest" target="AndroidManifest.xml">-->
+<!--            <queries>-->
+<!--                <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> &lt;!&ndash; allows app to access Facebook app features &ndash;&gt;-->
+<!--                <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> &lt;!&ndash; allows sharing to Messenger app &ndash;&gt;-->
+<!--                <package android:name="com.facebook.katana" />-->
+<!--                <intent>-->
+<!--                    <action android:name="android.intent.action.SENDTO" />-->
+<!--                    <data android:scheme="mailto" />-->
+<!--                </intent>-->
+<!--            </queries>-->
+<!--        </config-file>-->
     </platform>
     <platform name="ios">
         <preference name="deployment-target" value="15.0" />
@@ -136,6 +147,9 @@
         </config-file>
         <config-file parent="UIMainStoryboardFile" target="*-Info.plist">
             <string>CDVLaunchScreen</string>
+        </config-file>
+        <config-file platform="ios" target="*-Info.plist" parent="ios-CFBundleVersion">
+            <string>2.5.0.1</string>
         </config-file>
         <edit-config file="*-Info.plist" mode="merge" target="NSContactsUsageDescription">
             <string>This app requires access to the contacts to allow users to encourage their friends to vote.</string>
