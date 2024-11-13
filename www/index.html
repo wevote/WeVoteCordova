@@ -41,6 +41,18 @@
           default-src 'self' data: http: https: localhost: wevotetwitterscheme: gap://* https://ssl.gstatic.com ;
     -->
     <meta http-equiv="Content-Security-Policy" content="
+          default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval';
+          script-src 'self' https://* 'unsafe-inline' 'unsafe-eval';
+          connect-src 'self' https://api.wevoteusa.org/ https://cdn.wevoteusa.org/ https://analytics.google.com https://stats.g.doubleclick.net;
+          style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+          style-src-elem 'self' https://fonts.googleapis.com 'unsafe-inline' ;
+          frame-src http://*.facebook.com https://*.facebook.com https://*.facebook.com https://*.twitter.com https://twitter.com https://*.vimeo.com  https://*.googlevideo.com https://*.youtube.com gap: 'unsafe-inline';
+          child-src gap://* ;
+          font-src *;
+          media-src *;
+          img-src *  https://*.twimg.com https://*.twitter.com/ data: https: blob: android-webview-video-poster: ;
+    ">
+<!--  Prior to 11/7/24  <meta http-equiv="Content-Security-Policy" content="
       default-src * wevotetwitterscheme: data: content: gap: https://ssl.gstatic.com;
       img-src *  https://*.twimg.com https://*.twitter.com/ data: https: blob: android-webview-video-poster: ;
       style-src * https://*.twimg.com 'unsafe-inline';
@@ -50,13 +62,13 @@
       font-src *;
       media-src *;
     " />
+-->
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <!-- Feb 2018 WeVote: re 'viewport-fit=cover' see https://issues.apache.org/jira/browse/CB-12886 -->
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>We Vote</title>
-    <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="app" class="app-wrapper">
@@ -88,6 +100,10 @@
          </div>
     </div>
 </div>
+<script type="application/javascript" src="jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="bundle.js"></script>
+<script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
 <script type="text/javascript">
   try {
     console.log("INDEX.HTML Cordova from WeVoteCordova/src/index.html found jQuery $: ", $);
@@ -101,8 +117,5 @@
     console.log("ERROR: INDEX.HTML Cordova jQuery ERROR", e);
   }
 </script>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="bundle.js"></script>
-<script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
 </body>
 </html>

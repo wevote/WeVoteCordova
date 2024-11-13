@@ -113,7 +113,7 @@ const updateAndroidJson = () => {
   console.log(`> Processing ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
     fs.readFile(saveOffFile, 'utf8', function(err, data){
-      data = data.replace(/^.*?\{\n.*?android.permission.WRITE_CONTACTS[^}]*\},\n/gm, '')
+      data = data.replace(/^.*?\{\n.*?android.permission.WRITE_CONTACTS[^}]*\},\n/gm, '');
       fs.writeFile(originalFile, data, 'utf8', () => {
         console.log(`updateAndroidJson removed 'android.permission.WRITE_CONTACTS' in ${originalFile}`);
       });
@@ -233,6 +233,85 @@ const updateXcodeProj = () => {
     });
   });
 };
+
+const patchFacebookConnectPluginJava = () => {
+  const originalFile = './platforms/android/app/src/main/java/org/apache/cordova/facebook/ConnectPlugin.java';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`> Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newConnectPluginJava = [];
+    let conf = 'Debug';
+    rl.on('line', (line) => {
+      if (line.includes('AppEventsLogger.deactivateApp')) {
+        newConnectPluginJava.push("/\/\ " + line);
+        console.log('patching ConnectPluginJava ::: removing deprecated AppEventsLogger.deactivateApp.  No longer needed, and not allowed.');
+        conf = 'Release';
+      } else {
+        newConnectPluginJava.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const connectPluginJava = fs.openSync(originalFile, 'w');
+
+      newConnectPluginJava.forEach((txt) => {
+        // console.log(txt);
+        fs.writeSync(connectPluginJava, `${txt}\n`);
+      });
+      console.log(`patchFacebookConnectPluginJava commented out deprecated "deactivateApp" in ${originalFile}`);
+    });
+  });
+};
+
+// November 2024: This "cordova-plugin-contacts-x" library is read-only and deprecated, this patch is needed until a replacement is found
+const updateContactsCaseStatementNov2024 = () => {
+  const originalFile = './platforms/ios/We Vote/Plugins/cordova-plugin-contacts-x/ContactsX.swift';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`> Processing ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newContactsXswift = [];
+    let conf = 'Debug';
+    let oneMore = false
+    rl.on('line', (line) => {
+      if (oneMore) {
+        oneMore = false;
+        newContactsXswift.push(line);
+        if (!line.includes('Modified')) {
+          newContactsXswift.push('                default:');
+          newContactsXswift.push('                    completionHandler(false)');
+          console.log('patched ::: ContactsX.swift hasPermission() for exhaustive switch');
+        }
+      } else if (line.startsWith('                        completionHandler(false)')) {
+        if (!line.includes('Modified')) {
+          oneMore = true;
+          newContactsXswift.push(line + '  // Modified');  // So we only modify it once
+        } else {
+          newContactsXswift.push(line);
+        }
+      } else {
+        newContactsXswift.push(line);
+        // console.log(line);
+      }
+    });
+    rl.on('close', () => {
+      const contactsX = fs.openSync(originalFile, 'w');
+
+      newContactsXswift.forEach((txt) => {
+        // console.log(txt);
+        fs.writeSync(contactsX, `${txt}\n`);
+      });
+      console.log(`updateContactsCaseStatementNov2024 resolved non-exhaustive switch ${originalFile}`);
+    });
+  });
+};
+
 
 const updateXcodePlist = () => {
   const originalFile = './platforms/ios/We Vote/We Vote-Info.plist';
@@ -395,6 +474,36 @@ const copyGoogleServices = () => {
   }
 }
 
+const copyJQueryFile = () => {
+  const originalFile = path.join(__dirname, 'www/jquery-3.7.1.min.js');
+  const iosFile = path.join(__dirname, 'platforms/ios/www/jquery-3.7.1.min.js');
+  const androidFile = path.join(__dirname, 'platforms/android/app/src/main/assets/www/jquery-3.7.1.min.js');
+
+  if (fs.existsSync(iosFile)) {
+    console.log('iOS jQuery in www dir is good go');
+  } else {
+    fs.copyFile(originalFile, iosFile, fs.constants.COPYFILE_EXCL, (err) => {
+      if (err) {
+        console.log("Copy file error for jQuery to iOS dir.  Found:", err);
+      } else {
+        console.log('Created file: ', iosFile);
+      }
+    });
+  }
+  if (fs.existsSync(androidFile)) {
+    console.log('Android jQuery in www dir is good go');
+  } else {
+    fs.copyFile(originalFile, androidFile, fs.constants.COPYFILE_EXCL, (err) => {
+      if (err) {
+        console.log("Copy file error for jQuery to Android dir.  Found:", err);
+      } else {
+        console.log('Created file: ', iosFile);
+      }
+    });
+  }
+}
+
+
 /* Sept 21, 2023
 stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % find . -type f -name "*.xcconfig"
 To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN_DIR with TOOLCHAIN_DIR in the Firebase related files with the .xcconfig extension, this worked for me
@@ -468,9 +577,12 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
     updateMainAndroidManifest();
     updateAndroidJson();
     copyGoogleServices();
+    copyJQueryFile();
     writeCordovaLibGradleWrapperProperties();
     updateCordovaLibBuildGradle();
     updateXcodeProj();
+    updateContactsCaseStatementNov2024();
+    // patchFacebookConnectPluginJava();
     fs.readdir(iosDir, function (err, items) {
       console.log(JSON.stringify(items));
     });

@@ -131,8 +131,8 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordovaSaveoff %
     ```
     **Note August 2023:  cordova-plugin-screen-orientation needs a [temporary patch](https://github.com/apache/cordova-plugin-screen-orientation/pull/116) from cordova-plugin-screen-orientation
-    which is built into the package.json, but should be evaluated and removed as sooon as there is a released fix that supports
-    this plugin on iOS 16.4 and newer.**
+    which is built into the package.json, but should be evaluated and removed as soon as there is a released fix that supports
+    this plugin is on iOS 16.4 and newer.**
 
 
 1. Run the `copyFromSaveoff` script to copy all the source controlled files from `WeVoteCordovaSaveoff` to `WeVoteCordova `
@@ -986,6 +986,30 @@ This happens too often, here are some steps that usually resolve it.
 3) Delete any lock files in the emulator directory: `WeVoteCordova % rm  ~/.android/avd/Galaxy_Z_Fold_3_Samsung_API_33.avd/*lock`
 4) Sometimes you have to exit out of Android Studio, and restart it.
 5) Sometimes an old setup, or one that references an old skin, needs to be deleted and recreated. 
+
+## No Inspectable Application iOS Simulator
+November 2023:  Needs 'cordova platform add ios@6.3'
+
+## Removing Facebook Temporarily?  November 2024
+
+removed from package.json
+
+
+      "cordova-plugin-facebook-connect": {
+        "APP_ID": "1097389196952441",
+        "APP_NAME": "WeVoteCordova",
+        "FACEBOOK_ANDROID_SDK_VERSION": "16.0.0",
+        "FACEBOOK_URL_SCHEME_SUFFIX": " ",
+        "OTHER_APP_SCHEMES": " ",
+        "FACEBOOK_AUTO_LOG_APP_EVENTS": "true",
+        "FACEBOOK_HYBRID_APP_EVENTS": "false",
+        "FACEBOOK_ADVERTISER_ID_COLLECTION": "true",
+        "FACEBOOK_IOS_SDK_VERSION": "11.1.0",
+        "FACEBOOK_BROWSER_SDK_VERSION": "v11.0"
+      }
+
+    "cordova-plugin-facebook-connect": "3.2.0",
+    "cordova-plugin-fbsdk": "4.0.4",
 
 
 ## Other documentation pages:
