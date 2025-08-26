@@ -177,108 +177,117 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
      Note: August 2023, need to use ios6.3 or higher to have the app be inspectable with Safari
 
      ```
-     cordova platform add ios@6.3 android
+     cordova platform add ios@latest android
      ```
      Which runs in the terminal like this...
-     ```
-     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % cordova platforms add ios android
-     Using cordova-fetch for cordova-ios@^5.0.0
-     Adding ios project...
-     Creating Cordova project for the iOS platform:
-             Path: platforms/ios
-             Package: org.wevote.cordova
-             Name: We Vote
-     iOS project created with cordova-ios@6.1.1
-     Installing "cordova-plugin-app-version" for ios
-     Installing "cordova-plugin-customurlscheme" for ios
-     Installing "cordova-plugin-device" for ios
-     Installing "cordova-plugin-dialogs" for ios
-     Installing "cordova-plugin-facebook4" for ios
-     Running command: pod install --verbose
-
-     ...
-   
-     Installing "cordova-plugin-inappbrowser" for ios
-     Installing "cordova-plugin-keyboard" for ios
-     Installing "cordova-plugin-safariviewcontroller" for ios
-     Installing "cordova-plugin-screensize" for ios
-     Installing "cordova-plugin-sign-in-with-apple" for ios
-     Installing "cordova-plugin-splashscreen" for ios
-     Installing "cordova-plugin-statusbar" for ios
-     Installing "cordova-plugin-taptic-engine" for ios
-     Installing "cordova-plugin-whitelist" for ios
-     Installing "cordova-plugin-x-socialsharing" for ios
-     Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
-     Installing "es6-promise-plugin" for ios
-     Installing "cordova-support-android-plugin" for ios
-     Installing "cordova-support-google-services" for ios
-     Installing "cordova.plugins.diagnostic" for ios
-     Dependent plugin "es6-promise-plugin" already installed on ios.
-     Using cordova-fetch for cordova-android
-     Adding android project...
-     Creating Cordova project for the Android platform:
-             Path: platforms/android
-             Package: org.wevote.cordova
-             Name: We_Vote
-             Activity: MainActivity
-             Android target: android-29
-     Subproject Path: CordovaLib
-     Subproject Path: app
-     Android project created with cordova-android@9.0.0
-     Installing "cordova-plugin-app-version" for android
-     Installing "cordova-plugin-customurlscheme" for android
-     Installing "cordova-plugin-device" for android
-     Installing "cordova-plugin-dialogs" for android
-     Installing "cordova-plugin-facebook4" for android
-     Subproject Path: CordovaLib
-     Subproject Path: app
-     Installing "cordova-plugin-firebase-analytics" for android
-     Plugin dependency "cordova-support-android-plugin@1.0.2" already fetched, using that version.
-     Installing "cordova-support-android-plugin" for android
-     Plugin dependency "cordova-support-google-services@1.4.1" already fetched, using that version.
-     Installing "cordova-support-google-services" for android
-     Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
-     Skipping 'cordova-support-google-services' for android
-     Subproject Path: CordovaLib
-     Subproject Path: app
-     Installing "cordova-plugin-firebase-messaging" for android
-     Plugin dependency "cordova-plugin-firebase-analytics@4.4.1" already fetched, using that version.
-     Dependent plugin "cordova-plugin-firebase-analytics" already installed on android.
-     Plugin dependency "cordova-support-android-plugin@1.0.2" already fetched, using that version.
-     Dependent plugin "cordova-support-android-plugin" already installed on android.
-     Plugin dependency "cordova-support-google-services@1.4.1" already fetched, using that version.
-     Installing "cordova-support-google-services" for android
-     Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
-     Skipping 'cordova-support-google-services' for android
-     Subproject Path: CordovaLib
-     Subproject Path: app
-     Installing "cordova-plugin-inappbrowser" for android
-     Installing "cordova-plugin-keyboard" for android
-     Installing "cordova-plugin-safariviewcontroller" for android
-     Subproject Path: CordovaLib
-     Subproject Path: app
-     Installing "cordova-plugin-screensize" for android
-     Installing "cordova-plugin-sign-in-with-apple" for android
-     Installing "cordova-plugin-splashscreen" for android
-     Installing "cordova-plugin-statusbar" for android
-     Installing "cordova-plugin-taptic-engine" for android
-     Installing "cordova-plugin-whitelist" for android
-     Installing "cordova-plugin-x-socialsharing" for android
-     Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
-     Installing "es6-promise-plugin" for android
-     Subproject Path: CordovaLib
-     Subproject Path: app
-     Dependent plugin "cordova-support-android-plugin" already installed on android.
-     Installing "cordova-support-google-services" for android
-     Plugin doesn't support this project's cordova-android version. cordova-android: 9.0.0, failed version requirement: <9.0.0
-     Skipping 'cordova-support-google-services' for android
-     Installing "cordova.plugins.diagnostic" for android
-     Subproject Path: CordovaLib
-     Subproject Path: app
-
-     Dependent plugin "es6-promise-plugin" already installed on android.
-     stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % 
-     ```
+    ```
+    stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova platform add ios@latest android
+    (node:76092) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+    (Use `node --trace-deprecation ...` to show where the warning was created)
+    Using cordova-fetch for cordova-ios@latest
+    Adding ios project...
+    Creating Cordova project for the iOS platform:
+    Path: platforms/ios
+    Package: org.wevote.cordova
+    Name: We Vote
+    iOS project created with cordova-ios@7.1.1
+    Installing "cordova-plugin-add-swift-support" for ios
+    Installing "cordova-plugin-camera" for ios
+    Installing "cordova-plugin-contacts-x" for ios
+    Plugin dependency "cordova-plugin-add-swift-support@2.0.2" already fetched, using that version.
+    Dependent plugin "cordova-plugin-add-swift-support" already installed on ios.
+    
+    [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    
+    [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    Installing "cordova-plugin-customurlscheme" for ios
+    Installing "cordova-plugin-device" for ios
+    Installing "cordova-plugin-dialogs" for ios
+    Installing "cordova-plugin-email-composer" for ios
+    Installing "cordova-plugin-file" for ios
+    Installing "cordova-plugin-inappbrowser" for ios
+    Installing "cordova-plugin-ionic-keyboard" for ios
+    Installing "cordova-plugin-safariviewcontroller" for ios
+    Installing "cordova-plugin-screen-orientation" for ios
+    Installing "cordova-plugin-sign-in-with-apple" for ios
+    Installing "cordova-plugin-taptic-engine" for ios
+    Installing "cordova-plugin-x-socialsharing" for ios
+    Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
+    Installing "es6-promise-plugin" for ios
+    Installing "cordova-support-android-plugin" for ios
+    Installing "cordova.plugins.diagnostic" for ios
+    Dependent plugin "es6-promise-plugin" already installed on ios.
+    
+    [!] The `We Vote [Debug]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    
+    [!] The `We Vote [Release]` target overrides the `LD_RUNPATH_SEARCH_PATHS` build setting defined in `Pods/Target Support Files/Pods-We Vote/Pods-We Vote.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    Overwriting existing resource file at platforms/ios/We Vote/Resources/res/google/GoogleService-Info.plist
+    Using cordova-fetch for cordova-android
+    Adding android project...
+    android-targetSdkVersion should be greater than or equal to 35.
+    Creating Cordova project for the Android platform:
+    Path: platforms/android
+    Package: org.wevote.cordova
+    Name: We Vote
+    Activity: MainActivity
+    Android Target SDK: android-35
+    Android Compile SDK: 34
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    Android project created with cordova-android@14.0.1
+    Installing "cordova-plugin-add-swift-support" for android
+    Installing "cordova-plugin-camera" for android
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    Installing "cordova-plugin-contacts-x" for android
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    Installing "cordova-plugin-customurlscheme" for android
+    Installing "cordova-plugin-device" for android
+    Installing "cordova-plugin-dialogs" for android
+    Installing "cordova-plugin-email-composer" for android
+    Installing "cordova-plugin-file" for android
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    
+    The Android Persistent storage location now defaults to "Internal". Please check this plugin's README to see if your application needs any changes in its config.xml.
+    
+    If this is a new application no changes are required.
+    
+    If this is an update to an existing application that did not specify an "AndroidPersistentFileLocation" you may need to add:
+    
+          "<preference name="AndroidPersistentFileLocation" value="Compatibility" />"
+    
+    to config.xml in order for the application to find previously stored files.
+    
+    Installing "cordova-plugin-inappbrowser" for android
+    Installing "cordova-plugin-ionic-keyboard" for android
+    Installing "cordova-plugin-safariviewcontroller" for android
+    Installing "cordova-plugin-screen-orientation" for android
+    Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
+    Installing "es6-promise-plugin" for android
+    Installing "cordova-plugin-sign-in-with-apple" for android
+    Installing "cordova-plugin-taptic-engine" for android
+    Installing "cordova-plugin-x-socialsharing" for android
+    Plugin dependency "es6-promise-plugin@4.2.2" already fetched, using that version.
+    Dependent plugin "es6-promise-plugin" already installed on android.
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    Installing "cordova-support-android-plugin" for android
+    Installing "cordova.plugins.diagnostic" for android
+    Subproject Path: CordovaLib
+    Subproject Path: app
+    Dependent plugin "es6-promise-plugin" already installed on android.
+    Update IOS build setting SWIFT_OBJC_BRIDGING_HEADER to: "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h" for build configuration Debug
+    Update IOS build setting SWIFT_OBJC_BRIDGING_HEADER to: "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h" for build configuration Release
+    Importing ContactsX-Bridging-Header.h into /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/ios/We Vote/Bridging-Header.h
+    Update IOS build setting ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES to: YES for build configuration Debug
+    Use Swift language version 5
+    Update IOS build setting SWIFT_OPTIMIZATION_LEVEL to: -Onone for build configuration Debug
+    Update IOS build setting ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES to: YES for build configuration Release
+    Use Swift language version 5
+    stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova %
+    ```
 
 4. **ONLY IF the platform install fails** with a pod (CocoaPods) error:
 
@@ -427,7 +436,7 @@ but crashes in a JQuery regex, and logs `SyntaxError: Invalid regular expression
      The next step is to connect your new WeVoteCordova directory to Git.
 
 ## While repeatedly compiling with buildCordova during development
-This comand only relinks the newly compiled bundle.js and bundle.js.map, and completes quickly
+This command only relinks the newly compiled bundle.js and bundle.js.map, and completes quickly
 
      node buildSymLinks /Users/stevepodell/WebstormProjects/WebApp/build bundleOnly
 
@@ -697,7 +706,9 @@ The key was /opt/homebrew/Cellar/gradle/8.2.1/libexec NOT /opt/homebrew/Cellar/g
     export GRADLE_HOME=/opt/homebrew/bin/gradle
     ```
 6. If you made any changes, source the edited bash_profile (Can't hurt in any case)
+   ```
    stevepodell@Steves-MacBook-Pro-32GB-Oct-2109 WeVoteCordova % source ~/.bash_profile
+   ```
 7. Some changes (JAVA_HOME) might be in the z shell config
    ```
    stevepodell@StevesM1Dec2021 android % vim ~/.zshrc
@@ -875,7 +886,7 @@ plugins directories:  `WeVoteCordova/platforms/ios/WeVoteCordova/Plugins `and `W
 Running ...  (Note: August 2023: Need to use a minimum of ios 6.3 see https://github.com/apache/cordova-ios/issues/1301)
 
     cordova platform remove ios android
-    cordova platform add ios@6.3  android
+    cordova platform add ios@latest  android
   
 will remove everything from the platforms directory, and rebuild all the config files in the platforms directory, but will
 also remove all the manual configuration and symlinks that you add.  This is a powerful last resort if all else is going wrong.
@@ -975,7 +986,7 @@ And it should show up running in a container on the desktop (like a native app, 
 
 ### Maybe you have to do this again (try running the app first) 
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platforms remove ios android
-stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platform add ios android
+stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platform add ios@latest android
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % node buildSymLinks /Users/stevepodellsilicon/WebstormProjects/WebApp/build
 
 ## Insufficient Storage warning on Android Simulator
@@ -1027,6 +1038,16 @@ removed from package.json
 **[Update the icons and splashscreens with new artwork](res/screen/ios)**
 
 <!--
+Notes 7/12/25
+If IOS simulator shows 'No Inspectable Applications', you probably are not using the latest Cordova iOS library, install with
+```
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova platform add ios@latest android
+```
+
+Notes 6/25/25
+The distributionUrl in gradle-wrapper.properties is set in WebApp/node/buildSrcCordova.js which sets the gradle version used
+Android Studio File/Sync Project With Gradle Files
+
 Notes 11/11/23
 To see all the manifest.xml permitted queries
 stevepodell@Steves-MBP-M1-Dec2021 android % /Users/stevepodell/Library/Android/sdk/platform-tools/adb shell dumpsys package queries
