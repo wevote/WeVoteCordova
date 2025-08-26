@@ -1,0 +1,19 @@
+{
+  "ios": {
+    "debug": {
+      "codeSignIdentity": "iPhone Developer",
+      "developmentTeam": "WE977U8FAA",
+      "packageType": "development",
+      "automaticProvisioning": true
+    },
+    "release": {
+      "codeSignIdentity": "iPhone Distribution",
+      "developmentTeam": "WE977U8FAA",
+      "packageType": "app-store",
+      "automaticProvisioning": true,
+      "authenticationKeyPath": "/absolute/path/to/AuthKey_D383SF739.p8",
+      "authenticationKeyID": "M2M66LDSA2",
+      "authenticationKeyIssuerID": "69a6de97-d258-47e3-e053-5b8c7c11a4d1"
+    }
+  }
+}

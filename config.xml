@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="2050001"
+        android-versionCode="2070200"
         id="org.wevote.cordova"
         namespace="org.wevote.cordova"
-        ios-CFBundleVersion="2.5.0.1"
-        version="2.5.0"
+        ios-CFBundleVersion="2.7.2.0"
+        version="2.7.2"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -26,6 +26,7 @@
     <access origin="*://wevote.us/*" />
     <access origin="*://*.wevoteusa.org/*" />
     <access origin="*://cdnjs.cloudflare.com/*" />
+    <access origin="*://donorbox.org/*" />
     <access origin="*" />
     <allow-navigation href="about:*" />
     <allow-navigation href="data:*" />
@@ -44,10 +45,9 @@
     <allow-intent href="https://*/*" />
     <allow-intent href="app://apis.google.com/*" />
     <allow-intent href="*://*.googleapis.com/*" />
-
     <allow-intent href="*" />
     <allow-navigation href="*" />
-    <preference name="AllowedSchemes" value="mycoolapp,wevotetwitterscheme" />
+    <preference name="hostname" value="wevote.us" />
     <platform name="android">
 <!--        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">-->
 <!--            <application android:debuggable="true" />-->
@@ -62,59 +62,45 @@
         <allow-intent href="market:*" />
         <preference name="Scheme" value="app" />
         <preference name="Hostname" value="localhost" />
-        <preference name="AndroidGradlePluginVersion" value="8.1.0" />
+        <preference name="AndroidGradlePluginVersion" value="8.9.2" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="GradlePluginGoogleServicesVersion" value="4.3.15" />
-        <preference name="GradleVersion" value="8.4" />
-        <preference name="APG_VERSION" value="8.4" />
-        <preference name="android-buildToolsVersion" value="34.0.0" />
-        <preference name="defaultBuildToolsVersion" value="34.0.0" />
-        <preference name="android-compileSdkVersion" value="34" />
-        <preference name="android-targetSdkVersion" value="34" />
+        <preference name="GradleVersion" value="8.14.1" />
+        <preference name="APG_VERSION" value="8.9.2" />
+        <preference name="android-buildToolsVersion" value="36.0.0" />
+        <preference name="defaultBuildToolsVersion" value="36.0.0" />
+        <preference name="android-compileSdkVersion" value="36" />
+        <preference name="android-targetSdkVersion" value="36" />
         <preference name="android-manifest/@android:versionName" value="2.3.0" />
         <preference name="android-minSdkVersion" value="31" />
         <preference name="cdvCompileSdkVersion" value="16.0.2.7.1" />
         <resource-file src="res/google/google-services.json" target="app/google-services.json" />
         <allow-intent href="market:*" />
-<!--        <splash density="ldpi" src="res/screen/android/screen-ldpi-landscape.png" />-->
-<!--        <splash density="mdpi" src="res/screen/android/screen-mdpi-landscape.png" />-->
-<!--        <splash density="hdpi" src="res/screen/android/screen-hdpi-landscape.png" />-->
-<!--        <splash density="xhdpi" src="res/screen/android/screen-xhdpi-landscape.png" />-->
-<!--        <splash density="xxhdpi" src="res/screen/android/screen-xxhdpi-landscape.png" />-->
-<!--        <splash density="xxxhdpi" src="res/screen/android/screen-xxxhdpi-landscape.png" />-->
-        <!-- These icons are supposed to work on the splash screen, but maybe only work as the app icon on the phone home screen-->
-<!--        <icon density="hdpi" src="res/mipmap-hdpi/ic_launcher.png" />-->
-<!--        <icon density="ldpi" src="res/mipmap-ldpi/ic_launcher.png" />-->
-<!--        <icon density="mdpi" src="res/mipmap-mdpi/ic_launcher.png" />-->
-<!--        <icon density="xhdpi" src="res/mipmap-xhdpi/ic_launcher.png" />-->
-<!--        <icon density="xxhdpi" src="res/mipmap-xxhdpi/ic_launcher.png" />-->
-<!--        <icon density="xxxhdpi" src="res/mipmap-xxxhdpi/ic_launcher.png" />-->
         <icon src="res/android-chrome-256x256.png" />
         <!-- This icon is for the deprecated splash screen plug in, but is the only thing that puts an icon on the default android splash screen  - October 2023 -->
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/universal_launch.png" />
         <feature name="SocialSharing">
             <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
         </feature>
-<!--        <config-file parent="/manifest" target="AndroidManifest.xml">-->
-<!--            <queries>-->
-<!--                <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> &lt;!&ndash; allows app to access Facebook app features &ndash;&gt;-->
-<!--                <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> &lt;!&ndash; allows sharing to Messenger app &ndash;&gt;-->
-<!--                <package android:name="com.facebook.katana" />-->
-<!--                <intent>-->
-<!--                    <action android:name="android.intent.action.SENDTO" />-->
-<!--                    <data android:scheme="mailto" />-->
-<!--                </intent>-->
-<!--            </queries>-->
-<!--        </config-file>-->
     </platform>
+<!-- NOTE: These values are only set in the plist, at the moment of running 'cordova platform add ios@latest android' -->
     <platform name="ios">
+        <edit-config file="*-Info.plist" mode="merge" target="CFBundleDisplayName">
+            <string>We Vote</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="CFBundleVersion">
+            <string>2.7.2.0</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="CFBundleShortVersionString">
+            <string>2.7.2</string>
+        </edit-config>
         <preference name="deployment-target" value="15.0" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <access origin="*" subdomains="true" />
         <resource-file src="res/google/GoogleService-Info.plist" />
         <preference name="UseSwiftLanguageVersion" value="5" />
-        <preference name="scheme" value="app" />
+        <preference name="scheme" value="https" />
         <preference name="hostname" value="localhost" />
         <preference name="FadeSplashScreenDuration" value="0" />
         <preference name="AllowInlineMediaPlayback" value="false" />
@@ -148,11 +134,20 @@
         <config-file parent="UIMainStoryboardFile" target="*-Info.plist">
             <string>CDVLaunchScreen</string>
         </config-file>
-        <config-file platform="ios" target="*-Info.plist" parent="ios-CFBundleVersion">
-            <string>2.5.0.1</string>
-        </config-file>
         <edit-config file="*-Info.plist" mode="merge" target="NSContactsUsageDescription">
             <string>This app requires access to the contacts to allow users to encourage their friends to vote.</string>
+        </edit-config>
+        <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+            <string>We need camera access to take pictures</string>
+        </edit-config>
+        <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+            <string>We need photo library access to get pictures from there</string>
+        </edit-config>
+        <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+            <string>We need location access to find things nearby</string>
+        </edit-config>
+        <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+            <string>We need photo library access to save pictures there</string>
         </edit-config>
         <icon height="20" src="res/icon/ios/icon_20pt.png" width="20" />
         <icon height="29" src="res/icon/ios/icon_29pt.png" width="29" />
