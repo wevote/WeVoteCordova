@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="2070200"
+        android-versionCode="2070312"
         id="org.wevote.cordova"
         namespace="org.wevote.cordova"
-        ios-CFBundleVersion="2.7.2.0"
-        version="2.7.2"
+        ios-CFBundleVersion="2.7.3.12"
+        version="2.7.3"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -89,10 +89,13 @@
             <string>We Vote</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleVersion">
-            <string>2.7.2.0</string>
+            <string>2.7.3.12</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleShortVersionString">
-            <string>2.7.2</string>
+            <string>2.7.3</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="LSApplicationCategoryType">
+            <string>public.app-category.education</string>
         </edit-config>
         <preference name="deployment-target" value="15.0" />
         <allow-intent href="itms:*" />

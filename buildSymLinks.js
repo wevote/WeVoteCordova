@@ -36,7 +36,7 @@ function writeCordovaLibGradleWrapperProperties () {
   }
 
   // const newValue='distributionUrl=https\\://services.gradle.org/distributions/gradle-8.2.1-all.zip\n';
-  const newValue='distributionUrl=https://services.gradle.org/distributions/gradle-8.4-all.zip\n';
+  const newValue='distributionUrl=https://services.gradle.org/distributions/gradle-8.14.3-all.zip\n';
   fs.writeFileSync(file, newValue, 'utf8');
   console.log('Created file: ', file);
 }
@@ -77,6 +77,12 @@ const updateMainAndroidManifest = () => {
           line = line.replace('>', ' android:exported="true">');
           console.log('adding::: android:exported="true (for <receiver )  ::: to android/app/src/main/AndroidManifest.xml');
         }
+        newGradle.push(line);
+      } else if (line.includes('android:windowSoftInputMode="adjustResize">')) {
+        // https://stackoverflow.com/questions/79783205/javascript-webview-on-android-need-to-be-able-to-detect-the-virtual-keyboard-be
+        // Handle the down arrow on the Android navigation menu, that closes the virtual keyboard
+        line = line.replace('adjustResize', 'adjustPan');
+        console.log('replacing::: android:windowSoftInputMode="adjustResize" with "adjustPan" ::: in android/app/src/main/AndroidManifest.xml');
         newGradle.push(line);
       } else if (line.includes('AdvertiserIDCollectionEnabled')) {
         console.log('adding dummy::: com.facebook.sdk.ClientToken  ::: from android/app/src/main/AndroidManifest.xml');
