@@ -1022,6 +1022,32 @@ removed from package.json
     "cordova-plugin-facebook-connect": "3.2.0",
     "cordova-plugin-fbsdk": "4.0.4",
 
+## Build systems:
+Unfortunately many different projects that are included in these iOS and Android builds require many languages, package managers, and 
+scripting languages, and build systems to pull the two builds together.  One dependency can force you to investigate and upgrade build 
+systems that you didn't even know were there.
+Super-unfortunately sometimes these upgrades happen in the middle of your day, since both Xcode and Android Studio (JetBrains) update
+some dependencies semi-automatically.  These silent upgrades sometimes take a day (or more) of work just to figure out what changed and what
+languages, package managers, or packages need to be updated in order to continue.  Good luck!
+* Package Managers
+  * Gems
+  * npm
+* Development Languages
+  * Ruby 
+  * Swift
+  * Java
+  * Kotlin
+  * C++
+  * Objective-C
+* Executable update/install tools
+  * Homebrew
+  * rbenv
+* Scripting Languages
+  * Gradle
+  * Groovy
+  * Unix/MacOS shell scripts
+
+
 
 ## Other documentation pages:
 
@@ -1038,6 +1064,34 @@ removed from package.json
 **[Update the icons and splashscreens with new artwork](res/screen/ios)**
 
 <!--
+Notes 9/6/25
+if you get an Xcode error like `uninitialized constant ActiveSupport::LoggerThreadSafeLevel::Logger (NameError)`
+Or Xcode fails since it can't find the Logger or PhoneNumberKit
+Or if  pods don't show in Xcode, then update ruby
+    brew install rbenv ruby-build
+    rbenv install 3.3.8 
+    vi ~/.zshrc
+        add line:  
+            `export PATH="/opt/homebrew/opt/ruby/bin:$PATH"`
+
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % which -a ruby
+/opt/homebrew/opt/ruby/bin/ruby
+/Users/stevepodell/.rbenv/shims/ruby
+/usr/bin/ruby
+/Users/stevepodell/.rbenv/shims/ruby
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % ruby -v
+ruby 3.4.2 (2025-02-15 revision d2930f8e7a) +PRISM [arm64-darwin24]
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % 
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % /opt/homebrew/opt/ruby/bin/ruby -v
+ruby 3.4.2 (2025-02-15 revision d2930f8e7a) +PRISM [arm64-darwin24]
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % /Users/stevepodell/.rbenv/shims/ruby -v
+ruby 3.2.2 (2023-03-30 revision e51014f9c0) [arm64-darwin22]
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % /usr/bin/ruby -v
+ruby 2.6.10p210 (2022-04-12 revision 67958) [universal.arm64e-darwin24]
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % 
+
+Then Pods is back in the Xcode directory (left most icon)!
+
 Notes 7/12/25
 If IOS simulator shows 'No Inspectable Applications', you probably are not using the latest Cordova iOS library, install with
 ```
