@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="2070314"
+        android-versionCode="2070401"
         id="org.wevote.cordova"
         namespace="org.wevote.cordova"
-        ios-CFBundleVersion="2.7.3.14"
-        version="2.7.3"
+        ios-CFBundleVersion="2.7.4.1"
+        version="2.7.4"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -89,10 +89,10 @@
             <string>We Vote</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleVersion">
-            <string>2.7.3.14</string>
+            <string>2.7.4.1</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleShortVersionString">
-            <string>2.7.3</string>
+            <string>2.7.4</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="LSApplicationCategoryType">
             <string>public.app-category.education</string>
@@ -102,29 +102,42 @@
         <allow-intent href="itms-apps:*" />
         <access origin="*" subdomains="true" />
         <resource-file src="res/google/GoogleService-Info.plist" />
-        <preference name="UseSwiftLanguageVersion" value="5" />
-        <preference name="scheme" value="https" />
-        <preference name="hostname" value="localhost" />
-        <preference name="FadeSplashScreenDuration" value="0" />
+        <preference name="Allow3DTouchLinkPreview" value="true" />
+        <preference name="AllowBackForwardNavigationGestures" value="false" />
         <preference name="AllowInlineMediaPlayback" value="false" />
+        <preference name="AllowNewWindows" value="false" />
+        <preference name="AutoHideSplashScreen" value="false" />
         <preference name="BackupWebStorage" value="local" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="EnableViewportScale" value="false" />
-        <preference name="KeyboardDisplayRequiresUserAction" value="true" />
-        <preference name="MediaTypesRequiringUserActionForPlayback" value="false" />
-        <preference name="SuppressesIncrementalRendering" value="false" />
-        <preference name="SuppressesLongPressGesture" value="false" />
-        <preference name="Suppresses3DTouchGesture" value="false" />
+        <preference name="FACEBOOK_URL_SCHEME_SUFFIX" default="suffix" />
+        <preference name="FadeSplashScreenDuration" value="0" />
         <preference name="GapBetweenPages" value="0" />
+        <preference name="HideKeyboardFormAccessoryBar" value="true" />
+        <preference name="InspectableWebview" value="true" />
+        <preference name="KeyboardAppearanceDark" value="false" />
+        <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+        <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+        <preference name="KeyboardResize" value="true" />
+        <preference name="LimitsNavigationsToAppBoundDomains" value="false" />
+        <!-- Experiment Nov 5, 2025 - to see if this avoids the flashing screen issue -->
+        <preference name="LoadUrlTimeoutValue" value="10000" />
+        <!-- End experiment -->
+        <preference name="MediaPlaybackAllowsAirPlay" value="true" />
+        <preference name="MediaTypesRequiringUserActionForPlayback" value="all" />
         <preference name="PageLength" value="0" />
         <preference name="PaginationBreakingMode" value="page" />
         <preference name="PaginationMode" value="unpaginated" />
         <preference name="SplashScreen" value="screen" />
+        <preference name="ScrollEnabled" value="false" />
         <preference name="SplashScreenDelay" value="3000" />
-        <preference name="AutoHideSplashScreen" value="false" />
-        <preference name="KeyboardDisplayRequiresUserAction" value="false" />
-        <preference name="FACEBOOK_URL_SCHEME_SUFFIX" default="suffix" />
+        <preference name="Suppresses3DTouchGesture" value="false" />
+        <preference name="SuppressesIncrementalRendering" value="false" />
+        <preference name="SuppressesLongPressGesture" value="false" />
+        <preference name="UseSwiftLanguageVersion" value="5" />
+        <preference name="hostname" value="localhost" />
         <preference name="orientation" value="portrait" />
+        <preference name="scheme" value="https" />
         <config-file parent="UIStatusBarStyle" platform="ios" target="*-Info.plist">
             <string>Dark Content</string>
         </config-file>
@@ -139,6 +152,12 @@
         </config-file>
         <edit-config file="*-Info.plist" mode="merge" target="NSContactsUsageDescription">
             <string>This app requires access to the contacts to allow users to encourage their friends to vote.</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+            <string>This app needs location information to suggest local addresses.</string>
+        </edit-config>
+        <edit-config target="NSLocationAlwaysAndWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+            <string>Location information is being requested so that we can suggest "autocompleted" local addresses.</string>
         </edit-config>
         <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
             <string>We need camera access to take pictures</string>
