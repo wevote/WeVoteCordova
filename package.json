@@ -69,7 +69,7 @@
     ]
   },
   "dependencies": {
-    "cordova": "^12.0.0",
+    "cordova": "^13.0.0",
     "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-taptic-engine": "^2.1.0",
