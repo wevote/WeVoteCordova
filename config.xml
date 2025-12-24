@@ -8,7 +8,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
-    <name>We Vote</name>
+    <name>WeVote</name>
     <description>
         We Vote Cordova wrapper for the We Vote WebApp root
     </description>
@@ -123,7 +123,7 @@
         <!-- Experiment Nov 5, 2025 - to see if this avoids the flashing screen issue -->
         <preference name="LoadUrlTimeoutValue" value="10000" />
         <!-- End experiment -->
-        <preference name="MediaPlaybackAllowsAirPlay" value="true" />
+        <preference name="AllowsAirPlayForMediaPlayback" value="true" />
         <preference name="MediaTypesRequiringUserActionForPlayback" value="all" />
         <preference name="PageLength" value="0" />
         <preference name="PaginationBreakingMode" value="page" />
