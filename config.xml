@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="2070401"
+        android-versionCode="20700500"
         id="org.wevote.cordova"
         namespace="org.wevote.cordova"
-        ios-CFBundleVersion="2.7.4.1"
-        version="2.7.4"
+        ios-CFBundleVersion="2.7.5.0"
+        version="2.7.5"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -89,10 +89,10 @@
             <string>We Vote</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleVersion">
-            <string>2.7.4.1</string>
+            <string>2.7.5.0</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleShortVersionString">
-            <string>2.7.4</string>
+            <string>2.7.5</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="LSApplicationCategoryType">
             <string>public.app-category.education</string>
@@ -109,7 +109,7 @@
         <preference name="AutoHideSplashScreen" value="false" />
         <preference name="BackupWebStorage" value="local" />
         <preference name="DisallowOverscroll" value="true" />
-        <preference name="EnableViewportScale" value="false" />
+        <preference name="EnableViewportScale" value="true" />
         <preference name="FACEBOOK_URL_SCHEME_SUFFIX" default="suffix" />
         <preference name="FadeSplashScreenDuration" value="0" />
         <preference name="GapBetweenPages" value="0" />
@@ -124,6 +124,7 @@
         <preference name="LoadUrlTimeoutValue" value="10000" />
         <!-- End experiment -->
         <preference name="AllowsAirPlayForMediaPlayback" value="true" />
+        <preference name="MediaPlaybackAllowsAirPlay" value="true" />
         <preference name="MediaTypesRequiringUserActionForPlayback" value="all" />
         <preference name="PageLength" value="0" />
         <preference name="PaginationBreakingMode" value="page" />

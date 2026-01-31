@@ -17,8 +17,9 @@
     "cordova-ios": "^7.1.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-android-notch": "^1.0.3",
+    "cordova-plugin-apprate": "^1.8.0",
     "cordova-plugin-camera": "^8.0.0",
-    "cordova-plugin-contacts-x": "^2.1.2",
+    "cordova-plugin-contacts-x-2025": "^1.0.0",
     "cordova-plugin-customurlscheme": "github:EddyVerbruggen/Custom-URL-scheme",
     "cordova-plugin-device": "^3.0.0",
     "cordova-plugin-dialog": "^0.0.1",
@@ -27,45 +28,27 @@
     "cordova-plugin-geolocation": "^5.0.0",
     "cordova-plugin-inappbrowser": "^6.0.0",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
+    "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-plugin-screen-orientation": "^3.0.4",
     "cordova-plugin-x-socialsharing": "^6.0.4"
   },
   "cordova": {
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "plugins": {
       "cordova-plugin-add-swift-support": {},
+      "cordova-plugin-android-notch": {},
+      "cordova-plugin-apprate": {
+        "PLAY_REVIEW_VERSION": "2.+"
+      },
       "cordova-plugin-camera": {
         "ANDROIDX_CORE_VERSION": "1.6.+"
       },
-      "cordova-plugin-contacts-x": {},
-      "cordova-plugin-customurlscheme": {
-        "URL_SCHEME": "wevotetwitterscheme",
-        "ANDROID_SCHEME": " ",
-        "ANDROID_HOST": " ",
-        "ANDROID_PATHPREFIX": "/"
-      },
+      "cordova-plugin-contacts-x-2025": {},
       "cordova-plugin-device": {},
-      "cordova-plugin-dialogs": {},
       "cordova-plugin-email-composer": {},
-      "cordova-plugin-file": {
-        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
-      },
-      "cordova-plugin-geolocation": {
-        "GPS_REQUIRED": "true"
-      },
-      "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-screen-orientation": {},
-      "cordova-plugin-x-socialsharing": {
-        "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
-        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly."
-      },
-      "cordova-support-android-plugin": {},
-      "es6-promise-plugin": {},
-      "cordova-plugin-taptic-engine": {},
-      "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-sign-in-with-apple": {},
-      "cordova.plugins.diagnostic": {
-        "ANDROIDX_VERSION": "1.+"
-      },
       "cordova-plugin-facebook-connect": {
         "APP_ID": "1097389196952441",
         "APP_NAME": "WeVoteCordova",
@@ -77,12 +60,28 @@
         "FACEBOOK_ADVERTISER_ID_COLLECTION": "true",
         "FACEBOOK_IOS_SDK_VERSION": "11.1.0",
         "FACEBOOK_BROWSER_SDK_VERSION": "v11.0"
+      },
+      "cordova-plugin-file": {
+        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
+      },
+      "cordova-plugin-geolocation": {
+        "GPS_REQUIRED": "true"
+      },
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-nativestorage": {},
+      "cordova-plugin-safariviewcontroller": {},
+      "cordova-plugin-screen-orientation": {},
+      "cordova-plugin-sign-in-with-apple": {},
+      "cordova-plugin-taptic-engine": {},
+      "cordova-plugin-x-socialsharing": {
+        "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly."
+      },
+      "cordova-plugin-customurlscheme": {
+        "URL_SCHEME": "wevotetwitterscheme"
       }
-    },
-    "platforms": [
-      "android",
-      "ios"
-    ]
+    }
   },
   "dependencies": {
     "cordova-plugin-facebook-connect": "3.2.0",
