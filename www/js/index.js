@@ -26,7 +26,7 @@ function onDeviceReady() {
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
-    facebookConnectPlugin.getApplicationId((success) => {
-      console.log('facebook returned ', success);
-    })
+    // facebookConnectPlugin.getApplicationId((success) => {
+    //   console.log('facebook returned ', success);
+    // })
 }

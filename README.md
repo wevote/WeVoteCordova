@@ -173,18 +173,22 @@ WebApp and to the WeVoteCordova, and to the WeVoteCordovaSaveoff (which we will 
     At this point we are done with the `WeVoteCordovaSaveoff` directory, you can delete it whenever you choose to.
 
 3. Add the Cordova iOS and Android platforms directories
+     Note: December 24, 2025:  The latest iOS (8.0.0) has a bug where the `<name>WeVote</name>` field in config.xml
+          is ignored, and the default name "App" is used, which causes `WeVote.xcodeproj` to be misnamed to
+          `App.xcodeproj` which breaks `WebApp/node/buildSrcCordova.js` and prevents the compile from completing.
+          So use `cordova platform add ios@7.1.0` for now.
      Note: November 18, 2021:  Don't use latest for android for now, so we use version 9 instead of version 10
      Note: August 2023, need to use ios6.3 or higher to have the app be inspectable with Safari
 
      ```
-     cordova platform add ios@latest android
+     cordova platform add ios@7.1.0 android
      ```
      Which runs in the terminal like this...
     ```
-    stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova platform add ios@latest android
+    stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova platform add ios@7.1.0 android
     (node:76092) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
     (Use `node --trace-deprecation ...` to show where the warning was created)
-    Using cordova-fetch for cordova-ios@latest
+    Using cordova-fetch for cordova-ios@7.1.0
     Adding ios project...
     Creating Cordova project for the iOS platform:
     Path: platforms/ios
@@ -886,7 +890,7 @@ plugins directories:  `WeVoteCordova/platforms/ios/WeVoteCordova/Plugins `and `W
 Running ...  (Note: August 2023: Need to use a minimum of ios 6.3 see https://github.com/apache/cordova-ios/issues/1301)
 
     cordova platform remove ios android
-    cordova platform add ios@latest  android
+    cordova platform add ios@7.1.0  android
   
 will remove everything from the platforms directory, and rebuild all the config files in the platforms directory, but will
 also remove all the manual configuration and symlinks that you add.  This is a powerful last resort if all else is going wrong.
@@ -986,7 +990,7 @@ And it should show up running in a container on the desktop (like a native app, 
 
 ### Maybe you have to do this again (try running the app first) 
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platforms remove ios android
-stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platform add ios@latest android
+stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % cordova platform add ios@7.1.0 android
 stevepodellsilicon@Steves-arm64-Mac WeVoteCordova % node buildSymLinks /Users/stevepodellsilicon/WebstormProjects/WebApp/build
 
 ## Insufficient Storage warning on Android Simulator
@@ -1000,6 +1004,7 @@ This happens too often, here are some steps that usually resolve it.
 
 ## No Inspectable Application iOS Simulator
 November 2023:  Needs 'cordova platform add ios@6.3'
+December 2025:  No higher than 7.1.0 for now so use `ios@7.1.0 android`
 
 ## Removing Facebook Temporarily?  November 2024
 
@@ -1021,6 +1026,43 @@ removed from package.json
 
     "cordova-plugin-facebook-connect": "3.2.0",
     "cordova-plugin-fbsdk": "4.0.4",
+
+## Miscellaneous developer notes:
+* Show all outdated node modules
+  `WeVoteCordova %  npm outdated`
+
+* Find running android processes
+  `WeVoteCordova %  ps aux | grep android`
+
+* See what processes are using too much cpu
+  `WeVoteCordova %  top`
+
+* Kill all android emulators
+  `WeVoteCordova % adb emu kill`
+
+* Kill a process
+
+  `WeVoteCordova % lsof -i tcp:3000`
+  `WeVoteCordova % kill -9 3471`
+
+* Find node package dependencies 
+  ````
+  WeVoteCordova %  npm ls brace-expansion
+  org.wevote.cordova@2.7.3 /Users/stevepodell/WebstormProjects/WeVoteCordova
+  └─┬ cordova-plugin-add-swift-support@2.0.2
+    └─┬ glob@7.1.7
+      └─┬ minimatch@3.1.2
+        └── brace-expansion@1.1.11
+  WeVoteCordova %
+  ````
+* Debugging gradle scripts fpr Android
+    ````
+    WeVoteCordova % cd /Users/stevepodell/WebstormProjects/WeVoteCordova/platforms/android/tools
+    tools % ./gradlew :assembleDebug --warning-mode all
+    ````
+
+
+
 
 ## Build systems:
 Unfortunately many different projects that are included in these iOS and Android builds require many languages, package managers, and 
@@ -1095,7 +1137,7 @@ Then Pods is back in the Xcode directory (left most icon)!
 Notes 7/12/25
 If IOS simulator shows 'No Inspectable Applications', you probably are not using the latest Cordova iOS library, install with
 ```
-stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova platform add ios@latest android
+stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % cordova platform add ios@7.1.0 android
 ```
 
 Notes 6/25/25
