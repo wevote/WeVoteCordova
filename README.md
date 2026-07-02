@@ -1106,6 +1106,19 @@ languages, package managers, or packages need to be updated in order to continue
 **[Update the icons and splashscreens with new artwork](res/screen/ios)**
 
 <!--
+Notes 6/28/26
+Add Facebook Friends has been abandoned
+cordova plugin remove cordova-plugin-facebook-connect --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteCordova" --variable FACEBOOK_ANDROID_SDK_VERSION="16.0.0"
+
+https://github.com/einfachhans/cordova-plugin-contacts-x  This repository was archived by the owner on Jan 29, 2024. It is now read-only.
+
+-->
+
+<!--
+Notes 2/28/26
+Need to load the master version of inappbrowser
+cordova plugin add https://github.com/apache/cordova-plugin-inappbrowser
+
 Notes 9/6/25
 if you get an Xcode error like `uninitialized constant ActiveSupport::LoggerThreadSafeLevel::Logger (NameError)`
 Or Xcode fails since it can't find the Logger or PhoneNumberKit

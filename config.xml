@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="20700500"
+        android-versionCode="20800000"
         id="org.wevote.cordova"
         namespace="org.wevote.cordova"
-        ios-CFBundleVersion="2.7.5.0"
-        version="2.7.5"
+        ios-CFBundleVersion="2.8.0.0"
+        version="2.8.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -27,6 +27,7 @@
     <access origin="*://*.wevoteusa.org/*" />
     <access origin="*://cdnjs.cloudflare.com/*" />
     <access origin="*://donorbox.org/*" />
+    <access origin="market:*" launch-external="yes" />
     <access origin="*" />
     <allow-navigation href="about:*" />
     <allow-navigation href="data:*" />
@@ -35,6 +36,8 @@
     <allow-navigation href="*://*.vimeo.com/*" />
     <allow-navigation href="*://*.google.com/*" />
     <allow-navigation href="*://*.googlevideo.com/*" />
+    <allow-navigation href="http://localhost:*" />
+    <allow-navigation href="https://localhost:*" />
     <allow-navigation href="*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
@@ -45,6 +48,7 @@
     <allow-intent href="https://*/*" />
     <allow-intent href="app://apis.google.com/*" />
     <allow-intent href="*://*.googleapis.com/*" />
+    <allow-intent href="market:*" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
     <preference name="hostname" value="wevote.us" />
@@ -89,10 +93,10 @@
             <string>We Vote</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleVersion">
-            <string>2.7.5.0</string>
+            <string>2.8.0.0</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleShortVersionString">
-            <string>2.7.5</string>
+            <string>2.8.0</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="LSApplicationCategoryType">
             <string>public.app-category.education</string>
@@ -124,7 +128,6 @@
         <preference name="LoadUrlTimeoutValue" value="10000" />
         <!-- End experiment -->
         <preference name="AllowsAirPlayForMediaPlayback" value="true" />
-        <preference name="MediaPlaybackAllowsAirPlay" value="true" />
         <preference name="MediaTypesRequiringUserActionForPlayback" value="all" />
         <preference name="PageLength" value="0" />
         <preference name="PaginationBreakingMode" value="page" />
@@ -155,10 +158,10 @@
             <string>This app requires access to the contacts to allow users to encourage their friends to vote.</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
-            <string>This app needs location information to suggest local addresses.</string>
+            <string>This app needs location information to suggest close by places to vote (voting locations).</string>
         </edit-config>
         <edit-config target="NSLocationAlwaysAndWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-            <string>Location information is being requested so that we can suggest "autocompleted" local addresses.</string>
+            <string>Location information is being requested so that we can suggest "autocompleted" local addresses, so we show them the specific ballot for their voting precinct.</string>
         </edit-config>
         <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
             <string>We need camera access to take pictures</string>
