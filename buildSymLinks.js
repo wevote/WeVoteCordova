@@ -163,37 +163,37 @@ const updateXcodeProj = () => {
   });
 };
 
-const patchFacebookConnectPluginJava = () => {
-  const originalFile = './platforms/android/app/src/main/java/org/apache/cordova/facebook/ConnectPlugin.java';
-  const saveOffFile = originalFile + '.previous';
-  console.log(`> Processed >> ${originalFile}`);
-  fs.rename(originalFile, saveOffFile, () => {
-    const rl = readline.createInterface({
-      input: fs.createReadStream(saveOffFile),
-      crlfDelay: Infinity,
-    });
-    const newConnectPluginJava = [];
-    let conf = 'Debug';
-    rl.on('line', (line) => {
-      if (line.includes('AppEventsLogger.deactivateApp')) {
-        newConnectPluginJava.push("/\/\ " + line);
-        console.log('> patched >> ConnectPluginJava, removed deprecated AppEventsLogger.deactivateApp.  No longer needed, and not allowed.');
-        conf = 'Release';
-      } else {
-        newConnectPluginJava.push(line);
-      }
-    });
-    rl.on('close', () => {
-      const connectPluginJava = fs.openSync(originalFile, 'w');
-
-      newConnectPluginJava.forEach((txt) => {
-        // console.log(txt);
-        fs.writeSync(connectPluginJava, `${txt}\n`);
-      });
-      console.log(`> Updated >> patchFacebookConnectPluginJava commented out deprecated "deactivateApp" in ${originalFile}`);
-    });
-  });
-};
+// const patchFacebookConnectPluginJava = () => {
+//   const originalFile = './platforms/android/app/src/main/java/org/apache/cordova/facebook/ConnectPlugin.java';
+//   const saveOffFile = originalFile + '.previous';
+//   console.log(`> Processed >> ${originalFile}`);
+//   fs.rename(originalFile, saveOffFile, () => {
+//     const rl = readline.createInterface({
+//       input: fs.createReadStream(saveOffFile),
+//       crlfDelay: Infinity,
+//     });
+//     const newConnectPluginJava = [];
+//     let conf = 'Debug';
+//     rl.on('line', (line) => {
+//       if (line.includes('AppEventsLogger.deactivateApp')) {
+//         newConnectPluginJava.push("/\/\ " + line);
+//         console.log('> patched >> ConnectPluginJava, removed deprecated AppEventsLogger.deactivateApp.  No longer needed, and not allowed.');
+//         conf = 'Release';
+//       } else {
+//         newConnectPluginJava.push(line);
+//       }
+//     });
+//     rl.on('close', () => {
+//       const connectPluginJava = fs.openSync(originalFile, 'w');
+//
+//       newConnectPluginJava.forEach((txt) => {
+//         // console.log(txt);
+//         fs.writeSync(connectPluginJava, `${txt}\n`);
+//       });
+//       console.log(`> Updated >> patchFacebookConnectPluginJava commented out deprecated "deactivateApp" in ${originalFile}`);
+//     });
+//   });
+// };
 
 // November 2024: This "cordova-plugin-contacts-x" library is read-only and deprecated, this patch is needed until a replacement is found
 // const updateContactsCaseStatementNov2024 = () => {
@@ -515,7 +515,7 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
     updateCordovaLibBuildGradle();
     updateXcodeProj();
     // updateContactsCaseStatementNov2024(); Removed 12/31/25 for cordova-plugin-contacts-x-2025 replacement
-    patchFacebookConnectPluginJava();
+    // patchFacebookConnectPluginJava();  Removed 7/1/26 for facebook connect plugin removal
     fs.readdir(iosDir, function (err, items) {
       // console.log(`> iOS dir items: ${JSON.stringify(items)}`);
     });

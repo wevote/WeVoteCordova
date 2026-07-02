@@ -11,7 +11,7 @@ cordova plugin add cordova-plugin-email-composer
 cordova plugin add cordova-plugin-facebook-connect --save --variable APP_ID="1097389196952441" --variable APP_NAME="WeVoteCordova" --variable FACEBOOK_ANDROID_SDK_VERSION="16.0.0"
 cordova plugin add cordova-plugin-file
 cordova plugin add cordova-plugin-geolocation
-cordova plugin add cordova-plugin-inappbrowser
+cordova plugin add https://github.com/apache/cordova-plugin-inappbrowser
 cordova plugin add cordova-plugin-ionic-keyboard
 cordova plugin add cordova-plugin-nativestorage
 cordova plugin add cordova-plugin-safariviewcontroller
