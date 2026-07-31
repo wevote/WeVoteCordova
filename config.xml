@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-        android-versionCode="20800000"
+        android-versionCode="20800001"
         id="org.wevote.cordova"
         namespace="org.wevote.cordova"
-        ios-CFBundleVersion="2.8.0.0"
+        ios-CFBundleVersion="2.8.0.1"
         version="2.8.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
         xmlns="http://www.w3.org/ns/widgets"
@@ -93,7 +93,7 @@
             <string>We Vote</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleVersion">
-            <string>2.8.0.0</string>
+            <string>2.8.0.1</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="CFBundleShortVersionString">
             <string>2.8.0</string>
