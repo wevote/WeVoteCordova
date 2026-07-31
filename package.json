@@ -13,7 +13,7 @@
   "author": "WeVote Cordova Team",
   "license": "MIT",
   "devDependencies": {
-    "cordova-android": "^15.0.0",
+    "cordova-android": "^15.1.0",
     "cordova-ios": "^7.1.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-android-notch": "^1.0.3",
@@ -68,10 +68,15 @@
       "cordova-plugin-customurlscheme": {
         "URL_SCHEME": "market"
       },
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-google-signin": {
+        "REVERSED_CLIENT_ID": "org.wevote.cordova",
+        "CLIENT_ID": "901895533456-29fjn7ubketqge82redl7n6dpp58dkv5.apps.googleusercontent.com"
+      }
     }
   },
   "dependencies": {
+    "cordova-plugin-google-signin": "github:russmedia-digital/cordova-plugin-google-signin",
     "fs-extra": "^11.3.2",
     "jetifier": "^2.0.0",
     "js-cookie": "^3.0.5",
