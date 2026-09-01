@@ -436,6 +436,86 @@ const copyJQueryFile = () => {
   }
 };
 
+const updateGroovy2KotlinGoogleSignInGradle = () => {
+  const originalFile = './platforms/android/cordova-plugin-google-signin/cordova-GoogleSignIn.gradle';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`> Processed >> ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newGradle = [];
+    rl.on('line', (line) => {
+      if (line.includes('url "https://maven.google.com"')) {
+        newGradle.push(line.replace('url ', 'url='));
+        console.log('> Reformatted >> Groovy To Kotlin Syntax ::: cordova-GoogleSignIn.gradle: ' + line); //  -- Needed for Gradle 10
+      } else if (line.includes('jcenter()')) {
+        console.log('> Reformatted >> Groovy To Kotlin Syntax ::: cordova-GoogleSignIn.gradle: ' + line);
+        // Don't push
+      } else {
+        newGradle.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const buildGradle = fs.openSync(originalFile, 'w');
+
+      newGradle.forEach((txt) => {
+        fs.writeSync(buildGradle, `${txt}\n`);
+      });
+      console.log(`> Processed >> updateAppBuildGradle hardcoded android versions in ${originalFile}`);
+    });
+  });
+};
+
+const updateGroovy2KotlinCordovaBuildGradle = () => {
+  const originalFile = './platforms/android/cordova-plugin-contacts-x-2025/cordova-build.gradle';
+  const saveOffFile = originalFile + '.previous'
+  console.log(`> Processed >> ${originalFile}`);
+  fs.rename(originalFile, saveOffFile, () => {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(saveOffFile),
+      crlfDelay: Infinity,
+    });
+    const newGradle = [];
+    rl.on('line', (line) => {
+      if (line.includes('url "https://maven.google.com"')) {
+        newGradle.push(line.replace('url ', 'url='));
+        console.log('> Reformatted >> Groovy To Kotlin Syntax ::: cordova-build.gradle: ' + line);
+      } else if (line.includes('minSdkVersion ')) {
+        console.log('> Reformatted >> Groovy To Kotlin Syntax ::: cordova-build.gradle: ' + line);
+        newGradle.push(line.replace('minSdkVersion ', 'minSdkVersion='));
+      } else if (line.includes('targetSdkVersion ')) {
+        console.log('> Reformatted >> Groovy To Kotlin Syntax ::: cordova-build.gradle: ' + line);
+        newGradle.push(line.replace('targetSdkVersion ', 'targetSdkVersion='));
+      } else if (line.includes('multiDexEnabled ')) {
+        console.log('> Reformatted >> Groovy To Kotlin Syntax ::: cordova-build.gradle: ' + line);
+        newGradle.push(line.replace('multiDexEnabled ', 'multiDexEnabled='));
+      } else if (line.includes('minifyEnabled ')) {
+        console.log('> Reformatted >> Groovy To Kotlin Syntax ::: cordova-build.gradle: ' + line);
+        newGradle.push(line.replace('minifyEnabled ', 'minifyEnabled='));
+      } else if (line.includes('proguardFiles ')) {
+        console.log('> Reformatted >> Groovy To Kotlin Syntax ::: cordova-build.gradle: ' + line);
+        newGradle.push(`${line.replace('proguardFiles ', 'proguardFiles(')})`);
+      } else if (line.includes('jcenter()')) {
+        console.log('> Reformatted >> Groovy To Kotlin Syntax ::: cordova-build.gradle: ' + line);
+        // Don't push
+      } else {
+        newGradle.push(line);
+      }
+    });
+    rl.on('close', () => {
+      const buildGradle = fs.openSync(originalFile, 'w');
+
+      newGradle.forEach((txt) => {
+        fs.writeSync(buildGradle, `${txt}\n`);
+      });
+      console.log(`> Processed >> cordova-build.gradle for Groovy to Kotlin in ${originalFile}`);
+    });
+  });
+};
+
+
 
 /* Sept 21, 2023
 stevepodell@Steves-MBP-M1-Dec2021 WeVoteCordova % find . -type f -name "*.xcconfig"
@@ -514,6 +594,8 @@ To fix this temporarily until CocoaPods is updated, you can replace DT_TOOLCHAIN
     writeCordovaLibGradleWrapperProperties();
     updateCordovaLibBuildGradle();
     updateXcodeProj();
+    updateGroovy2KotlinGoogleSignInGradle();
+    updateGroovy2KotlinCordovaBuildGradle();
     // updateContactsCaseStatementNov2024(); Removed 12/31/25 for cordova-plugin-contacts-x-2025 replacement
     // patchFacebookConnectPluginJava();  Removed 7/1/26 for facebook connect plugin removal
     fs.readdir(iosDir, function (err, items) {
