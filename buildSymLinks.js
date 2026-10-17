@@ -128,7 +128,7 @@ const updateAndroidJson = () => {
 };
 
 const updateXcodeProj = () => {
-  const originalFile = './platforms/ios/WeVote.xcodeproj/project.pbxproj';
+  const originalFile = './platforms/ios/App.xcodeproj/project.pbxproj';
   const saveOffFile = originalFile + '.previous';
   console.log(`> Processed >> ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
@@ -142,11 +142,11 @@ const updateXcodeProj = () => {
       if (line.includes('PRODUCT_NAME = "$(TARGET_NAME)";')) {
         newProjectPbxproj.push(line);
         newProjectPbxproj.push("\t\t\t\tSWIFT_VERSION = 4.2;");
-        console.log('> Hardcoded >> SWIFT_VERSION (' + conf + ') ::: to 4.2 in WeVote.xcodeproj/project.pbxproj ');
+        console.log('> Hardcoded >> SWIFT_VERSION (' + conf + ') ::: to 4.2 in App.xcodeproj/project.pbxproj ');
         conf = 'Release';
       } else if (line.includes('IPHONEOS_DEPLOYMENT_TARGET')) {
-        newProjectPbxproj.push('IPHONEOS_DEPLOYMENT_TARGET = 12.0;');
-        console.log('> Hardcoded >> IPHONEOS_DEPLOYMENT_TARGET ::: to 12.0 in WeVote.xcodeproj/project.pbxproj ');
+        newProjectPbxproj.push('IPHONEOS_DEPLOYMENT_TARGET = 15.0;');
+        console.log('> Hardcoded >> IPHONEOS_DEPLOYMENT_TARGET ::: to 15.0 in App.xcodeproj/project.pbxproj ');
       } else {
         newProjectPbxproj.push(line);
       }
@@ -243,7 +243,8 @@ const updateXcodeProj = () => {
 
 
 const updateXcodePlist = () => {
-  const originalFile = './platforms/ios/WeVote/WeVote-Info.plist';
+  // const originalFile = './platforms/ios/WeVote/WeVote-Info.plist';    // Needed for cordova-ios v7.0.0
+  const originalFile = './platforms/ios/App/App-Info.plist';
   const saveOffFile = originalFile + '.previous';
   console.log(`> Processed >> ${originalFile}`);
   fs.rename(originalFile, saveOffFile, () => {
@@ -256,22 +257,24 @@ const updateXcodePlist = () => {
     rl.on('line', (line) => {
       if (deleteNextLine) {
         // Do not push the line, ie delete it
-        console.log('> deleted >> "' + line.trim() + '" that followed the previous deleted line in WeVote/WeVote-Info.plist');
+        console.log('> deleted >> "' + line.trim() + '" that followed the previous deleted line in App/App-Info.plist');
         deleteNextLine = false;
       } else if (line.includes('<key>NSMainNibFile</key>')) {
         // Do not push the line, ie delete it
         deleteNextLine = true;
-        console.log('> deleted >><key>NSMainNibFile</key> in WeVote/WeVote-Info.plist');
+        // console.log('> deleted >><key>NSMainNibFile</key> in WeVote/WeVote-Info.plist');
+        console.log('> deleted >><key>NSMainNibFile</key> in App/App-Info.plist');
       } else if (line.includes('<key>NSMainNibFile~ipad</key>')) {
         // Do not push the line, ie delete it
         deleteNextLine = true;
-        console.log('> deleted >> <key>NSMainNibFile</key> in WeVote/WeVote-Info.plist');
+        // console.log('> deleted >> <key>NSMainNibFile</key> in WeVote/WeVote-Info.plist');  // Needed for cordova-ios v7.0.0
+        console.log('> deleted >> <key>NSMainNibFile</key> in App/App-Info.plist');
       } else if (line.includes('FACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>')) {
         newWeVoteInfoPlist.push(line.replace('FACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>', 'suffix</string>'));
-        console.log('> Hardcoded >> spurious FACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER from cordova-plugin-fbsdk ::: targetSdkVersion ::: to "suffix" in WeVote/WeVote-Info.plist');
+        console.log('> Hardcoded >> spurious FACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER from cordova-plugin-fbsdk ::: targetSdkVersion ::: to "suffix" in App/App-Info.plist');
       } else if (line.includes('OTHER_APP_SCHEMES_PLACEHOLDER</string>')) {
         newWeVoteInfoPlist.push(line.replace('OTHER_APP_SCHEMES_PLACEHOLDER</string>', 'other-app-schemes-placeholder</string>'));
-        console.log('> Hardcoded >> spurious OTHER_APP_SCHEMES_PLACEHOLDER from cordova-plugin-fbsdk ::: targetSdkVersion ::: to "other-app-schemes-placeholder" in WeVote/WeVote-Info.plist');
+        console.log('> Hardcoded >> spurious OTHER_APP_SCHEMES_PLACEHOLDER from cordova-plugin-fbsdk ::: targetSdkVersion ::: to "other-app-schemes-placeholder" in App/App-Info.plist');
       } else {
         newWeVoteInfoPlist.push(line);
       }
